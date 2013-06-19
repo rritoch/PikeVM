@@ -1,0 +1,121 @@
+<html><head><title>Pike Reference Manual - CompilerEnvironment()-&gt;PikeCompiler()-&gt;apply_attribute_constant()</title>
+<link rel='stylesheet' href='../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../ex/predef_3A_3A/CompilerEnvironment.html'><b>CompilerEnvironment</b></a><br />
+<a href='../../../../ex/predef_3A_3A/CompilerEnvironment/PikeCompiler.html'><b>CompilerEnvironment()-&gt;PikeCompiler</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Classes</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/CompilerEnvironment/PikeCompiler/CompilerState.html'><b>CompilerState</b></a></td></tr>
+<tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;apply_attribute_constant()</td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/CompilerEnvironment/PikeCompiler/apply_type_attribute.html'>apply_type_attribute()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/CompilerEnvironment/PikeCompiler/change_compiler_compatibility.html'>change_compiler_compatibility()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/CompilerEnvironment/PikeCompiler/compile.html'>compile()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/CompilerEnvironment/PikeCompiler/create.html'>create()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/CompilerEnvironment/PikeCompiler/get_compilation_handler.html'>get_compilation_handler()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/CompilerEnvironment/PikeCompiler/get_default_module.html'>get_default_module()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/CompilerEnvironment/PikeCompiler/handle_inherit.html'>handle_inherit()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/CompilerEnvironment/PikeCompiler/pop_type_attribute.html'>pop_type_attribute()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/CompilerEnvironment/PikeCompiler/push_type_attribute.html'>push_type_attribute()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/CompilerEnvironment/PikeCompiler/report.html'>report()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/CompilerEnvironment/PikeCompiler/resolv.html'>resolv()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/CompilerEnvironment/PikeCompiler/CompilerState.html"><img src="../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >CompilerEnvironment()-&gt;PikeCompiler()-&gt;CompilerState</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/CompilerEnvironment/PikeCompiler/apply_type_attribute.html">CompilerEnvironment()-&gt;PikeCompiler()-&gt;apply_type_attribute()<img src="../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method CompilerEnvironment()-&gt;PikeCompiler()-&gt;apply_attribute_constant()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>apply_attribute_constant</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>type</font>(<font color='#202020'>mixed</font>) <b><font color='#000066'>apply_attribute_constant</font>(</b><font color='#202020'>string</font> <font color='#005080'>attr</font>, <font color='#202020'>mixed</font> <font color='#005080'>value</font>, <font color='#202020'>type</font>(<font color='#202020'>mixed</font>) <font color='#005080'>arg_type</font>, <font color='#202020'>void</font> <font color='#005080'>cont_type</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Handle constant arguments to attributed function argument types.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>attr</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Attribute that <font face='courier'>arg_type</font>  had.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>value</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Constant value sent as parameter.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>arg_type</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Declared type of the function argument.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>cont_type</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Continuation function type after the current argument.</p>
+<p>   This function is called when a function is called
+   with the constant value <font face='courier'>value</font>  and it has been
+   successfully matched against <font face='courier'>arg_type</font> ,
+   and <font face='courier'>arg_type</font>  had the type attribute <font face='courier'>attr</font> .</p>
+<p>   This function is typically used to perform specialized
+   argument checking and to allow for a strengthening
+   of the function type based on <font face='courier'>value</font> .</p>
+<p>   The default implementation implements the <font face='courier'><code>"sprintf_format"</code></font>,
+   <font face='courier'><code>"sscanf_format"</code></font> and <font face='courier'><code>"sscanf_76_format"</code></font> attributes.</p>
+</font></dd>
+<dt><font face='Helvetica'>Returns</font><dt>
+<dd><font face='Helvetica'><p>Returns a continuation type if it succeeded in strengthening the type.</p>
+<p>   Returns <tt>UNDEFINED</tt> otherwise (this is not an error indication).</p>
+</font></dd>
+<dt><font face='Helvetica'>See also</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'><a href='../../../predef_3A_3A/CompilerEnvironment/PikeCompiler/pop_type_attribute.html'>pop_type_attribute()</a></font> , <font face='courier'><a href='../../../predef_3A_3A/CompilerEnvironment/PikeCompiler/push_type_attribute.html'>push_type_attribute()</a></font> </p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

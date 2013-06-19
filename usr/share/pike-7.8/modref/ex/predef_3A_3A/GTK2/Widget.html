@@ -1,0 +1,331 @@
+<html><head><title>Pike Reference Manual - GTK2.Widget</title>
+<link rel='stylesheet' href='../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../..//images/pike_line_middle.gif" width="98%"><img src="../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../ex/predef_3A_3A/GTK2.html'><b>GTK2</b></a><br />
+<b>GTK2.Widget</b><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/APP_PAINTABLE.html'>APP_PAINTABLE()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/CAN_DEFAULT.html'>CAN_DEFAULT()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/CAN_FOCUS.html'>CAN_FOCUS()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/COMPOSITE_CHILD.html'>COMPOSITE_CHILD()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/DOUBLE_BUFFERED.html'>DOUBLE_BUFFERED()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/DRAWABLE.html'>DRAWABLE()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/FLAGS.html'>FLAGS()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/HAS_DEFAULT.html'>HAS_DEFAULT()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/HAS_FOCUS.html'>HAS_FOCUS()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/HAS_GRAB.html'>HAS_GRAB()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/IS_SENSITIVE.html'>IS_SENSITIVE()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/MAPPED.html'>MAPPED()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/NO_WINDOW.html'>NO_WINDOW()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/PARENT_SENSITIVE.html'>PARENT_SENSITIVE()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/RC_STYLE.html'>RC_STYLE()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/REALIZED.html'>REALIZED()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/RECEIVES_DEFAULT.html'>RECEIVES_DEFAULT()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/SAVED_STATE.html'>SAVED_STATE()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/SENSITIVE.html'>SENSITIVE()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/STATE.html'>STATE()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/TOPLEVEL.html'>TOPLEVEL()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/VISIBLE.html'>VISIBLE()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/activate.html'>activate()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/add_accelerator.html'>add_accelerator()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/add_events.html'>add_events()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/add_mnemonic_label.html'>add_mnemonic_label()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/allocation.html'>allocation()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/can_activate_accel.html'>can_activate_accel()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/child_notify.html'>child_notify()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/class_path.html'>class_path()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/create_pango_context.html'>create_pango_context()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/create_pango_layout.html'>create_pango_layout()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/freeze_child_notify.html'>freeze_child_notify()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/get_clipboard.html'>get_clipboard()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/get_composite_name.html'>get_composite_name()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/get_direction.html'>get_direction()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/get_display.html'>get_display()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/get_events.html'>get_events()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/get_extension_events.html'>get_extension_events()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/get_modifier_style.html'>get_modifier_style()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/get_name.html'>get_name()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/get_no_show_all.html'>get_no_show_all()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/get_pango_context.html'>get_pango_context()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/get_parent.html'>get_parent()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/get_parent_window.html'>get_parent_window()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/get_pointer.html'>get_pointer()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/get_root_window.html'>get_root_window()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/get_screen.html'>get_screen()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/get_settings.html'>get_settings()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/get_size_request.html'>get_size_request()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/get_style.html'>get_style()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/get_toplevel.html'>get_toplevel()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/grab_default.html'>grab_default()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/grab_focus.html'>grab_focus()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/has_screen.html'>has_screen()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/hide.html'>hide()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/hide_all.html'>hide_all()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/hide_on_delete.html'>hide_on_delete()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/is_ancestor.html'>is_ancestor()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/is_focus.html'>is_focus()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/list_mnemonic_lables.html'>list_mnemonic_lables()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/map.html'>map()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/mnemonic_activate.html'>mnemonic_activate()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/modify_base.html'>modify_base()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/modify_bg.html'>modify_bg()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/modify_fg.html'>modify_fg()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/modify_font.html'>modify_font()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/modify_style.html'>modify_style()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/modify_text.html'>modify_text()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/path.html'>path()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/queue_draw.html'>queue_draw()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/queue_draw_area.html'>queue_draw_area()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/queue_resize.html'>queue_resize()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/queue_resize_no_redraw.html'>queue_resize_no_redraw()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/remove_accelerator.html'>remove_accelerator()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/remove_mnemonic_label.html'>remove_mnemonic_label()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/render_icon.html'>render_icon()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/reparent.html'>reparent()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/reset_shapes.html'>reset_shapes()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/set_accel_path.html'>set_accel_path()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/set_composite_name.html'>set_composite_name()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/set_direction.html'>set_direction()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/set_events.html'>set_events()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/set_extension_events.html'>set_extension_events()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/set_flags.html'>set_flags()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/set_name.html'>set_name()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/set_no_show_all.html'>set_no_show_all()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/set_parent.html'>set_parent()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/set_parent_window.html'>set_parent_window()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/set_scroll_adjustments.html'>set_scroll_adjustments()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/set_sensitive.html'>set_sensitive()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/set_size_request.html'>set_size_request()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/set_style.html'>set_style()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/shape_combine_mask.html'>shape_combine_mask()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/show.html'>show()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/show_all.html'>show_all()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/show_now.html'>show_now()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/size_request.html'>size_request()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/style_get_property.html'>style_get_property()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/thaw_child_notify.html'>thaw_child_notify()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/unmap.html'>unmap()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Widget/unset_flags.html'>unset_flags()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../ex/predef_3A_3A/GTK2/Vseparator/create.html"><img src="../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >GTK2.Vseparator()-&gt;create()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../ex/predef_3A_3A/GTK2/Widget/APP_PAINTABLE.html">GTK2.Widget()-&gt;APP_PAINTABLE()<img src="../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Class GTK2.Widget</h1>
+    <dl>
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>The basic widget, inherited (directly or indirectly) by all widgets.  Thus,
+ all functions and signals defined in this widget work on all widgets.</p>
+<p> One of the most important functions in this class is 'show', it lets GTK2
+ know that we are done setting the attributes of the widget, and it is ready
+ to be displayed.  You may also use hide to make it disappear again.  The
+ order in which you show the widgets is not important, but I suggest showing
+ the toplevel window last so the whole window pops up at once rather than
+ seeing the individual widgets come up on the screen as they're formed.  The
+ children of a widget (a window is a widget too) will not be displayed until
+ the window itself is shown using the show() function.</p>
+<p> Properties:
+ int app-paintable
+ int can-default
+ int can-focus
+ int composite-child
+ int events (GDK2.EventMask)
+ int extension-events (<font face='courier'><a href='../../predef_3A_3A/GTK2.html'>GDK_EXTENSION_EVENTS_ALL</a></font> , <font face='courier'><a href='../../predef_3A_3A/GTK2.html'>GDK_EXTENSION_EVENTS_CURSOR</a></font>  and <font face='courier'><a href='../../predef_3A_3A/GTK2.html'>GDK_EXTENSION_EVENTS_NONE</a></font> )
+ int has-default
+ int has-focus
+ int height-request
+ int is-focus
+ string name
+ int no-show-all
+ GTK2.Container parent
+ int receives-default
+ int sensitive
+ GTK2.Style style
+ int visible
+ int width-request</p>
+<p> Style properties:
+ float cursor-aspect-ratio
+ GDK2.Color cursor-color
+ int draw-border
+ string focus-line-pattern
+ int focus-line-width
+ int focus-padding
+ int interior-focus
+ GDK2.Color link-color
+ int scroll-arrow-hlength
+ int scroll-arrow-vlength
+ int separator-height
+ int separator-width
+ GDK2.Color visited-link-color
+ int wide-separators</p>
+<p>  Signals:
+ <b>accel_closures_changed</b></p>
+<p><b>button_press_event</b>
+ Called when a mouse button is pressed</p>
+<p><b>button_release_event</b>
+ Called when a mouse button is released</p>
+<p><b>can_activate_accel</b></p>
+<p><b>child_notify</b></p>
+<p><b>client_event</b>
+ An event sent by another client application</p>
+<p><b>composited_changed</b></p>
+<p><b>configure_event</b>
+ The size, position or stacking order of the widget has changed</p>
+<p><b>delete_event</b>
+ Called when the user has requested that the widget should be closed</p>
+<p><b>destroy_event</b>
+ Called when the widget is destroyed</p>
+<p><b>direction_changed</b></p>
+<p><b>drag_begin</b>
+ Called when the drag is initiated, on the sending side</p>
+<p><b>drag_data_delete</b>
+ Called when the data can be safely deleted (there is no need to use this
+ function in pigtk, it's all handled automatically)</p>
+<p><b>drag_data_get</b>
+ Called on the sending side when the drop is initiated</p>
+<p><b>drag_data_received</b>
+ Called on the receiving side when the drop is finished</p>
+<p><b>drag_drop</b>
+ Called on the receiving side when the drop is initiated</p>
+<p><b>drag_end</b>
+ Called when the drag is finished, on the sending side</p>
+<p><b>drag_leave</b>
+ Called when the mouse leaves the widget while the user is dragging something</p>
+<p><b>drag_motion</b>
+ Called on the receiving side when the cursor is moved over the widget while
+ dragging something</p>
+<p><b>enter_notify_event</b>
+ Calls when the mouse enters the widget</p>
+<p><b>event</b>
+ Called for all events</p>
+<p><b>event_after</b></p>
+<p><b>expose_event</b>
+ Called when the widget, or a part of the widget, gets an expose event</p>
+<p><b>focus</b></p>
+<p><b>focus_in_event</b>
+ The keyboard focus has entered the widget</p>
+<p><b>focus_out_event</b>
+ The keyboard focus has left the widget</p>
+<p><b>grab_broken_event</b></p>
+<p><b>grab_focus</b></p>
+<p><b>grab_notify</b></p>
+<p><b>heirarchy_changed</b></p>
+<p><b>hide</b>
+ Called when the widget is hidden</p>
+<p><b>key_press_event</b>
+ Called when a keyboard key is pressed</p>
+<p><b>key_release_event</b>
+ Called when a keyboard key is released</p>
+<p><b>leave_notify_event</b>
+ Called when the mouse leaves the widget</p>
+<p><b>map</b>
+ Called when the window associated with the widget is mapped</p>
+<p><b>map_event</b>
+ Called just before the 'map' signal</p>
+<p><b>mnemonic_activate</b></p>
+<p><b>motion_notify_event</b>
+ Called when the mouse is moved inside the widget</p>
+<p><b>no_expose_event</b></p>
+<p><b>parent_set</b>
+ Called when the parent widget is changed</p>
+<p><b>popup_menu</b></p>
+<p><b>property_notify_event</b>
+ Called when a property of the GDK window associated with the widget is
+ changed</p>
+<p><b>proximity_in_event</b></p>
+<p><b>proximity_out_event</b></p>
+<p><b>realize</b>
+ Called when the widget is realized.  Some methods cannot be used until the
+ widget has been realized; if you get assertion errors related to
+ 'w-&gt;window' or similar, this is probably the cause.</p>
+<p><b>screen_changed</b></p>
+<p><b>scroll_event</b></p>
+<p><b>selection_clear_event</b></p>
+<p><b>selection_get</b></p>
+<p><b>selection_notify_event</b></p>
+<p><b>selection_received</b></p>
+<p><b>selection_request_event</b></p>
+<p><b>show</b>
+ Called when the widget is shown</p>
+<p><b>show_help</b></p>
+<p><b>size_allocate</b>
+ Called when the widget gets the size it should be</p>
+<p><b>size_request</b>
+ Called when the widget should calculate how big it wants to be</p>
+<p><b>state_changed</b></p>
+<p><b>style_set</b>
+ Called when the style is changed</p>
+<p><b>unmap</b>
+ Called when the window associated with the widget is unmapped</p>
+<p><b>unmap_event</b>
+ Called just before the 'unmap' signal</p>
+<p><b>unrealize</b>
+ Called when the widget is unrealized;</p>
+<p><b>visibility_notify_event</b>
+ The widget has been mapped, unmapped, hidden, or otherwise had it's
+ visibility modified</p>
+<p><b>window_state_event</b></p>
+</font></dd></dl>
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Inherit</font>
+<font size='+1'><b>Object</b></font>
+</font><dt>
+<dd><p><font face='courier'>inherit </font><font face='courier'><a href='../../predef_3A_3A/GTK2/Object.html'>GTK2.Object</a></font><font face='courier'> : <font color='#F000F0'>Object</font></font></p></dd>
+</dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

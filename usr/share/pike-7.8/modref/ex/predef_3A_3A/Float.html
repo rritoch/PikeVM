@@ -1,0 +1,144 @@
+<html><head><title>Pike Reference Manual - Float</title>
+<link rel='stylesheet' href='../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../..//images/pike_line_middle.gif" width="98%"><img src="../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../index.html'><b>[Top]</b></a><br />
+<b>Float</b><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Float/isnan.html'>isnan()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../ex/predef_3A_3A/Filesystem/parse_mode.html"><img src="../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Filesystem.parse_mode()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../ex/predef_3A_3A/Float/isnan.html">Float.isnan()<img src="../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Module Float</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'></font><dt>
+<dd><p><tt>constant Float.<font color='#F000F0'>DIGITS_10</font></tt><br />
+<tt>constant Float.<font color='#F000F0'>MIN_10_EXP</font></tt><br />
+<tt>constant Float.<font color='#F000F0'>MAX_10_EXP</font></tt><br />
+<tt>constant Float.<font color='#F000F0'>MIN</font></tt><br />
+<tt>constant Float.<font color='#F000F0'>MAX</font></tt><br />
+<tt>constant Float.<font color='#F000F0'>EPSILON</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>These constants define the limits for floats on the current
+ architecture:</p>
+<dl><dt>DIGITS_10</dt>
+<dd><p>The number of decimal digits that can be represented. Any number
+   with this many decimal digits can be stored in a float and
+   converted back to decimal form without change. <font face='courier'><a href='../predef_3A_3A/Float.html'>DIGITS_10</a></font>  is
+   not less than <font face='courier'><code>6</code></font>.</p>
+</dd>
+<dt>MIN_10_EXP</dt>
+<dt>MAX_10_EXP</dt>
+<dd><p>Limits of the exponent in decimal base. 10 raised to any number
+   within this range can be represented in normalized form.
+   <font face='courier'><a href='../predef_3A_3A/Float.html'>MIN_10_EXP</a></font>  is not greater than <font face='courier'><code>-37</code></font>. <font face='courier'><a href='../predef_3A_3A/Float.html'>MAX_10_EXP</a></font>  is
+   not less than <font face='courier'><code>37</code></font>.</p>
+</dd>
+<dt>MIN</dt>
+<dd><p>The smallest normalized float greater than zero. It's not
+   greater than <font face='courier'><code>1e-37</code></font>.</p>
+</dd>
+<dt>MAX</dt>
+<dd><p>The largest finite float. It's not less than <font face='courier'><code>1e37</code></font>.</p>
+</dd>
+<dt>EPSILON</dt>
+<dd><p>The difference between 1 and the smallest value greater than 1
+   that can be represented. It's not greater than <font face='courier'><code>1e-5</code></font>.</p>
+</dd>
+</dl>
+</font></dd>
+<dt><font face='Helvetica'>Note</font><dt>
+<dd><font face='Helvetica'><p>The size of the float type can be controlled when Pike is compiled
+ with the configure flags <font face='courier'><code>--with-double-precision</code></font> and
+ <font face='courier'><code>--with-long-double-precision</code></font>. The default is to use the
+ longest available float type that fits inside a pointer.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'></font><dt>
+<dd><p><tt>constant Float.<font color='#F000F0'>FLOAT_PRECISION</font></tt><br />
+<tt>constant Float.<font color='#F000F0'>DOUBLE_PRECISION</font></tt><br />
+<tt>constant Float.<font color='#F000F0'>LONG_DOUBLE_PRECISION</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Tells which C compiler float type that is used for Pike floats.
+ Only one of these constants will exist (with the value <font face='courier'><code>1</code></font>)
+ at runtime.</p>
+<dl><dt>FLOAT_PRECISION</dt>
+<dd><p>The <font face='courier'><code>float</code></font> type of the C compiler is used.</p>
+</dd>
+<dt>DOUBLE_PRECISION</dt>
+<dd><p>The <font face='courier'><code>double</code></font> type of the C compiler is used.</p>
+</dd>
+<dt>LONG_DOUBLE_PRECISION</dt>
+<dd><p>The <font face='courier'><code>long&nbsp;double</code></font> type of the C compiler is used.</p>
+</dd>
+</dl>
+</font></dd>
+<dt><font face='Helvetica'>Note</font><dt>
+<dd><font face='Helvetica'><p>The float type can be controlled when Pike is compiled with the
+ configure flags <font face='courier'><code>--with-double-precision</code></font> and
+ <font face='courier'><code>--with-long-double-precision</code></font>. The default is to use the
+ longest available float type that fits inside a pointer.</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

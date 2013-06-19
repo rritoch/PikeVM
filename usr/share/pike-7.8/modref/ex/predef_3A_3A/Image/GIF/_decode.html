@@ -1,0 +1,170 @@
+<html><head><title>Pike Reference Manual - Image.GIF._decode()</title>
+<link rel='stylesheet' href='../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../ex/predef_3A_3A/Image.html'><b>Image</b></a><br />
+<a href='../../../../ex/predef_3A_3A/Image/GIF.html'><b>Image.GIF</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/GIF/__decode.html'>__decode()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;_decode()</td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/GIF/_encode.html'>_encode()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/GIF/_gce_block.html'>_gce_block()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/GIF/_render_block.html'>_render_block()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/GIF/decode.html'>decode()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/GIF/decode_layer.html'>decode_layer()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/GIF/decode_layers.html'>decode_layers()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/GIF/decode_map.html'>decode_map()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/GIF/encode.html'>encode()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/GIF/encode_trans.html'>encode_trans()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/GIF/end_block.html'>end_block()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/GIF/header_block.html'>header_block()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/GIF/netscape_loop_block.html'>netscape_loop_block()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/GIF/render_block.html'>render_block()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/Image/GIF/__decode.html"><img src="../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Image.GIF.__decode()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/Image/GIF/_encode.html">Image.GIF._encode()<img src="../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method Image.GIF._decode()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>_decode</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>array</font> <b><font color='#000066'>_decode</font>(</b><font color='#202020'>string</font> <font color='#005080'>gifdata</font><b>)</b></tt><br />
+<tt><font color='#202020'>array</font> <b><font color='#000066'>_decode</font>(</b><font color='#202020'>array</font> <font color='#005080'>__decoded</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'>
+
+<p>Decodes a GIF image structure down to chunks, and
+also decode the images in the render chunks.</p>
+<p><font face='courier'><pre>
+({int xsize,int ysize,    // 0: size of image drawing area
+  void|object colortable, // 2: opt. global colortable
+  ({ int aspx, int aspy,  // 3 0: aspect ratio or 0, 0 if not set
+     int background }),   //   2: index of background color
+</pre></font>
+followed by any number these blocks in any order (gce chunks
+are decoded and incorporated in the render chunks):
+<font face='courier'><pre>
+  ({ GIF.RENDER,          //   0: block identifier
+    int x, int y,         //   1: position of render
+    object image,         //   3: render image
+    void|object alpha,    //   4: 0 or render alpha channel
+    object colortable,    //   5: colortable (may be same as global)
+ 
+    int interlace,        //   6: interlace flag
+    int trans_index,      //   7: 0 or transparent color index
+    int delay,            //   8: 0 or delay in centiseconds
+    int user_input,       //   9: user input flag
+    int disposal})        //  10: disposal method number (0..7)
+ 
+  ({ GIF.EXTENSION,       //   0: block identifier
+     int extension,       //   1: extension number
+     string data })       //   2: extension data
+ 
+</pre></font>
+and possibly ended with one of these:
+<font face='courier'><pre>
+  ({ GIF.ERROR_PREMATURE_EOD })   // premature end-of-data
+ 
+  ({ GIF.ERROR_TOO_MUCH_DATA,     // data following end marker
+     string data })               // (rest of file)
+ 
+  ({ GIF.ERROR_UNKNOWN_DATA,      // unknown data
+     string data })               // (rest of file)
+</pre></font></p>
+<p>The <font face='courier'><a href='../../../predef_3A_3A/Image/GIF/decode.html'>decode</a></font>  method uses this data in a way similar
+to this program:</p>
+<p><font face='courier'><pre>
+import Image;
+ 
+object my_decode_gif(string data)
+{
+   array a=GIF._decode(data);
+   object img=image(a[0],a[1]);
+   foreach (a[4..],array b)
+      if (b[0]==GIF.RENDER)
+         if (b[4]) img-&gt;paste_alpha(b[3],b[4],b[1],b[2]);
+         else img-&gt;paste(b[3],b[1],b[2]);
+   return img;
+}
+</pre></font></p>
+<p></p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>gifdata</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'>
+<p>GIF data (with header and all)</p></font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>__decoded</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'>
+<p>GIF data as from <font face='courier'><a href='../../../predef_3A_3A/Image/GIF/__decode.html'>__decode</a></font> 
+</p></font></dd>
+<dt><font face='Helvetica'>Returns</font><dt>
+<dd><font face='Helvetica'>
+
+<p>the above array</p>
+</font></dd>
+<dt><font face='Helvetica'>Note</font><dt>
+<dd><font face='Helvetica'>
+
+<p>May throw errors if the GIF header is incomplete or illegal.</p>
+<p>This is in the very advanced sector of the GIF support;
+please read about how GIF files works.</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

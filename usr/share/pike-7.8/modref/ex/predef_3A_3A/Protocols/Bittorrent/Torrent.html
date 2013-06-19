@@ -1,0 +1,212 @@
+<html><head><title>Pike Reference Manual - Protocols.Bittorrent.Torrent</title>
+<link rel='stylesheet' href='../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../ex/predef_3A_3A/Protocols.html'><b>Protocols</b></a><br />
+<a href='../../../../ex/predef_3A_3A/Protocols/Bittorrent.html'><b>Protocols.Bittorrent</b></a><br />
+<b>Protocols.Bittorrent.Torrent</b><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Classes</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Protocols/Bittorrent/Torrent/Target.html'><b>Target</b></a></td></tr>
+<tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Protocols/Bittorrent/Torrent/bytes_done.html'>bytes_done()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Protocols/Bittorrent/Torrent/bytes_left.html'>bytes_left()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Protocols/Bittorrent/Torrent/contact_peers.html'>contact_peers()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Protocols/Bittorrent/Torrent/file_got_bitfield.html'>file_got_bitfield()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Protocols/Bittorrent/Torrent/fix_targets.html'>fix_targets()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Protocols/Bittorrent/Torrent/load_metainfo.html'>load_metainfo()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Protocols/Bittorrent/Torrent/open_port.html'>open_port()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Protocols/Bittorrent/Torrent/start_download.html'>start_download()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Protocols/Bittorrent/Torrent/start_update_tracker.html'>start_update_tracker()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Protocols/Bittorrent/Torrent/stop_update_tracker.html'>stop_update_tracker()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Protocols/Bittorrent/Torrent/update_tracker.html'>update_tracker()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Protocols/Bittorrent/Torrent/verify_targets.html'>verify_targets()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/Protocols/Bittorrent/Port/create.html"><img src="../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Protocols.Bittorrent.Port()-&gt;create()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/Protocols/Bittorrent/Torrent/Target.html">Protocols.Bittorrent.Torrent()-&gt;Target<img src="../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Class Protocols.Bittorrent.Torrent</h1>
+    <dl>
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Bittorrent peer - download and share.
+ Read more about bittorrent at 
+ <a href='http://bitconjurer.org/BitTorrent/introduction.html'>http://bitconjurer.org/BitTorrent/introduction.html</a></p>
+</font></dd>
+<dt><font face='Helvetica'>Example</font><dt>
+<dd><pre><p>The smallest usable torrent downloader. As first argument,
+ it expects a filename to a .torrent file.</p>
+<font face='courier'><pre><code><dd><p>int main(int ac,array am)
+   {
+      // initialize Torrent from file:
+      Protocols.Bittorrent.Torrent t=Protocols.Bittorrent.Torrent(); 
+      t-&gt;load_metainfo(am[1]); </p>
+<p>      // Callback when download status changes:
+      // t-&gt;downloads_update_status=...;</p>
+<p>      // Callback when pieces status change (when we get new stuff):
+      // t-&gt;pieces_update_status=...; </p>
+<p>      // Callback when peer status changes (connect, disconnect, choked...):
+      // t-&gt;peer_update_status=...;</p>
+<p>      // Callback when download is completed:
+      t-&gt;download_completed_callback=
+         lambda()
+         {
+             call_out(exit,3600,0);    // share for an hour, then exit
+         };</p>
+<p>      // Callback to print warnings (same args as sprintf):
+      //   t-&gt;warning=werror; </p>
+<p>      // type of progress function used below:
+      void progress(int n,int of) { /* ... */ };</p>
+<p>      // Initiate targets from Torrent,
+      // if target was created, no need to verify:
+      if (t-&gt;fix_targets(1,0,progress)==1)
+         t-&gt;verify_targets(progress); </p>
+<p>      // Open port to listen on,
+      // we want to do this to be able to talk to firewalled peers:
+      t-&gt;open_port(6881);</p>
+<p>      // Ok, start calling tracker to get peers,
+      // and tell about us:
+      t-&gt;start_update_tracker();</p>
+<p>      // Finally, start the download:
+      t-&gt;start_download();</p>
+<p>      return -1;
+   }</p>
+</dd>
+</code></pre></font>
+</pre></dd></dl>
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'></font><dt>
+<dd><p></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>do_we_strangle</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>function</font>(<font color='#005080'><font face='courier'><a href='../../../predef_3A_3A/Protocols/Bittorrent/Peer.html'>.Peer</a></font></font>:<font color='#202020'>int</font>(0..1)) Protocols.Bittorrent.Torrent.<b><font color='#F000F0'>do_we_strangle</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Function to determine if we should strangle this peer.
+ Default is to allow 100000 bytes of data over the ratio,
+ which is 2:1 per default; upload twice as much as we get.</p>
+<p> Arguments are the peer, bytes in (downloaded) and bytes out
+ (uploaded). Return 1 to strangle and 0 to allow the peer to
+ proceed downloading again.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>pieces_update_status</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>function</font> Protocols.Bittorrent.Torrent.<b><font color='#F000F0'>pieces_update_status</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>If set, called when we got another piece downloaded (no args).</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>downloads_update_status</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>function</font> Protocols.Bittorrent.Torrent.<b><font color='#F000F0'>downloads_update_status</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>If set, called when we start to download another piece (no args).</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>peer_update_status</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>function</font> Protocols.Bittorrent.Torrent.<b><font color='#F000F0'>peer_update_status</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>If set, called when peer status changes.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>download_completed_callback</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>function</font> Protocols.Bittorrent.Torrent.<b><font color='#F000F0'>download_completed_callback</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>If set, called when download is completed.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>warning</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>function</font>(<font color='#202020'>string</font>:<font color='#202020'>void</font>|<font color='#202020'>mixed</font>) Protocols.Bittorrent.Torrent.<b><font color='#F000F0'>warning</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Called if there is a protocol error.</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

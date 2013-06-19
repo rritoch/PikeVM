@@ -1,0 +1,303 @@
+<html><head><title>Pike Reference Manual - MIME.Message</title>
+<link rel='stylesheet' href='../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../..//images/pike_line_middle.gif" width="98%"><img src="../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../ex/predef_3A_3A/MIME.html'><b>MIME</b></a><br />
+<b>MIME.Message</b><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/MIME/Message/cast.html'>cast()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/MIME/Message/create.html'>create()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/MIME/Message/get_filename.html'>get_filename()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/MIME/Message/getdata.html'>getdata()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/MIME/Message/getencoded.html'>getencoded()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/MIME/Message/is_partial.html'>is_partial()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/MIME/Message/setboundary.html'>setboundary()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/MIME/Message/setcharset.html'>setcharset()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/MIME/Message/setdata.html'>setdata()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/MIME/Message/setdisp_param.html'>setdisp_param()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/MIME/Message/setencoding.html'>setencoding()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/MIME/Message/setparam.html'>setparam()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../ex/predef_3A_3A/MIME.html"><img src="../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >MIME</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../ex/predef_3A_3A/MIME/Message/cast.html">MIME.Message()-&gt;cast()<img src="../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Class MIME.Message</h1>
+    <dl>
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>This class is used to hold a decoded MIME message.</p>
+</font></dd></dl>
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'></font><dt>
+<dd><p></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>headers</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>mapping</font>(<font color='#202020'>string</font>:<font color='#202020'>string</font>) MIME.Message.<b><font color='#F000F0'>headers</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>This mapping contains all the headers of the message.</p>
+<p> The key is the header name (in lower case) and the value is
+ the header value.</p>
+<p> Although the mapping contains all headers, some particular headers get
+ special treatment by the module and should <b>not</b> be accessed through
+ this mapping. These fields are currently:</p>
+<table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"content-type"</font></tt></td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"content-disposition"</font></tt></td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"content-length"</font></tt></td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"content-transfer-encoding"</font></tt></td></tr>
+</table></td></tr></table><br />
+<p>The contents of these fields can be accessed and/or modified through
+ a set of variables and methods available for this purpose.</p>
+</font></dd>
+<dt><font face='Helvetica'>See also</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'><a href='../../predef_3A_3A/MIME/Message.html'>type</a></font> , <font face='courier'><a href='../../predef_3A_3A/MIME/Message.html'>subtype</a></font> , <font face='courier'><a href='../../predef_3A_3A/MIME/Message.html'>charset</a></font> , <font face='courier'><a href='../../predef_3A_3A/MIME/Message.html'>boundary</a></font> , <font face='courier'><a href='../../predef_3A_3A/MIME/Message.html'>transfer_encoding</a></font> ,
+ <font face='courier'><a href='../../predef_3A_3A/MIME/Message.html'>params</a></font> , <font face='courier'><a href='../../predef_3A_3A/MIME/Message.html'>disposition</a></font> , <font face='courier'><a href='../../predef_3A_3A/MIME/Message.html'>disp_params</a></font> , <font face='courier'><a href='../../predef_3A_3A/MIME/Message/setencoding.html'>setencoding()</a></font> ,
+ <font face='courier'><a href='../../predef_3A_3A/MIME/Message/setparam.html'>setparam()</a></font> , <font face='courier'><a href='../../predef_3A_3A/MIME/Message/setdisp_param.html'>setdisp_param()</a></font> , <font face='courier'><a href='../../predef_3A_3A/MIME/Message/setcharset.html'>setcharset()</a></font> , <font face='courier'><a href='../../predef_3A_3A/MIME/Message/setboundary.html'>setboundary()</a></font> </p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>body_parts</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>array</font>(<font color='#202020'>object</font>) MIME.Message.<b><font color='#F000F0'>body_parts</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>If the message is of type <tt>multipart</tt>, this is an array
+ containing one Message object for each part of the message.
+ If the message is not a multipart, this field is <font face='courier'><code>0</code></font> (zero).</p>
+</font></dd>
+<dt><font face='Helvetica'>See also</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'><a href='../../predef_3A_3A/MIME/Message.html'>type</a></font> , <font face='courier'><a href='../../predef_3A_3A/MIME/Message.html'>boundary</a></font> </p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>boundary</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>string</font> MIME.Message.<b><font color='#F000F0'>boundary</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>For multipart messages, this <tt>Content-Type</tt> parameter gives a
+ delimiter string for separating the individual messages.  As multiparts
+ are handled internally by the module, you should not need to access this
+ field.</p>
+</font></dd>
+<dt><font face='Helvetica'>See also</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'><a href='../../predef_3A_3A/MIME/Message/setboundary.html'>setboundary()</a></font> </p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>charset</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>string</font> MIME.Message.<b><font color='#F000F0'>charset</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>One of the possible parameters of the <tt>Content-Type</tt> header is the
+ charset attribute. It determines the character encoding used in bodies of
+ type <tt>text</tt>.</p>
+<p> If there is no <tt>Content-Type</tt> header, the value of this field
+ is <font face='courier'><code>"us-ascii"</code></font>.</p>
+</font></dd>
+<dt><font face='Helvetica'>See also</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'><a href='../../predef_3A_3A/MIME/Message.html'>type</a></font> </p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>type</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>string</font> MIME.Message.<b><font color='#F000F0'>type</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>The <tt>Content-Type</tt> header contains a type, a subtype, and optionally
+ some parameters. This field contains the type attribute extracted
+ from the header.</p>
+<p> If there is no <tt>Content-Type</tt> header, the value of this field
+ is <font face='courier'><code>"text"</code></font>.</p>
+</font></dd>
+<dt><font face='Helvetica'>See also</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'><a href='../../predef_3A_3A/MIME/Message.html'>subtype</a></font> , <font face='courier'><a href='../../predef_3A_3A/MIME/Message.html'>params</a></font> </p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>subtype</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>string</font> MIME.Message.<b><font color='#F000F0'>subtype</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>The <tt>Content-Type</tt> header contains a type, a subtype, and optionally
+ some parameters. This field contains the subtype attribute extracted
+ from the header.</p>
+<p> If there is no <tt>Content-Type</tt> header, the value of this field
+ is <font face='courier'><code>"plain"</code></font>.</p>
+</font></dd>
+<dt><font face='Helvetica'>See also</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'><a href='../../predef_3A_3A/MIME/Message.html'>type</a></font> , <font face='courier'><a href='../../predef_3A_3A/MIME/Message.html'>params</a></font> </p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>transfer_encoding</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>string</font> MIME.Message.<b><font color='#F000F0'>transfer_encoding</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>The contents of the <tt>Content-Transfer-Encoding</tt> header.</p>
+<p> If no <tt>Content-Transfer-Encoding</tt> header is given, this field
+ is <font face='courier'><code>0</code></font> (zero).</p>
+<p> Transfer encoding and decoding is done transparently by the module,
+ so this field should be interesting only to applications wishing to
+ do auto conversion of certain transfer encodings.</p>
+</font></dd>
+<dt><font face='Helvetica'>See also</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'><a href='../../predef_3A_3A/MIME/Message/setencoding.html'>setencoding()</a></font> </p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>params</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>mapping</font>(<font color='#202020'>string</font>:<font color='#202020'>string</font>) MIME.Message.<b><font color='#F000F0'>params</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>A mapping containing all the additional parameters to the
+ <tt>Content-Type</tt> header.</p>
+<p> Some of these parameters have fields of their own, which should
+ be accessed instead of this mapping wherever applicable.</p>
+</font></dd>
+<dt><font face='Helvetica'>See also</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'><a href='../../predef_3A_3A/MIME/Message.html'>charset</a></font> , <font face='courier'><a href='../../predef_3A_3A/MIME/Message.html'>boundary</a></font> , <font face='courier'><a href='../../predef_3A_3A/MIME/Message/setparam.html'>setparam()</a></font> </p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>disposition</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>string</font> MIME.Message.<b><font color='#F000F0'>disposition</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>The first part of the <tt>Content-Disposition</tt> header, hinting on how
+ this part of a multipart message should be presented in an interactive
+ application.</p>
+<p> If there is no <tt>Content-Disposition</tt> header, this field
+ is <font face='courier'><code>0</code></font>.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>disp_params</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>mapping</font>(<font color='#202020'>string</font>:<font color='#202020'>string</font>) MIME.Message.<b><font color='#F000F0'>disp_params</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>A mapping containing all the additional parameters to the
+ <tt>Content-Disposition</tt> header.</p>
+</font></dd>
+<dt><font face='Helvetica'>See also</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'><a href='../../predef_3A_3A/MIME/Message/setdisp_param.html'>setdisp_param()</a></font> , <font face='courier'><a href='../../predef_3A_3A/MIME/Message/get_filename.html'>get_filename()</a></font> </p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>data</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>string</font> MIME.Message.<b><font color='#F000F0'>data</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>This variable contains the raw data of the message body entity.</p>
+<p> The <font face='courier'><a href='../../predef_3A_3A/MIME/Message.html'>type</a></font>  and <font face='courier'><a href='../../predef_3A_3A/MIME/Message.html'>subtype</a></font>  attributes indicate how this data should
+ be interpreted.</p>
+</font></dd>
+<dt><font face='Helvetica'>Note</font><dt>
+<dd><font face='Helvetica'><p>In Pike 7.6 and earlier you had to use <font face='courier'><a href='../../predef_3A_3A/MIME/Message/getdata.html'>getdata()</a></font>  and
+   <font face='courier'><a href='../../predef_3A_3A/MIME/Message/setdata.html'>setdata()</a></font>  to access this value.</p>
+</font></dd>
+<dt><font face='Helvetica'>See also</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'><a href='../../predef_3A_3A/MIME/Message/getdata.html'>getdata()</a></font> , <font face='courier'><a href='../../predef_3A_3A/MIME/Message/setdata.html'>setdata()</a></font> </p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<html><head><title>Reference Manual for Pike v7.8 release 116</title></head>
+<body bgcolor='white' text='black'>
+<dl><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 19. Writing Pike Modules</font></td></tr></table><br />
+</dt><dd><p>
+    This chapter will discuss how to extend Pike by writing
+    modules. There are two major ways to write modules, either they
+    can be written in Pike, or they can be written in C. Generally,
+    modules can be seen as a collection of pike programs and
+    functions. This is, obviously, handy for grouping related programs
+    and functions.
+  </p><p>
+    A pike module is actually a pike program which is cloned by the
+    pike compiler during compilation of programs. This means that all
+    lfuns that can be used in a pike program also can be used in a
+    module. This is, for instance, useful for overloading the
+    operators of a module to obtain a certain behaviour. Bear in mind
+    that variables defined on a module-wide bases are shared among all
+    clones of programs in the module.
+    <font color='red'>FIXME: Explain difference between .pmod and .pike</font>
+</p><p>
+    Pike searches for modules in the module path as defined during the
+    compilation of a pike program. The module-path defaults to contain
+    the directory where all standard pike modules are installed. This
+    can be altered using
+    <font face='courier'>/master.CompatResolver()-&gt;add_module_path()</font>  in a
+    program or by letting the environment variable
+    <b>PIKE_MODULE_PATH</b> contain a colon-separated list of
+    directories to be searched for modules before looking at the
+    default location. 
+  </p></dd>
+<dt><a name='1'></a>
+<table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 19.1. Writing Modules in Pike</font></td></tr></table><br />
+</dt>
+<dd><p>
+      Writing modules in pike is by far the easiest way to extend
+      pike. They are also useful for structuring a larger programming
+      project into different source files.
+    </p><p>
+      There are two ways of create a pike module written in
+      pike. Either create a file named as the module will be called
+      with the extension <font face='courier'><code>.pmod</code></font> and place all program and
+      function definitions in it. The other way, which usually is more
+      flexible, is to create a directory named as the module with the
+      extension <font face='courier'><code>.pmod</code></font> and place all program definitions
+      (<font face='courier'><code>.pike</code></font>-files) within this directory. If a file called
+      <font face='courier'><code>module.pmod</code></font> is placed in the directory the function and
+      program definitions within it will be merged with the programs
+      found in the directory. This file could, as an example, be used
+      to specify functions residing in the module, while programs in
+      the module are placed in <font face='courier'><code>.pike</code></font>-files.
+    </p><p>
+      Note that Pike modules must not use try to load files relative to
+      __FILE__, since such code will break in Microsoft Windows.
+      <font color='red'>FIXME: Explain why.</font>
+</p></dd>
+<dt><a name='2'></a>
+<table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 19.2. Writing Modules in C</font></td></tr></table><br />
+</dt>
+<dd><p><font color='red'>FIXME: To be written.</font></p></dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 19.2.1. Practical details</font></td></tr></table><br />
+</dt><dd><p>First of all your module needs a Makefile.in file. It need not be
+         more complicated than the following example:
+<font face='courier'><pre>
+# $Id$
+@make_variables@
+VPATH=@srcdir@:@srcdir@/../..:../..
+OBJS=
+MODULE_LDFLAGS=@LDFLAGS@ @LIBS@
+
+CONFIG_HEADERS=@CONFIG_HEADERS@
+
+@dynamic_module_makefile@
+@dependencies@
+</pre></font></p><p>A few customizations must however be done. The <tt>OBJS</tt> variable should
+         contain all the object files produced in your module. You should
+         add to the <tt>MODULE_LDFLAGS</tt> variable all the needed <tt>-L&lt;libdir&gt; -R&lt;libdir&gt;</tt>
+         options followed by all the needed <tt>-l&lt;lib&gt;</tt> options. If you want your
+         module to always be linked statically, change <tt>@dynamic_module_makefile@</tt>
+         to <tt>@static_module_makefile@</tt>. Normally you do not need to manually add
+         any dependencies to Makefile.in.</p><p>There must be a testsuite.in file in the modules directory, even if it
+        only is an empty file.</p><p>You should have a configure.in file for your module and it should test
+        for all features that you need. Do not trust the global configure tests
+        to do thing for you. Further, your configure.in should contain the line
+        <tt>sinclude(../module_configuration.in)</tt>.</p><p>All C/C++ files should include <tt>"global.h"</tt> as the first included file. It
+        is also good if they contain <tt>RCSID($Id$)</tt>.</p><p>When building your module for the first time you need to:
+        <ol>
+</ol></p></dd>
+<dt><a name='3'></a>
+<table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 19.3. Special Module Variables and functions</font></td></tr></table><br />
+</dt>
+<dd></dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 19.3.1. _module_value</font></td></tr></table><br />
+</dt><dd><p>
+	If <font face='courier'><code>_module_value</code></font> is non-zero it will be used as
+	the value of the module. <font face='courier'><code>_module_value</code></font> has to be of
+	a type which is indicable, ie. an object, mapping or
+	multiset.
+      </p></dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 19.3.2. The indexing operator</font></td></tr></table><br />
+</dt><dd><p>
+	If a <font face='courier'>lfun::`[]</font>  is defined in a module it will be
+	called when the module is indexed using the .-operator. 
+      </p></dd></dl></body></html>

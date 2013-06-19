@@ -1,0 +1,109 @@
+<html><head><title>Pike Reference Manual - Array</title>
+<link rel='stylesheet' href='../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../..//images/pike_line_middle.gif" width="98%"><img src="../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../index.html'><b>[Top]</b></a><br />
+<b>Array</b><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Classes</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Array/Iterator.html'><b>Iterator</b></a></td></tr>
+<tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Array/all.html'>all()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Array/any.html'>any()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Array/arrayify.html'>arrayify()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Array/columns.html'>columns()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Array/combinations.html'>combinations()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Array/common_prefix.html'>common_prefix()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Array/compact_diff3.html'>compact_diff3()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Array/count.html'>count()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Array/diff.html'>diff()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Array/diff3.html'>diff3()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Array/diff_compare_table.html'>diff_compare_table()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Array/diff_dyn_longest_sequence.html'>diff_dyn_longest_sequence()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Array/diff_longest_sequence.html'>diff_longest_sequence()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Array/dwim_sort_func.html'>dwim_sort_func()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Array/everynth.html'>everynth()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Array/flatten.html'>flatten()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Array/greedy_diff.html'>greedy_diff()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Array/interleave_array.html'>interleave_array()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Array/longest_ordered_sequence.html'>longest_ordered_sequence()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Array/lyskom_sort_func.html'>lyskom_sort_func()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Array/oid_sort_func.html'>oid_sort_func()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Array/partition.html'>partition()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Array/permute.html'>permute()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Array/pop.html'>pop()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Array/push.html'>push()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Array/reduce.html'>reduce()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Array/rreduce.html'>rreduce()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Array/search_array.html'>search_array()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Array/shift.html'>shift()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Array/shuffle.html'>shuffle()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Array/sort_array.html'>sort_array()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Array/splice.html'>splice()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Array/sum.html'>sum()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Array/sum_arrays.html'>sum_arrays()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Array/transpose.html'>transpose()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Array/uniq.html'>uniq()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Array/uniq2.html'>uniq2()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Array/unshift.html'>unshift()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../ex/predef_3A_3A/Arg/Options.html"><img src="../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Arg.Options</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../ex/predef_3A_3A/Array/Iterator.html">Array.Iterator<img src="../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Module Array</h1>
+    <dl>
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>General functions to operate on arrays.</p>
+</font></dd></dl>
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

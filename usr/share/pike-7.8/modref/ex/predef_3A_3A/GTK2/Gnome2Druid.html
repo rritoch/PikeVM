@@ -1,0 +1,123 @@
+<html><head><title>Pike Reference Manual - GTK2.Gnome2Druid</title>
+<link rel='stylesheet' href='../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../..//images/pike_line_middle.gif" width="98%"><img src="../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../ex/predef_3A_3A/GTK2.html'><b>GTK2</b></a><br />
+<b>GTK2.Gnome2Druid</b><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Gnome2Druid/append_page.html'>append_page()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Gnome2Druid/create.html'>create()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Gnome2Druid/insert_page.html'>insert_page()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Gnome2Druid/prepend_page.html'>prepend_page()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Gnome2Druid/set_buttons_sensitive.html'>set_buttons_sensitive()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Gnome2Druid/set_page.html'>set_page()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Gnome2Druid/set_show_finish.html'>set_show_finish()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Gnome2Druid/set_show_help.html'>set_show_help()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../ex/predef_3A_3A/GTK2/Gnome2DateEdit/set_time.html"><img src="../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >GTK2.Gnome2DateEdit()-&gt;set_time()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../ex/predef_3A_3A/GTK2/Gnome2Druid/append_page.html">GTK2.Gnome2Druid()-&gt;append_page()<img src="../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Class GTK2.Gnome2Druid</h1>
+    <dl>
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>The GNOME druid is a system for assisting the user with installing
+ a service. It is roughly equivalent in functionality to the
+ "Wizards" available in Windows.</p>
+<p> There are two major parts of the druid, the Gnome2.Druid widget, and
+ the set of W(Gnome2.DruidPage) widgets. The Gnome2.Druid widget is the
+ main widget that interacts with the user. It has a Next, a Prev,
+ and a Cancel button, and acts as a container for the pages. It is
+ not a top-level window, so it needs to be put in a W(GTK2.Window) in
+ almost all cases. The W(Gnome2.DruidPage) is a virtual widget, from
+ which all of the actual content of the page inherits from. There
+ are currently three of these available within gnome-libs.</p>
+<p> GNOME druids are fairly simple to program with. You start by
+ creating a GnomeDruid into which you put all of your pages. This
+ widget will handle the presentation of the W(GnomeDruidPage) widgets.</p>
+<p> You then create all appropriate W(GnomeDruidPage) widgets. There
+ are three implementations of these, although there is no reason why
+ more couldn't be written. They are the W(GnomeDruidPageStart), the
+ W(GnomeDruidPageStandard), and the W(GnomeDruidPageFinish). The
+ W(GnomeDruidPageStandard) acts as a W(Container), and is probably
+ the most commonly used druid page. The other ones, as their names
+ might suggest, are used at the endpoints of the druid. More
+ information on the specific properties of these widgets can be
+ found on their respective pages.</p>
+<p> You will need to add the pages to the druid in order for them to
+ appear. The druid itself keeps an internal list of all pages, and
+ using the prepend_page(), append_page(), and insert_page()
+ functions will place them into it.</p>
+<p> Properties:
+ int show-finish
+ int show-help</p>
+<p>  Signals:
+ <b>cancel</b>
+ This signal is emitted when the "cancel" button has been
+ pressed. Note that the current druid page has the option to trap
+ the signal and use it, if need be, preventing this signal from
+ being emitted.</p>
+<p><b>help</b></p>
+</font></dd></dl>
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Inherit</font>
+<font size='+1'><b>Container</b></font>
+</font><dt>
+<dd><p><font face='courier'>inherit </font><font face='courier'><a href='../../predef_3A_3A/GTK2/Container.html'>GTK2.Container</a></font><font face='courier'> : <font color='#F000F0'>Container</font></font></p></dd>
+</dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

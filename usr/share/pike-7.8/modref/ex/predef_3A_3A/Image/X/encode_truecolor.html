@@ -1,0 +1,148 @@
+<html><head><title>Pike Reference Manual - Image.X.encode_truecolor()</title>
+<link rel='stylesheet' href='../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../ex/predef_3A_3A/Image.html'><b>Image</b></a><br />
+<a href='../../../../ex/predef_3A_3A/Image/X.html'><b>Image.X</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/X/decode_pseudocolor.html'>decode_pseudocolor()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/X/decode_truecolor.html'>decode_truecolor()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/X/decode_truecolor_masks.html'>decode_truecolor_masks()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/X/encode_pseudocolor.html'>encode_pseudocolor()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;encode_truecolor()</td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/X/encode_truecolor_masks.html'>encode_truecolor_masks()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/Image/X/encode_pseudocolor.html"><img src="../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Image.X.encode_pseudocolor()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/Image/X/encode_truecolor_masks.html">Image.X.encode_truecolor_masks()<img src="../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method Image.X.encode_truecolor()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>encode_truecolor</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>string</font> <b><font color='#000066'>encode_truecolor</font>(</b><font color='#202020'>object</font> <font color='#005080'>image</font>, <font color='#202020'>int</font> <font color='#005080'>bpp</font>, <font color='#202020'>int</font> <font color='#005080'>alignbits</font>, <font color='#202020'>int</font> <font color='#005080'>swapbytes</font>, <font color='#202020'>int</font> <font color='#005080'>rbits</font>, <font color='#202020'>int</font> <font color='#005080'>rshift</font>, <font color='#202020'>int</font> <font color='#005080'>gbits</font>, <font color='#202020'>int</font> <font color='#005080'>gshift</font>, <font color='#202020'>int</font> <font color='#005080'>bbits</font>, <font color='#202020'>int</font> <font color='#005080'>bshift</font><b>)</b></tt><br />
+<tt><font color='#202020'>string</font> <b><font color='#000066'>encode_truecolor_masks</font>(</b><font color='#202020'>object</font> <font color='#005080'>image</font>, <font color='#202020'>int</font> <font color='#005080'>bpp</font>, <font color='#202020'>int</font> <font color='#005080'>alignbits</font>, <font color='#202020'>int</font> <font color='#005080'>swapbytes</font>, <font color='#202020'>int</font> <font color='#005080'>rmask</font>, <font color='#202020'>int</font> <font color='#005080'>gmask</font>, <font color='#202020'>int</font> <font color='#005080'>bmask</font><b>)</b></tt><br />
+<tt><font color='#202020'>string</font> <b><font color='#000066'>encode_truecolor</font>(</b><font color='#202020'>object</font> <font color='#005080'>image</font>, <font color='#202020'>int</font> <font color='#005080'>bpp</font>, <font color='#202020'>int</font> <font color='#005080'>alignbits</font>, <font color='#202020'>int</font> <font color='#005080'>swapbytes</font>, <font color='#202020'>int</font> <font color='#005080'>rbits</font>, <font color='#202020'>int</font> <font color='#005080'>rshift</font>, <font color='#202020'>int</font> <font color='#005080'>gbits</font>, <font color='#202020'>int</font> <font color='#005080'>gshift</font>, <font color='#202020'>int</font> <font color='#005080'>bbits</font>, <font color='#202020'>int</font> <font color='#005080'>bshift</font>, <font color='#202020'>object</font> <font color='#005080'>ct</font><b>)</b></tt><br />
+<tt><font color='#202020'>string</font> <b><font color='#000066'>encode_truecolor_masks</font>(</b><font color='#202020'>object</font> <font color='#005080'>image</font>, <font color='#202020'>int</font> <font color='#005080'>bpp</font>, <font color='#202020'>int</font> <font color='#005080'>alignbits</font>, <font color='#202020'>int</font> <font color='#005080'>swapbytes</font>, <font color='#202020'>int</font> <font color='#005080'>rmask</font>, <font color='#202020'>int</font> <font color='#005080'>gmask</font>, <font color='#202020'>int</font> <font color='#005080'>bmask</font>, <font color='#202020'>object</font> <font color='#005080'>ct</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'>
+
+<p>Pack an image into a truecolor string. You will get a string
+of packed red, green and blue bits;
+ie:</p>
+<p><tt>encode_truecolor(img, 12,32, 0, 3,5, 4,0, 3,8)</tt>
+will give (aligned to even 32 bits for each row):<br />
+<tt>0bbbrrr0 gggg0bbb rrr0gggg 0bbb</tt>...<br />
+<tt>&lt;--pixel 1--&gt;&lt;--pixel 2--&gt; &lt;--3--&gt;</tt><br />
+<tt>10987654 32101098 76543210 1098</tt>... &lt;- bit position
+<tt> &lt;-&gt;&lt;-&gt;  &lt;--&gt;</tt>
+<tt>  |  |    +--- 4,0</tt>: 4 bits green shifted 0 bits
+<tt>  |  +-------- 3,5</tt>: 3 bits red shifted 5 bits
+<tt>  +----------- 3,8</tt>: 3 bits blue shifted 8 bits</p>
+<p>The above call is equal to
+<br /><tt>encode_truecolor_masks(img, 12,32, 0, 224, 15, 768)</tt>
+and
+<br /><tt>encode_truecolor(img, 12,32, 0, 3,5,4,0,3,8, colortable(1&lt;&lt;3,1&lt;&lt;4,1&lt;&lt;3))</tt>.
+<br />The latter gives possibility to use dither algorithms,
+but is slightly slower.
+</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>image</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'>
+<p>the image object to encode</p></font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>bpp</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'>
+<p>bits per pixel, how many bits each pixel should take</p></font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>alignbits</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'>
+<p>the number of even bits each line should be padded to</p></font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>rbits</font></tt></font><dt>
+<dd></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>gbits</font></tt></font><dt>
+<dd></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>bbits</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'>
+<p>bits for each basecolor</p></font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>rshift</font></tt></font><dt>
+<dd></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>gshift</font></tt></font><dt>
+<dd></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>bshift</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'>
+<p>leftshifts for each basecolor</p></font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>rmask</font></tt></font><dt>
+<dd></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>gmask</font></tt></font><dt>
+<dd></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>bmask</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'>
+<p>masks for each basecolor (xbits and gbits are calculated from this),
+needs to be massive (no zeroes among the ones in the mask).</p></font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>ct</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'>
+<p>colortable object (for dithering, or whatever)</p></font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>swapbytes</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'>
+<p>swap bytes for bpp==16,24,32,
+swaps bits in the bytes if bpp==1,
+for change of byte/bitorder between client and server.
+</p></font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

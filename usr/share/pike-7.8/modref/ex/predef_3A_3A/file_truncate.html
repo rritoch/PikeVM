@@ -1,0 +1,384 @@
+<html><head><title>Pike Reference Manual - file_truncate()</title>
+<link rel='stylesheet' href='../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../..//images/pike_line_middle.gif" width="98%"><img src="../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../index.html'><b>[Top]</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Modules</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/ADT.html'><b>ADT</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Arg.html'><b>Arg</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Array.html'><b>Array</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Audio.html'><b>Audio</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Bz2.html'><b>Bz2</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Cache.html'><b>Cache</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Calendar.html'><b>Calendar</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Calendar_I.html'><b>Calendar_I</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Colors.html'><b>Colors</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/CommonLog.html'><b>CommonLog</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Crypto.html'><b>Crypto</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/DVB.html'><b>DVB</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Debug.html'><b>Debug</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/DefaultCompilerEnvironment.html'><b>DefaultCompilerEnvironment</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Error.html'><b>Error</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Filesystem.html'><b>Filesystem</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Float.html'><b>Float</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Function.html'><b>Function</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Fuse.html'><b>Fuse</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GDK.html'><b>GDK</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GL.html'><b>GL</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GLU.html'><b>GLU</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GLUE.html'><b>GLUE</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GSSAPI.html'><b>GSSAPI</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK.html'><b>GTK</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK2.html'><b>GTK2</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTKSupport.html'><b>GTKSupport</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Gdbm.html'><b>Gdbm</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Geography.html'><b>Geography</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Getopt.html'><b>Getopt</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Gmp.html'><b>Gmp</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Gnome.html'><b>Gnome</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Graphics.html'><b>Graphics</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Gz.html'><b>Gz</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Image.html'><b>Image</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Int.html'><b>Int</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Java.html'><b>Java</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Languages.html'><b>Languages</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Local.html'><b>Local</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Locale.html'><b>Locale</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MIME.html'><b>MIME</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Mapping.html'><b>Mapping</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Math.html'><b>Math</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Msql.html'><b>Msql</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Multiset.html'><b>Multiset</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Mysql.html'><b>Mysql</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Nettle.html'><b>Nettle</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Object.html'><b>Object</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/PDF.html'><b>PDF</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Parser.html'><b>Parser</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Pike.html'><b>Pike</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Pipe.html'><b>Pipe</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Postgres.html'><b>Postgres</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Process.html'><b>Process</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Program.html'><b>Program</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Protocols.html'><b>Protocols</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Regexp.html'><b>Regexp</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Remote.html'><b>Remote</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/SANE.html'><b>SANE</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/SDL.html'><b>SDL</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/SSL.html'><b>SSL</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Shuffler.html'><b>Shuffler</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Sql.html'><b>Sql</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Standards.html'><b>Standards</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Stdio.html'><b>Stdio</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/String.html'><b>String</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/System.html'><b>System</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Thread.html'><b>Thread</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Tools.html'><b>Tools</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Unicode.html'><b>Unicode</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Web.html'><b>Web</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Yp.html'><b>Yp</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/_Ffmpeg.html'><b>_Ffmpeg</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/_Roxen.html'><b>_Roxen</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/spider.html'><b>spider</b></a></td></tr>
+<tr><td nowrap='nowrap'><br /><b>Classes</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Codec.html'><b>Codec</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/CompilationHandler.html'><b>CompilationHandler</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/CompilerEnvironment.html'><b>CompilerEnvironment</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/FacetGroup.html'><b>FacetGroup</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Iterator.html'><b>Iterator</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject.html'><b>MasterObject</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/mklibpike.html'><b>mklibpike</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/string_assignment.html'><b>string_assignment</b></a></td></tr>
+<tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/__empty_program.html'>__empty_program()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/__get_first_arg_type.html'>__get_first_arg_type()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/__get_return_type.html'>__get_return_type()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/__low_check_call.html'>__low_check_call()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/__parse_pike_type.html'>__parse_pike_type()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/__soft_cast.html'>__soft_cast()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/_disable_threads.html'>_disable_threads()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/_do_call_outs.html'>_do_call_outs()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/_dump_program_tables.html'>_dump_program_tables()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/_exit.html'>_exit()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/_next.html'>_next()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/_prev.html'>_prev()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/_refs.html'>_refs()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/_typeof.html'>_typeof()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/_backtick_21.html'>`!()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/_backtick_21_eq.html'>`!=()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/_backtick_25.html'>`%()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/_backtick_26.html'>`&amp;()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/_backtick_28_29.html'>`()()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/_backtick_2A.html'>`*()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/_backtick_add.html'>`+()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/_backtick_2D.html'>`-()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/_backtick_2D_3E.html'>`-&gt;()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/_backtick_2D_3E_eq.html'>`-&gt;=()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/_backtick_2F.html'>`/()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/_backtick_3C.html'>`&lt;()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/_backtick_3C_3C.html'>`&lt;&lt;()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/_backtick_3C_eq.html'>`&lt;=()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/_backtick_eq_eq.html'>`==()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/_backtick_3E.html'>`&gt;()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/_backtick_3E_eq.html'>`&gt;=()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/_backtick_3E_3E.html'>`&gt;&gt;()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/_backtick_5B.._5D.html'>`[..]()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/_backtick_5B_5D.html'>`[]()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/_backtick_5B_5D_eq.html'>`[]=()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/_backtick_5E.html'>`^()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/_backtick_7C.html'>`|()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/_backtick_7E.html'>`~()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/abs.html'>abs()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/acos.html'>acos()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/acosh.html'>acosh()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/add_constant.html'>add_constant()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/aggregate.html'>aggregate()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/aggregate_mapping.html'>aggregate_mapping()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/aggregate_multiset.html'>aggregate_multiset()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/alarm.html'>alarm()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/all_constants.html'>all_constants()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/allocate.html'>allocate()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/array_sscanf.html'>array_sscanf()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/arrayp.html'>arrayp()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/asin.html'>asin()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/asinh.html'>asinh()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/atan.html'>atan()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/atan2.html'>atan2()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/atanh.html'>atanh()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/atexit.html'>atexit()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/backtrace.html'>backtrace()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/basename.html'>basename()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/basetype.html'>basetype()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/call_function.html'>call_function()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/call_out.html'>call_out()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/call_out_info.html'>call_out_info()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/callablep.html'>callablep()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/cd.html'>cd()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/ceil.html'>ceil()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/column.html'>column()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/combine_path.html'>combine_path()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/combine_path_amigaos.html'>combine_path_amigaos()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/combine_path_nt.html'>combine_path_nt()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/combine_path_unix.html'>combine_path_unix()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/compile.html'>compile()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/compile_file.html'>compile_file()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/compile_string.html'>compile_string()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/connect_lock.html'>connect_lock()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/copy_value.html'>copy_value()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/cos.html'>cos()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/cosh.html'>cosh()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/cpp.html'>cpp()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/create.html'>create()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/crypt.html'>crypt()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/ctime.html'>ctime()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/decode_value.html'>decode_value()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/delay.html'>delay()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/describe_backtrace.html'>describe_backtrace()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/describe_error.html'>describe_error()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/destruct.html'>destruct()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/destructedp.html'>destructedp()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/dirname.html'>dirname()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/encode_value.html'>encode_value()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/encode_value_canonic.html'>encode_value_canonic()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/enumerate.html'>enumerate()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/equal.html'>equal()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/errno.html'>errno()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/error.html'>error()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/exece.html'>exece()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/exit.html'>exit()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/exp.html'>exp()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/explode_path.html'>explode_path()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/file_stat.html'>file_stat()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;file_truncate()</td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/filesystem_stat.html'>filesystem_stat()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/filter.html'>filter()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/find_call_out.html'>find_call_out()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/floatp.html'>floatp()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/floor.html'>floor()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/fork.html'>fork()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/function_name.html'>function_name()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/function_object.html'>function_object()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/function_program.html'>function_program()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/functionp.html'>functionp()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/gc.html'>gc()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/get_active_compilation_handler.html'>get_active_compilation_handler()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/get_active_error_handler.html'>get_active_error_handler()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/get_all_groups.html'>get_all_groups()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/get_all_users.html'>get_all_users()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/get_backtrace.html'>get_backtrace()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/get_dir.html'>get_dir()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/get_groups_for_user.html'>get_groups_for_user()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/get_iterator.html'>get_iterator()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/get_profiling_info.html'>get_profiling_info()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/get_weak_flag.html'>get_weak_flag()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/getcwd.html'>getcwd()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/getgrgid.html'>getgrgid()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/getgrnam.html'>getgrnam()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/gethrtime.html'>gethrtime()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/gethrvtime.html'>gethrvtime()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/getpid.html'>getpid()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/getpwnam.html'>getpwnam()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/getpwuid.html'>getpwuid()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/getxattr.html'>getxattr()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/glob.html'>glob()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/gmtime.html'>gmtime()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/has_index.html'>has_index()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/has_prefix.html'>has_prefix()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/has_suffix.html'>has_suffix()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/has_value.html'>has_value()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/hash.html'>hash()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/hash_7_0.html'>hash_7_0()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/hash_7_4.html'>hash_7_4()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/hash_value.html'>hash_value()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/indices.html'>indices()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/intp.html'>intp()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/is_absolute_path.html'>is_absolute_path()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/kill.html'>kill()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/limit.html'>limit()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/listxattr.html'>listxattr()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/load_module.html'>load_module()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/localtime.html'>localtime()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/log.html'>log()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/lower_case.html'>lower_case()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/m_delete.html'>m_delete()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/map.html'>map()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/mappingp.html'>mappingp()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/master.html'>master()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/max.html'>max()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/min.html'>min()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/mkdir.html'>mkdir()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/mkmapping.html'>mkmapping()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/mkmultiset.html'>mkmultiset()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/mktime.html'>mktime()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/multisetp.html'>multisetp()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/mv.html'>mv()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/next_object.html'>next_object()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/normalize_path.html'>normalize_path()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/object_program.html'>object_program()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/object_variablep.html'>object_variablep()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/objectp.html'>objectp()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/pow.html'>pow()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/programp.html'>programp()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/query_num_arg.html'>query_num_arg()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/random.html'>random()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/random_seed.html'>random_seed()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/random_string.html'>random_string()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/remove_call_out.html'>remove_call_out()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/removexattr.html'>removexattr()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/replace.html'>replace()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/replace_master.html'>replace_master()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/reverse.html'>reverse()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/rm.html'>rm()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/round.html'>round()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/rows.html'>rows()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/search.html'>search()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/set_priority.html'>set_priority()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/set_weak_flag.html'>set_weak_flag()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/setxattr.html'>setxattr()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/sgn.html'>sgn()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/signal.html'>signal()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/signame.html'>signame()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/signum.html'>signum()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/sin.html'>sin()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/sinh.html'>sinh()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/sizeof.html'>sizeof()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/sleep.html'>sleep()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/sort.html'>sort()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/sprintf.html'>sprintf()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/sqrt.html'>sqrt()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/sscanf.html'>sscanf()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/strerror.html'>strerror()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/string_to_unicode.html'>string_to_unicode()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/string_to_utf8.html'>string_to_utf8()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/stringp.html'>stringp()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/strlen.html'>strlen()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/tan.html'>tan()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/tanh.html'>tanh()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/this_object.html'>this_object()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/throw.html'>throw()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/time.html'>time()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/tokenize.html'>tokenize()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/trace.html'>trace()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/ualarm.html'>ualarm()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/undefinedp.html'>undefinedp()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/unicode_to_string.html'>unicode_to_string()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/upper_case.html'>upper_case()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/utf8_to_string.html'>utf8_to_string()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/values.html'>values()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/version.html'>version()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/werror.html'>werror()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/write.html'>write()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/zero_type.html'>zero_type()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../ex/predef_3A_3A/file_stat.html"><img src="../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >file_stat()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../ex/predef_3A_3A/filesystem_stat.html">filesystem_stat()<img src="../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method file_truncate()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>file_truncate</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>int</font> <b><font color='#000066'>file_truncate</font>(</b><font color='#202020'>string</font> <font color='#005080'>file</font>, <font color='#202020'>int</font> <font color='#005080'>length</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Truncates the file <font face='courier'>file</font>  to the length specified in <font face='courier'>length</font> .</p>
+</font></dd>
+<dt><font face='Helvetica'>Returns</font><dt>
+<dd><font face='Helvetica'><p>Returns 1 if ok, 0 if failed.</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

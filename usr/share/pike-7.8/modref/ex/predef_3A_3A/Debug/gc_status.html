@@ -1,0 +1,140 @@
+<html><head><title>Pike Reference Manual - Debug.gc_status()</title>
+<link rel='stylesheet' href='../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../..//images/pike_line_middle.gif" width="98%"><img src="../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../ex/predef_3A_3A/Debug.html'><b>Debug</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Classes</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Debug/Subject.html'><b>Subject</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Debug/Tracer.html'><b>Tracer</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Debug/Wrapper.html'><b>Wrapper</b></a></td></tr>
+<tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Debug/assembler_debug.html'>assembler_debug()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Debug/compiler_trace.html'>compiler_trace()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Debug/count_objects.html'>count_objects()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Debug/debug.html'>debug()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Debug/describe.html'>describe()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Debug/describe_program.html'>describe_program()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Debug/dmalloc_set_name.html'>dmalloc_set_name()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Debug/dump_backlog.html'>dump_backlog()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Debug/gc_set_watch.html'>gc_set_watch()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;gc_status()</td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Debug/list_open_fds.html'>list_open_fds()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Debug/locate_references.html'>locate_references()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Debug/memory_usage.html'>memory_usage()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Debug/optimizer_debug.html'>optimizer_debug()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Debug/pp_memory_usage.html'>pp_memory_usage()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Debug/reset_dmalloc.html'>reset_dmalloc()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Debug/verify_internals.html'>verify_internals()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../ex/predef_3A_3A/Debug/gc_set_watch.html"><img src="../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Debug.gc_set_watch()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../ex/predef_3A_3A/Debug/list_open_fds.html">Debug.list_open_fds()<img src="../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method Debug.gc_status()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>gc_status</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>mapping</font>(<font color='#202020'>string</font>:<font color='#202020'>int</font>|<font color='#202020'>float</font>) <b><font color='#000066'>gc_status</font>(</b><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Get statistics from the garbage collector.</p>
+</font></dd>
+<dt><font face='Helvetica'>Returns</font><dt>
+<dd><font face='Helvetica'><p>A mapping with the following content will be returned:</p>
+<table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"num_objects"</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'><p>Number of arrays, mappings, multisets, objects and programs.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"num_allocs"</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'><p>Number of memory allocations since the last gc run.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"alloc_threshold"</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'><p>Threshold for "num_allocs" when another automatic gc run is
+       scheduled.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"projected_garbage"</font> : <font color='#202020'>float</font></tt></td><td bgcolor='white'><p>Estimation of the current amount of garbage.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"objects_alloced"</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'><p>Decaying average over the number of allocated objects
+       between gc runs.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"objects_freed"</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'><p>Decaying average over the number of freed objects in each gc
+       run.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"last_garbage_ratio"</font> : <font color='#202020'>float</font></tt></td><td bgcolor='white'><p>Garbage ratio in the last gc run.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"non_gc_time"</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'><p>Decaying average over the CPU milliseconds spent outside the
+       garbage collector.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"gc_time"</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'><p>Decaying average over the CPU milliseconds spent inside the
+       garbage collector.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"last_garbage_strategy"</font> : <font color='#202020'>string</font></tt></td><td bgcolor='white'><p>The garbage accumulation goal that the gc aimed for when
+       setting "alloc_threshold" in the last run. The value is
+       either "garbage_ratio_low" or "garbage_ratio_high", which
+       corresponds to the gc parameters with the same names in
+       <font face='courier'><a href='../../predef_3A_3A/Pike/gc_parameters.html'>Pike.gc_parameters</a></font> .</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"last_gc"</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'><p>Time when the garbage-collector last ran.</p>
+</td></tr>
+</table></td></tr></table><br />
+
+</font></dd>
+<dt><font face='Helvetica'>See also</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'><a href='../../predef_3A_3A/gc.html'>gc()</a></font> , <font face='courier'><a href='../../predef_3A_3A/Pike/gc_parameters.html'>Pike.gc_parameters()</a></font> </p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

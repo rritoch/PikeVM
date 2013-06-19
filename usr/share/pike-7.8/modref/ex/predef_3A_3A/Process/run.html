@@ -1,0 +1,135 @@
+<html><head><title>Pike Reference Manual - Process.run()</title>
+<link rel='stylesheet' href='../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../..//images/pike_line_middle.gif" width="98%"><img src="../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../ex/predef_3A_3A/Process.html'><b>Process</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Classes</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Process/Process.html'><b>Process</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Process/Spawn.html'><b>Spawn</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Process/TraceProcess.html'><b>TraceProcess</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Process/create_process.html'><b>create_process</b></a></td></tr>
+<tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Process/exec.html'>exec()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Process/popen.html'>popen()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;run()</td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Process/search_path.html'>search_path()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Process/sh_quote.html'>sh_quote()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Process/spawn.html'>spawn()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Process/spawn_pike.html'>spawn_pike()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Process/split_quoted_string.html'>split_quoted_string()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Process/system.html'>system()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../ex/predef_3A_3A/Process/popen.html"><img src="../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Process.popen()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../ex/predef_3A_3A/Process/search_path.html">Process.search_path()<img src="../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method Process.run()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>run</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>mapping</font> <b><font color='#000066'>run</font>(</b><font color='#202020'>string</font>|<font color='#202020'>array</font>(<font color='#202020'>string</font>) <font color='#005080'>cmd</font>, <font color='#202020'>void</font>|<font color='#202020'>mapping</font> <font color='#005080'>modifiers</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Easy and lazy way of using <font face='courier'><a href='../../predef_3A_3A/Process/Process.html'>Process.Process</a></font>  that runs a process 
+ and returns a mapping with the output and exit code without
+ having to make sure you read nonblocking yourself.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>args</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Either a command line array, as the command_args
+   argument to <font face='courier'><a href='../../predef_3A_3A/Process/create_process.html'>create_process()</a></font> , or a string that
+   will be splitted into a command line array by
+   calling <font face='courier'><a href='../../predef_3A_3A/Process/split_quoted_string.html'>split_quoted_string()</a></font>  in an operating
+   system dependant mode.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>modifiers</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>It takes all the modifiers <font face='courier'><a href='../../predef_3A_3A/Process/Process.html'>Process.Process</a></font>  accepts, with 
+   the exception of stdout and stderr. Since the point of this 
+   function is to handle those you can not supply your own.</p>
+<p>   If <font face='courier'><code>modifiers-&gt;stdin</code></font> is set to a string it will automaticly be
+   converted to a pipe that is fed to stdin of the started process.</p>
+</font></dd>
+<dt><font face='Helvetica'>See also</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'><a href='../../predef_3A_3A/Process/Process.html'>Process.Process</a></font> <font face='courier'><a href='../../predef_3A_3A/Process/create_process.html'>create_process</a></font> </p>
+</font></dd>
+<dt><font face='Helvetica'>Returns</font><dt>
+<dd><font face='Helvetica'><table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"stdout"</font> : <font color='#202020'>string</font></tt></td><td bgcolor='white'><p>Everything the process wrote on stdout.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"stderr"</font> : <font color='#202020'>string</font></tt></td><td bgcolor='white'><p>Everything the process wrote on stderr.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"exitcode"</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'><p>The process' exitcode.</p>
+</td></tr>
+</table></td></tr></table><br />
+
+</font></dd>
+<dt><font face='Helvetica'>Note</font><dt>
+<dd><font face='Helvetica'><p>As the entire output of stderr and stdout is stored in the 
+   returned mapping it could potentially grow until memory runs out. 
+   It is therefor adviceable to set up rlimits if the output has a
+   potientially be very large.</p>
+</font></dd>
+<dt><font face='Helvetica'>Example</font><dt>
+<dd><pre><p>Process.run( ({ "ls", "-l" }) );
+   Process.run( ({ "ls", "-l" }), ([ "cwd":"/etc" ]) );
+   Process.run( "ls -l" );
+   Process.run( "awk -F: '{print $2}'", ([ "stdin":"foo:2\nbar:17\n" ]) );</p>
+</pre></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

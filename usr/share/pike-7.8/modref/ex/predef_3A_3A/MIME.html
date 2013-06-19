@@ -1,0 +1,149 @@
+<html><head><title>Pike Reference Manual - MIME</title>
+<link rel='stylesheet' href='../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../..//images/pike_line_middle.gif" width="98%"><img src="../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../index.html'><b>[Top]</b></a><br />
+<b>MIME</b><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Classes</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MIME/Message.html'><b>Message</b></a></td></tr>
+<tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MIME/decode.html'>decode()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MIME/decode_base64.html'>decode_base64()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MIME/decode_qp.html'>decode_qp()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MIME/decode_uue.html'>decode_uue()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MIME/decode_word.html'>decode_word()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MIME/decode_words_text.html'>decode_words_text()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MIME/decode_words_text_remapped.html'>decode_words_text_remapped()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MIME/decode_words_tokenized.html'>decode_words_tokenized()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MIME/decode_words_tokenized_labled.html'>decode_words_tokenized_labled()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MIME/decode_words_tokenized_labled_remapped.html'>decode_words_tokenized_labled_remapped()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MIME/decode_words_tokenized_remapped.html'>decode_words_tokenized_remapped()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MIME/encode.html'>encode()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MIME/encode_base64.html'>encode_base64()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MIME/encode_qp.html'>encode_qp()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MIME/encode_uue.html'>encode_uue()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MIME/encode_word.html'>encode_word()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MIME/encode_words_quoted.html'>encode_words_quoted()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MIME/encode_words_quoted_labled.html'>encode_words_quoted_labled()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MIME/encode_words_quoted_labled_remapped.html'>encode_words_quoted_labled_remapped()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MIME/encode_words_quoted_remapped.html'>encode_words_quoted_remapped()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MIME/encode_words_text.html'>encode_words_text()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MIME/encode_words_text_remapped.html'>encode_words_text_remapped()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MIME/ext_to_media_type.html'>ext_to_media_type()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MIME/generate_boundary.html'>generate_boundary()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MIME/guess_subtype.html'>guess_subtype()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MIME/parse_headers.html'>parse_headers()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MIME/quote.html'>quote()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MIME/quote_labled.html'>quote_labled()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MIME/reconstruct_partial.html'>reconstruct_partial()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MIME/tokenize.html'>tokenize()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MIME/tokenize_labled.html'>tokenize_labled()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../ex/predef_3A_3A/Locale/translate.html"><img src="../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Locale.translate()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../ex/predef_3A_3A/MIME/Message.html">MIME.Message<img src="../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Module MIME</h1>
+    <dl>
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>RFC1521, the <b>Multipurpose Internet Mail Extensions</b> memo, defines a
+ structure which is the base for all messages read and written by
+ modern mail and news programs.  It is also partly the base for the
+ HTTP protocol.  Just like RFC822, MIME declares that a message should
+ consist of two entities, the headers and the body.  In addition, the
+ following properties are given to these two entities:</p>
+<dl><dt>Headers</dt>
+<dd><ul>
+<li><p>A MIME-Version header must be present to signal MIME compatibility</p>
+</li><li><p>A Content-Type header should be present to describe the nature of
+     the data in the message body.  Seven major types are defined, and an
+     extensive number of subtypes are available.  The header can also
+     contain attributes specific to the type and subtype.</p>
+</li><li><p>A Content-Transfer-Encoding may be present to notify that the data
+     of the body is encoded in some particular encoding.</p>
+</li></ul></dd>
+<dt>Body</dt>
+<dd><ul>
+<li><p>Raw data to be interpreted according to the Content-Type header</p>
+</li><li><p>Can be encoded using one of several Content-Transfer-Encodings to
+     allow transport over non 8bit clean channels</p>
+</li></ul></dd>
+</dl><p>The MIME module can extract and analyze these two entities from a stream
+ of bytes.  It can also recreate such a stream from these entities.
+ To encapsulate the headers and body entities, the class <font face='courier'><a href='../predef_3A_3A/MIME/Message.html'>MIME.Message</a></font>  is
+ used.  An object of this class holds all the headers as a mapping from
+ string to string, and it is possible to obtain the body data in either
+ raw or encoded form as a string.  Common attributes such as message type
+ and text char set are also extracted into separate variables for easy
+ access.</p>
+<p> The Message class does not make any interpretation of the body
+ data, unless the content type is <tt>multipart</tt>.  A multipart
+ message contains several individual messages separated by boundary
+ strings.  The <font face='courier'><a href='../predef_3A_3A/MIME/Message/create.html'>Message-&gt;create</a></font>  method of the Message class will
+ divide a multipart body on these boundaries, and then create
+ individual Message objects for each part.  These objects will be
+ collected in the array <font face='courier'><a href='../predef_3A_3A/MIME/Message.html'>Message-&gt;body_parts</a></font>  within the original
+ Message object. If any of the new <font face='courier'><a href='../predef_3A_3A/MIME/Message.html'>Message</a></font>  objects have a body of
+ type multipart, the process is of course repeated recursively.</p>
+</font></dd></dl>
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Inherit</font>
+<font size='+1'><b>___MIME</b></font>
+</font><dt>
+<dd><p><font face='courier'>inherit </font><font face='courier'>___MIME</font><font face='courier'> : <font color='#F000F0'>___MIME</font></font></p></dd>
+</dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

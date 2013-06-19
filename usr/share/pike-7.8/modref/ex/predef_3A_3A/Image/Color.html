@@ -1,0 +1,216 @@
+<html><head><title>Pike Reference Manual - Image.Color</title>
+<link rel='stylesheet' href='../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../..//images/pike_line_middle.gif" width="98%"><img src="../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../ex/predef_3A_3A/Image.html'><b>Image</b></a><br />
+<b>Image.Color</b><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Classes</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Image/Color/Color.html'><b>Color</b></a></td></tr>
+<tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Image/Color/_indices.html'>_indices()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Image/Color/_values.html'>_values()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Image/Color/cmyk.html'>cmyk()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Image/Color/greylevel.html'>greylevel()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Image/Color/guess.html'>guess()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Image/Color/hsv.html'>hsv()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Image/Color/html.html'>html()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Image/Color/rgb.html'>rgb()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../ex/predef_3A_3A/Image/BMP/encode.html"><img src="../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Image.BMP.encode()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../ex/predef_3A_3A/Image/Color/Color.html">Image.Color.Color<img src="../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Module Image.Color</h1>
+    <dl>
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'>
+
+<p>
+    This module keeps names and easy handling
+    for easy color support. It gives you an easy
+    way to get colors from names.</p>
+<p>    A color is here an object, containing color
+    information and methods for conversion, see below.</p>
+<p><font face='courier'><a href='../../predef_3A_3A/Image/Color.html'>Image.Color</a></font>  can be called to make a color object.
+    <font face='courier'><a href='../../predef_3A_3A/Image/Color.html'>Image.Color()</a></font>  takes the following arguments:
+    <font face='courier'><pre>
+    Image.Color(string name)          // "red"
+    Image.Color(string prefix_string) // "lightblue"
+    Image.Color(string hex_name)      // "#ff00ff"
+    Image.Color(string cmyk_string)   // "%17,42,0,19.4"
+    Image.Color(string hsv_string)    // "%@327,90,32"
+    Image.Color(int red, int green, int blue)
+    </pre></font></p>
+<p>    The color names available can be listed by using indices
+    on Image.Color. The colors are available by name directly
+    as <tt>Image.Color.name</tt>, too:
+    <font face='courier'><pre>
+    ...Image.Color.red...
+    ...Image.Color.green...
+    or, maybe
+    import Image.Color;
+    ...red...
+    ...green...
+    ...lightgreen...
+    </pre></font></p>
+<p>    Giving red, green and blue values is equal to calling
+    <font face='courier'><a href='../../predef_3A_3A/Image/Color/rgb.html'>Image.Color.rgb</a></font> ().</p>
+<p>    The prefix_string method is a form for getting modified
+    colors, it understands all modifiers
+    (<font face='courier'><a href='../../predef_3A_3A/Image/Color/Color/light.html'>light</a></font> ,
+    <font face='courier'><a href='../../predef_3A_3A/Image/Color/Color/light.html'>dark</a></font> ,
+    <font face='courier'><a href='../../predef_3A_3A/Image/Color/Color/light.html'>bright</a></font> ,
+    <font face='courier'><a href='../../predef_3A_3A/Image/Color/Color/light.html'>dull</a></font>  and
+    <font face='courier'><a href='../../predef_3A_3A/Image/Color/Color/light.html'>neon</a></font> ). Simply  use
+    "method"+"color"; (as in <tt>lightgreen</tt>,
+    <tt>dullmagenta</tt>, <tt>lightdullorange</tt>).</p>
+<p>    The <tt>hex_name</tt> form is a simple
+    <tt>#rrggbb</tt> form, as in HTML or X-program argument.
+    A shorter form (<tt>#rgb</tt>) is also accepted. This
+    is the inverse to the <font face='courier'><a href='../../predef_3A_3A/Image/Color/Color/hex.html'>Image.Color.Color-&gt;hex</a></font> ()
+    method.</p>
+<p>    The <tt>cmyk_string</tt> is a string form of giving
+    <i>cmyk</i> (cyan, magenta, yellow, black) color. These
+    values are floats representing percent.</p>
+<p>    The <tt>hsv_string</tt> is another hue, saturation, value
+    representation, but in floats; hue is in degree range (0..360),
+    and saturation and value is given in percent. <i>This is not
+    the same as returned or given to the <font face='courier'><a href='../../predef_3A_3A/Image/Color/rgb.html'>hsv</a></font> () methods!</i></p>
+<p>This table lists all the different named colors available in Image.Color.
+The first column shows the actual color while the five following columns
+demonstrates the modifiers neon, light, dark, bright and dull. The color
+begind the name of the color is produced by calling neon()-&gt;dark()-&gt;dark()-&gt;dark()
+from the color object itself, i.e. Image.Color.mintcream-&gt;neon()-&gt;dark()-&gt;dark()-&gt;dark().</p>
+<p><img src='../../../images/predef.Image.Color.1.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.2.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.3.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.4.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.5.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.6.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.7.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.8.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.9.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.10.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.11.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.12.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.13.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.14.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.15.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.16.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.17.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.18.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.19.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.20.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.21.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.22.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.23.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.24.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.25.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.26.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.27.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.28.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.29.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.30.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.31.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.32.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.33.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.34.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.35.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.36.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.37.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.38.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.39.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.40.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.41.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.42.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.43.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.44.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.45.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.46.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.47.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.48.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.49.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.50.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.51.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.52.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.53.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.54.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.55.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.56.png' height='120' width='348' /><br />
+<img src='../../../images/predef.Image.Color.57.png' height='105' width='348' /><br /></p>
+<p></p>
+<p>
+</p>
+</font></dd>
+<dt><font face='Helvetica'>Note</font><dt>
+<dd><font face='Helvetica'>
+
+<p><tt>Image.Color["something"]</tt> will never(!) generate an error,
+but a zero_type 0, if the color is unknown. This is enough
+to give the error "not present in module", if used
+as <tt>Image.Color.something</tt>, though.</p>
+<p>If you are using colors from for instance a webpage, you might
+want to create the color from <font face='courier'><a href='../../predef_3A_3A/Image/Color/guess.html'>Image.Color.guess</a></font> (),
+since that method is more tolerant for mistakes and errors.</p>
+<p><tt>Image.Color</tt>() is case- and space-sensitive.
+Use <font face='courier'><a href='../../predef_3A_3A/Image/Color/guess.html'>Image.Color.guess</a></font> () to catch all variants.</p>
+<p>and subtract with a space (lower_case(x)-" ") to make
+sure you get all variants.</p>
+<p></p>
+</font></dd>
+<dt><font face='Helvetica'>See also</font><dt>
+<dd><font face='Helvetica'>
+<p><font face='courier'><a href='../../predef_3A_3A/Image/Color/Color.html'>Image.Color.Color</a></font> , <font face='courier'><a href='../../predef_3A_3A/Image/Color/guess.html'>Image.Color.guess</a></font> , <font face='courier'><a href='../../predef_3A_3A/Image/Image.html'>Image</a></font> , <font face='courier'><a href='../../predef_3A_3A/Image/Colortable.html'>Image.Colortable</a></font> </p></font></dd></dl>
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

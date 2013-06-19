@@ -1,0 +1,98 @@
+<html><head><title>Pike Reference Manual - Parser.RCS()-&gt;DeltatextIterator()-&gt;create()</title>
+<link rel='stylesheet' href='../../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../../ex/predef_3A_3A/Parser.html'><b>Parser</b></a><br />
+<a href='../../../../../ex/predef_3A_3A/Parser/RCS.html'><b>Parser.RCS</b></a><br />
+<a href='../../../../../ex/predef_3A_3A/Parser/RCS/DeltatextIterator.html'><b>Parser.RCS()-&gt;DeltatextIterator</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Parser/RCS/DeltatextIterator/_backtick_21.html'>`!()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Parser/RCS/DeltatextIterator/_backtick_add_eq.html'>`+=()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;create()</td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Parser/RCS/DeltatextIterator/first.html'>first()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Parser/RCS/DeltatextIterator/index.html'>index()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Parser/RCS/DeltatextIterator/next.html'>next()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Parser/RCS/DeltatextIterator/parse_deltatext_section.html'>parse_deltatext_section()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Parser/RCS/DeltatextIterator/value.html'>value()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../../ex/predef_3A_3A/Parser/RCS/DeltatextIterator/_backtick_add_eq.html"><img src="../../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Parser.RCS()-&gt;DeltatextIterator()-&gt;`+=()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../../ex/predef_3A_3A/Parser/RCS/DeltatextIterator/first.html">Parser.RCS()-&gt;DeltatextIterator()-&gt;first()<img src="../../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method Parser.RCS()-&gt;DeltatextIterator()-&gt;create()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>create</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>void</font> Parser.RCS.DeltatextIterator<b>(</b><font color='#202020'>array</font> <font color='#005080'>deltatext_section</font>, <font color='#202020'>void</font>|<font color='#202020'>function</font>(<font color='#202020'>string</font>:<font color='#202020'>void</font>) <font color='#005080'>progress_callback</font>, <font color='#202020'>void</font>|<font color='#202020'>array</font>(<font color='#202020'>mixed</font>) <font color='#005080'>progress_callback_args</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>deltatext_section</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>the deltatext section of the RCS file in its entirety</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>progress_callback</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>This optional callback is invoked with the revision of the
+   deltatext about to be parsed (useful for progress indicators).</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>progress_callback_args</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Optional extra trailing arguments to be sent to <font face='courier'>progress_callback</font> </p>
+</font></dd>
+<dt><font face='Helvetica'>See also</font><dt>
+<dd><font face='Helvetica'><p>the <tt>rcsfile(5)</tt> manpage outlines the sections of an RCS file</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<html><head><title>Pike Reference Manual - Image.Font</title>
+<link rel='stylesheet' href='../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../..//images/pike_line_middle.gif" width="98%"><img src="../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../ex/predef_3A_3A/Image.html'><b>Image</b></a><br />
+<b>Image.Font</b><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Image/Font/baseline.html'>baseline()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Image/Font/center.html'>center()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Image/Font/create.html'>create()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Image/Font/height.html'>height()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Image/Font/left.html'>left()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Image/Font/load.html'>load()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Image/Font/right.html'>right()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Image/Font/set_xspacing_scale.html'>set_xspacing_scale()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Image/Font/set_yspacing_scale.html'>set_yspacing_scale()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Image/Font/text_extents.html'>text_extents()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Image/Font/write.html'>write()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../ex/predef_3A_3A/Image/Colortable/spacefactors.html"><img src="../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Image.Colortable()-&gt;spacefactors()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../ex/predef_3A_3A/Image/Font/baseline.html">Image.Font()-&gt;baseline()<img src="../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Class Image.Font</h1>
+    <dl>
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Short technical documentation on a font file:
+ This object adds the text-drawing and -creation
+ capabilities of the <font face='courier'><a href='../../predef_3A_3A/Image/Image.html'>Image</a></font>  module.</p>
+<p> For simple usage, see <font face='courier'><a href='../../predef_3A_3A/Image/Font/write.html'>write</a></font>  and <font face='courier'><a href='../../predef_3A_3A/Image/Font/load.html'>load</a></font> .</p>
+</font></dd>
+<dt><font face='Helvetica'>Note</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'><pre>
+	       struct file_head
+	       {
+		  unsigned INT32 cookie;   - 0x464f4e54
+		  unsigned INT32 version;  - 1
+		  unsigned INT32 chars;    - number of chars
+		  unsigned INT32 height;   - height of font
+		  unsigned INT32 baseline; - font baseline
+		  unsigned INT32 o[1];     - position of char_head's
+	       } *fh;
+	       struct char_head
+	       {
+		  unsigned INT32 width;    - width of this character
+		  unsigned INT32 spacing;  - spacing to next character
+		  unsigned char data[1];   - pixmap data (1byte/pixel)
+	       } *ch;
+
+            version 2:
+
+
+            	  On-disk syntax (everything in N.B.O), int is 4 bytes, a byte is 8 bits:
+
+            pos
+            	0   int cookie = 'FONT';     or 0x464f4e54
+            	4   int version = 2;         1 was the old version without the last four chars
+            	8   int numchars;            Always 256 in this version of the dump program
+            12   int height;              in (whole) pixels
+            16   int baseline;            in (whole) pixels
+            20   char direction;          1==right to left, 0 is left to right
+            21   char format;             Font format
+            22   char colortablep;        Colortable format
+            23   char kerningtablep;      Kerning table format
+
+            24   int offsets[numchars];   pointers into the data, realative to &amp;cookie.
+            	    [colortable]
+            	    [kerningtable]
+
+            	  At each offset:
+
+
+            0   int width;               in pixels
+            4   int spacing;             in 1/1000:th of a pixels
+            8   char data[];             Enough data to plot width * font-&gt;height pixels
+            				    Please note that if width is 0, there is no data.
+
+            Font formats:
+            	id type
+            	 0 Raw 8bit data
+            	 1 RLE encoded data,  char length, char data,   70% more compact than raw data
+            	 2 ZLib compressed data                         60% more compact than RLE
+
+            Colortable types:
+            	 0 No colortable		 (the data is an alpha channel)
+            	 1 24bit RGB with alpha         (index-&gt;color, 256*4 bytes, rgba)
+            	 2 8bit Greyscale with alpha    (index-&gt;color, 256*2 bytes)
+
+            Kerningtable types:
+            	 0 No kerning table
+            	 1 numchars*numchars entries, each a signed char with the kerning value
+            	 2 numchar entries, each with a list of kerning pairs, like this:
+            	    int len
+            	    len * (short char, short value)
+ </pre></font></p>
+</font></dd>
+<dt><font face='Helvetica'>See also</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'><a href='../../predef_3A_3A/Image/Image.html'>Image</a></font> , <font face='courier'><a href='../../predef_3A_3A/Image/Image.html'>Image.Image</a></font> </p>
+</font></dd></dl>
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

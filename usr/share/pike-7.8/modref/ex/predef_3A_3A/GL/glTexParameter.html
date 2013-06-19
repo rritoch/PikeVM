@@ -1,0 +1,380 @@
+<html><head><title>Pike Reference Manual - GL.glTexParameter()</title>
+<link rel='stylesheet' href='../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../..//images/pike_line_middle.gif" width="98%"><img src="../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../ex/predef_3A_3A/GL.html'><b>GL</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glAccum.html'>glAccum()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glAlphaFunc.html'>glAlphaFunc()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glArrayElement.html'>glArrayElement()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glBegin.html'>glBegin()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glBindTexture.html'>glBindTexture()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glBlendFunc.html'>glBlendFunc()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glCallList.html'>glCallList()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glClear.html'>glClear()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glClearAccum.html'>glClearAccum()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glClearColor.html'>glClearColor()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glClearDepth.html'>glClearDepth()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glClearIndex.html'>glClearIndex()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glClearStencil.html'>glClearStencil()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glColor.html'>glColor()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glColorMask.html'>glColorMask()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glColorMaterial.html'>glColorMaterial()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glCopyPixels.html'>glCopyPixels()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glCopyTexImage1D.html'>glCopyTexImage1D()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glCopyTexImage2D.html'>glCopyTexImage2D()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glCopyTexSubImage1D.html'>glCopyTexSubImage1D()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glCopyTexSubImage2D.html'>glCopyTexSubImage2D()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glCullFace.html'>glCullFace()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glDeleteLists.html'>glDeleteLists()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glDepthFunc.html'>glDepthFunc()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glDepthMask.html'>glDepthMask()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glDepthRange.html'>glDepthRange()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glDisable.html'>glDisable()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glDisableClientState.html'>glDisableClientState()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glDrawArrays.html'>glDrawArrays()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glDrawBuffer.html'>glDrawBuffer()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glDrawPixels.html'>glDrawPixels()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glEdgeFlag.html'>glEdgeFlag()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glEnable.html'>glEnable()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glEnableClientState.html'>glEnableClientState()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glEnd.html'>glEnd()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glEndList.html'>glEndList()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glEvalCoord.html'>glEvalCoord()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glEvalPoint.html'>glEvalPoint()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glFinish.html'>glFinish()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glFlush.html'>glFlush()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glFog.html'>glFog()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glFrontFace.html'>glFrontFace()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glFrustum.html'>glFrustum()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glGenLists.html'>glGenLists()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glGetError.html'>glGetError()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glGetString.html'>glGetString()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glHint.html'>glHint()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glIndex.html'>glIndex()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glIndexMask.html'>glIndexMask()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glInitNames.html'>glInitNames()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glIsEnabled.html'>glIsEnabled()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glIsList.html'>glIsList()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glIsTexture.html'>glIsTexture()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glLight.html'>glLight()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glLightModel.html'>glLightModel()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glLineStipple.html'>glLineStipple()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glLineWidth.html'>glLineWidth()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glListBase.html'>glListBase()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glLoadIdentity.html'>glLoadIdentity()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glLoadMatrix.html'>glLoadMatrix()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glLoadName.html'>glLoadName()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glLogicOp.html'>glLogicOp()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glMaterial.html'>glMaterial()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glMatrixMode.html'>glMatrixMode()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glMultMatrix.html'>glMultMatrix()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glNewList.html'>glNewList()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glNormal.html'>glNormal()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glOrtho.html'>glOrtho()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPassThrough.html'>glPassThrough()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPixelZoom.html'>glPixelZoom()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPointSize.html'>glPointSize()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPolygonMode.html'>glPolygonMode()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPolygonOffset.html'>glPolygonOffset()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPopAttrib.html'>glPopAttrib()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPopClientAttrib.html'>glPopClientAttrib()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPopMatrix.html'>glPopMatrix()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPopName.html'>glPopName()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPushAttrib.html'>glPushAttrib()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPushClientAttrib.html'>glPushClientAttrib()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPushMatrix.html'>glPushMatrix()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPushName.html'>glPushName()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glRasterPos.html'>glRasterPos()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glReadBuffer.html'>glReadBuffer()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glRenderMode.html'>glRenderMode()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glRotate.html'>glRotate()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glScale.html'>glScale()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glScissor.html'>glScissor()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glShadeModel.html'>glShadeModel()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glStencilFunc.html'>glStencilFunc()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glStencilMask.html'>glStencilMask()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glStencilOp.html'>glStencilOp()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glTexCoord.html'>glTexCoord()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glTexEnv.html'>glTexEnv()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glTexGen.html'>glTexGen()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glTexImage2D.html'>glTexImage2D()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;glTexParameter()</td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glTexSubImage2D.html'>glTexSubImage2D()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glTranslate.html'>glTranslate()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glVertex.html'>glVertex()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glViewport.html'>glViewport()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../ex/predef_3A_3A/GL/glTexImage2D.html"><img src="../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >GL.glTexImage2D()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../ex/predef_3A_3A/GL/glTexSubImage2D.html">GL.glTexSubImage2D()<img src="../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method GL.glTexParameter()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>glTexParameter</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>void</font> <b><font color='#000066'>glTexParameter</font>(</b><font color='#202020'>int</font> <font color='#005080'>target</font>, <font color='#202020'>int</font> <font color='#005080'>pname</font>, <font color='#202020'>float</font>|<font color='#202020'>int</font>|<font color='#202020'>array</font>(<font color='#202020'>float</font>|<font color='#202020'>int</font>) <font color='#005080'>param</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Texture mapping is a technique that applies an image onto an object's surface
+as if the image were a decal or cellophane shrink-wrap. 
+The image is created in texture space,
+with an (s, t) coordinate system. 
+A texture is a one- or two-dimensional image and a set of parameters
+that determine how samples are derived from the image.</p>
+<p><font face='courier'><a href='../../predef_3A_3A/GL/glTexParameter.html'>glTexParameter</a></font>  assigns the value or values in <i>params</i> to the texture parameter
+specified as <i>pname</i>. 
+<i>target</i> defines the target texture,
+either <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_TEXTURE_1D</a></font>  or <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_TEXTURE_2D</a></font> .
+The following symbols are accepted in <i>pname</i>:</p>
+<p><table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_TEXTURE_MIN_FILTER</a></font> 
+</td><td bgcolor='white'>The texture minifying function is used whenever the pixel being textured
+maps to an area greater than one texture element. 
+There are six defined minifying functions.
+Two of them use the nearest one or nearest four texture elements
+to compute the texture value. 
+The other four use mipmaps.
+
+A mipmap is an ordered set of arrays representing the same image
+at progressively lower resolutions. 
+If the texture has dimensions 2 sup n times 2 sup m, there are
+ bold max ( n, m ) + 1  mipmaps. 
+The first mipmap is the original texture,
+with dimensions 2 sup n times 2 sup m. 
+Each subsequent mipmap has dimensions 2 sup { k - 1 } times 2 sup { l - 1 },
+where 2 sup k times 2 sup l are the dimensions of the previous mipmap,
+until either k = 0 or l=0.
+At that point,
+subsequent mipmaps have dimension  1 times 2 sup { l - 1 } 
+or  2 sup { k - 1} times 1  until the final mipmap,
+which has dimension 1 times 1. 
+To define the mipmaps, call <font face='courier'>glTexImage1D</font> , <font face='courier'><a href='../../predef_3A_3A/GL/glTexImage2D.html'>glTexImage2D</a></font> ,
+<font face='courier'><a href='../../predef_3A_3A/GL/glCopyTexImage1D.html'>glCopyTexImage1D</a></font> , or <font face='courier'><a href='../../predef_3A_3A/GL/glCopyTexImage2D.html'>glCopyTexImage2D</a></font> 
+with the <i>level</i> argument indicating the order of the mipmaps.
+Level 0 is the original texture;
+level  bold max ( n, m )  is the final 1 times 1 mipmap.
+
+<i>params</i> supplies a function for minifying the texture as one of the following:
+.RS 10
+</td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_NEAREST</a></font> 
+</td><td bgcolor='white'>Returns the value of the texture element that is nearest
+(in Manhattan distance)
+to the center of the pixel being textured.
+</td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_LINEAR</a></font> 
+</td><td bgcolor='white'>Returns the weighted average of the four texture elements
+that are closest to the center of the pixel being textured.
+These can include border texture elements,
+depending on the values of <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_TEXTURE_WRAP_S</a></font>  and <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_TEXTURE_WRAP_T</a></font> ,
+and on the exact mapping.
+</td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_NEAREST_MIPMAP_NEAREST</a></font> 
+</td><td bgcolor='white'>Chooses the mipmap that most closely matches the size of the pixel
+being textured and uses the <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_NEAREST</a></font>  criterion
+(the texture element nearest to the center of the pixel)
+to produce a texture value.
+</td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_LINEAR_MIPMAP_NEAREST</a></font> 
+</td><td bgcolor='white'>Chooses the mipmap that most closely matches the size of the pixel
+being textured and uses the <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_LINEAR</a></font>  criterion
+(a weighted average of the four texture elements that are closest
+to the center of the pixel)
+to produce a texture value.
+</td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_NEAREST_MIPMAP_LINEAR</a></font> 
+</td><td bgcolor='white'>Chooses the two mipmaps that most closely match the size of the pixel
+being textured and uses the <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_NEAREST</a></font>  criterion
+(the texture element nearest to the center of the pixel)
+to produce a texture value from each mipmap. 
+The final texture value is a weighted average of those two values.
+</td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_LINEAR_MIPMAP_LINEAR</a></font> 
+</td><td bgcolor='white'>Chooses the two mipmaps that most closely match the size of the pixel
+being textured and uses the <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_LINEAR</a></font>  criterion
+(a weighted average of the four texture elements that are closest
+to the center of the pixel)
+to produce a texture value from each mipmap.
+The final texture value is a weighted average of those two values.
+.RE
+
+As more texture elements are sampled in the minification process,
+fewer aliasing artifacts will be apparent. 
+While the <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_NEAREST</a></font>  and <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_LINEAR</a></font>  minification functions can be
+faster than the other four,
+they sample only one or four texture elements to determine the texture value
+of the pixel being rendered and can produce moire patterns
+or ragged transitions. 
+The initial value of <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_TEXTURE_MIN_FILTER</a></font>  is
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_NEAREST_MIPMAP_LINEAR</a></font> .
+</td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_TEXTURE_MAG_FILTER</a></font> 
+</td><td bgcolor='white'>The texture magnification function is used when the pixel being textured
+maps to an area less than or equal to one texture element.
+It sets the texture magnification function to either <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_NEAREST</a></font> 
+or <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_LINEAR</a></font>  (see below). <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_NEAREST</a></font>  is generally faster
+than <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_LINEAR</a></font> , 
+but it can produce textured images with sharper edges
+because the transition between texture elements is not as smooth. 
+The initial value of <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_TEXTURE_MAG_FILTER</a></font>  is <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_LINEAR</a></font> .
+.RS 10
+</td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_NEAREST</a></font> 
+</td><td bgcolor='white'>Returns the value of the texture element that is nearest
+(in Manhattan distance)
+to the center of the pixel being textured.
+</td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_LINEAR</a></font> 
+</td><td bgcolor='white'>Returns the weighted average of the four texture elements
+that are closest to the center of the pixel being textured.
+These can include border texture elements,
+depending on the values of <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_TEXTURE_WRAP_S</a></font>  and <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_TEXTURE_WRAP_T</a></font> ,
+and on the exact mapping.
+</td></tr>
+</table></td></tr></table><br />
+</p>
+<p>.RE</p>
+<p><table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_TEXTURE_WRAP_S</a></font> 
+</td><td bgcolor='white'>Sets the wrap parameter for texture coordinate <i>s</i> to either
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_CLAMP</a></font>  or <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_REPEAT</a></font> .
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_CLAMP</a></font>  causes s coordinates to be clamped to the range [0,1]
+and is useful for preventing wrapping artifacts when mapping
+a single image onto an object. 
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_REPEAT</a></font>  causes the integer part of the s coordinate to be ignored;
+the GL uses only the fractional part,
+thereby creating a repeating pattern. 
+Border texture elements are accessed only if wrapping is set to <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_CLAMP</a></font> .
+Initially, <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_TEXTURE_WRAP_S</a></font>  is set to <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_REPEAT</a></font> .
+</td></tr>
+</table></td></tr></table><br />
+</p>
+<p><table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_TEXTURE_WRAP_T</a></font> 
+</td><td bgcolor='white'>Sets the wrap parameter for texture coordinate <i>t</i> to either
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_CLAMP</a></font>  or <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_REPEAT</a></font> .
+See the discussion under <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_TEXTURE_WRAP_S</a></font> . 
+Initially, <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_TEXTURE_WRAP_T</a></font>  is set to <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_REPEAT</a></font> .
+</td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_TEXTURE_BORDER_COLOR</a></font> 
+</td><td bgcolor='white'>Sets a border color.
+<i>params</i> contains four values that comprise the RGBA color
+of the texture border. 
+Integer color components are interpreted linearly such that the most
+positive integer maps to 1.0,
+and the most negative integer maps to -1.0.
+The values are clamped to the range [0,1] when they are specified.
+Initially, the border color is (0, 0, 0, 0).
+</td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_TEXTURE_PRIORITY</a></font> 
+</td><td bgcolor='white'>Specifies the texture residence priority of the currently bound texture.
+Permissible values are in the range [0,\ 1].
+See <font face='courier'>glPrioritizeTextures</font>  and <font face='courier'><a href='../../predef_3A_3A/GL/glBindTexture.html'>glBindTexture</a></font>  for more information.
+</td></tr>
+</table></td></tr></table><br />
+</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>target</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Specifies the target texture,
+which must be either <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_TEXTURE_1D</a></font>  or <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_TEXTURE_2D</a></font> .</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>pname</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Specifies the symbolic name of a single-valued texture parameter.
+<i>pname</i> can be one of the following:
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_TEXTURE_MIN_FILTER</a></font> ,
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_TEXTURE_MAG_FILTER</a></font> ,
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_TEXTURE_WRAP_S</a></font> , 
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_TEXTURE_WRAP_T</a></font> , or
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_TEXTURE_PRIORITY</a></font> .</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>param</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Specifies the value of <i>pname</i>.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>target</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Specifies the target texture,
+which must be either <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_TEXTURE_1D</a></font>  or <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_TEXTURE_2D</a></font> .</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>pname</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Specifies the symbolic name of a texture parameter.
+<i>pname</i> can be one of the following:
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_TEXTURE_MIN_FILTER</a></font> ,
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_TEXTURE_MAG_FILTER</a></font> ,
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_TEXTURE_WRAP_S</a></font> ,
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_TEXTURE_WRAP_T</a></font> , 
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_TEXTURE_BORDER_COLOR</a></font> , or
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_TEXTURE_PRIORITY</a></font> .</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>params</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Specifies a pointer to an array where the value or values of <i>pname</i> are stored.</p>
+</font></dd>
+<dt><font face='Helvetica'>Throws</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_INVALID_ENUM</a></font>  is generated if <i>target</i> or <i>pname</i> is not
+one of the accepted defined values.</p>
+<p><font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_INVALID_ENUM</a></font>  is generated if <i>params</i> should have a defined
+constant value (based on the value of <i>pname</i>) and does not.</p>
+<p><font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_INVALID_OPERATION</a></font>  is generated if <font face='courier'><a href='../../predef_3A_3A/GL/glTexParameter.html'>glTexParameter</a></font> 
+is executed between the execution of <font face='courier'><a href='../../predef_3A_3A/GL/glBegin.html'>glBegin</a></font> 
+and the corresponding execution of <font face='courier'><a href='../../predef_3A_3A/GL/glEnd.html'>glEnd</a></font> .</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

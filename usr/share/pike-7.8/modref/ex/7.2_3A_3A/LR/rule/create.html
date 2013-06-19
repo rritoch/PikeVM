@@ -1,0 +1,105 @@
+<html><head><title>Pike Reference Manual - LR.rule()-&gt;create()</title>
+<link rel='stylesheet' href='../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../ex/7.2_3A_3A.html'><b>7.2::</b></a><br />
+<a href='../../../../ex/7.2_3A_3A/LR.html'><b>LR</b></a><br />
+<a href='../../../../ex/7.2_3A_3A/LR/rule.html'><b>LR.rule</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;create()</td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../ex/7.2_3A_3A/LR/rule.html"><img src="../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >LR.rule</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../ex/7.2_3A_3A/LR/Grammar_parser.html">LR.Grammar_parser<img src="../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method LR.rule()-&gt;create()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>create</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>void</font> LR.rule<b>(</b><font color='#202020'>int</font> <font color='#005080'>nt</font>, <font color='#202020'>array</font>(<font color='#202020'>string</font>|<font color='#202020'>int</font>) <font color='#005080'>r</font>, <font color='#202020'>function</font>|<font color='#202020'>string</font>|<font color='#202020'>void</font> <font color='#005080'>a</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Create a BNF rule.</p>
+</font></dd>
+<dt><font face='Helvetica'>Example</font><dt>
+<dd><pre><p>The rule</p>
+<p>	   rule : nonterminal ":" symbols ";" { add_rule };</p>
+<p>   might be created as</p>
+<p>	   rule(4, ({ 9, ";", 5, ";" }), "add_rule");</p>
+<p>   where 4 corresponds to the nonterminal "rule", 9 to "nonterminal"
+   and 5 to "symbols", and the function "add_rule" is too be called
+   when this rule is reduced.</p>
+</pre></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>nt</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Non-terminal to reduce to.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>r</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Symbol sequence that reduces to nt.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>a</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Action to do when reducing according to this rule.
+   function - Call this function.
+   string - Call this function by name in the object given to the parser.
+   The function is called with arguments corresponding to the values of
+   the elements of the rule. The return value of the function will become
+   the value of this non-terminal. The default rule is to return the first
+   argument.</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

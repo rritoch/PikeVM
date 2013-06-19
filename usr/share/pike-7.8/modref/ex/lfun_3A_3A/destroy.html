@@ -1,0 +1,222 @@
+<html><head><title>Pike Reference Manual - lfun::destroy()</title>
+<link rel='stylesheet' href='../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../..//images/pike_line_middle.gif" width="98%"><img src="../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../index.html'><b>[Top]</b></a><br />
+<a href='../../ex/lfun_3A_3A.html'><b>lfun::</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/lfun_3A_3A/__INIT.html'>__INIT()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/lfun_3A_3A/__hash.html'>__hash()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/lfun_3A_3A/_equal.html'>_equal()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/lfun_3A_3A/_get_iterator.html'>_get_iterator()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/lfun_3A_3A/_indices.html'>_indices()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/lfun_3A_3A/_is_type.html'>_is_type()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/lfun_3A_3A/_m_delete.html'>_m_delete()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/lfun_3A_3A/_random.html'>_random()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/lfun_3A_3A/_search.html'>_search()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/lfun_3A_3A/_sizeof.html'>_sizeof()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/lfun_3A_3A/_sprintf.html'>_sprintf()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/lfun_3A_3A/_sqrt.html'>_sqrt()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/lfun_3A_3A/_values.html'>_values()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/lfun_3A_3A/_backtick_21.html'>`!()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/lfun_3A_3A/_backtick_25.html'>`%()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/lfun_3A_3A/_backtick_26.html'>`&amp;()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/lfun_3A_3A/_backtick_28_29.html'>`()()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/lfun_3A_3A/_backtick_2A.html'>`*()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/lfun_3A_3A/_backtick_add.html'>`+()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/lfun_3A_3A/_backtick_add_eq.html'>`+=()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/lfun_3A_3A/_backtick_2D.html'>`-()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/lfun_3A_3A/_backtick_2D_3E.html'>`-&gt;()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/lfun_3A_3A/_backtick_2D_3E_eq.html'>`-&gt;=()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/lfun_3A_3A/_backtick_2F.html'>`/()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/lfun_3A_3A/_backtick_3C.html'>`&lt;()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/lfun_3A_3A/_backtick_3C_3C.html'>`&lt;&lt;()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/lfun_3A_3A/_backtick_eq_eq.html'>`==()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/lfun_3A_3A/_backtick_3E.html'>`&gt;()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/lfun_3A_3A/_backtick_3E_3E.html'>`&gt;&gt;()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/lfun_3A_3A/_backtick_5B.._5D.html'>`[..]()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/lfun_3A_3A/_backtick_5B_5D.html'>`[]()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/lfun_3A_3A/_backtick_5B_5D_eq.html'>`[]=()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/lfun_3A_3A/_backtick_5E.html'>`^()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/lfun_3A_3A/_backtick_backtick_25.html'>``%()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/lfun_3A_3A/_backtick_backtick_26.html'>``&amp;()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/lfun_3A_3A/_backtick_backtick_2A.html'>``*()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/lfun_3A_3A/_backtick_backtick_add.html'>``+()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/lfun_3A_3A/_backtick_backtick_2D.html'>``-()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/lfun_3A_3A/_backtick_backtick_2F.html'>``/()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/lfun_3A_3A/_backtick_backtick_3C_3C.html'>``&lt;&lt;()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/lfun_3A_3A/_backtick_backtick_3E_3E.html'>``&gt;&gt;()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/lfun_3A_3A/_backtick_backtick_5E.html'>``^()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/lfun_3A_3A/_backtick_backtick_7C.html'>``|()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/lfun_3A_3A/_backtick_7C.html'>`|()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/lfun_3A_3A/_backtick_7E.html'>`~()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/lfun_3A_3A/cast.html'>cast()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/lfun_3A_3A/create.html'>create()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;destroy()</td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../ex/lfun_3A_3A/create.html"><img src="../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >lfun::create()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../ex/predef_3A_3A/Codec.html">Codec<img src="../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method lfun::destroy()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>destroy</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>void</font> <b><font color='#000066'>destroy</font>(</b><font color='#202020'>void</font>|<font color='#202020'>int</font> <font color='#005080'>reason</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Object destruction callback.</p>
+<p>   This function is called right before the object is destructed.
+   That can happen either through a call to <font face='courier'><a href='../predef_3A_3A/destruct.html'>destruct()</a></font> ,
+   when there are no more references to the object, or when the
+   garbage collector discovers that it's part of a cyclic data
+   structure that has become garbage.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>reason</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>A flag that tells why the object is destructed:</p>
+<table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>Object.DESTRUCT_EXPLICIT</font></tt></td><td bgcolor='white'><p>Destructed explicitly by <font face='courier'><a href='../predef_3A_3A/destruct.html'>destruct</a></font> .</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>Object.DESTRUCT_NO_REFS</font></tt></td><td bgcolor='white'><p>Destructed due to running out of references.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>Object.DESTRUCT_GC</font></tt></td><td bgcolor='white'><p>Destructed by the garbage collector.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>Object.DESTRUCT_CLEANUP</font></tt></td><td bgcolor='white'><p>Destructed as part of the cleanup when the pike process
+       exits. Occurs only if Pike has been compiled with the
+       configure option <tt>--with-cleanup-on-exit</tt>. See note
+       below.</p>
+</td></tr>
+</table></td></tr></table><br />
+
+</font></dd>
+<dt><font face='Helvetica'>Note</font><dt>
+<dd><font face='Helvetica'><p>Objects are normally not destructed when a process exits, so
+ <font face='courier'><code>destroy</code></font> functions aren't called then. Use <font face='courier'>atexit</font>  to get
+ called when the process exits.</p>
+</font></dd>
+<dt><font face='Helvetica'>Note</font><dt>
+<dd><font face='Helvetica'><p>Regarding destruction order during garbage collection:</p>
+<p> If an object is destructed by the garbage collector, it's part of
+ a reference cycle with other things but with no external
+ references. If there are other objects with <font face='courier'><code>destroy</code></font>
+ functions in the same cycle, it becomes a problem which to call
+ first.</p>
+<p> E.g. if this object has a variable with another object which
+ (directly or indirectly) points back to this one, you might find
+ that the other object already has been destructed and the variable
+ thus contains zero.</p>
+<p> The garbage collector tries to minimize such problems by defining
+ an order as far as possible:</p>
+<ul>
+<li><p>If an object A contains an <font face='courier'><a href='../lfun_3A_3A/destroy.html'>lfun::destroy</a></font>  and an object B does
+   not, then A is destructed before B.</p>
+</li><li><p>If A references B single way, then A is destructed before B.</p>
+</li><li><p>If A and B are in a cycle, and there is a reference somewhere
+   from B to A that is weaker than any reference from A to B, then
+   A is destructed before B.</p>
+</li><li><p>If a cycle is resolved according to the rule above by ignoring a
+   weaker reference, and there is another ambiguous cycle that
+   would get resolved by ignoring the same reference, then the
+   latter cycle will be resolved by ignoring that reference.</p>
+</li><li><p>Weak references (e.g. set with <font face='courier'><a href='../predef_3A_3A/set_weak_flag.html'>set_weak_flag()</a></font> ) are
+   considered weaker than normal references, and both are
+   considered weaker than strong references.</p>
+</li><li><p>Strong references are those from objects to the objects of their
+   lexically surrounding classes. There can never be a cycle
+   consisting only of strong references. (This means the gc never
+   destructs a parent object before all children have been
+   destructed.)</p>
+</li></ul><p>An example with well defined destruct order due to strong
+ references:</p>
+<font face='courier'><pre><code><dd><p>class Super {
+   class Sub {
+     protected void destroy() {
+       if (!Super::this)
+         error ("My parent has been destructed!\n");
+     }
+   }
+   Sub sub = Sub();
+   protected void destroy() {
+     if (!sub)
+       werror ("sub already destructed.\n");
+   }
+ }</p>
+</dd>
+</code></pre></font><p>The garbage collector ensures that these objects are destructed in
+ an order so that <font face='courier'><code>werror</code></font> in <font face='courier'><code>Super</code></font> is called and not
+ <font face='courier'><code>error</code></font> in <font face='courier'><code>Sub</code></font>.</p>
+</font></dd>
+<dt><font face='Helvetica'>Note</font><dt>
+<dd><font face='Helvetica'><p>When the garbage collector calls <font face='courier'><a href='../lfun_3A_3A/destroy.html'>lfun::destroy</a></font> , all accessible
+ non-objects and objects without <font face='courier'><code>destroy</code></font> functions are
+ still intact. They are not freed if the <font face='courier'><code>destroy</code></font> function
+ adds external references to them. However, all objects with
+ <font face='courier'><a href='../lfun_3A_3A/destroy.html'>lfun::destroy</a></font>  in the cycle are already scheduled for
+ destruction and will therefore be destroyed even if external
+ references are added to them.</p>
+</font></dd>
+<dt><font face='Helvetica'>Note</font><dt>
+<dd><font face='Helvetica'><p>The garbage collector had completely random destruct order in
+ versions prior to 7.2.</p>
+</font></dd>
+<dt><font face='Helvetica'>See also</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'><a href='../lfun_3A_3A/create.html'>lfun::create()</a></font> , <font face='courier'><a href='../predef_3A_3A/destruct.html'>destruct()</a></font> </p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

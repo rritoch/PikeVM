@@ -1,0 +1,98 @@
+<html><head><title>Pike Reference Manual - ADT.struct()-&gt;put_fix_uint_array()</title>
+<link rel='stylesheet' href='../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../ex/predef_3A_3A/ADT.html'><b>ADT</b></a><br />
+<a href='../../../../ex/predef_3A_3A/ADT/struct.html'><b>ADT.struct</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/ADT/struct/add_data.html'>add_data()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/ADT/struct/contents.html'>contents()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/ADT/struct/create.html'>create()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/ADT/struct/get_bignum.html'>get_bignum()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/ADT/struct/get_fix_string.html'>get_fix_string()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/ADT/struct/get_fix_uint_array.html'>get_fix_uint_array()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/ADT/struct/get_rest.html'>get_rest()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/ADT/struct/get_uint.html'>get_uint()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/ADT/struct/get_var_string.html'>get_var_string()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/ADT/struct/get_var_uint_array.html'>get_var_uint_array()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/ADT/struct/is_empty.html'>is_empty()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/ADT/struct/pop_data.html'>pop_data()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/ADT/struct/put_bignum.html'>put_bignum()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/ADT/struct/put_fix_string.html'>put_fix_string()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;put_fix_uint_array()</td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/ADT/struct/put_uint.html'>put_uint()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/ADT/struct/put_var_string.html'>put_var_string()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/ADT/struct/put_var_uint_array.html'>put_var_uint_array()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/ADT/struct/put_fix_string.html"><img src="../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >ADT.struct()-&gt;put_fix_string()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/ADT/struct/put_uint.html">ADT.struct()-&gt;put_uint()<img src="../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method ADT.struct()-&gt;put_fix_uint_array()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>put_fix_uint_array</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>void</font> <b><font color='#000066'>put_fix_uint_array</font>(</b><font color='#202020'>array</font>(<font color='#202020'>int</font>) <font color='#005080'>data</font>, <font color='#202020'>int</font>(0..) <font color='#005080'>item_size</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Appends an array of unsigned integers of width <font face='courier'>item_size</font> 
+ to the buffer.</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

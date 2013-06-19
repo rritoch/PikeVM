@@ -1,0 +1,218 @@
+<html><head><title>Pike Reference Manual - Protocols.DNS.protocol()-&gt;decode_entries()</title>
+<link rel='stylesheet' href='../../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../../ex/predef_3A_3A/Protocols.html'><b>Protocols</b></a><br />
+<a href='../../../../../ex/predef_3A_3A/Protocols/DNS.html'><b>Protocols.DNS</b></a><br />
+<a href='../../../../../ex/predef_3A_3A/Protocols/DNS/protocol.html'><b>Protocols.DNS.protocol</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;decode_entries()</td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Protocols/DNS/protocol/mkquery.html'>mkquery()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../../ex/predef_3A_3A/Protocols/DNS/protocol.html"><img src="../../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Protocols.DNS.protocol</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../../ex/predef_3A_3A/Protocols/DNS/protocol/mkquery.html">Protocols.DNS.protocol()-&gt;mkquery()<img src="../../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method Protocols.DNS.protocol()-&gt;decode_entries()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>decode_entries</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>array</font> <b><font color='#000066'>decode_entries</font>(</b><font color='#202020'>string</font> <font color='#005080'>s</font>, <font color='#202020'>int</font> <font color='#005080'>num</font>, <font color='#202020'>array</font>(<font color='#202020'>int</font>) <font color='#005080'>next</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Decode a set of entries from an answer.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>s</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Encoded entries.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>num</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Number of entires in <font face='courier'>s</font> .</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>next</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Array with a single element containing the start position in <font face='courier'>s</font> 
+   on entry and the continuation position on return.</p>
+</font></dd>
+<dt><font face='Helvetica'>Returns</font><dt>
+<dd><font face='Helvetica'><p>Returns an array of mappings describing the decoded entires:</p>
+<table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white' colspan='2'>Array</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='#202020'>mapping</font> <font color='green'>0..</font></tt></td><td bgcolor='white'><p>Mapping describing a single entry:</p>
+<table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"name"</font> : <font color='#202020'>string</font></tt></td><td bgcolor='white'><p>Name the entry concerns.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"type"</font> : <font color='#005080'><font face='courier'><a href='../../../../predef_3A_3A/Protocols/DNS/EntryType.html'>EntryType</a></font></font></tt></td><td bgcolor='white'><p>Type of entry.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"cl"</font> : <font color='#005080'><font face='courier'><a href='../../../../predef_3A_3A/Protocols/DNS/ResourceClass.html'>ResourceClass</a></font></font></tt></td><td bgcolor='white'><p>Resource class. Typically <font face='courier'><a href='../../../../predef_3A_3A/Protocols/DNS/ResourceClass.html'>C_IN</a></font> .</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"ttl"</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'><p>Time to live for the entry in seconds.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"len"</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'><p>Length in bytes of the encoded data section.</p>
+</td></tr>
+</table></td></tr></table><br />
+<p>Depending on the type of entry the mapping may contain
+       different additional fields:</p>
+<table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>T_CNAME</font></tt></td><td bgcolor='white'><table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"cname"</font> : <font color='#202020'>string</font></tt></td></tr>
+</table></td></tr></table><br />
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>T_PTR</font></tt></td><td bgcolor='white'><table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"ptr"</font> : <font color='#202020'>string</font></tt></td></tr>
+</table></td></tr></table><br />
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>T_NS</font></tt></td><td bgcolor='white'><table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"ns"</font> : <font color='#202020'>string</font></tt></td></tr>
+</table></td></tr></table><br />
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>T_MX</font></tt></td><td bgcolor='white'><table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"preference"</font> : <font color='#202020'>int</font></tt></td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"mx"</font> : <font color='#202020'>string</font></tt></td></tr>
+</table></td></tr></table><br />
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>T_HINFO</font></tt></td><td bgcolor='white'><table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"cpu"</font> : <font color='#202020'>string</font></tt></td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"os"</font> : <font color='#202020'>string</font></tt></td></tr>
+</table></td></tr></table><br />
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>T_SRV</font></tt></td><td bgcolor='white'><p>RFC 2052 and RFC 2782.</p>
+<table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"priority"</font> : <font color='#202020'>int</font></tt></td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"weight"</font> : <font color='#202020'>int</font></tt></td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"port"</font> : <font color='#202020'>int</font></tt></td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"target"</font> : <font color='#202020'>string</font></tt></td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"service"</font> : <font color='#202020'>string</font></tt></td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"proto"</font> : <font color='#202020'>string</font></tt></td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"name"</font> : <font color='#202020'>string</font></tt></td></tr>
+</table></td></tr></table><br />
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>T_A</font></tt></td><td bgcolor='white'><table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"a"</font> : <font color='#202020'>string</font></tt></td><td bgcolor='white'><p>IPv4-address in dotted-decimal format.</p>
+</td></tr>
+</table></td></tr></table><br />
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>T_AAAA</font></tt></td><td bgcolor='white'><table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"aaaa"</font> : <font color='#202020'>string</font></tt></td><td bgcolor='white'><p>IPv6-address in colon-separated hexadecimal format.</p>
+</td></tr>
+</table></td></tr></table><br />
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>T_LOC</font></tt></td><td bgcolor='white'><table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"version"</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'><p>Version, currently only version <font face='courier'><code>0</code></font> (zero) is
+               supported.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"size"</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'>&nbsp;</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"h_perc"</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'>&nbsp;</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"v_perc"</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'>&nbsp;</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"lat"</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'>&nbsp;</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"long"</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'>&nbsp;</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"alt"</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'>&nbsp;</td></tr>
+</table></td></tr></table><br />
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>T_SOA</font></tt></td><td bgcolor='white'><table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"mname"</font> : <font color='#202020'>string</font></tt></td><td bgcolor='white'>&nbsp;</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"rname"</font> : <font color='#202020'>string</font></tt></td><td bgcolor='white'>&nbsp;</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"serial"</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'>&nbsp;</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"refresh"</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'>&nbsp;</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"retry"</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'>&nbsp;</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"expire"</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'>&nbsp;</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"minimum"</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'><p>Note: For historical reasons this entry is named
+               <font face='courier'><code>"minimum"</code></font>, but it contains the TTL for
+               negative answers (RFC 2308).</p>
+</td></tr>
+</table></td></tr></table><br />
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>T_NAPTR</font></tt></td><td bgcolor='white'><table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"order"</font> : <font color='#202020'>int</font></tt></td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"preference"</font> : <font color='#202020'>int</font></tt></td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"flags"</font> : <font color='#202020'>string</font></tt></td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"service"</font> : <font color='#202020'>string</font></tt></td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"regexp"</font> : <font color='#202020'>string</font></tt></td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"replacement"</font> : <font color='#202020'>string</font></tt></td></tr>
+</table></td></tr></table><br />
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>T_TXT</font></tt></td><td bgcolor='white'><table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"txt"</font> : <font color='#202020'>string</font></tt></td></tr>
+</table></td></tr></table><br />
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>T_SPF</font></tt></td><td bgcolor='white'><table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"spf"</font> : <font color='#202020'>string</font></tt></td></tr>
+</table></td></tr></table><br />
+</td></tr>
+</table></td></tr></table><br />
+</td></tr>
+</table></td></tr></table><br />
+
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

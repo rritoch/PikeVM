@@ -1,0 +1,121 @@
+<html><head><title>Pike Reference Manual - Sql.postgres()-&gt;set_notify_callback()</title>
+<link rel='stylesheet' href='../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../ex/predef_3A_3A/Sql.html'><b>Sql</b></a><br />
+<a href='../../../../ex/predef_3A_3A/Sql/postgres.html'><b>Sql.postgres</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/postgres/big_query.html'>big_query()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/postgres/create.html'>create()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/postgres/create_db.html'>create_db()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/postgres/drop_db.html'>drop_db()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/postgres/error.html'>error()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/postgres/host_info.html'>host_info()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/postgres/list_dbs.html'>list_dbs()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/postgres/list_fields.html'>list_fields()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/postgres/list_tables.html'>list_tables()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/postgres/reset.html'>reset()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/postgres/select_db.html'>select_db()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/postgres/server_info.html'>server_info()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;set_notify_callback()</td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/postgres/streaming_query.html'>streaming_query()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/Sql/postgres/server_info.html"><img src="../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Sql.postgres()-&gt;server_info()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/Sql/postgres/streaming_query.html">Sql.postgres()-&gt;streaming_query()<img src="../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method Sql.postgres()-&gt;set_notify_callback()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>set_notify_callback</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>void</font> <b><font color='#000066'>set_notify_callback</font>(</b><b>)</b></tt><br />
+<tt><font color='#202020'>void</font> <b><font color='#000066'>set_notify_callback</font>(</b><font color='#202020'>function</font> <font color='#005080'>f</font><b>)</b></tt><br />
+<tt><font color='#202020'>void</font> <b><font color='#000066'>set_notify_callback</font>(</b><font color='#202020'>function</font> <font color='#005080'>f</font>, <font color='#202020'>int</font>|<font color='#202020'>float</font> <font color='#005080'>poll_delay</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>With Postgres you can associate events and notifications to tables.
+ This function allows you to detect and handle such events.</p>
+<p> With no arguments, resets and removes any callback you might have
+ put previously, and any polling cycle.</p>
+<p> With one argument, sets the notification callback (there can be only
+ one for each sqlobject). </p>
+<p> With two arguments, sets a notification callback and sets a polling
+ cycle.</p>
+<p> The polling cycle is necessary because of the way notifications are
+ delivered, that is piggyback with a query result. This means that
+ if you don't do any query, you'll receive no notification. The polling
+ cycle starts a call_out cycle which will do an empty query when
+ the specified interval expires, so that pending notifications 
+ may be delivered.</p>
+<p> The callback function must return no value, and takes a string argument,
+ which will be the name of the table on which the notification event
+ has occured. In future versions, support for user-specified arguments
+ will be added.</p>
+</font></dd>
+<dt><font face='Helvetica'>Note</font><dt>
+<dd><font face='Helvetica'><p>The polling cycle can be run only if your process is in "event-driven mode"
+ (that is, if 'main' has returned a negative number).</p>
+<p> This function is Postgres-specific, and thus it is not available
+ through the generic SQL-interface.</p>
+</font></dd><dt><font face='Helvetica' color='red'>FIXME</font></dt>
+<dd><font face='Heletica' color='red'><p>An integer can be passed as first argument, but it's effect is
+ not documented.</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

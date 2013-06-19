@@ -1,0 +1,127 @@
+<html><head><title>Pike Reference Manual - Regexp.PCRE._pcre()-&gt;exec()</title>
+<link rel='stylesheet' href='../../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../../ex/predef_3A_3A/Regexp.html'><b>Regexp</b></a><br />
+<a href='../../../../../ex/predef_3A_3A/Regexp/PCRE.html'><b>Regexp.PCRE</b></a><br />
+<a href='../../../../../ex/predef_3A_3A/Regexp/PCRE/_pcre.html'><b>Regexp.PCRE._pcre</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Regexp/PCRE/_pcre/_sprintf.html'>_sprintf()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Regexp/PCRE/_pcre/create.html'>create()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;exec()</td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Regexp/PCRE/_pcre/get_stringnumber.html'>get_stringnumber()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Regexp/PCRE/_pcre/info.html'>info()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Regexp/PCRE/_pcre/study.html'>study()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../../ex/predef_3A_3A/Regexp/PCRE/_pcre/create.html"><img src="../../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Regexp.PCRE._pcre()-&gt;create()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../../ex/predef_3A_3A/Regexp/PCRE/_pcre/get_stringnumber.html">Regexp.PCRE._pcre()-&gt;get_stringnumber()<img src="../../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method Regexp.PCRE._pcre()-&gt;exec()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>exec</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>int</font>|<font color='#202020'>array</font> <b><font color='#000066'>exec</font>(</b><font color='#202020'>string</font> <font color='#005080'>subject</font>, <font color='#202020'>void</font>|<font color='#202020'>int</font> <font color='#005080'>startoffset</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>match a regexp; will return an array of 2*n integers
+	where n is the number of hits;
+	returns an int upon failure</p>
+<p>	Error codes:</p>
+<table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>ERROR.NOMATCH</font></tt></td><td bgcolor='white'><p>The subject string did not match the pattern.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>ERROR.NULL</font></tt></td><td bgcolor='white'><p>Either code or subject was passed as NULL, or ovector was NULL
+   and oversize was not zero.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>ERROR.BADOPTION</font></tt></td><td bgcolor='white'><p>An unrecognized bit was set in the options argument.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>ERROR.BADMAGIC</font></tt></td><td bgcolor='white'><p>PCRE stores a 4-byte "magic number" at the start of the compiled
+   code, to catch the case when it is passed a junk pointer. This
+   is the error it gives when the magic number isn't present.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>ERROR.UNKNOWN_NODE</font></tt></td><td bgcolor='white'><p>While running the pattern match, an unknown item was encountered
+   in the compiled pattern. This error could be caused by a bug in
+   PCRE or by overwriting of the compiled pattern.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>ERROR.NOMEMORY</font></tt></td><td bgcolor='white'><p>If a pattern contains back references, but the ovector that is
+   passed to pcre_exec() is not big enough to remember the
+   referenced substrings, PCRE gets a block of memory at the start
+   of matching to use for this purpose. If the call via
+   pcre_malloc() fails, this error is given. The memory is freed at
+   the end of matching.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>ERROR.NOSUBSTRING</font></tt></td><td bgcolor='white'><p>This error is used by the pcre_copy_substring(),
+   pcre_get_substring(), and pcre_get_substring_list() functions
+   (see below). It is never returned by pcre_exec().</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>ERROR.MATCHLIMIT</font></tt></td><td bgcolor='white'><p>The recursion and backtracking limit, as specified by the
+   match_limit field in a pcre_extra structure (or defaulted) was
+   reached. See the description above.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>ERROR.CALLOUT</font></tt></td><td bgcolor='white'><p>This error is never generated by pcre_exec() itself. It is
+   provided for use by callout functions that want to yield a
+   distinctive error code. See the pcrecallout documentation for
+   details.</p>
+</td></tr>
+</table></td></tr></table><br />
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

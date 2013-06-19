@@ -1,0 +1,103 @@
+<html><head><title>Pike Reference Manual - CompilationHandler</title>
+<link rel='stylesheet' href='../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../..//images/pike_line_middle.gif" width="98%"><img src="../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../index.html'><b>[Top]</b></a><br />
+<b>CompilationHandler</b><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/CompilationHandler/compile_error.html'>compile_error()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/CompilationHandler/compile_exception.html'>compile_exception()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/CompilationHandler/compile_warning.html'>compile_warning()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/CompilationHandler/get_default_module.html'>get_default_module()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/CompilationHandler/get_predefines.html'>get_predefines()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/CompilationHandler/handle_import.html'>handle_import()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/CompilationHandler/handle_include.html'>handle_include()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/CompilationHandler/read_include.html'>read_include()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/CompilationHandler/resolv.html'>resolv()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../ex/predef_3A_3A/Codec/programof.html"><img src="../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Codec()-&gt;programof()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../ex/predef_3A_3A/CompilationHandler/compile_error.html">CompilationHandler()-&gt;compile_error()<img src="../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Class CompilationHandler</h1>
+    <dl>
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Objects used by the compiler to handle references to global symbols,
+   modules, external files, etc.</p>
+<p>   There can be up to three compilation handlers active at the same
+   time during a compilation. They are in order of precedence:</p>
+<ol>
+<li><p>The error handler</p>
+<p>       This is the object passed to <font face='courier'><a href='../predef_3A_3A/compile.html'>compile()</a></font>  as
+       the second argument (if any). This object is returned by
+       <font face='courier'><a href='../predef_3A_3A/get_active_error_handler.html'>get_active_error_handler()</a></font>  during a compilation.</p>
+</li><li><p>The compatibility handler</p>
+<p>       This is the object returned by
+       <font face='courier'>master()-&gt;get_compilation_handler()</font>  (if any), which
+       the compiler calls when it sees <tt>#pike</tt>-directives,
+       or expressions using the version scope
+       (eg <font face='courier'><code>7.4::rusage</code></font>). This object is returned by
+       <font face='courier'><a href='../predef_3A_3A/get_active_compilation_handler.html'>get_active_compilation_handler()</a></font>  during a compilation.</p>
+</li><li><p>The master object.</p>
+<p>       This is returned by <font face='courier'><a href='../predef_3A_3A/master.html'>master()</a></font>  at any time.</p>
+</li></ol><p>Any of the objects may implement a subset of the <font face='courier'><a href='../predef_3A_3A/CompilationHandler.html'>CompilationHandler</a></font> 
+   functions, and the first object that implements a function will be
+   used. The error handler object can thus be used to block certain
+   functionality (eg to restrict the number of available functions).</p>
+</font></dd>
+<dt><font face='Helvetica'>See also</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'>master()-&gt;get_compilation_handler()</font> , <font face='courier'><a href='../predef_3A_3A/get_active_error_handler.html'>get_active_error_handler()</a></font> ,
+   <font face='courier'><a href='../predef_3A_3A/get_active_compilation_handler.html'>get_active_compilation_handler()</a></font> , <font face='courier'><a href='../predef_3A_3A/compile.html'>compile()</a></font> </p>
+</font></dd></dl>
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

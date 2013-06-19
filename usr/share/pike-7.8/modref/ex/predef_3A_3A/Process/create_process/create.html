@@ -1,0 +1,222 @@
+<html><head><title>Pike Reference Manual - Process.create_process()-&gt;create()</title>
+<link rel='stylesheet' href='../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../ex/predef_3A_3A/Process.html'><b>Process</b></a><br />
+<a href='../../../../ex/predef_3A_3A/Process/create_process.html'><b>Process.create_process</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;create()</td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Process/create_process/kill.html'>kill()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Process/create_process/last_signal.html'>last_signal()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Process/create_process/pid.html'>pid()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Process/create_process/set_priority.html'>set_priority()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Process/create_process/status.html'>status()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Process/create_process/wait.html'>wait()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/Process/create_process.html"><img src="../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Process.create_process</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/Process/create_process/kill.html">Process.create_process()-&gt;kill()<img src="../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method Process.create_process()-&gt;create()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>create</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>void</font> Process.create_process<b>(</b><font color='#202020'>array</font>(<font color='#202020'>string</font>) <font color='#005080'>command_args</font>, <font color='#202020'>void</font>|<font color='#202020'>mapping</font> <font color='#005080'>modifiers</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>command_args</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>The command name and its command-line arguments. You do not have
+ to worry about quoting them; pike does this for you.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>modifiers</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>This optional mapping can can contain zero or more of the
+ following parameters:</p>
+<table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"callback"</font> : <font color='#202020'>function</font>(<font color='#005080'><font face='courier'><a href='../../../predef_3A_3A/Process/Process.html'>Process.Process</a></font></font>:<font color='#202020'>void</font>)</tt></td><td bgcolor='white'><p>Function called when the created process changes state.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"cwd"</font> : <font color='#202020'>string</font></tt></td><td bgcolor='white'><p>Execute the command in another directory than the current
+  directory of this process. Please note that if the command is
+  given is a relative path, it will be relative to this directory
+  rather than the current directory of this process.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"chroot"</font> : <font color='#202020'>string</font></tt></td><td bgcolor='white'><p>Chroot to this directory before executing the command.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"stdin"</font> : <font color='#005080'><font face='courier'><a href='../../../predef_3A_3A/Stdio/File.html'>Stdio.File</a></font></font></tt></td><td bgcolor='white' rowspan='3'><p>These parameters allows you to change the standard input, output
+  and error streams of the newly created process. This is
+  particularly useful in combination with <font face='courier'><a href='../../../predef_3A_3A/Stdio/File/pipe.html'>Stdio.File.pipe</a></font> .</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"stdout"</font> : <font color='#005080'><font face='courier'><a href='../../../predef_3A_3A/Stdio/File.html'>Stdio.File</a></font></font></tt></td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"stderr"</font> : <font color='#005080'><font face='courier'><a href='../../../predef_3A_3A/Stdio/File.html'>Stdio.File</a></font></font></tt></td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"env"</font> : <font color='#202020'>mapping</font>(<font color='#202020'>string</font>:<font color='#202020'>string</font>)</tt></td><td bgcolor='white'><p>This mapping will become the environment variables for the
+  created process. Normally you will want to only add or change
+  variables which can be achived by getting the environment mapping
+  for this process with <font face='courier'>getenv</font> . See the examples section.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"uid"</font> : <font color='#202020'>int</font>|<font color='#202020'>string</font></tt></td><td bgcolor='white'><p>This parameter changes which user the new process will execute
+  as. Note that the current process must be running as UID 0 to use
+  this option. The uid can be given either as an integer as a
+  string containing the login name of that user.</p>
+<p>  The "gid" and "groups" for the new process will be set to the
+  right values for that user unless overriden by options below.</p>
+<p>  (See <font face='courier'>setuid</font>  and <font face='courier'><a href='../../../predef_3A_3A/getpwuid.html'>getpwuid</a></font>  for more info.)</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"gid"</font> : <font color='#202020'>int</font>|<font color='#202020'>string</font></tt></td><td bgcolor='white'><p>This parameter changes the primary group for the new process.
+  When the new process creates files, they will will be created
+  with this group. The group can either be given as an int or a
+  string containing the name of the group. (See <font face='courier'>setuid</font> 
+  and <font face='courier'><a href='../../../predef_3A_3A/getgrgid.html'>getgrgid</a></font>  for more info.)</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"setsid"</font> : <font color='#202020'>int</font>(0..1)|<font color='#005080'><font face='courier'><a href='../../../predef_3A_3A/Stdio/File.html'>Stdio.File</a></font></font></tt></td><td bgcolor='white'><p>Set this to <font face='courier'><code>1</code></font> to create a new session group.
+  It is also possible to set it to a File object, in which
+  case a new session group will be created with this file
+  as the controlling terminal.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"setgroups"</font> : <font color='#202020'>array</font>(<font color='#202020'>int</font>|<font color='#202020'>string</font>)</tt></td><td bgcolor='white'><p>This parameter allows you to the set the list of groups that the
+  new process belongs to. It is recommended that if you use this
+  parameter you supply at least one and no more than 16 groups.
+  (Some system only support up to 8...) The groups can be given as
+  gids or as strings with the group names.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"noinitgroups"</font> : <font color='#202020'>int</font>(0..1)</tt></td><td bgcolor='white'><p>This parameter overrides a behaviour of the "uid" parameter. If
+  this parameter is used, the gid and groups of the new process
+  will be inherited from the current process rather than changed to
+  the approperiate values for that uid.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"priority"</font> : <font color='#202020'>string</font></tt></td><td bgcolor='white'><p>This sets the priority of the new process, see
+  <font face='courier'><a href='../../../predef_3A_3A/Process/create_process/set_priority.html'>set_priority</a></font>  for more info.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"nice"</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'><p>This sets the nice level of the new process; the lower the
+  number, the higher the priority of the process. Note that only
+  UID 0 may use negative numbers.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"keep_signals"</font> : <font color='#202020'>int</font>(0..1)</tt></td><td bgcolor='white'><p>This prevents Pike from restoring all signal handlers to their
+  default values for the new process. Useful to ignore certain
+  signals in the new process.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"fds"</font> : <font color='#202020'>array</font>(<font color='#005080'><font face='courier'><a href='../../../predef_3A_3A/Stdio/File.html'>Stdio.File</a></font></font>|<font color='#202020'>int</font>(0..0))</tt></td><td bgcolor='white'><p>This parameter allows you to map files to filedescriptors 3 and
+  up. The file <font face='courier'><code>fds[0]</code></font> will be remapped to fd 3 in the new
+  process, etc.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"rlimit"</font> : <font color='#202020'>mapping</font>(<font color='#202020'>string</font>:<font color='#005080'><font face='courier'><a href='../../../predef_3A_3A/Process/create_process.html'>limit_value</a></font></font>)</tt></td><td bgcolor='white'><p>There are two values for each limit, the soft limit and the hard
+  limit. Processes that do not have UID 0 may not raise the hard
+  limit, and the soft limit may never be increased over the hard
+  limit. The indices of the mapping indicate what limit to impose,
+  and the values dictate what the limit should be. (See also
+  <font face='courier'><a href='../../../predef_3A_3A/System/setrlimit.html'>System.setrlimit</a></font> )</p>
+<table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"core"</font> : <font color='#005080'><font face='courier'><a href='../../../predef_3A_3A/Process/create_process.html'>limit_value</a></font></font></tt></td><td bgcolor='white'><p>maximum core file size in bytes</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"cpu"</font> : <font color='#005080'><font face='courier'><a href='../../../predef_3A_3A/Process/create_process.html'>limit_value</a></font></font></tt></td><td bgcolor='white'><p>maximum amount of cpu time used by the process in seconds</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"data"</font> : <font color='#005080'><font face='courier'><a href='../../../predef_3A_3A/Process/create_process.html'>limit_value</a></font></font></tt></td><td bgcolor='white'><p>maximum heap (brk, malloc) size in bytes</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"fsize"</font> : <font color='#005080'><font face='courier'><a href='../../../predef_3A_3A/Process/create_process.html'>limit_value</a></font></font></tt></td><td bgcolor='white'><p>maximum size of files created by the process in bytes</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"map_mem"</font> : <font color='#005080'><font face='courier'><a href='../../../predef_3A_3A/Process/create_process.html'>limit_value</a></font></font></tt></td><td bgcolor='white'><p>maximum size of the process's mapped address space (mmap() and
+  heap size) in bytes</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"mem"</font> : <font color='#005080'><font face='courier'><a href='../../../predef_3A_3A/Process/create_process.html'>limit_value</a></font></font></tt></td><td bgcolor='white'><p>maximum size of the process's total amount of available memory
+  (mmap, heap and stack size) in bytes</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"nofile"</font> : <font color='#005080'><font face='courier'><a href='../../../predef_3A_3A/Process/create_process.html'>limit_value</a></font></font></tt></td><td bgcolor='white'><p>maximum number of file descriptors the process may create</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"stack"</font> : <font color='#005080'><font face='courier'><a href='../../../predef_3A_3A/Process/create_process.html'>limit_value</a></font></font></tt></td><td bgcolor='white'><p>maximum stack size in bytes</p>
+</td></tr>
+</table></td></tr></table><br />
+
+</td></tr>
+</table></td></tr></table><br />
+
+</font></dd>
+<dt><font face='Helvetica'>Example</font><dt>
+<dd><pre><p>Process.create_process(({ "/usr/bin/env" }),
+                        (["env" : getenv() + (["TERM":"vt100"]) ]));</p>
+</pre></dd>
+<dt><font face='Helvetica'>Example</font><dt>
+<dd><pre><p>//! Spawn a new process with the args @[args] and optionally a
+ //! standard input if you provide such a @[Stdio.File] object.
+ //! @returns
+ //!   Returns the new process and a pipe from which you can read
+ //!   its output.
+ array(Process.Process|Stdio.File) spawn(Stdio.File|void stdin, string ... args)
+ {
+   Stdio.File stdout = Stdio.File();
+   mapping opts = ([ "stdout" : stdout-&gt;pipe() ]);
+   if( stdin )
+    opts-&gt;stdin = stdin;
+   return ({ Process.create_process( args, opts ), stdout });
+ }</p>
+</pre></dd>
+<dt><font face='Helvetica'>Note</font><dt>
+<dd><font face='Helvetica'><p>All parameters that accept both string or int input can be
+   noticeably slower using a string instead of an integer; if maximum
+   performance is an issue, please use integers.</p>
+</font></dd>
+<dt><font face='Helvetica'>Note</font><dt>
+<dd><font face='Helvetica'><p>The modifiers <font face='courier'><code>"callback"</code></font>, <font face='courier'><code>"fds"</code></font>,
+   <font face='courier'><code>"uid"</code></font>, <font face='courier'><code>"gid"</code></font>,
+   <font face='courier'><code>"nice"</code></font>, <font face='courier'><code>"noinitgroups"</code></font>, <font face='courier'><code>"setgroups"</code></font>,
+   <font face='courier'><code>"keep_signals"</code></font> and <font face='courier'><code>"rlimit"</code></font> only exist on unix.</p>
+</font></dd>
+<dt><font face='Helvetica'>Note</font><dt>
+<dd><font face='Helvetica'><p>Support for <font face='courier'><code>"callback"</code></font> was added in Pike 7.7.</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

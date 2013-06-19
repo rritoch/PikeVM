@@ -1,0 +1,141 @@
+<html><head><title>Pike Reference Manual - Protocols.HTTP.Session()-&gt;Request</title>
+<link rel='stylesheet' href='../../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../../ex/predef_3A_3A/Protocols.html'><b>Protocols</b></a><br />
+<a href='../../../../../ex/predef_3A_3A/Protocols/HTTP.html'><b>Protocols.HTTP</b></a><br />
+<a href='../../../../../ex/predef_3A_3A/Protocols/HTTP/Session.html'><b>Protocols.HTTP.Session</b></a><br />
+<b>Protocols.HTTP.Session()-&gt;Request</b><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Protocols/HTTP/Session/Request/destroy.html'>destroy()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Protocols/HTTP/Session/Request/do_async.html'>do_async()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Protocols/HTTP/Session/Request/do_sync.html'>do_sync()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Protocols/HTTP/Session/Request/do_thread.html'>do_thread()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Protocols/HTTP/Session/Request/prepare_method.html'>prepare_method()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Protocols/HTTP/Session/Request/set_callbacks.html'>set_callbacks()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Protocols/HTTP/Session/Request/wait.html'>wait()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../../ex/predef_3A_3A/Protocols/HTTP/Session.html"><img src="../../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Protocols.HTTP.Session</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../../ex/predef_3A_3A/Protocols/HTTP/Session/Request/destroy.html">Protocols.HTTP.Session()-&gt;Request()-&gt;destroy()<img src="../../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Class Protocols.HTTP.Session()-&gt;Request</h1>
+    <dl>
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Request</p>
+</font></dd></dl>
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>con</b></font>
+</font><dt>
+<dd><p><tt><font color='#005080'><font face='courier'><a href='../../../../predef_3A_3A/Protocols/HTTP/Query.html'>Query</a></font></font> Protocols.HTTP.Session.Request.<b><font color='#F000F0'>con</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Raw connection object</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>url_requested</b></font>
+</font><dt>
+<dd><p><tt><font color='#005080'><font face='courier'><a href='../../../../predef_3A_3A/Standards/URI.html'>Standards.URI</a></font></font> Protocols.HTTP.Session.Request.<b><font color='#F000F0'>url_requested</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>URL requested (set by prepare_method).
+	This will update according to followed redirects.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>follow_redirects</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>int</font> Protocols.HTTP.Session.Request.<b><font color='#F000F0'>follow_redirects</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Number of redirects to follow;
+	the request will perform another request if the 
+	HTTP answer is a 3xx redirect.
+	Default from the parent <font face='courier'><a href='../../../../predef_3A_3A/Protocols/HTTP/Session.html'>Session.follow_redirects</a></font> .</p>
+<p>	A redirect automatically turns into a GET request,
+	and all header, query, post or put information is dropped.</p>
+</font></dd>
+<dt><font face='Helvetica'>Bugs</font><dt>
+<dd><font face='Helvetica'><p>Loops will currently not be detected, only the limit
+	works to stop loops.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>cookie_encountered</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>function</font>(<font color='#202020'>string</font>:<font color='#202020'>mixed</font>) Protocols.HTTP.Session.Request.<b><font color='#F000F0'>cookie_encountered</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Cookie callback. When a request is performed,
+	the result is checked for cookie changes and
+	additions. If a cookie is encountered, this
+	function is called. Default is to call 
+	<font face='courier'><a href='../../../../predef_3A_3A/Protocols/HTTP/Session/set_http_cookie.html'>set_http_cookie</a></font>  in the <font face='courier'><a href='../../../../predef_3A_3A/Protocols/HTTP/Session.html'>Session</a></font>  object.</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

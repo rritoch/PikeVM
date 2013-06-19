@@ -1,0 +1,201 @@
+<html><head><title>Pike Reference Manual - SSL.session</title>
+<link rel='stylesheet' href='../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../..//images/pike_line_middle.gif" width="98%"><img src="../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../ex/predef_3A_3A/SSL.html'><b>SSL</b></a><br />
+<b>SSL.session</b><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/SSL/session/generate_keys.html'>generate_keys()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/SSL/session/new_client_states.html'>new_client_states()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/SSL/session/new_server_states.html'>new_server_states()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/SSL/session/set_cipher_suite.html'>set_cipher_suite()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/SSL/session/set_compression_method.html'>set_compression_method()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../ex/predef_3A_3A/SSL/packet.html"><img src="../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >SSL.packet</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../ex/predef_3A_3A/SSL/session/generate_keys.html">SSL.session()-&gt;generate_keys()<img src="../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Class SSL.session</h1>
+    <dl>
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>The most important information in a session object is a
+ choice of encryption algorithms and a "master secret" created by
+ keyexchange with a client. Each connection can either do a full key
+ exchange to established a new session, or reuse a previously
+ established session. That is why we have the session abstraction and
+ the session cache. Each session is used by one or more connections, in
+ sequence or simultaneously.</p>
+<p> It is also possible to change to a new session in the middle of a
+ connection.</p>
+</font></dd></dl>
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'></font><dt>
+<dd><p></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>identity</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>string</font> SSL.session.<b><font color='#F000F0'>identity</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Identifies the session to the server</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>compression_algorithm</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>int</font> SSL.session.<b><font color='#F000F0'>compression_algorithm</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Always COMPRESSION_null.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>cipher_suite</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>int</font> SSL.session.<b><font color='#F000F0'>cipher_suite</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Constant defining a choice of keyexchange, encryption and mac
+ algorithm.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>cipher_spec</b></font>
+</font><dt>
+<dd><p><tt><font color='#005080'><font face='courier'><a href='../../predef_3A_3A/SSL/Cipher/CipherSpec.html'>.Cipher.CipherSpec</a></font></font> SSL.session.<b><font color='#F000F0'>cipher_spec</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Information about the encryption method derived from the
+ cipher_suite.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>ke_method</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>int</font> SSL.session.<b><font color='#F000F0'>ke_method</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Key exchange method, also derived from the cipher_suite.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>master_secret</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>string</font> SSL.session.<b><font color='#F000F0'>master_secret</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>48 byte secret shared between the client and the server. Used for
+ deriving the actual keys.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>cert_data</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>mapping</font> SSL.session.<b><font color='#F000F0'>cert_data</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>information about the certificate in use by the peer, such as issuing authority, and verification status.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>peer_certificate_chain</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>array</font>(<font color='#202020'>string</font>) SSL.session.<b><font color='#F000F0'>peer_certificate_chain</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>the peer certificate chain</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>certificate_chain</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>array</font>(<font color='#202020'>string</font>) SSL.session.<b><font color='#F000F0'>certificate_chain</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>our certificate chain</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

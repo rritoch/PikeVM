@@ -1,0 +1,181 @@
+<html><head><title>Pike Reference Manual - GTK2.Widget()-&gt;grab_default()</title>
+<link rel='stylesheet' href='../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../ex/predef_3A_3A/GTK2.html'><b>GTK2</b></a><br />
+<a href='../../../../ex/predef_3A_3A/GTK2/Widget.html'><b>GTK2.Widget</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/APP_PAINTABLE.html'>APP_PAINTABLE()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/CAN_DEFAULT.html'>CAN_DEFAULT()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/CAN_FOCUS.html'>CAN_FOCUS()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/COMPOSITE_CHILD.html'>COMPOSITE_CHILD()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/DOUBLE_BUFFERED.html'>DOUBLE_BUFFERED()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/DRAWABLE.html'>DRAWABLE()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/FLAGS.html'>FLAGS()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/HAS_DEFAULT.html'>HAS_DEFAULT()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/HAS_FOCUS.html'>HAS_FOCUS()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/HAS_GRAB.html'>HAS_GRAB()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/IS_SENSITIVE.html'>IS_SENSITIVE()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/MAPPED.html'>MAPPED()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/NO_WINDOW.html'>NO_WINDOW()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/PARENT_SENSITIVE.html'>PARENT_SENSITIVE()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/RC_STYLE.html'>RC_STYLE()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/REALIZED.html'>REALIZED()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/RECEIVES_DEFAULT.html'>RECEIVES_DEFAULT()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/SAVED_STATE.html'>SAVED_STATE()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/SENSITIVE.html'>SENSITIVE()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/STATE.html'>STATE()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/TOPLEVEL.html'>TOPLEVEL()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/VISIBLE.html'>VISIBLE()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/activate.html'>activate()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/add_accelerator.html'>add_accelerator()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/add_events.html'>add_events()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/add_mnemonic_label.html'>add_mnemonic_label()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/allocation.html'>allocation()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/can_activate_accel.html'>can_activate_accel()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/child_notify.html'>child_notify()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/class_path.html'>class_path()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/create_pango_context.html'>create_pango_context()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/create_pango_layout.html'>create_pango_layout()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/freeze_child_notify.html'>freeze_child_notify()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/get_clipboard.html'>get_clipboard()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/get_composite_name.html'>get_composite_name()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/get_direction.html'>get_direction()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/get_display.html'>get_display()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/get_events.html'>get_events()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/get_extension_events.html'>get_extension_events()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/get_modifier_style.html'>get_modifier_style()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/get_name.html'>get_name()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/get_no_show_all.html'>get_no_show_all()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/get_pango_context.html'>get_pango_context()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/get_parent.html'>get_parent()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/get_parent_window.html'>get_parent_window()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/get_pointer.html'>get_pointer()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/get_root_window.html'>get_root_window()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/get_screen.html'>get_screen()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/get_settings.html'>get_settings()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/get_size_request.html'>get_size_request()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/get_style.html'>get_style()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/get_toplevel.html'>get_toplevel()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;grab_default()</td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/grab_focus.html'>grab_focus()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/has_screen.html'>has_screen()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/hide.html'>hide()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/hide_all.html'>hide_all()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/hide_on_delete.html'>hide_on_delete()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/is_ancestor.html'>is_ancestor()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/is_focus.html'>is_focus()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/list_mnemonic_lables.html'>list_mnemonic_lables()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/map.html'>map()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/mnemonic_activate.html'>mnemonic_activate()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/modify_base.html'>modify_base()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/modify_bg.html'>modify_bg()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/modify_fg.html'>modify_fg()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/modify_font.html'>modify_font()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/modify_style.html'>modify_style()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/modify_text.html'>modify_text()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/path.html'>path()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/queue_draw.html'>queue_draw()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/queue_draw_area.html'>queue_draw_area()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/queue_resize.html'>queue_resize()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/queue_resize_no_redraw.html'>queue_resize_no_redraw()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/remove_accelerator.html'>remove_accelerator()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/remove_mnemonic_label.html'>remove_mnemonic_label()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/render_icon.html'>render_icon()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/reparent.html'>reparent()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/reset_shapes.html'>reset_shapes()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/set_accel_path.html'>set_accel_path()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/set_composite_name.html'>set_composite_name()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/set_direction.html'>set_direction()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/set_events.html'>set_events()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/set_extension_events.html'>set_extension_events()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/set_flags.html'>set_flags()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/set_name.html'>set_name()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/set_no_show_all.html'>set_no_show_all()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/set_parent.html'>set_parent()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/set_parent_window.html'>set_parent_window()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/set_scroll_adjustments.html'>set_scroll_adjustments()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/set_sensitive.html'>set_sensitive()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/set_size_request.html'>set_size_request()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/set_style.html'>set_style()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/shape_combine_mask.html'>shape_combine_mask()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/show.html'>show()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/show_all.html'>show_all()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/show_now.html'>show_now()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/size_request.html'>size_request()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/style_get_property.html'>style_get_property()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/thaw_child_notify.html'>thaw_child_notify()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/unmap.html'>unmap()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/Widget/unset_flags.html'>unset_flags()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/GTK2/Widget/get_toplevel.html"><img src="../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >GTK2.Widget()-&gt;get_toplevel()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/GTK2/Widget/grab_focus.html">GTK2.Widget()-&gt;grab_focus()<img src="../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method GTK2.Widget()-&gt;grab_default()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>grab_default</b></font>
+</font><dt>
+<dd><p><tt><font color='#005080'><font face='courier'><a href='../../../predef_3A_3A/GTK2/Widget.html'>GTK2.Widget</a></font></font> <b><font color='#000066'>grab_default</font>(</b><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Causes this widget to become the default widget.</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

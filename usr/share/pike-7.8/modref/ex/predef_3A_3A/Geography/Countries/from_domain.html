@@ -1,0 +1,136 @@
+<html><head><title>Pike Reference Manual - Geography.Countries.from_domain()</title>
+<link rel='stylesheet' href='../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../ex/predef_3A_3A/Geography.html'><b>Geography</b></a><br />
+<a href='../../../../ex/predef_3A_3A/Geography/Countries.html'><b>Geography.Countries</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Classes</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Geography/Countries/Country.html'><b>Country</b></a></td></tr>
+<tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Geography/Countries/_backtick_2D_3E.html'>`-&gt;()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Geography/Countries/_backtick_5B_5D.html'>`[]()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Geography/Countries/continents.html'>continents()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;from_domain()</td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/Geography/Countries/continents.html"><img src="../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Geography.Countries.continents()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/Getopt.html">Getopt<img src="../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method Geography.Countries.from_domain()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>from_domain</b></font>
+</font><dt>
+<dd><p><tt><font color='#005080'><font face='courier'><a href='../../../predef_3A_3A/Geography/Countries/Country.html'>Country</a></font></font> <b><font color='#000066'>from_domain</font>(</b><font color='#202020'>string</font> <font color='#005080'>domain</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Look up a country from a domain name.
+	Returns zero if the domain doesn't map
+	to a country. Note that there are some
+	valid domains that don't:</p>
+<dl><dt>INT</dt>
+<dd><p>International</p>
+</dd>
+<dt>MIL</dt>
+<dd><p>US Military</p>
+</dd>
+<dt>NET</dt>
+<dd><p>Network</p>
+</dd>
+<dt>ORG</dt>
+<dd><p>Non-Profit Organization</p>
+</dd>
+<dt>ARPA</dt>
+<dd><p>Old style Arpanet</p>
+</dd>
+<dt>NATO</dt>
+<dd><p>Nato field</p>
+</dd>
+</dl><p>And that US has five domains, Great Britain and france two:
+	&lt;dl compact&gt;
+	&lt;dt&gt;EDU   &lt;dd&gt;US Educational
+	&lt;dt&gt;MIL   &lt;dd&gt;US Military
+	&lt;dt&gt;GOV   &lt;dd&gt;US Government
+	&lt;dt&gt;UM	  &lt;dd&gt;US Minor Outlying Islands
+	&lt;dt&gt;US	  &lt;dd&gt;US
+	&lt;dt&gt;GB    &lt;dd&gt;Great Britain (UK)
+	&lt;dt&gt;UK    &lt;dd&gt;United Kingdom
+	&lt;dt&gt;FR	  &lt;dd&gt;France
+	&lt;dt&gt;FX	  &lt;dd&gt;France, Metropolitan
+	&lt;dt&gt;There's also three domains that for convinience maps to US:
+	&lt;dt&gt;NET   &lt;dd&gt;Network
+	&lt;dt&gt;ORG   &lt;dd&gt;Organization
+	&lt;dt&gt;COM   &lt;dd&gt;Commercial
+	&lt;/dl&gt;</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>from_domain</b></font>
+</font><dt>
+<dd><p><tt><font color='#005080'><font face='courier'><a href='../../../predef_3A_3A/Geography/Countries/Country.html'>Country</a></font></font> <b><font color='#000066'>from_domain</font>(</b><font color='#202020'>string</font> <font color='#005080'>name</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Look up a country from its name or aka.
+	The search is case-insensitive but
+	regards whitespace and interpunctation.</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

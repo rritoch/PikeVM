@@ -1,0 +1,164 @@
+<html><head><title>Pike Reference Manual - Regexp.PCRE</title>
+<link rel='stylesheet' href='../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../..//images/pike_line_middle.gif" width="98%"><img src="../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../ex/predef_3A_3A/Regexp.html'><b>Regexp</b></a><br />
+<b>Regexp.PCRE</b><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Modules</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Regexp/PCRE/ERROR.html'><b>ERROR</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Regexp/PCRE/OPTION.html'><b>OPTION</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Regexp/PCRE/_Regexp_PCRE.html'><b>_Regexp_PCRE</b></a></td></tr>
+<tr><td nowrap='nowrap'><br /><b>Classes</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Regexp/PCRE/_pcre.html'><b>_pcre</b></a></td></tr>
+<tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Regexp/PCRE/split_subject.html'>split_subject()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../ex/predef_3A_3A/Regexp/SimpleRegexp/split.html"><img src="../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Regexp.SimpleRegexp()-&gt;split()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../ex/predef_3A_3A/Regexp/PCRE/_pcre.html">Regexp.PCRE._pcre<img src="../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Module Regexp.PCRE</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>buildconfig_UTF8</b></font>
+</font><dt>
+<dd><p><tt>constant Regexp.PCRE.<font color='#F000F0'>buildconfig_UTF8</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>(from the pcreapi man-page)
+     "The output is an integer that is set to one if UTF-8 support
+     is available; otherwise it is set to zero."
+	This constant is calculated when the module is initiated
+	by using pcre_config(3).</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>buildconfig_NEWLINE</b></font>
+</font><dt>
+<dd><p><tt>constant Regexp.PCRE.<font color='#F000F0'>buildconfig_NEWLINE</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>(from the pcreapi man-page)
+     "The output is an integer that is set to  the  value  of  the
+     code  that  is  used for the newline character. It is either
+     linefeed (10) or carriage return (13), and  should  normally
+     be the standard character for your operating system."
+	This constant is calculated when the module is initiated
+	by using pcre_config(3).</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>buildconfig_LINK_SIZE</b></font>
+</font><dt>
+<dd><p><tt>constant Regexp.PCRE.<font color='#F000F0'>buildconfig_LINK_SIZE</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>(from the pcreapi man-page)
+     "The output is an integer that contains the number  of  bytes
+     used  for  internal linkage in compiled regular expressions.
+     The value is 2, 3, or 4. Larger values allow larger  regular
+     expressions  to be compiled, at the expense of slower match-
+     ing. The default value of 2 is sufficient for  all  but  the
+     most  massive patterns, since it allows the compiled pattern
+     to be up to 64K in size."
+	This constant is calculated when the module is initiated
+	by using pcre_config(3).</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>buildconfig_POSIX_MALLOC_THRESHOLD</b></font>
+</font><dt>
+<dd><p><tt>constant Regexp.PCRE.<font color='#F000F0'>buildconfig_POSIX_MALLOC_THRESHOLD</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>(from the pcreapi man-page)
+     "The output is an integer that contains the  threshold  above
+     which  the POSIX interface uses malloc() for output vectors.
+     Further details are given in the pcreposix documentation."
+	This constant is calculated when the module is initiated
+	by using pcre_config(3).</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>buildconfig_MATCH_LIMIT</b></font>
+</font><dt>
+<dd><p><tt>constant Regexp.PCRE.<font color='#F000F0'>buildconfig_MATCH_LIMIT</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>(from the pcreapi man-page)
+     "The output is an integer that gives the  default  limit  for
+     the   number  of  internal  matching  function  calls  in  a
+     pcre_exec()  execution.  Further  details  are  given   with
+     pcre_exec() below."
+	This constant is calculated when the module is initiated
+	by using pcre_config(3).</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

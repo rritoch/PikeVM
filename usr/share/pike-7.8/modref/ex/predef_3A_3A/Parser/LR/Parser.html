@@ -1,0 +1,168 @@
+<html><head><title>Pike Reference Manual - Parser.LR.Parser</title>
+<link rel='stylesheet' href='../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../ex/predef_3A_3A/Parser.html'><b>Parser</b></a><br />
+<a href='../../../../ex/predef_3A_3A/Parser/LR.html'><b>Parser.LR</b></a><br />
+<b>Parser.LR.Parser</b><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Classes</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Parser/LR/Parser/Item.html'><b>Item</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Parser/LR/Parser/Kernel.html'><b>Kernel</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Parser/LR/Parser/StateQueue.html'><b>StateQueue</b></a></td></tr>
+<tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Parser/LR/Parser/_sprintf.html'>_sprintf()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Parser/LR/Parser/add_rule.html'>add_rule()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Parser/LR/Parser/cast.html'>cast()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Parser/LR/Parser/compile.html'>compile()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Parser/LR/Parser/item_to_string.html'>item_to_string()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Parser/LR/Parser/parse.html'>parse()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Parser/LR/Parser/rule_to_string.html'>rule_to_string()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Parser/LR/Parser/set_associativity.html'>set_associativity()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Parser/LR/Parser/set_error_handler.html'>set_error_handler()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Parser/LR/Parser/set_priority.html'>set_priority()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Parser/LR/Parser/set_symbol_to_string.html'>set_symbol_to_string()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Parser/LR/Parser/state_to_string.html'>state_to_string()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/Parser/LR/ErrorHandler/create.html"><img src="../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Parser.LR.ErrorHandler()-&gt;create()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/Parser/LR/Parser/Item.html">Parser.LR.Parser()-&gt;Item<img src="../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Class Parser.LR.Parser</h1>
+    <dl>
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>This object implements an LALR(1) parser and compiler.</p>
+<p> Normal use of this object would be:</p>
+<p><font face='courier'><pre>
+ set_error_handler
+ {add_rule, set_priority, set_associativity}*
+ set_symbol_to_string
+ compile
+ {parse}*
+ </pre></font></p>
+</font></dd></dl>
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>grammar</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>mapping</font>(<font color='#202020'>int</font>:<font color='#202020'>array</font>(<font color='#005080'><font face='courier'><a href='../../../predef_3A_3A/Parser/LR/Rule.html'>Rule</a></font></font>)) Parser.LR.Parser.<b><font color='#F000F0'>grammar</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>The grammar itself.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>start_state</b></font>
+</font><dt>
+<dd><p><tt><font color='#005080'><font face='courier'><a href='../../../predef_3A_3A/Parser/LR/Parser/Kernel.html'>Kernel</a></font></font> Parser.LR.Parser.<b><font color='#F000F0'>start_state</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>The initial LR0 state.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>lr_error</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>int</font> Parser.LR.Parser.<b><font color='#F000F0'>lr_error</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Error code</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>known_states</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>mapping</font>(<font color='#202020'>string</font>:<font color='#005080'><font face='courier'><a href='../../../predef_3A_3A/Parser/LR/Parser/Kernel.html'>Kernel</a></font></font>) Parser.LR.Parser.<b><font color='#F000F0'>known_states</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>LR0 states that are already known to the compiler.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>error_handler</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>function</font>(<font color='#005080'><font face='courier'><a href='../../../predef_3A_3A/Parser/LR/SeverityLevel.html'>SeverityLevel</a></font></font>:<font color='#202020'>void</font>) Parser.LR.Parser.<b><font color='#F000F0'>error_handler</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Compile error and warning handler.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>s_q</b></font>
+</font><dt>
+<dd><p><tt><font color='#005080'><font face='courier'><a href='../../../predef_3A_3A/Parser/LR/Parser/StateQueue.html'>StateQueue</a></font></font> Parser.LR.Parser.<b><font color='#F000F0'>s_q</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Contains all states used.
+ In the queue section are the states that remain to be compiled.</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

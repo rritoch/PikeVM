@@ -1,0 +1,275 @@
+<html><head><title>Pike Reference Manual - GLUE.Events</title>
+<link rel='stylesheet' href='../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../..//images/pike_line_middle.gif" width="98%"><img src="../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../ex/predef_3A_3A/GLUE.html'><b>GLUE</b></a><br />
+<b>GLUE.Events</b><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Classes</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GLUE/Events/Event.html'><b>Event</b></a></td></tr>
+<tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GLUE/Events/ALT.html'>ALT()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GLUE/Events/CTRL.html'>CTRL()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GLUE/Events/SHFT.html'>SHFT()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GLUE/Events/is_modifier.html'>is_modifier()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../ex/predef_3A_3A/GLUE/Texture.html"><img src="../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >GLUE.Texture</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../ex/predef_3A_3A/GLUE/Events/Event.html">GLUE.Events.Event<img src="../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Module GLUE.Events</h1>
+    <dl>
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>GLUE Event abstraction.</p>
+</font></dd></dl>
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>_SHFT</b></font>
+</font><dt>
+<dd><p><tt>constant GLUE.Events.<font color='#F000F0'>_SHFT</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Integer constant representing shift.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>_CTRL</b></font>
+</font><dt>
+<dd><p><tt>constant GLUE.Events.<font color='#F000F0'>_CTRL</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Integer constant representing control.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>_ALT</b></font>
+</font><dt>
+<dd><p><tt>constant GLUE.Events.<font color='#F000F0'>_ALT</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Integer constant representing alternate.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>KNOWN_MODIFIERS</b></font>
+</font><dt>
+<dd><p><tt>constant GLUE.Events.<font color='#F000F0'>KNOWN_MODIFIERS</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Integer constant with the union of all known modifiers, i.e.
+ <font face='courier'><code>_SHFT&nbsp;|&nbsp;_CTRL&nbsp;|&nbsp;_ALT</code></font>.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'></font><dt>
+<dd><p><tt>constant GLUE.Events.<font color='#F000F0'>BACKSPACE</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>DELETE</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>TAB</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>F1</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>F2</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>F3</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>F4</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>F5</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>F6</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>F7</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>F8</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>F9</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>F10</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>F11</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>F12</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>ESCAPE</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>UP</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>DOWN</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>LEFT</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>RIGHT</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>PGUP</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>PGDWN</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>ENTER</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>SPACE</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>HOME</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>END</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>PAUSE</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>INSERT</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>SCROLL_LOCK</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>SYS_REQ</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>PRINT_SCRN</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>CAPSLOCK</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>MENU</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>NUMLOCK</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>A</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>B</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>C</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>D</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>E</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>F</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>G</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>H</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>I</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>J</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>K</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>L</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>M</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>N</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>O</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>P</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>Q</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>R</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>S</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>T</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>U</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>V</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>W</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>X</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>Y</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>Z</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Numeric constant representing a key.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'></font><dt>
+<dd><p><tt>constant GLUE.Events.<font color='#F000F0'>BUTTON_1</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>BUTTON_2</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>BUTTON_3</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>BUTTON_4</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>BUTTON_5</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Numeric constant representing a mouse button.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'></font><dt>
+<dd><p><tt>constant GLUE.Events.<font color='#F000F0'>MOUSE_UP</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>MOUSE_DOWN</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>MOUSE_LEFT</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>MOUSE_RIGHT</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>MOUSE_ABS</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Numeric constant representing a mouse movement.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'></font><dt>
+<dd><p><tt>constant GLUE.Events.<font color='#F000F0'>LSHIFT</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>RSHIFT</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>LCTRL</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>RCTRL</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>LALT</font></tt><br />
+<tt>constant GLUE.Events.<font color='#F000F0'>RALT</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Numeric constant representing a modifier key.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>MODIFIERS</b></font>
+</font><dt>
+<dd><p><tt>constant GLUE.Events.<font color='#F000F0'>MODIFIERS</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Mapping that maps a modifier key to any of the symbolic modifiers
+ <font face='courier'><a href='../../predef_3A_3A/GLUE/Events.html'>_SHFT</a></font> , <font face='courier'><a href='../../predef_3A_3A/GLUE/Events.html'>_CTRL</a></font>  and <font face='courier'><a href='../../predef_3A_3A/GLUE/Events.html'>_ALT</a></font> .</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>EXIT</b></font>
+</font><dt>
+<dd><p><tt>constant GLUE.Events.<font color='#F000F0'>EXIT</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Numeric constant representing an exit event.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>key_names</b></font>
+</font><dt>
+<dd><p><tt>constant GLUE.Events.<font color='#F000F0'>key_names</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Mapping that maps key identifiers with a printable name, e.g.
+ <font face='courier'><a href='../../predef_3A_3A/GLUE/Events.html'>LSHIFT</a></font>  to <font face='courier'><code>"Left&nbsp;shift"</code></font>.</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

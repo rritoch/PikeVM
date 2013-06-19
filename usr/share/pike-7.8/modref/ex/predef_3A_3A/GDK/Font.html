@@ -1,0 +1,109 @@
+<html><head><title>Pike Reference Manual - GDK.Font</title>
+<link rel='stylesheet' href='../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../..//images/pike_line_middle.gif" width="98%"><img src="../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../ex/predef_3A_3A/GDK.html'><b>GDK</b></a><br />
+<b>GDK.Font</b><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GDK/Font/char_width.html'>char_width()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GDK/Font/create.html'>create()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GDK/Font/destroy.html'>destroy()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../ex/predef_3A_3A/GDK/Event/destroy.html"><img src="../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >GDK.Event()-&gt;destroy()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../ex/predef_3A_3A/GDK/Font/char_width.html">GDK.Font()-&gt;char_width()<img src="../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Class GDK.Font</h1>
+    <dl>
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>The GdkFont data type represents a font for drawing on the
+ screen. These functions provide support for loading fonts, and also
+ for determining the dimensions of characters and strings when drawn
+ with a particular font.</p>
+<p> Fonts in X are specified by a X Logical Font Description. The
+ following description is considerably simplified. For definitive
+ information about XLFD's see the X reference documentation. A X
+ Logical Font Description (XLFD) consists of a sequence of fields
+ separated (and surrounded by) '-' characters. For example, Adobe
+ Helvetica Bold 12 pt, has the full description: 
+ <i> "-adobe-helvetica-bold-r-normal--12-120-75-75-p-70-iso8859-1"</i></p>
+<p>The fields in the XLFD are:
+ <table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'> Foundry</td><td bgcolor='white'>the company or organization where the font originated.</td></tr>
+<tr valign='top'><td bgcolor='white'> Family</td><td bgcolor='white'>the font family (a group of related font designs).</td></tr>
+<tr valign='top'><td bgcolor='white'> Weight</td><td bgcolor='white'>A name for the font's typographic weight For example, 'bold' or 'medium').</td></tr>
+<tr valign='top'><td bgcolor='white'> Slant</td><td bgcolor='white'>The slant of the font. Common values are 'R' for Roman, 'I' for italoc, and 'O' for oblique.</td></tr>
+<tr valign='top'><td bgcolor='white'> Set Width</td><td bgcolor='white'>A name for the width of the font. For example, 'normal' or 'condensed'.</td></tr>
+<tr valign='top'><td bgcolor='white'> Add Style</td><td bgcolor='white'>Additional information to distinguish a font from other fonts of the same family.</td></tr>
+<tr valign='top'><td bgcolor='white'> Pixel Size</td><td bgcolor='white'>The body size of the font in pixels.</td></tr>
+<tr valign='top'><td bgcolor='white'> Point Size</td><td bgcolor='white'>The body size of the font in 10ths of a point. (A point is 1/72.27 inch) </td></tr>
+<tr valign='top'><td bgcolor='white'> Resolution X</td><td bgcolor='white'>The horizontal resolution that the font was designed for.</td></tr>
+<tr valign='top'><td bgcolor='white'> Resolution Y</td><td bgcolor='white'>The vertical resolution that the font was designed for .</td></tr>
+<tr valign='top'><td bgcolor='white'> Spacing</td><td bgcolor='white'>The type of spacing for the font - can be 'p' for proportional, 'm' for monospaced or 'c' for charcell.</td></tr>
+<tr valign='top'><td bgcolor='white'> Average Width</td><td bgcolor='white'>The average width of a glyph in the font. For monospaced and charcell fonts, all glyphs in the font have this width</td></tr>
+<tr valign='top'><td bgcolor='white'>Charset Registry</td><td bgcolor='white'>                          The registration authority that owns the encoding for the font. Together with the Charset Encoding field, this                        defines the character set for the font.</td></tr>
+<tr valign='top'><td bgcolor='white'>Charset Encoding</td><td bgcolor='white'>An identifier for the particular character set encoding.</td></tr>
+</table></td></tr></table><br />
+</p>
+<p> When specifying a font via a X logical Font Description, '*' can be
+ used as a wildcard to match any portion of the XLFD. For instance,
+ the above example could also be specified as
+ <i>"-*-helvetica-bold-r-normal--*-120-*-*-*-*-iso8859-1"</i></p>
+<p> It is generally a good idea to use wildcards for any portion of the
+ XLFD that your program does not care about specifically, since that
+ will improve the chances of finding a matching font.</p>
+</font></dd></dl>
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

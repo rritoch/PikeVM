@@ -1,0 +1,233 @@
+<html><head><title>Pike Reference Manual - Parser.RCS()-&gt;Revision</title>
+<link rel='stylesheet' href='../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../ex/predef_3A_3A/Parser.html'><b>Parser</b></a><br />
+<a href='../../../../ex/predef_3A_3A/Parser/RCS.html'><b>Parser.RCS</b></a><br />
+<b>Parser.RCS()-&gt;Revision</b><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'></table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/Parser/RCS/DeltatextIterator/value.html"><img src="../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Parser.RCS()-&gt;DeltatextIterator()-&gt;value()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/Parser/RCS/create.html">Parser.RCS()-&gt;create()<img src="../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Class Parser.RCS()-&gt;Revision</h1>
+    <dl>
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>All data tied to a particular revision of the file.</p>
+</font></dd></dl>
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>revision</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>string</font> Parser.RCS.Revision.<b><font color='#F000F0'>revision</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>the revision number (i e <font face='courier'><a href='../../../predef_3A_3A/Parser/RCS.html'>RCS</a></font> -&gt;revisions["1.1"]-&gt;revision == "1.1")</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>author</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>string</font> Parser.RCS.Revision.<b><font color='#F000F0'>author</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>the name of the user that committed the revision</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>branches</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>array</font>(<font color='#202020'>string</font>) Parser.RCS.Revision.<b><font color='#F000F0'>branches</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>when there are branches from this revision, an array of the
+ revision numbers where each branch starts, otherwise 0</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>state</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>string</font> Parser.RCS.Revision.<b><font color='#F000F0'>state</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>the state of the revision - typically "Exp" or "dead"</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>time</b></font>
+</font><dt>
+<dd><p><tt><font color='#005080'><font face='courier'><a href='../../../predef_3A_3A/Calendar/TimeRange.html'>Calendar.TimeRange</a></font></font> Parser.RCS.Revision.<b><font color='#F000F0'>time</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>the (UTC) date and time when the revision was committed (second
+ precision)</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>branch</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>string</font> Parser.RCS.Revision.<b><font color='#F000F0'>branch</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>the branch name on which this revision was committed (calculated
+ according to how cvs manages branches)</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>rcs_next</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>string</font> Parser.RCS.Revision.<b><font color='#F000F0'>rcs_next</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>the revision stored next in the rcs file, or 0 if none exists</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>ancestor</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>string</font> Parser.RCS.Revision.<b><font color='#F000F0'>ancestor</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>the revision of the ancestor of this revision, or 0 if this was
+ the initial revision</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>next</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>string</font> Parser.RCS.Revision.<b><font color='#F000F0'>next</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>the revision that succeeds this revision, or 0 if none exists</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>log</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>string</font> Parser.RCS.Revision.<b><font color='#F000F0'>log</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>the log message associated with the revision</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>lines</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>int</font> Parser.RCS.Revision.<b><font color='#F000F0'>lines</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>the number of lines this revision contained, altogether (not of
+ particular interest for binary files)</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>added</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>int</font> Parser.RCS.Revision.<b><font color='#F000F0'>added</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>the number of lines that were added from the previous revision
+ to make this revision (for the initial revision too)</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>removed</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>int</font> Parser.RCS.Revision.<b><font color='#F000F0'>removed</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>the number of lines that were removed from the previous revision
+ to make this revision</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

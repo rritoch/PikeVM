@@ -1,0 +1,109 @@
+<html><head><title>Pike Reference Manual - Gnome.StatusDocklet</title>
+<link rel='stylesheet' href='../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../..//images/pike_line_middle.gif" width="98%"><img src="../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../ex/predef_3A_3A/Gnome.html'><b>Gnome</b></a><br />
+<b>Gnome.StatusDocklet</b><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Gnome/StatusDocklet/create.html'>create()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Gnome/StatusDocklet/get_plug.html'>get_plug()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Gnome/StatusDocklet/run.html'>run()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../ex/predef_3A_3A/Gnome/Scores/set_logo_widget.html"><img src="../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Gnome.Scores()-&gt;set_logo_widget()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../ex/predef_3A_3A/Gnome/StatusDocklet/create.html">Gnome.StatusDocklet()-&gt;create()<img src="../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Class Gnome.StatusDocklet</h1>
+    <dl>
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Some apps want to embed a very small icon or widget in the panel to
+ display the status of the app. This can be done without the
+ operational overhead of an applet. The status docklet will embed a
+ 22 by 22 window inside the panel. This is not a separate applet and
+ thus is minimally intrusive to the user and is meant for very
+ temporary status displays for which a full applet would not be
+ appropriate.</p>
+<p> The way StatusDocklet works is a little different from how the
+ AppletWidget works. Firstly, StatusDocklet object is not a widget,
+ it is just an abstract GTK+ object. You create a new StatusDocklet
+ object and then bind
+ the "build_plug" signal which is emitted when the panel was
+ contacted and a widget must be built. After binding the
+ "build_plug" signal, you call run() to actually start
+ trying to contacting the panel. StatusDocklet is safe to use
+ without a panel. By default it will try to locate a panel for 15
+ minutes and after that it will give up. It will also handle panel
+ restarts by default. If it does, your widget will be destroyed and
+ "build_plug" will be emitted again when the new panel starts. Even
+ though the panel will never restart by itself, the user might not
+ run session management and thus might restart panel by hand, or due
+ to a bug, the panel might crash and restart itself.</p>
+<p> Docklets are not available in GNOME 1.0.</p>
+<p>  Signals:
+ <b>build_plug</b>
+ This signal is emitted when you actually need to build the widget
+ that you want to place inside the plug in the status docklet. It
+ should be 22 by 22, and if it is larger it will be cropped.</p>
+</font></dd></dl>
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Inherit</font>
+<font size='+1'><b>Object</b></font>
+</font><dt>
+<dd><p><font face='courier'>inherit </font><font face='courier'><a href='../../predef_3A_3A/GTK/Object.html'>GTK.Object</a></font><font face='courier'> : <font color='#F000F0'>Object</font></font></p></dd>
+</dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

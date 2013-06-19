@@ -1,0 +1,146 @@
+<html><head><title>Pike Reference Manual - Protocols.SMTP.Server()-&gt;create()</title>
+<link rel='stylesheet' href='../../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../../ex/predef_3A_3A/Protocols.html'><b>Protocols</b></a><br />
+<a href='../../../../../ex/predef_3A_3A/Protocols/SMTP.html'><b>Protocols.SMTP</b></a><br />
+<a href='../../../../../ex/predef_3A_3A/Protocols/SMTP/Server.html'><b>Protocols.SMTP.Server</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;create()</td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../../ex/predef_3A_3A/Protocols/SMTP/Server.html"><img src="../../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Protocols.SMTP.Server</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../../ex/predef_3A_3A/Protocols/SNMP.html">Protocols.SNMP<img src="../../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method Protocols.SMTP.Server()-&gt;create()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>create</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>void</font> Protocols.SMTP.Server<b>(</b><font color='#202020'>array</font>(<font color='#202020'>string</font>) <font color='#005080'>_domains</font>, <font color='#202020'>void</font>|<font color='#202020'>int</font> <font color='#005080'>port</font>, <font color='#202020'>void</font>|<font color='#202020'>string</font> <font color='#005080'>ip</font>, <font color='#202020'>function</font> <font color='#005080'>_cb_mailfrom</font>, <font color='#202020'>function</font> <font color='#005080'>_cb_rcptto</font>, <font color='#202020'>function</font> <font color='#005080'>_cb_data</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Create a receiving SMTP server. It implements RFC 2821, 2822 and 1854.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>domain</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Domains name this server relay, you need to provide at least one
+   domain (the first one will be used for MAILER-DAEMON address).
+   if you want to relay everything you can put a '*' after this
+   first domain.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>port</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Port this server listen on</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>listenip</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>IP on which server listen</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>cb_mailfrom</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Mailfrom callback function, this function will be called
+   when a client send a mail from command. This function must take a
+   string as argument (corresponding to the sender's email) and return
+   int corresponding to the SMTP code to output to the client. If you
+   return an array the first element is the SMTP code and the second
+   is the error string to display.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>cb_rcptto</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Same as cb_mailfrom but called when a client sends a rcpt to.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>cb_data</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>This function is called each time a client send a data content.
+  It must have the following synopsis:
+  int cb_data(object mime, string sender, array(string) recipients,  void|string rawdata)
+  object mime : the mime data object
+  string sender : sender of the mail (from the mailfrom command)
+  array(string) recipients : one or more recipients given by the rcpt 
+     to command
+ return : SMTP code to output to the client. If you return an array 
+   the first element is the SMTP code and the second is the error string
+   to display.</p>
+</font></dd>
+<dt><font face='Helvetica'>Example</font><dt>
+<dd><pre><p>Here is an example of silly program that does nothing except outputing
+  informations to stdout.
+ int cb_mailfrom(string mail)
+ {
+   return 250;
+ }</p>
+<p> int cb_rcptto(string email)
+ {
+   // check the user's mailbox here
+   return 250;
+ }</p>
+<p> int cb_data(object mime, string sender, array(string) recipients)
+ {
+   write(sprintf("smtpd: mailfrom=%s, to=%s, headers=%O\ndata=%s\n", 
+   sender, recipients * ", ", mime-&gt;headers, mime-&gt;getdata()));
+   // check the data and deliver the mail here
+   if(mime-&gt;body_parts)
+   {
+     foreach(mime-&gt;body_parts, object mpart)
+       write("smtpd: mpart data = %O\n", mpart-&gt;getdata());
+   }
+   return 250;
+ }</p>
+<p> int main(int argc, array(string) argv)
+ {
+   Protocols.SMTP.Server(({ "ece.fr" }), 2500, "127.0.0.1",       cb_mailfrom, cb_rcptto, cb_data);
+   return -1;
+ }</p>
+</pre></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

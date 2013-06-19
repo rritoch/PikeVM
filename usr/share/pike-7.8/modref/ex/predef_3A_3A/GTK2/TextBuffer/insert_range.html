@@ -1,0 +1,142 @@
+<html><head><title>Pike Reference Manual - GTK2.TextBuffer()-&gt;insert_range()</title>
+<link rel='stylesheet' href='../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../ex/predef_3A_3A/GTK2.html'><b>GTK2</b></a><br />
+<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer.html'><b>GTK2.TextBuffer</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/add_selection_clipboard.html'>add_selection_clipboard()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/apply_tag.html'>apply_tag()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/apply_tag_by_name.html'>apply_tag_by_name()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/backspace.html'>backspace()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/begin_user_action.html'>begin_user_action()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/copy_clipboard.html'>copy_clipboard()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/create.html'>create()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/create_child_anchor.html'>create_child_anchor()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/create_mark.html'>create_mark()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/create_tag.html'>create_tag()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/cut_clipboard.html'>cut_clipboard()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/delete.html'>delete()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/delete_interactive.html'>delete_interactive()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/delete_mark.html'>delete_mark()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/delete_mark_by_name.html'>delete_mark_by_name()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/delete_selection.html'>delete_selection()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/end_user_action.html'>end_user_action()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/get_bounds.html'>get_bounds()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/get_char_count.html'>get_char_count()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/get_end_iter.html'>get_end_iter()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/get_insert.html'>get_insert()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/get_iter_at_child_anchor.html'>get_iter_at_child_anchor()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/get_iter_at_line.html'>get_iter_at_line()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/get_iter_at_line_index.html'>get_iter_at_line_index()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/get_iter_at_line_offset.html'>get_iter_at_line_offset()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/get_iter_at_mark.html'>get_iter_at_mark()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/get_iter_at_offset.html'>get_iter_at_offset()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/get_line_count.html'>get_line_count()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/get_mark.html'>get_mark()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/get_modified.html'>get_modified()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/get_selection_bound.html'>get_selection_bound()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/get_selection_bounds.html'>get_selection_bounds()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/get_slice.html'>get_slice()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/get_start_iter.html'>get_start_iter()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/get_tag_table.html'>get_tag_table()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/get_text.html'>get_text()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/insert.html'>insert()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/insert_at_cursor.html'>insert_at_cursor()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/insert_child_anchor.html'>insert_child_anchor()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/insert_interactive.html'>insert_interactive()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/insert_interactive_at_cursor.html'>insert_interactive_at_cursor()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/insert_pixbuf.html'>insert_pixbuf()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;insert_range()</td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/insert_range_interactive.html'>insert_range_interactive()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/insert_with_tags.html'>insert_with_tags()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/insert_with_tags_by_name.html'>insert_with_tags_by_name()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/move_mark.html'>move_mark()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/move_mark_by_name.html'>move_mark_by_name()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/paste_clipboard.html'>paste_clipboard()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/place_cursor.html'>place_cursor()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/remove_all_tags.html'>remove_all_tags()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/remove_selection_clipboard.html'>remove_selection_clipboard()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/remove_tag.html'>remove_tag()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/remove_tag_by_name.html'>remove_tag_by_name()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/select_range.html'>select_range()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/set_modified.html'>set_modified()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextBuffer/set_text.html'>set_text()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/GTK2/TextBuffer/insert_pixbuf.html"><img src="../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >GTK2.TextBuffer()-&gt;insert_pixbuf()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/GTK2/TextBuffer/insert_range_interactive.html">GTK2.TextBuffer()-&gt;insert_range_interactive()<img src="../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method GTK2.TextBuffer()-&gt;insert_range()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>insert_range</b></font>
+</font><dt>
+<dd><p><tt><font color='#005080'><font face='courier'><a href='../../../predef_3A_3A/GTK2/TextBuffer.html'>GTK2.TextBuffer</a></font></font> <b><font color='#000066'>insert_range</font>(</b><font color='#005080'><font face='courier'><a href='../../../predef_3A_3A/GTK2/TextIter.html'>GTK2.TextIter</a></font></font> <font color='#005080'>iter</font>, <font color='#005080'><font face='courier'><a href='../../../predef_3A_3A/GTK2/TextIter.html'>GTK2.TextIter</a></font></font> <font color='#005080'>start</font>, <font color='#005080'><font face='courier'><a href='../../../predef_3A_3A/GTK2/TextIter.html'>GTK2.TextIter</a></font></font> <font color='#005080'>end</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Copies text, tags, and pixbufs between start and end (the order of
+ start and end doesn't matter) and inserts the copy at iter.  Used
+ instead of simply getting/inserting text because it preserves images
+ and tags.  If start and end are in a different buffer from this buffer,
+ the two buffers must share the same tag table.</p>
+<p> Implemented via emissions of the insert-text and apply-tag signals, so
+ expect those.</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

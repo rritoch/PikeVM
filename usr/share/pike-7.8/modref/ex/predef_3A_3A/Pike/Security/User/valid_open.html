@@ -1,0 +1,121 @@
+<html><head><title>Pike Reference Manual - Pike.Security.User()-&gt;valid_open()</title>
+<link rel='stylesheet' href='../../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../../ex/predef_3A_3A/Pike.html'><b>Pike</b></a><br />
+<a href='../../../../../ex/predef_3A_3A/Pike/Security.html'><b>Pike.Security</b></a><br />
+<a href='../../../../../ex/predef_3A_3A/Pike/Security/User.html'><b>Pike.Security.User</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Pike/Security/User/valid_io.html'>valid_io()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;valid_open()</td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../../ex/predef_3A_3A/Pike/Security/User/valid_io.html"><img src="../../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Pike.Security.User()-&gt;valid_io()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../../ex/predef_3A_3A/Pike/Security/call_with_creds.html">Pike.Security.call_with_creds()<img src="../../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method Pike.Security.User()-&gt;valid_open()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>valid_open</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>int</font>(0..3)|<font color='#202020'>string</font> <b><font color='#000066'>valid_open</font>(</b><font color='#202020'>string</font> <font color='#005080'>type</font>, <font color='#202020'>object</font> <font color='#005080'>current</font>, <font color='#202020'>string</font> <font color='#005080'>filename</font>, <font color='#202020'>string</font> <font color='#005080'>flags</font>, <font color='#202020'>int</font> <font color='#005080'>access</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>This callback gets called when a new file is to be opened (and
+ the <font face='courier'><a href='../../../../predef_3A_3A/Pike/Security/Creds.html'>Creds</a></font>  object has <font face='courier'><a href='../../../../predef_3A_3A/Pike/Security.html'>BIT_CONDITIONAL_IO</a></font>  set).</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>type</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>The type of file operation requested. Can either be <font face='courier'><code>"read"</code></font>
+ or <font face='courier'><code>"write"</code></font>.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>current</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>The current object, i.e. the Fd object the user is trying to open.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>filename</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>The file name requested.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>flags</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>The flag string passed to open, e.g. <font face='courier'><code>"cwt"</code></font>.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>access</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>The access flags requested for the file, e.g. <font face='courier'><code>0666</code></font>.</p>
+</font></dd>
+<dt><font face='Helvetica'>Returns</font><dt>
+<dd><font face='Helvetica'><p>The function can either return a string, which means that the user
+ is allowed to open a file, but the returned file should be opened
+ instead, or it can return an integer. The integers are intepreted
+ as follows.</p>
+<table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>0</font></tt></td><td bgcolor='white'><p>The user was not allowed to open the file. ERRNO will be set
+     to EPERM and an exception is thrown.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>1</font></tt></td><td bgcolor='white'><p>Do nothing, i.e. valid_open has initilized the <font face='courier'>current</font> 
+     object with an open file. This can (natuarally) only be returned
+     if a <font face='courier'>current</font>  object was given, which is not always the case.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>2</font></tt></td><td bgcolor='white'><p>The user was allowed to open the file and the open code proceeds.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>3</font></tt></td><td bgcolor='white'><p>The user was not allowed to open the file and an exception
+     is thrown.</p>
+</td></tr>
+</table></td></tr></table><br />
+
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

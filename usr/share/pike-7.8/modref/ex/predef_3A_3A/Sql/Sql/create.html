@@ -1,0 +1,157 @@
+<html><head><title>Pike Reference Manual - Sql.Sql()-&gt;create()</title>
+<link rel='stylesheet' href='../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../ex/predef_3A_3A/Sql.html'><b>Sql</b></a><br />
+<a href='../../../../ex/predef_3A_3A/Sql/Sql.html'><b>Sql.Sql</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/Sql/big_query.html'>big_query()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/Sql/compile_query.html'>compile_query()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;create()</td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/Sql/create_db.html'>create_db()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/Sql/decode_date.html'>decode_date()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/Sql/decode_datetime.html'>decode_datetime()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/Sql/decode_time.html'>decode_time()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/Sql/drop_db.html'>drop_db()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/Sql/encode_date.html'>encode_date()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/Sql/encode_datetime.html'>encode_datetime()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/Sql/encode_time.html'>encode_time()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/Sql/error.html'>error()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/Sql/get_charset.html'>get_charset()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/Sql/handle_extraargs.html'>handle_extraargs()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/Sql/host_info.html'>host_info()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/Sql/list_dbs.html'>list_dbs()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/Sql/list_fields.html'>list_fields()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/Sql/list_tables.html'>list_tables()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/Sql/query.html'>query()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/Sql/quote.html'>quote()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/Sql/reload.html'>reload()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/Sql/select_db.html'>select_db()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/Sql/server_info.html'>server_info()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/Sql/set_charset.html'>set_charset()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/Sql/shutdown.html'>shutdown()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/Sql/streaming_query.html'>streaming_query()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/Sql/Sql/compile_query.html"><img src="../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Sql.Sql()-&gt;compile_query()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/Sql/Sql/create_db.html">Sql.Sql()-&gt;create_db()<img src="../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method Sql.Sql()-&gt;create()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>create</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>void</font> Sql.Sql<b>(</b><font color='#202020'>string</font> <font color='#005080'>host</font><b>)</b></tt><br />
+<tt><font color='#202020'>void</font> Sql.Sql<b>(</b><font color='#202020'>string</font> <font color='#005080'>host</font>, <font color='#202020'>string</font> <font color='#005080'>db</font><b>)</b></tt><br />
+<tt><font color='#202020'>void</font> Sql.Sql<b>(</b><font color='#202020'>string</font> <font color='#005080'>host</font>, <font color='#202020'>mapping</font>(<font color='#202020'>string</font>:<font color='#202020'>int</font>|<font color='#202020'>string</font>) <font color='#005080'>options</font><b>)</b></tt><br />
+<tt><font color='#202020'>void</font> Sql.Sql<b>(</b><font color='#202020'>string</font> <font color='#005080'>host</font>, <font color='#202020'>string</font> <font color='#005080'>db</font>, <font color='#202020'>string</font> <font color='#005080'>user</font><b>)</b></tt><br />
+<tt><font color='#202020'>void</font> Sql.Sql<b>(</b><font color='#202020'>string</font> <font color='#005080'>host</font>, <font color='#202020'>string</font> <font color='#005080'>db</font>, <font color='#202020'>string</font> <font color='#005080'>user</font>, <font color='#202020'>string</font> <font color='#005080'>password</font><b>)</b></tt><br />
+<tt><font color='#202020'>void</font> Sql.Sql<b>(</b><font color='#202020'>string</font> <font color='#005080'>host</font>, <font color='#202020'>string</font> <font color='#005080'>db</font>, <font color='#202020'>string</font> <font color='#005080'>user</font>, <font color='#202020'>string</font> <font color='#005080'>password</font>, <font color='#202020'>mapping</font>(<font color='#202020'>string</font>:<font color='#202020'>int</font>|<font color='#202020'>string</font>) <font color='#005080'>options</font><b>)</b></tt><br />
+<tt><font color='#202020'>void</font> Sql.Sql<b>(</b><font color='#202020'>object</font> <font color='#005080'>host</font><b>)</b></tt><br />
+<tt><font color='#202020'>void</font> Sql.Sql<b>(</b><font color='#202020'>object</font> <font color='#005080'>host</font>, <font color='#202020'>string</font> <font color='#005080'>db</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Create a new generic SQL object.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>host</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='#202020'>object</font></tt></td><td bgcolor='white'><p>Use this object to access the SQL-database.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='#202020'>string</font></tt></td><td bgcolor='white'><p>Connect to the server specified. The string should be on the
+       format:
+       <tt>dbtype://[user[:password]@]hostname[:port][/database]</tt>
+       Use the <i>dbtype</i> protocol to connect to the database
+       server on the specified host. If the hostname is <font face='courier'><code>""</code></font>
+       then the port can be a file name to access through a
+       UNIX-domain socket or similar, e g
+       <font face='courier'><code>"mysql://root@:/tmp/mysql.sock/"</code></font>.</p>
+<p>       There is a special dbtype <font face='courier'><code>"mysqls"</code></font> which works like
+       <font face='courier'><code>"mysql"</code></font> but sets the <tt>CLIENT_SSL</tt> option and
+       loads the <tt>/etc/my.cnf</tt> config file to find the SSL
+       parameters. The same function can be achieved using the
+       <font face='courier'><code>"mysql"</code></font> dbtype.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='#202020'>int</font>(0..0)</tt></td><td bgcolor='white'><p>Access through a UNIX-domain socket or similar.</p>
+</td></tr>
+</table></td></tr></table><br />
+
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>db</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Select this database.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>user</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>User name to access the database as.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>password</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Password to access the database.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>options</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Optional mapping of options.
+   See the SQL-database documentation for the supported options.
+   (eg <font face='courier'><a href='../../../predef_3A_3A/Mysql/mysql/create.html'>Mysql.mysql()-&gt;create()</a></font> ).</p>
+</font></dd>
+<dt><font face='Helvetica'>Note</font><dt>
+<dd><font face='Helvetica'><p>In versions of Pike prior to 7.2 it was possible to leave out the
+   dbtype, but that has been deprecated, since it never worked well.</p>
+</font></dd>
+<dt><font face='Helvetica'>Note</font><dt>
+<dd><font face='Helvetica'><p>Support for <font face='courier'>options</font>  was added in Pike 7.3.</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

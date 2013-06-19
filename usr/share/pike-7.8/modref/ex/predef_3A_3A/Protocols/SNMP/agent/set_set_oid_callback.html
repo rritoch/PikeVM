@@ -1,0 +1,114 @@
+<html><head><title>Pike Reference Manual - Protocols.SNMP.agent()-&gt;set_set_oid_callback()</title>
+<link rel='stylesheet' href='../../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../../ex/predef_3A_3A/Protocols.html'><b>Protocols</b></a><br />
+<a href='../../../../../ex/predef_3A_3A/Protocols/SNMP.html'><b>Protocols.SNMP</b></a><br />
+<a href='../../../../../ex/predef_3A_3A/Protocols/SNMP/agent.html'><b>Protocols.SNMP.agent</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Protocols/SNMP/agent/clear_get_oid_callback.html'>clear_get_oid_callback()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Protocols/SNMP/agent/clear_set_oid_callback.html'>clear_set_oid_callback()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Protocols/SNMP/agent/create.html'>create()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Protocols/SNMP/agent/get_get_oid_callback.html'>get_get_oid_callback()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Protocols/SNMP/agent/get_set_oid_callback.html'>get_set_oid_callback()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Protocols/SNMP/agent/set_get_communities.html'>set_get_communities()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Protocols/SNMP/agent/set_get_oid_callback.html'>set_get_oid_callback()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Protocols/SNMP/agent/set_managers.html'>set_managers()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Protocols/SNMP/agent/set_managers_only.html'>set_managers_only()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Protocols/SNMP/agent/set_set_communities.html'>set_set_communities()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;set_set_oid_callback()</td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Protocols/SNMP/agent/set_threaded.html'>set_threaded()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../../ex/predef_3A_3A/Protocols/SNMP/agent/set_set_communities.html"><img src="../../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Protocols.SNMP.agent()-&gt;set_set_communities()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../../ex/predef_3A_3A/Protocols/SNMP/agent/set_threaded.html">Protocols.SNMP.agent()-&gt;set_threaded()<img src="../../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method Protocols.SNMP.agent()-&gt;set_set_oid_callback()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>set_set_oid_callback</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>void</font> <b><font color='#000066'>set_set_oid_callback</font>(</b><font color='#202020'>string</font> <font color='#005080'>oid</font>, <font color='#202020'>function</font> <font color='#005080'>cb</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>set the Set request callback function for an Object Identifier</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>oid</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>the string object identifier, such as 1.3.6.1.4.1.132.2
+   or an asterisk (*) to serve as the handler for all requests
+   for which a handler is specified.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>cb</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>the function to call when oid is requested by a manager
+   the function should take 3 arguments: a string containing the 
+   requested oid, the desired value, and the body of the request as a mapping.
+   The function should return an array containing 3 elements:
+   The first is a boolean indicating success or failure.
+   If success, the next 2 elements should be the SNMP data type of 
+   the result followed by the result itself.
+   If failure, the next 2 elements should be the error-status
+   such as <font face='courier'><a href='../../../../predef_3A_3A/Protocols/SNMP.html'>Protocols.SNMP.ERROR_TOOBIG</a></font>  and the second
+   is the error-index, if any.</p>
+</font></dd>
+<dt><font face='Helvetica'>Note</font><dt>
+<dd><font face='Helvetica'><p>there can be only one callback per object identifier.
+    calling this function more than once with the same oid will
+    result in the new callback replacing the existing one.</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

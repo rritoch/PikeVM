@@ -1,0 +1,150 @@
+<html><head><title>Pike Reference Manual - Calendar.Time.TimeofDay()-&gt;second_no()</title>
+<link rel='stylesheet' href='../../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../../ex/predef_3A_3A/Calendar.html'><b>Calendar</b></a><br />
+<a href='../../../../../ex/predef_3A_3A/Calendar/Time.html'><b>Calendar.Time</b></a><br />
+<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay.html'><b>Calendar.Time.TimeofDay</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/call_out.html'>call_out()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/create.html'>create()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/format_iso_short.html'>format_iso_short()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/format_iso_time.html'>format_iso_time()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/format_iso_week.html'>format_iso_week()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/format_iso_week_short.html'>format_iso_week_short()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/format_iso_ymd.html'>format_iso_ymd()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/format_mod.html'>format_mod()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/format_month.html'>format_month()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/format_month_short.html'>format_month_short()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/format_mtime.html'>format_mtime()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/format_nice.html'>format_nice()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/format_nicez.html'>format_nicez()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/format_time.html'>format_time()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/format_time_short.html'>format_time_short()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/format_time_xshort.html'>format_time_xshort()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/format_tod.html'>format_tod()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/format_week.html'>format_week()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/format_week_short.html'>format_week_short()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/format_xtime.html'>format_xtime()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/format_xtod.html'>format_xtod()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/format_ymd.html'>format_ymd()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/format_ymd_short.html'>format_ymd_short()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/format_ymd_xshort.html'>format_ymd_xshort()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/fraction_no.html'>fraction_no()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/hour.html'>hour()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/hour_no.html'>hour_no()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/hours.html'>hours()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/julian_day.html'>julian_day()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/minute.html'>minute()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/minute_no.html'>minute_no()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/minutes.html'>minutes()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/move_ns.html'>move_ns()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/move_seconds.html'>move_seconds()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/number_of_hours.html'>number_of_hours()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/number_of_minutes.html'>number_of_minutes()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/number_of_seconds.html'>number_of_seconds()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/second.html'>second()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;second_no()</td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/seconds.html'>seconds()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/set_size_ns.html'>set_size_ns()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/set_size_seconds.html'>set_size_seconds()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/unix_time.html'>unix_time()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/second.html"><img src="../../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Calendar.Time.TimeofDay()-&gt;second()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/seconds.html">Calendar.Time.TimeofDay()-&gt;seconds()<img src="../../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method Calendar.Time.TimeofDay()-&gt;second_no()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>second_no</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>int</font> <b><font color='#000066'>hour_no</font>(</b><b>)</b></tt><br />
+<tt><font color='#202020'>int</font> <b><font color='#000066'>minute_no</font>(</b><b>)</b></tt><br />
+<tt><font color='#202020'>int</font> <b><font color='#000066'>second_no</font>(</b><b>)</b></tt><br />
+<tt><font color='#202020'>float</font> <b><font color='#000066'>fraction_no</font>(</b><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'>
+
+<p>    This gives back the number of the time unit,
+    on this day. Fraction is a float number, 0&lt;=fraction&lt;1.
+function mapping datetime()
+    This gives back a mapping with the relevant
+    time information (representing the start of the period);
+    <font face='courier'><pre>
+     ([ "year":     int        // year number (2000 AD=2000, 1 BC==0)
+        "month":    int(1..)   // month of year
+        "day":      int(1..)   // day of month
+        "yearday":  int(1..)   // day of year
+        "week":     int(1..)   // week of year
+        "week_day": int(1..)   // day of week (depending on calendar)
+ 
+        "hour":     int(0..)   // hour of day, including dst
+        "minute":   int(0..59) // minute of hour
+        "second":   int(0..59) // second of minute
+        "fraction": float      // fraction of second
+        "timezone": int        // offset to utc, including dst
+ 
+        "unix":     int        // unix time
+        "julian":   float      // julian day
+     ]);
+    </pre></font></p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

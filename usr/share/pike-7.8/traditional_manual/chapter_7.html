@@ -1,0 +1,324 @@
+<html><head><title>Reference Manual for Pike v7.8 release 116</title></head>
+<body bgcolor='white' text='black'>
+<dl><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 7. Hilfe</font></td></tr></table><br />
+</dt><dd><p>Hilfe stands for Hubbes Incremental LPC Front End, and is an
+incremental Pike evaluator. As the name hints Hilfe has its roots back
+when Pike was called LPC, but none of the code from that Hilfe
+remains. Hilfe is one of the most useful tools for Pike developers,
+since it enables them to try various Pike constructions and see how
+they work. Even the most experienced Pike programmer can forget how
+the return data structure of a function looks like or if + or | is the
+best way to merge to mappings for a specific purpose.
+</p></dd>
+<dt><a name='1'></a>
+<table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 7.1. Basic operations</font></td></tr></table><br />
+</dt>
+<dd><p>In short hilfe is a command line version of pike, allowing you to
+   do real time evaluation of pike code. Simply write a line of pike
+   code and press return. If you gave hilfe a complete block of code
+   it will be evaluated and the result will be returned. Side effects will
+   also be effective, hence changing a variable will indeed change the
+   variables value. You are of course not limited to basic variable
+   types like integers and strings, or reference data types like
+   mappings and arrays. You can just as well define functions and
+   classes, enabling you to experiment with inherits, operator
+   overloading and other object oriented things. To start hilfe, just
+   execute the pike binary without any arguments.</p><p><pre>
+bash$ pike
+Pike v7.3 release 49 running Hilfe v3.5 (Incremental Pike Frontend)
+> int a=5;
+> a+3.3;
+(1) Result: 8.300000
+> (string)(enumerate(32)[*]+65);
+(2) Result: "ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`"
+> string b=(string)(enumerate(32)[*]+65);
+> b/(a+3.3);
+(3) Result: ({ /* 4 elements */
+                "ABCDEFGH",
+                "IJKLMNOPQ",
+                "RSTUVWXY",
+                "Z[\\]^_`"
+            })
+>
+</pre></p>
+<p>A history of the 512 last entered lines is kept in Hilfe. You can
+browse this list with your arrow keys up/down. When you exit Hilfe
+your history will be saved in .hilfe_history in the directory set
+in environment variable $HOME or $USERPROFILE. Next time hilfe is
+started the history is imported.</p><p>A history of the last returned results is kept and can be accessed
+from your hilfe expressions with the variable <font face='courier'><code>__</code></font>. You can
+either "address" your results with absolute addresses, e.g.
+<font face='courier'><code>__[2]</code></font> to get the second result ever, or with relative
+addresses, e.g. <font face='courier'><code>__[-1]</code></font> to get the last result. The last
+result is also available in the variable <font face='courier'><code>_</code></font>, thus
+<font face='courier'><code>_==__[-1]</code></font> is true. The magic <font face='courier'><code>_</code></font> and
+<font face='courier'><code>__</code></font> variable can be shadowed with local definitions to
+disable them, e.g. by typing <font face='courier'><code>int&nbsp;_;</code></font>. The result history
+is ten entries long by default, but it could easily be altered by
+using the <tt>set history</tt> command. Note that some Pike code only
+works when there is at most one object created from a class, which
+means that the result history must be turned off. Otherwise the
+previous object will remain in the history during the next nine
+results.</p><p>You can put a .hilferc file in the directory set in your
+environment variable $HOME or $USERPROFILE. The contents of this file
+will be evaluated in hilfe during each startup. It may contain both
+commands and Pike expressions.</p><p>One must however always remember that code entered in Hilfe does
+not always work exactly as if it was written in a stand alone Pike
+program. All variables are kept in a mapping so that their values can
+be view and altered by subsequent code lines. Every expression is
+compiled and evaluated in a wrapper which then returns the return
+value to Pike. Use the <tt>dump wrapper</tt> command after a line has
+been evaluated to see the actual code compiled.</p><p><pre>
+> int a=5;
+> a+3.3;
+(1) Result: 8.300000
+> dump wrapper
+Last compiled wrapper:
+001: #pragma unpragma_strict_types
+002: mapping(string:mixed) ___hilfe = ___Hilfe->variables;
+003: # 1
+004: mixed ___HilfeWrapper() { return (([mapping(string:int)]___hilfe)->a)+3.3; ; }
+005:
+>
+</pre></p>
+<p>Note that there are a few symbols that you can not define, since
+they are used by Hilfe.</p><table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><font face='courier'><code>___hilfe</code></font></td><td bgcolor='white'>A mapping containing all defined symbols.</td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'><code>___Hilfe</code></font></td><td bgcolor='white'>The Hilfe object.</td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'><code>___HilfeWrapper</code></font></td><td bgcolor='white'>A wrapper around the entered expression.</td></tr>
+</table></td></tr></table><br />
+</dd>
+<dt><a name='2'></a>
+<table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 7.2. Commands</font></td></tr></table><br />
+</dt>
+<dd><p>In addition to be able to enter Pike expressions, there are also a
+few commands available which controls Hilfe. To avoid having the
+commands shadowed by Pike declarations with the same name, it is also
+possible to add a dot in front of the command.</p><p><pre>
+> int help=3;
+Hilfe Warning: Command "help" no longer reachable. Use ".help" instead.
+> help
+>> +2;
+(1) Result: 5
+>
+</pre></p>
+</dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 7.2.1. Help</font></td></tr></table><br />
+</dt><dd><p>The help command displays a very short introduction to Pike and
+lists all the available commands with a brief explaination.</p><p><pre>
+> help
+
+Pike v7.3 release 49 running Hilfe v3.5 (Incremental Pike Frontend)
+Hilfe is a tool to evaluate Pike code interactively and
+incrementally. Any Pike function, expression or variable declaration
+can be entered at the command line. There are also a few extra
+commands:
+
+ dump       - Dump variables and other info.
+ exit       - Exit Hilfe.
+ help       - Show help text.
+ new        - Clears the Hilfe state.
+ quit       - Exit Hilfe.
+ set        - Change Hilfe settings.
+ start      - Start a subsystem.
+ stop       - Stop a subsystem.
+ .          - Abort current input batch.
+
+Enter "help me more" for further Hilfe help.
+>
+</pre></p>
+<p>In addition to this elementary help there are a few extra arguments
+that can be given to help to see other help pages. "<tt>help me
+more</tt>" returns a brief summary of everything in this manual
+chapter. "<tt>help hilfe todo</tt>" shows the items in the bug section
+below. "<tt>help about hilfe</tt>" show the Hilfe CVS id string and
+some other version information. In addition to these three arguments
+it is also possible to type help follow with the name of any other
+command. That will display the documentation for that command.</p></dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 7.2.2. Exit and Quit</font></td></tr></table><br />
+</dt><dd><p>It is possible to end a Hilfe session by entering the command
+<tt>exit</tt> or <tt>quit</tt>. It is also possible to exit by using
+Control+D. Note that no history will be saved if Control+C is used to
+terminate Hilfe.</p></dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 7.2.3. .</font></td></tr></table><br />
+</dt><dd><p>When a single dot is inputed into Hilfe on a new line, any
+multiline expression currently in progress to be inputed will be
+discarded.</p><p><pre>
+> foreach(getenv(); string env; string value)
+>> if(has_prefix(env, "LC_"))
+>> .
+>
+</pre></p>
+</dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 7.2.4. dump</font></td></tr></table><br />
+</dt><dd><p>Dump shows certain states within Hilfe or Pike. If only
+<tt>dump</tt> is given, Hilfe prints out the currently defined
+constants, variables, functions and programs. It also lists all active
+inherits and imports.</p><p><pre>
+> dump
+
+Constants:
+pi       : 3.141593
+
+Variables:
+int i            : 3
+float|string res : "VRkjMs28m0PCU"
+
+Functions:
+plot
+
+Inherits:
+Parser.XML.Tree
+
+Imports:
+GL
+</pre></p>
+<p><tt>dump history</tt> shows all items in the result history queue.</p><p><pre>
+> dump history
+  1 (-4) : 3102
+  2 (-3) : 8.039803
+  3 (-2) : "D3Y1jk2fOYl5M"
+  4 (-1) : "CsuBAXhfB9HWI"
+4 out of 10 possible entries used.
+</pre></p>
+<p><tt>dump memory</tt> shows the current memory usage.</p><p><pre>
+> dump memory
+             Num   Bytes
+array        511   67860 (66.3 kb)
+callable     235   16304 (15.9 kb)
+callback       3    4128 (4.0 kb)
+frame          7   16296 (15.9 kb)
+mapping      125  121262 (118.4 kb)
+multiset      42   20064 (19.6 kb)
+object       710  129024 (126.0 kb)
+program      412  2070184 (2.0 Mb)
+string      9522  743959 (726.5 kb)
+</pre></p>
+<p><tt>dump state</tt> shows the current parser state. Only useful for
+debugging Hilfe.</p><p><pre>
+> while(0) {
+>> dump state
+Current parser state
+Parenthesis stack: {
+Current pipeline: ({ /* 7 elements */
+    "while",
+    "(",
+    "0",
+    ")",
+    " ",
+    "{",
+    "\n\n"
+})
+Last token: ")"
+Current block: ")"
+</pre></p>
+<p><tt>dump wrapper</tt> show the latest Hilfe wrapper that the last
+expression was evaluated in. Useful when debugging Hilfe (i.e.
+investigating why valid Pike expressions doesn't compile).</p><p><pre>
+> int i=5;
+> i+=5;
+(1) Result: 10
+> dump wrapper
+Last compiled wrapper:
+001: #pragma unpragma_strict_types
+002: mapping(string:mixed) ___hilfe = ___Hilfe->variables;
+003: # 1
+004: mixed ___HilfeWrapper() { return (([mapping(string:int)]___hilfe)->i)+=5; ; }
+005:
+</pre></p>
+</dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 7.2.5. new</font></td></tr></table><br />
+</dt><dd><p>When <tt>new</tt> is given without any arguments it clears the
+current Hilfe state. This includes the parser state, variables,
+constants, functions, programs, inherits, imports and the history. It
+does not include the currently installed commands. Note that code in
+your .hilferc will not be reevaluated.</p><p><tt>new history</tt> removes all entries from the result history.
+<tt>new constants</tt>, <tt>new functions</tt>, <tt>new programs</tt>,
+and <tt>new variables</tt> clears all locally defined symbols of the
+given type. <tt>new imports</tt> and <tt>new inherits</tt> removes all
+imports and inherits respectively.</p></dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 7.2.6. set</font></td></tr></table><br />
+</dt><dd><p>With the <tt>set</tt> commands various settings in Hilfe can be
+changed. Set is used as <tt>"set &lt;setting&gt;
+&lt;parameter&gt;"</tt>.</p><p><b>assembler_debug</b> Changes the level of assembler debug used
+when evaluating expressions in Pike. Requires that Pike is compiled
+with RTL debug.</p><p><b>compiler_trace</b> Changes the level of compiler trace used when
+evaluating expressions in Pike. Requires that Pike is compiled with
+RTL debug.</p><p><b>debug</b> Changes the level of debug used when evaluating
+expressions in Pike. Requires that Pike is compiled with RTL debug.</p><p><b>format</b> Changes the formatting of the result values from
+evaluated Pike expressions. Currently the following set format
+parameters are available:</p><table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'>default</td><td bgcolor='white'>The normal result formatting.</td></tr>
+<tr valign='top'><td bgcolor='white'>bench</td><td bgcolor='white'>A result formatting extended with compilation and
+evaluation times.</td></tr>
+<tr valign='top'><td bgcolor='white'>sprintf</td><td bgcolor='white'>The result formatting will be decided by the succeeding
+Pike string. The sprintf will be given the arguments shown in
+the table below.</td></tr>
+</table></td></tr></table><br />
+<table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'>0</td><td bgcolor='white'>The result as a string.</td></tr>
+<tr valign='top'><td bgcolor='white'>1</td><td bgcolor='white'>The result number in the history.</td></tr>
+<tr valign='top'><td bgcolor='white'>2</td><td bgcolor='white'>The result in its native type.</td></tr>
+<tr valign='top'><td bgcolor='white'>3</td><td bgcolor='white'>The compilation time as a string.</td></tr>
+<tr valign='top'><td bgcolor='white'>4</td><td bgcolor='white'>The evaluation time as a string.</td></tr>
+<tr valign='top'><td bgcolor='white'>5</td><td bgcolor='white'>The compilation time in nanoseconds as an int.</td></tr>
+<tr valign='top'><td bgcolor='white'>6</td><td bgcolor='white'>The evaluation time in nanoseconds as an int.</td></tr>
+</table></td></tr></table><br />
+<p><pre>
+> 1+2/3.0;
+(1) Result: 1.666667
+> set format bench
+> 1+2/3.0;
+Result 2: 1.666667
+Compilation: 573ns, Execution: 6ns
+> set format sprintf "%s (%[2]t)\n"
+> 1+2/3.0;
+1.666667 (float)
+> set format sprintf "%s (%d/%[3]s/%[4]s)\n"
+> 1+2/3.0;
+1.666667 (4/575ns/6ns)
+</pre></p>
+<p><b>hedda</b> Initializes some variables for quick access, unless
+they are already defined. Hilfe attempts to do the following
+declarations: mixed foo, mixed bar, int i, float f=0.0, mapping
+m=([]), array a=({}) and string s="".</p><p><b>history</b> Change the maximum number of entries that are kept in
+the result history. Default is 10. When dealing with objects of which
+there can only exist one copy you should set history to 0.</p><p><b>trace</b> Changes the level of trace used when evaluating expressions
+in Pike. Possible values are:</p><table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'>0</td><td bgcolor='white'>Off</td></tr>
+<tr valign='top'><td bgcolor='white'>1</td><td bgcolor='white'>Calls to Pike functions are printed.</td></tr>
+<tr valign='top'><td bgcolor='white'>2</td><td bgcolor='white'>Calls to buitin functions are printed.</td></tr>
+<tr valign='top'><td bgcolor='white'>3</td><td bgcolor='white'>Every opcode interpreted is printed.</td></tr>
+<tr valign='top'><td bgcolor='white'>4</td><td bgcolor='white'>Arguments to these opcodes are printed as well.</td></tr>
+</table></td></tr></table><br />
+<p><b>warnings</b> Change the current level of warnings checking.
+Possible values are:</p><table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'>off</td><td bgcolor='white'>No warnings are shown.</td></tr>
+<tr valign='top'><td bgcolor='white'>on</td><td bgcolor='white'>Normal warnings are shown.</td></tr>
+<tr valign='top'><td bgcolor='white'>strict</td><td bgcolor='white'>Try a little harder to show warnings.</td></tr>
+</table></td></tr></table><br />
+</dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 7.2.7. start and stop</font></td></tr></table><br />
+</dt><dd><p>Start and stop turns various subsystems in Hilfe on and off.
+Currently there are two subsystems implemented in Hilfe, backend and
+logging.</p></dd>
+<dt><a name='3'></a>
+<table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 7.3. Bugs and possible improvements</font></td></tr></table><br />
+</dt>
+<dd><ul>
+<li>Hilfe can not handle sscanf statements like
+  <expr>int a = sscanf("12", "%d", int b);</expr></li>
+<li>The variable scope is not correctly adjusted for sscanf
+  constructions like <expr>sscanf(x, "%2d%2d", int a, int b);</expr></li>
+<li><expr>int x=x;</expr> does not generate an error when <expr>x</expr> is undefined.</li>
+<li>Hilfe can not handle enums.</li>
+<li>Hilfe can not handle typedefs.</li>
+<li>Hilfe can not handle implicit lambdas.</li>
+<li>Hilfe can not handle unnamed classes.</li>
+<li>Hilfe can not handle named lambdas.</li>
+<li>Hilfe should possibly handle imports better, e.g. overwrite the
+  local variables/constants/functions/programs.</li>
+<li>Filter exit/quit from history. Could be done by adding a 'pop'
+  method to Readline.History and calling it from StdinHilfe's
+  destroy.</li>
+<li>Add some better multiline edit support.</li>
+<li>Tab completion of variable and module names.</li>
+</ul></dd></dl></body></html>

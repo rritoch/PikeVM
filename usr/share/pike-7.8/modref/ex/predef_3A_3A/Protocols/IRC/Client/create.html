@@ -1,0 +1,131 @@
+<html><head><title>Pike Reference Manual - Protocols.IRC.Client()-&gt;create()</title>
+<link rel='stylesheet' href='../../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../../ex/predef_3A_3A/Protocols.html'><b>Protocols</b></a><br />
+<a href='../../../../../ex/predef_3A_3A/Protocols/IRC.html'><b>Protocols.IRC</b></a><br />
+<a href='../../../../../ex/predef_3A_3A/Protocols/IRC/Client.html'><b>Protocols.IRC.Client</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Protocols/IRC/Client/close.html'>close()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;create()</td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../../ex/predef_3A_3A/Protocols/IRC/Client/close.html"><img src="../../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Protocols.IRC.Client()-&gt;close()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../../ex/predef_3A_3A/Protocols/IRC/Person.html">Protocols.IRC.Person<img src="../../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method Protocols.IRC.Client()-&gt;create()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>create</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>void</font> Protocols.IRC.Client<b>(</b><font color='#202020'>string</font> <font color='#005080'>server</font>, <font color='#202020'>void</font>|<font color='#202020'>mapping</font>(<font color='#202020'>string</font>:<font color='#202020'>mixed</font>) <font color='#005080'>options</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>server</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>The IRC server to connect to.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>options</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>An optional mapping with additional IRC client options.</p>
+<table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"port"</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'><p>Defaults to 6667.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"user"</font> : <font color='#202020'>string</font></tt></td><td bgcolor='white'><p>Defaults to <font face='courier'><code>"unknown"</code></font> on systems without <font face='courier'><a href='../../../../predef_3A_3A/getpwuid.html'>getpwuid</a></font>  and
+       <font face='courier'>getuid</font>  and to <font face='courier'><code>getpwuid(getuid())[0]</code></font> on systems with.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"nick"</font> : <font color='#202020'>string</font></tt></td><td bgcolor='white'><p>Defaults to <font face='courier'><code>"Unknown"</code></font> on systems without <font face='courier'><a href='../../../../predef_3A_3A/getpwuid.html'>getpwuid</a></font>  and
+       <font face='courier'>getuid</font>  and to <font face='courier'><code>String.capitalize(getpwuid(getuid())[0])</code></font>
+       on systems with.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"pass"</font> : <font color='#202020'>string</font></tt></td><td bgcolor='white'><p>Server password, if any. Public servers seldom require this.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"realname"</font> : <font color='#202020'>string</font></tt></td><td bgcolor='white'><p>Defaults to <font face='courier'><code>"Mr.&nbsp;Anonymous"</code></font> on systems without <font face='courier'><a href='../../../../predef_3A_3A/getpwuid.html'>getpwuid</a></font> 
+       and <font face='courier'>getuid</font>  and to <font face='courier'><code>getpwuid(getuid())[4]</code></font> on systems with.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"host"</font> : <font color='#202020'>string</font></tt></td><td bgcolor='white'><p>Defaults to <font face='courier'><code>"localhost"</code></font> on systems without <font face='courier'>uname</font>  and
+       to <font face='courier'><code>uname()-&gt;nodename</code></font> on systems with.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"ping_interval"</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'><p>Defaults to 120.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"ping_timeout"</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'><p>Defaults to 120.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"connection_lost"</font> : <font color='#202020'>function</font>(<font color='#202020'>void</font>:<font color='#202020'>void</font>)</tt></td><td bgcolor='white'><p>This function is called when the connection to the IRC server is
+       lost or when a ping isn't answered with a pong within the time
+       set by the <tt>ping_timeout</tt> option. The default behaviour is
+       to complain on stderr and self destruct.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"error_notify"</font> : <font color='#202020'>function</font>(<font color='#202020'>mixed</font> ... :<font color='#202020'>void</font>)</tt></td><td bgcolor='white'><p>This function is called when a KILL or ERROR command is recieved
+       from the IRC server.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"system_notify"</font> : <font color='#202020'>function</font>(<font color='#202020'>string</font>:<font color='#202020'>void</font>)</tt></td><td bgcolor='white'>&nbsp;</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"motd_notify"</font> : <font color='#202020'>function</font>(<font color='#202020'>string</font>:<font color='#202020'>void</font>)</tt></td><td bgcolor='white'>&nbsp;</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"error_nickinuse"</font> : <font color='#202020'>function</font>(<font color='#202020'>string</font>:)</tt></td><td bgcolor='white'>&nbsp;</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"generic_notify"</font> : <font color='#202020'>function</font>(<font color='#202020'>string</font>:)</tt></td><td bgcolor='white'><p>The arguments are from, type, to, message and extra.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"quit_notify"</font> : <font color='#202020'>function</font>(<font color='#202020'>string</font>:)</tt></td><td bgcolor='white'><p>The arguments are who and why.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"privmsg_notify"</font> : <font color='#202020'>function</font>(<font color='#005080'><font face='courier'><a href='../../../../predef_3A_3A/Protocols/IRC/Person.html'>Person</a></font></font>:)</tt></td><td bgcolor='white'><p>The arguments are originator, message and to.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"notice_notify"</font> : <font color='#202020'>function</font>(<font color='#005080'><font face='courier'><a href='../../../../predef_3A_3A/Protocols/IRC/Person.html'>Person</a></font></font>:)</tt></td><td bgcolor='white'><p>The arguments are originator, message and to.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"nick_notify"</font> : <font color='#202020'>function</font>(<font color='#005080'><font face='courier'><a href='../../../../predef_3A_3A/Protocols/IRC/Person.html'>Person</a></font></font>:)</tt></td><td bgcolor='white'><p>The arguments are originator and to.</p>
+</td></tr>
+</table></td></tr></table><br />
+
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

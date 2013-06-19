@@ -1,0 +1,100 @@
+<html><head><title>Pike Reference Manual - GTK2.IconSet()-&gt;add_source()</title>
+<link rel='stylesheet' href='../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../ex/predef_3A_3A/GTK2.html'><b>GTK2</b></a><br />
+<a href='../../../../ex/predef_3A_3A/GTK2/IconSet.html'><b>GTK2.IconSet</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;add_source()</td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/IconSet/copy.html'>copy()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/IconSet/create.html'>create()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/IconSet/get_sizes.html'>get_sizes()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/GTK2/IconSet.html"><img src="../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >GTK2.IconSet</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/GTK2/IconSet/copy.html">GTK2.IconSet()-&gt;copy()<img src="../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method GTK2.IconSet()-&gt;add_source()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>add_source</b></font>
+</font><dt>
+<dd><p><tt><font color='#005080'><font face='courier'><a href='../../../predef_3A_3A/GTK2/IconSet.html'>GTK2.IconSet</a></font></font> <b><font color='#000066'>add_source</font>(</b><font color='#005080'><font face='courier'><a href='../../../predef_3A_3A/GTK2/IconSource.html'>GTK2.IconSource</a></font></font> <font color='#005080'>source</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Icon sets have a list of GTK2.IconSource, which they use as base icons for
+ rendering icons in different states and sizes.  Icons are scaled, made to
+ look insensitive, etc. in render_icon(), but GTK2.IconSet needs base images
+ to work with.  The base images and when to use them are described by a
+ GTK2.IconSource.</p>
+<p> This function copies source, so you can reuse the same source immediately
+ without affecting the icon set.</p>
+<p> An example of when you'd use this function:  a web browser's "Back to
+ Previous Page" icon might point in a different direciton in Hebrew and in
+ English; it might look different when insensitive; and it might change size
+ depending on toolbar mode (small/large icons).  So a single icon set would
+ contain all those variants of the icon, and you might add a separate source
+ for each one.</p>
+<p> You should nearly always add a "default" icon source with all fields
+ wildcarded, which will be used as a fallback if no more specific source
+ matches.  GTK2.IconSet always prefers more specific icon sources to more
+ generic icon sources.  The order in which you add the sources to the icon
+ set does not matter.</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

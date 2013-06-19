@@ -1,0 +1,239 @@
+<html><head><title>Pike Reference Manual - GL.glIsEnabled()</title>
+<link rel='stylesheet' href='../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../..//images/pike_line_middle.gif" width="98%"><img src="../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../ex/predef_3A_3A/GL.html'><b>GL</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glAccum.html'>glAccum()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glAlphaFunc.html'>glAlphaFunc()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glArrayElement.html'>glArrayElement()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glBegin.html'>glBegin()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glBindTexture.html'>glBindTexture()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glBlendFunc.html'>glBlendFunc()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glCallList.html'>glCallList()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glClear.html'>glClear()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glClearAccum.html'>glClearAccum()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glClearColor.html'>glClearColor()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glClearDepth.html'>glClearDepth()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glClearIndex.html'>glClearIndex()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glClearStencil.html'>glClearStencil()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glColor.html'>glColor()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glColorMask.html'>glColorMask()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glColorMaterial.html'>glColorMaterial()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glCopyPixels.html'>glCopyPixels()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glCopyTexImage1D.html'>glCopyTexImage1D()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glCopyTexImage2D.html'>glCopyTexImage2D()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glCopyTexSubImage1D.html'>glCopyTexSubImage1D()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glCopyTexSubImage2D.html'>glCopyTexSubImage2D()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glCullFace.html'>glCullFace()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glDeleteLists.html'>glDeleteLists()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glDepthFunc.html'>glDepthFunc()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glDepthMask.html'>glDepthMask()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glDepthRange.html'>glDepthRange()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glDisable.html'>glDisable()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glDisableClientState.html'>glDisableClientState()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glDrawArrays.html'>glDrawArrays()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glDrawBuffer.html'>glDrawBuffer()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glDrawPixels.html'>glDrawPixels()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glEdgeFlag.html'>glEdgeFlag()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glEnable.html'>glEnable()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glEnableClientState.html'>glEnableClientState()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glEnd.html'>glEnd()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glEndList.html'>glEndList()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glEvalCoord.html'>glEvalCoord()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glEvalPoint.html'>glEvalPoint()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glFinish.html'>glFinish()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glFlush.html'>glFlush()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glFog.html'>glFog()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glFrontFace.html'>glFrontFace()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glFrustum.html'>glFrustum()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glGenLists.html'>glGenLists()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glGetError.html'>glGetError()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glGetString.html'>glGetString()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glHint.html'>glHint()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glIndex.html'>glIndex()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glIndexMask.html'>glIndexMask()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glInitNames.html'>glInitNames()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;glIsEnabled()</td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glIsList.html'>glIsList()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glIsTexture.html'>glIsTexture()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glLight.html'>glLight()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glLightModel.html'>glLightModel()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glLineStipple.html'>glLineStipple()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glLineWidth.html'>glLineWidth()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glListBase.html'>glListBase()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glLoadIdentity.html'>glLoadIdentity()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glLoadMatrix.html'>glLoadMatrix()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glLoadName.html'>glLoadName()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glLogicOp.html'>glLogicOp()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glMaterial.html'>glMaterial()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glMatrixMode.html'>glMatrixMode()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glMultMatrix.html'>glMultMatrix()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glNewList.html'>glNewList()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glNormal.html'>glNormal()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glOrtho.html'>glOrtho()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPassThrough.html'>glPassThrough()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPixelZoom.html'>glPixelZoom()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPointSize.html'>glPointSize()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPolygonMode.html'>glPolygonMode()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPolygonOffset.html'>glPolygonOffset()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPopAttrib.html'>glPopAttrib()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPopClientAttrib.html'>glPopClientAttrib()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPopMatrix.html'>glPopMatrix()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPopName.html'>glPopName()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPushAttrib.html'>glPushAttrib()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPushClientAttrib.html'>glPushClientAttrib()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPushMatrix.html'>glPushMatrix()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPushName.html'>glPushName()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glRasterPos.html'>glRasterPos()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glReadBuffer.html'>glReadBuffer()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glRenderMode.html'>glRenderMode()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glRotate.html'>glRotate()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glScale.html'>glScale()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glScissor.html'>glScissor()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glShadeModel.html'>glShadeModel()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glStencilFunc.html'>glStencilFunc()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glStencilMask.html'>glStencilMask()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glStencilOp.html'>glStencilOp()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glTexCoord.html'>glTexCoord()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glTexEnv.html'>glTexEnv()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glTexGen.html'>glTexGen()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glTexImage2D.html'>glTexImage2D()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glTexParameter.html'>glTexParameter()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glTexSubImage2D.html'>glTexSubImage2D()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glTranslate.html'>glTranslate()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glVertex.html'>glVertex()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glViewport.html'>glViewport()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../ex/predef_3A_3A/GL/glInitNames.html"><img src="../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >GL.glInitNames()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../ex/predef_3A_3A/GL/glIsList.html">GL.glIsList()<img src="../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method GL.glIsEnabled()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>glIsEnabled</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>int</font> <b><font color='#000066'>glIsEnabled</font>(</b><font color='#202020'>int</font> <font color='#005080'>cap</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'><a href='../../predef_3A_3A/GL/glIsEnabled.html'>glIsEnabled</a></font>  returns <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_TRUE</a></font>  if <i>cap</i> is an enabled capability
+and returns <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_FALSE</a></font>  otherwise.
+Initially all capabilities except <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_DITHER</a></font>  are disabled;
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_DITHER</a></font>  is initially enabled.</p>
+<p>The following capabilities are accepted for <i>cap</i>:</p>
+<p>.TS
+lb lb
+l l l.
+Constant	See
+_</p>
+<p><font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_ALPHA_TEST</a></font> <font face='courier'><a href='../../predef_3A_3A/GL/glAlphaFunc.html'>glAlphaFunc</a></font> 
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_AUTO_NORMAL</a></font> <font face='courier'><a href='../../predef_3A_3A/GL/glEvalCoord.html'>glEvalCoord</a></font> 
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_BLEND</a></font> <font face='courier'><a href='../../predef_3A_3A/GL/glBlendFunc.html'>glBlendFunc</a></font> , <font face='courier'><a href='../../predef_3A_3A/GL/glLogicOp.html'>glLogicOp</a></font> 
+<font face='courier'>GL_CLIP_PLANE</font> <i>i</i><font face='courier'>glClipPlane</font> 
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_COLOR_ARRAY</a></font> <font face='courier'>glColorPointer</font> 
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_COLOR_LOGIC_OP</a></font> <font face='courier'><a href='../../predef_3A_3A/GL/glLogicOp.html'>glLogicOp</a></font> 
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_COLOR_MATERIAL</a></font> <font face='courier'><a href='../../predef_3A_3A/GL/glColorMaterial.html'>glColorMaterial</a></font> 
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_CULL_FACE</a></font> <font face='courier'><a href='../../predef_3A_3A/GL/glCullFace.html'>glCullFace</a></font> 
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_DEPTH_TEST</a></font> <font face='courier'><a href='../../predef_3A_3A/GL/glDepthFunc.html'>glDepthFunc</a></font> , <font face='courier'><a href='../../predef_3A_3A/GL/glDepthRange.html'>glDepthRange</a></font> 
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_DITHER</a></font> <font face='courier'><a href='../../predef_3A_3A/GL/glEnable.html'>glEnable</a></font> 
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_EDGE_FLAG_ARRAY</a></font> <font face='courier'>glEdgeFlagPointer</font> 
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_FOG</a></font> <font face='courier'><a href='../../predef_3A_3A/GL/glFog.html'>glFog</a></font> 
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_INDEX_ARRAY</a></font> <font face='courier'>glIndexPointer</font> 
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_INDEX_LOGIC_OP</a></font> <font face='courier'><a href='../../predef_3A_3A/GL/glLogicOp.html'>glLogicOp</a></font> 
+<font face='courier'>GL_LIGHT</font> <i>i</i><font face='courier'><a href='../../predef_3A_3A/GL/glLightModel.html'>glLightModel</a></font> , <font face='courier'><a href='../../predef_3A_3A/GL/glLight.html'>glLight</a></font> 
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_LIGHTING</a></font> <font face='courier'><a href='../../predef_3A_3A/GL/glMaterial.html'>glMaterial</a></font> , <font face='courier'><a href='../../predef_3A_3A/GL/glLightModel.html'>glLightModel</a></font> , <font face='courier'><a href='../../predef_3A_3A/GL/glLight.html'>glLight</a></font> 
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_LINE_SMOOTH</a></font> <font face='courier'><a href='../../predef_3A_3A/GL/glLineWidth.html'>glLineWidth</a></font> 
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_LINE_STIPPLE</a></font> <font face='courier'><a href='../../predef_3A_3A/GL/glLineStipple.html'>glLineStipple</a></font> 
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_MAP1_COLOR_4</a></font> <font face='courier'>glMap1</font> , <font face='courier'>glMap2</font> 
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_MAP2_TEXTURE_COORD_2</a></font> <font face='courier'>glMap2</font> 
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_MAP2_TEXTURE_COORD_3</a></font> <font face='courier'>glMap2</font> 
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_MAP2_TEXTURE_COORD_4</a></font> <font face='courier'>glMap2</font> 
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_MAP2_VERTEX_3</a></font> <font face='courier'>glMap2</font> 
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_MAP2_VERTEX_4</a></font> <font face='courier'>glMap2</font> 
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_NORMAL_ARRAY</a></font> <font face='courier'>glNormalPointer</font> 
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_NORMALIZE</a></font> <font face='courier'><a href='../../predef_3A_3A/GL/glNormal.html'>glNormal</a></font> 
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_POINT_SMOOTH</a></font> <font face='courier'><a href='../../predef_3A_3A/GL/glPointSize.html'>glPointSize</a></font> 
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_POLYGON_SMOOTH</a></font> <font face='courier'><a href='../../predef_3A_3A/GL/glPolygonMode.html'>glPolygonMode</a></font> 
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_POLYGON_OFFSET_FILL</a></font> <font face='courier'><a href='../../predef_3A_3A/GL/glPolygonOffset.html'>glPolygonOffset</a></font> 
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_POLYGON_OFFSET_LINE</a></font> <font face='courier'><a href='../../predef_3A_3A/GL/glPolygonOffset.html'>glPolygonOffset</a></font> 
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_POLYGON_OFFSET_POINT</a></font> <font face='courier'><a href='../../predef_3A_3A/GL/glPolygonOffset.html'>glPolygonOffset</a></font> 
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_POLYGON_STIPPLE</a></font> <font face='courier'>glPolygonStipple</font> 
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_SCISSOR_TEST</a></font> <font face='courier'><a href='../../predef_3A_3A/GL/glScissor.html'>glScissor</a></font> 
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_STENCIL_TEST</a></font> <font face='courier'><a href='../../predef_3A_3A/GL/glStencilFunc.html'>glStencilFunc</a></font> , <font face='courier'><a href='../../predef_3A_3A/GL/glStencilOp.html'>glStencilOp</a></font> 
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_TEXTURE_1D</a></font> <font face='courier'>glTexImage1D</font> 
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_TEXTURE_2D</a></font> <font face='courier'><a href='../../predef_3A_3A/GL/glTexImage2D.html'>glTexImage2D</a></font> 
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_TEXTURE_COORD_ARRAY</a></font> <font face='courier'>glTexCoordPointer</font> 
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_TEXTURE_GEN_Q</a></font> <font face='courier'><a href='../../predef_3A_3A/GL/glTexGen.html'>glTexGen</a></font> 
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_TEXTURE_GEN_R</a></font> <font face='courier'><a href='../../predef_3A_3A/GL/glTexGen.html'>glTexGen</a></font> 
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_TEXTURE_GEN_S</a></font> <font face='courier'><a href='../../predef_3A_3A/GL/glTexGen.html'>glTexGen</a></font> 
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_TEXTURE_GEN_T</a></font> <font face='courier'><a href='../../predef_3A_3A/GL/glTexGen.html'>glTexGen</a></font> 
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_VERTEX_ARRAY</a></font> <font face='courier'>glVertexPointer</font> 
+.TE</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>cap</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Specifies a symbolic constant indicating a GL capability.</p>
+</font></dd>
+<dt><font face='Helvetica'>Throws</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_INVALID_ENUM</a></font>  is generated if <i>cap</i> is not an accepted value.</p>
+<p><font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_INVALID_OPERATION</a></font>  is generated if <font face='courier'><a href='../../predef_3A_3A/GL/glIsEnabled.html'>glIsEnabled</a></font> 
+is executed between the execution of <font face='courier'><a href='../../predef_3A_3A/GL/glBegin.html'>glBegin</a></font> 
+and the corresponding execution of <font face='courier'><a href='../../predef_3A_3A/GL/glEnd.html'>glEnd</a></font> .</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

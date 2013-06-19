@@ -1,0 +1,131 @@
+<html><head><title>Pike Reference Manual - Calendar.TZnames</title>
+<link rel='stylesheet' href='../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../..//images/pike_line_middle.gif" width="98%"><img src="../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../ex/predef_3A_3A/Calendar.html'><b>Calendar</b></a><br />
+<b>Calendar.TZnames</b><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Calendar/TZnames/_zone_tab.html'>_zone_tab()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Calendar/TZnames/zone_tab.html'>zone_tab()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Calendar/TZnames/zonenames.html'>zonenames()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../ex/predef_3A_3A/Calendar/Swedish.html"><img src="../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Calendar.Swedish</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../ex/predef_3A_3A/Calendar/TZnames/_zone_tab.html">Calendar.TZnames._zone_tab()<img src="../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Module Calendar.TZnames</h1>
+    <dl>
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'>
+
+<p>This module contains listnings of available timezones,
+in some different ways</p>
+</font></dd></dl>
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>zones</b></font>
+</font><dt>
+<dd><p><tt>constant Calendar.TZnames.<font color='#F000F0'>zones</font> = <font color='#202020'>mapping</font>(<font color='#202020'>string</font>:<font color='#202020'>array</font>(<font color='#202020'>string</font>))</tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'>
+
+<p>This constant is a mapping that can be
+used to loop over to get all the region-based
+timezones.</p>
+<p>It looks like this:
+<font face='courier'><pre>
+([ "America": ({ "Los_Angeles", "Chicago", <i>[...]</i> }),
+   "Europe":  ({ "Stockholm", <i>[...]</i> }),
+   <i>[...]</i> }),
+</pre></font></p>
+<p>Please note that loading all the timezones can take some
+time, since they are generated and compiled on the fly.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>abbr2zones</b></font>
+</font><dt>
+<dd><p><tt>constant Calendar.TZnames.<font color='#F000F0'>abbr2zones</font> = <font color='#202020'>mapping</font>(<font color='#202020'>string</font>:<font color='#202020'>array</font>(<font color='#202020'>string</font>))</tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'>
+
+<p>This mapping is used to look up abbreviation
+to the possible regional zones.</p>
+<p>It looks like this:
+<font face='courier'><pre>
+([ "CET": ({ "Europe/Stockholm", <i>[...]</i> }),
+   "CST": ({ "America/Chicago", "Australia/Adelaide", <i>[...]</i> }),
+   <i>[...]</i> }),
+</pre></font></p>
+<p>Note this: Just because it's noted "CST" doesn't mean it's a
+unique timezone. There is about 7 *different* timezones that
+uses "CST" as abbreviation; not at the same time,
+though, so the DWIM routines checks this before
+it's satisfied. Same with some other timezones.</p>
+<p>For most timezones, there is a number of region timezones that for the
+given time are equal. This is because region timezones include rules
+about local summer time shifts and possible historic shifts.</p>
+<p>The <font face='courier'>YMD.parse</font>  functions can handle timezone abbreviations
+by guessing.</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,239 @@
+<html><head><title>Pike Reference Manual - Image.PSD.__decode()</title>
+<link rel='stylesheet' href='../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../ex/predef_3A_3A/Image.html'><b>Image</b></a><br />
+<a href='../../../../ex/predef_3A_3A/Image/PSD.html'><b>Image.PSD</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;__decode()</td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/PSD/_decode.html'>_decode()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/PSD/decode.html'>decode()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/PSD/decode_layers.html'>decode_layers()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/Image/PSD.html"><img src="../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Image.PSD</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/Image/PSD/_decode.html">Image.PSD._decode()<img src="../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method Image.PSD.__decode()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>__decode</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>mapping</font> <b><font color='#000066'>__decode</font>(</b><font color='#202020'>string</font>|<font color='#202020'>mapping</font> <font color='#005080'>data</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Decodes a PSD image to a mapping, defined as follows.</p>
+<table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"channels"</font> : <font color='#202020'>int</font>(1..24)</tt></td><td bgcolor='white'><p>The number of channels in the image, including any alpha channels.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"height"</font> : <font color='#202020'>int</font>(1..30000)</tt></td><td bgcolor='white' rowspan='2'><p>The image dimensions.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"width"</font> : <font color='#202020'>int</font>(1..30000)</tt></td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"compression"</font> : <font color='#202020'>int</font>(0..1)</tt></td><td bgcolor='white'><p>1 if the image is compressed, 0 if not.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"depth"</font> : <font color='#202020'>int</font>(1..1)|<font color='#202020'>int</font>(8..8)|<font color='#202020'>int</font>(16..16)</tt></td><td bgcolor='white'><p>The number of bits per channel.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"mode"</font> : <font color='#202020'>int</font>(0..4)|<font color='#202020'>int</font>(7..9)</tt></td><td bgcolor='white'><p>The color mode of the file.</p>
+<table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>0</font></tt></td><td bgcolor='white'><p>Bitmap</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>1</font></tt></td><td bgcolor='white'><p>Greyscale</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>2</font></tt></td><td bgcolor='white'><p>Indexed</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>3</font></tt></td><td bgcolor='white'><p>RGB</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>4</font></tt></td><td bgcolor='white'><p>CMYK</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>7</font></tt></td><td bgcolor='white'><p>Multichannel</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>8</font></tt></td><td bgcolor='white'><p>Duotone</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>9</font></tt></td><td bgcolor='white'><p>Lab</p>
+</td></tr>
+</table></td></tr></table><br />
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"color_data"</font> : <font color='#202020'>string</font></tt></td><td bgcolor='white'><p>Raw color data.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"image_data"</font> : <font color='#202020'>string</font></tt></td><td bgcolor='white'><p>Ram image data.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"resources"</font> : <font color='#202020'>mapping</font>(<font color='#202020'>string</font>|<font color='#202020'>int</font>:<font color='#202020'>mixed</font>)</tt></td><td bgcolor='white'><p>Additional image data. Se mappping below.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"layers"</font> : <font color='#202020'>array</font>(<font color='#202020'>mapping</font>)</tt></td><td bgcolor='white'><p>An array with the layers of the image. See mapping below.</p>
+</td></tr>
+</table></td></tr></table><br />
+<p>The resources mapping. Unknown resources will be identified
+ by their ID number (as an int).</p>
+<table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"caption"</font> : <font color='#202020'>string</font></tt></td><td bgcolor='white'><p>Image caption.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"url"</font> : <font color='#202020'>string</font></tt></td><td bgcolor='white'><p>Image associated URL.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"active_layer"</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'><p>Which layer is active.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"guides"</font> : <font color='#202020'>array</font>(<font color='#202020'>mapping</font>(<font color='#202020'>string</font>:<font color='#202020'>int</font>))</tt></td><td bgcolor='white'><p>An array with all guides stored in the image file.</p>
+<table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"pos"</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'><p>The position of the guide.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"vertical"</font> : <font color='#202020'>int</font>(0..1)</tt></td><td bgcolor='white'><p>1 if the guide is vertical, 0 if it is horizontal.</p>
+</td></tr>
+</table></td></tr></table><br />
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"resinof"</font> : <font color='#202020'>mapping</font>(<font color='#202020'>string</font>:<font color='#202020'>int</font>)</tt></td><td bgcolor='white'><p>Resolution information</p>
+<table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"hres"</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white' rowspan='6'><p>FIXME: Document these.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"hres_unit"</font> : <font color='#202020'>int</font></tt></td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"width_unit"</font> : <font color='#202020'>int</font></tt></td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"vres"</font> : <font color='#202020'>int</font></tt></td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"vres_unit"</font> : <font color='#202020'>int</font></tt></td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"height_unit"</font> : <font color='#202020'>int</font></tt></td></tr>
+</table></td></tr></table><br />
+</td></tr>
+</table></td></tr></table><br />
+<p>The layer mapping:</p>
+<table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"top"</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white' rowspan='4'><p>The rectangle containing the contents of the layer.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"left"</font> : <font color='#202020'>int</font></tt></td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"right"</font> : <font color='#202020'>int</font></tt></td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"bottom"</font> : <font color='#202020'>int</font></tt></td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"mask_top"</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white' rowspan='5'><p>FIXME: Document these</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"mask_left"</font> : <font color='#202020'>int</font></tt></td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"mask_right"</font> : <font color='#202020'>int</font></tt></td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"mask_bottom"</font> : <font color='#202020'>int</font></tt></td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"mask_flags"</font> : <font color='#202020'>int</font></tt></td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"opacity"</font> : <font color='#202020'>int</font>(0..255)</tt></td><td bgcolor='white'><p>0=transparent, 255=opaque.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"clipping"</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'><p>0=base, 1=non-base.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"flags"</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'><p>bit 0=transparency protected
+     bit 1=visible</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"mode"</font> : <font color='#202020'>string</font></tt></td><td bgcolor='white'><p>Blend mode.</p>
+<table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"norm"</font></tt></td><td bgcolor='white'><p>Normal</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"dark"</font></tt></td><td bgcolor='white'><p>Darken</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"lite"</font></tt></td><td bgcolor='white'><p>Lighten</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"hue "</font></tt></td><td bgcolor='white'><p>Hue</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"sat "</font></tt></td><td bgcolor='white'><p>Saturation</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"colr"</font></tt></td><td bgcolor='white'><p>Color</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"lum "</font></tt></td><td bgcolor='white'><p>Luminosity</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"mul "</font></tt></td><td bgcolor='white'><p>Multiply</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"scrn"</font></tt></td><td bgcolor='white'><p>Screen</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"diss"</font></tt></td><td bgcolor='white'><p>Dissolve</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"over"</font></tt></td><td bgcolor='white'><p>Overlay</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"hLit"</font></tt></td><td bgcolor='white'><p>Hard light</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"sLit"</font></tt></td><td bgcolor='white'><p>Soft light</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"diff"</font></tt></td><td bgcolor='white'><p>Difference</p>
+</td></tr>
+</table></td></tr></table><br />
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"extra_data"</font> : <font color='#202020'>string</font></tt></td><td bgcolor='white'><p>Raw extra data.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"name"</font> : <font color='#202020'>string</font></tt></td><td bgcolor='white'><p>The name of the layer</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"channels"</font> : <font color='#202020'>array</font>(<font color='#202020'>mapping</font>(<font color='#202020'>string</font>:<font color='#202020'>int</font>|<font color='#202020'>string</font>))</tt></td><td bgcolor='white'><p>The channels of the layer. Each array element is a
+     mapping as follows</p>
+<table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"id"</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'><p>The ID of the channel</p>
+<table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>-2</font></tt></td><td bgcolor='white'><p>User supplied layer mask</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>-1</font></tt></td><td bgcolor='white'><p>Transparency mask</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>0</font></tt></td><td bgcolor='white'><p>Red</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>1</font></tt></td><td bgcolor='white'><p>Green</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>2</font></tt></td><td bgcolor='white'><p>Blue</p>
+</td></tr>
+</table></td></tr></table><br />
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"data"</font> : <font color='#202020'>string</font></tt></td><td bgcolor='white'><p>The image data</p>
+</td></tr>
+</table></td></tr></table><br />
+</td></tr>
+</table></td></tr></table><br />
+
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

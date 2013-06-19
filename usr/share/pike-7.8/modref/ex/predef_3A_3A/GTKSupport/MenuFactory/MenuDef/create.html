@@ -1,0 +1,135 @@
+<html><head><title>Pike Reference Manual - GTKSupport.MenuFactory.MenuDef()-&gt;create()</title>
+<link rel='stylesheet' href='../../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../../ex/predef_3A_3A/GTKSupport.html'><b>GTKSupport</b></a><br />
+<a href='../../../../../ex/predef_3A_3A/GTKSupport/MenuFactory.html'><b>GTKSupport.MenuFactory</b></a><br />
+<a href='../../../../../ex/predef_3A_3A/GTKSupport/MenuFactory/MenuDef.html'><b>GTKSupport.MenuFactory.MenuDef</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/GTKSupport/MenuFactory/MenuDef/assign_shortcut.html'>assign_shortcut()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;create()</td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../../ex/predef_3A_3A/GTKSupport/MenuFactory/MenuDef/assign_shortcut.html"><img src="../../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >GTKSupport.MenuFactory.MenuDef()-&gt;assign_shortcut()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../../ex/predef_3A_3A/GTKSupport/MenuFactory/MenuFactory.html">GTKSupport.MenuFactory.MenuFactory()<img src="../../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method GTKSupport.MenuFactory.MenuDef()-&gt;create()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>create</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>void</font> GTKSupport.MenuFactory.MenuDef<b>(</b><font color='#202020'>string</font> <font color='#005080'>path</font>, <font color='#202020'>function</font>|<font color='#202020'>void</font> <font color='#005080'>cb</font>, <font color='#202020'>mixed</font>|<font color='#202020'>void</font> <font color='#005080'>cbarg</font>, <font color='#202020'>string</font>|<font color='#202020'>void</font> <font color='#005080'>binding</font>, <font color='#202020'>int</font>|<font color='#202020'>void</font> <font color='#005080'>right</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>path</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Path is the menupath. A submenu will be created for each
+ "Directory" in the path, and menuitems will be created for the
+ "files". There are two special cases: The "file"
+ <font face='courier'><code>"&lt;separator&gt;"</code></font> will create a thin line. The "file"-prefix
+ <font face='courier'><code>"&lt;check&gt;"</code></font> will make the menuitem a checkmenuitem instead
+ of a normal menuitem.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>cb</font></tt></font><dt>
+<dd></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>cbarg</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>The second and third arguments are the callback function and the
+ first callback function argument. If the callback function
+ argument is an array, the indices of the array will be pushed as
+ arguments. To call the function with an array as the only
+ argument, make an array with the array in. The callback function
+ will be called like <font face='courier'><code>callback(&nbsp;arg,&nbsp;widget&nbsp;)</code></font>, or if arg
+ is an array, <font face='courier'><code>callback(&nbsp;arg[0],&nbsp;arg[1],&nbsp;...,&nbsp;widget&nbsp;)</code></font>.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>shortcut</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>The fourth argument, shortcut, is the shortcut to bind to this
+ menu item. The shortcut can be changed later on by calling
+ <font face='courier'><a href='../../../../predef_3A_3A/GTKSupport/MenuFactory/MenuDef/assign_shortcut.html'>assign_shortcut</a></font> , or by the user by pressing the desired
+ keycombination over the menu item.</p>
+<p> The shortcut syntax is: m[m[..]]-key, where m is one or more
+ modifier character, and key is the desired key (<b>NOTE</b>: Key
+ must be in the range 0-255 currently, this will hopefully be
+ fixed by the GTK people in the future)</p>
+<p> The modifiers are:</p>
+<table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"s"</font></tt></td><td bgcolor='white'><p>Shift</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"c"</font></tt></td><td bgcolor='white'><p>Control</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"a"</font></tt></td><td bgcolor='white' rowspan='2'><p>Modifier 1 (called alt by the GTK people, that's not true, though)</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"1"</font></tt></td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"g"</font></tt></td><td bgcolor='white' rowspan='2'><p>Modifier 2 (called altgr by the GTK people, that's not true, though)</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"2"</font></tt></td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"m"</font></tt></td><td bgcolor='white' rowspan='2'><p>Modifier 3 (not mapped by the GTK people, meta on _my_ keyboard)</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"3"</font></tt></td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"h"</font></tt></td><td bgcolor='white' rowspan='2'><p>Modifier 4 (not mapped by the GTK people, hyper on _my_ keyboard)</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"4"</font></tt></td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"u"</font></tt></td><td bgcolor='white' rowspan='2'><p>Modifier 5 (not mapped by the GTK people, super on _my_ keyboard)</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"5"</font></tt></td></tr>
+</table></td></tr></table><br />
+
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>right</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Currently ignored.</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<html><head><title>Pike Reference Manual - Sql.pgsql()-&gt;create()</title>
+<link rel='stylesheet' href='../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../ex/predef_3A_3A/Sql.html'><b>Sql</b></a><br />
+<a href='../../../../ex/predef_3A_3A/Sql/pgsql.html'><b>Sql.pgsql</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/big_query.html'>big_query()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/big_typed_query.html'>big_typed_query()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/cancelquery.html'>cancelquery()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/close.html'>close()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;create()</td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/create_db.html'>create_db()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/drop_db.html'>drop_db()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/error.html'>error()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/get_charset.html'>get_charset()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/getruntimeparameters.html'>getruntimeparameters()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/getstatistics.html'>getstatistics()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/host_info.html'>host_info()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/list_dbs.html'>list_dbs()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/list_fields.html'>list_fields()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/list_tables.html'>list_tables()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/quote.html'>quote()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/quotebinary.html'>quotebinary()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/reload.html'>reload()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/select_db.html'>select_db()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/server_info.html'>server_info()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/set_charset.html'>set_charset()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/set_notify_callback.html'>set_notify_callback()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/setcachedepth.html'>setcachedepth()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/setfetchlimit.html'>setfetchlimit()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/setportalbuffersize.html'>setportalbuffersize()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/settimeout.html'>settimeout()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/status_commit.html'>status_commit()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/streaming_query.html'>streaming_query()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/Sql/pgsql/close.html"><img src="../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Sql.pgsql()-&gt;close()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/Sql/pgsql/create_db.html">Sql.pgsql()-&gt;create_db()<img src="../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method Sql.pgsql()-&gt;create()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>create</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>void</font> Sql.pgsql<b>(</b><b>)</b></tt><br />
+<tt><font color='#202020'>void</font> Sql.pgsql<b>(</b><font color='#202020'>string</font> <font color='#005080'>host</font>, <font color='#202020'>void</font>|<font color='#202020'>string</font> <font color='#005080'>database</font>, <font color='#202020'>void</font>|<font color='#202020'>string</font> <font color='#005080'>user</font>, <font color='#202020'>void</font>|<font color='#202020'>string</font> <font color='#005080'>password</font>, <font color='#202020'>void</font>|<font color='#202020'>mapping</font>(<font color='#202020'>string</font>:<font color='#202020'>mixed</font>) <font color='#005080'>options</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>With no arguments, this function initializes (reinitializes if a
+ connection had been previously set up) a connection to the
+ PostgreSQL backend. Since PostgreSQL requires a database to be
+ selected, it will try to connect to the default database. The
+ connection may fail however for a variety of reasons, in this case
+ the most likely of all is because you don't have enough authority
+ to connect to that database. So use of this particular syntax is
+ discouraged.</p>
+<p> The host argument can have the syntax <font face='courier'><code>"hostname"</code></font> or
+ <font face='courier'><code>"hostname:portname"</code></font>. This allows to specify the TCP/IP
+ port to connect to. If it is <font face='courier'><code>0</code></font> or <font face='courier'><code>""</code></font>, it will try
+ to connect to localhost, default port.</p>
+<p> The database argument specifies the database to connect to. If
+ <font face='courier'><code>0</code></font> or <font face='courier'><code>""</code></font>, it will try to connect to the specified
+ database.</p>
+<p> The options argument currently supports at least the following:</p>
+<table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"use_ssl"</font></tt></td><td bgcolor='white'><p>If the database supports and allows SSL connections, the session
+     will be SSL encrypted, if not, the connection will fallback
+     to plain unencrypted</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"force_ssl"</font></tt></td><td bgcolor='white'><p>If the database supports and allows SSL connections, the session
+     will be SSL encrypted, if not, the connection will abort</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"cache_autoprepared_statements"</font></tt></td><td bgcolor='white'><p>If set to zero, it disables the automatic statement prepare and
+     cache logic; caching prepared statements can be problematic
+     when stored procedures and tables are redefined which leave stale
+     references in the already cached prepared statements</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"client_encoding"</font></tt></td><td bgcolor='white'><p>Character encoding for the client side, it defaults to use
+     database encoding, e.g.: "SQL_ASCII"</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"standard_conforming_strings"</font></tt></td><td bgcolor='white'><p>When on, backslashes in strings must not be escaped any longer,
+     <font face='courier'><a href='../../../predef_3A_3A/Sql/pgsql/quote.html'>quote</a></font>  automatically adjusts quoting strategy accordingly</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"escape_string_warning"</font></tt></td><td bgcolor='white'><p>When on, a warning is issued if a backslash (\) appears in an
+     ordinary string literal and <font face='courier'>standard_conforming_strings</font>  is off,
+     defaults to on</p>
+</td></tr>
+</table></td></tr></table><br />
+<p>For the numerous other options please check the PostgreSQL manual.</p>
+</font></dd>
+<dt><font face='Helvetica'>Note</font><dt>
+<dd><font face='Helvetica'><p>You need to have a database selected before using the sql-object,
+ otherwise you'll get exceptions when you try to query it. Also
+ notice that this function <b>can</b> raise exceptions if the db
+ server doesn't respond, if the database doesn't exist or is not
+ accessible by you.</p>
+</font></dd>
+<dt><font face='Helvetica'>See also</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'><a href='../../../predef_3A_3A/Postgres/postgres.html'>Postgres.postgres</a></font> , <font face='courier'><a href='../../../predef_3A_3A/Sql/Sql.html'>Sql.Sql</a></font> , <font face='courier'><a href='../../../predef_3A_3A/Sql/postgres/select_db.html'>postgres-&gt;select_db</a></font> </p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

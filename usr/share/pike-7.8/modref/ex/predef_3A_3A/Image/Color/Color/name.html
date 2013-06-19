@@ -1,0 +1,123 @@
+<html><head><title>Pike Reference Manual - Image.Color.Color()-&gt;name()</title>
+<link rel='stylesheet' href='../../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../../ex/predef_3A_3A/Image.html'><b>Image</b></a><br />
+<a href='../../../../../ex/predef_3A_3A/Image/Color.html'><b>Image.Color</b></a><br />
+<a href='../../../../../ex/predef_3A_3A/Image/Color/Color.html'><b>Image.Color.Color</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Image/Color/Color/_backtick_eq_eq.html'>`==()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Image/Color/Color/bits.html'>bits()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Image/Color/Color/bright.html'>bright()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Image/Color/Color/cast.html'>cast()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Image/Color/Color/cmyk.html'>cmyk()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Image/Color/Color/create.html'>create()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Image/Color/Color/dark.html'>dark()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Image/Color/Color/dull.html'>dull()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Image/Color/Color/grey.html'>grey()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Image/Color/Color/greylevel.html'>greylevel()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Image/Color/Color/hex.html'>hex()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Image/Color/Color/hsv.html'>hsv()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Image/Color/Color/hsvf.html'>hsvf()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Image/Color/Color/html.html'>html()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Image/Color/Color/light.html'>light()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;name()</td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Image/Color/Color/neon.html'>neon()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Image/Color/Color/rgb.html'>rgb()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Image/Color/Color/rgbf.html'>rgbf()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../../ex/predef_3A_3A/Image/Color/Color/light.html"><img src="../../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Image.Color.Color()-&gt;light()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../../ex/predef_3A_3A/Image/Color/Color/neon.html">Image.Color.Color()-&gt;neon()<img src="../../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method Image.Color.Color()-&gt;name()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>name</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>string</font> <b><font color='#000066'>hex</font>(</b><b>)</b></tt><br />
+<tt><font color='#202020'>string</font> <b><font color='#000066'>hex</font>(</b><font color='#202020'>int</font> <font color='#005080'>n</font><b>)</b></tt><br />
+<tt><font color='#202020'>string</font> <b><font color='#000066'>name</font>(</b><b>)</b></tt><br />
+<tt><font color='#202020'>string</font> <b><font color='#000066'>html</font>(</b><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'>
+
+<p>Information methods.</p>
+<p><font face='courier'><a href='../../../../predef_3A_3A/Image/Color/Color/hex.html'>hex</a></font> () simply gives a string on the <tt>#rrggbb</tt>
+format. If <tt>n</tt> is given, the number of significant
+digits is set to this number.
+(Ie, <tt>n=3</tt> gives <tt>#rrrgggbbb</tt>.)</p>
+<p><font face='courier'><a href='../../../../predef_3A_3A/Image/Color/Color/hex.html'>name</a></font> () is a simplified method;
+if the color exists in the database, the name is returned,
+per default is the <font face='courier'><a href='../../../../predef_3A_3A/Image/Color/Color/hex.html'>hex</a></font> () method use.</p>
+<p><font face='courier'><a href='../../../../predef_3A_3A/Image/Color/Color/hex.html'>html</a></font> () gives the <tt>HTML</tt> name of
+the color, or the <font face='courier'><a href='../../../../predef_3A_3A/Image/Color/Color/hex.html'>hex</a></font> (2) if it isn't one
+of the 16 <tt>HTML</tt> colors.
+</p>
+</font></dd>
+<dt><font face='Helvetica'>Returns</font><dt>
+<dd><font face='Helvetica'>
+
+<p>a new <font face='courier'><a href='../../../../predef_3A_3A/Image/Color/Color.html'>Image.Color.Color</a></font>  object</p>
+</font></dd>
+<dt><font face='Helvetica'>See also</font><dt>
+<dd><font face='Helvetica'>
+<p><font face='courier'><a href='../../../../predef_3A_3A/Image/Color/Color/rgb.html'>rgb</a></font> , <font face='courier'><a href='../../../../predef_3A_3A/Image/Color/Color/rgb.html'>hsv</a></font> , <font face='courier'><a href='../../../../predef_3A_3A/Image/Color.html'>Image.Color</a></font> </p></font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<html><head><title>Pike Reference Manual - Image.GIF.encode()</title>
+<link rel='stylesheet' href='../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../ex/predef_3A_3A/Image.html'><b>Image</b></a><br />
+<a href='../../../../ex/predef_3A_3A/Image/GIF.html'><b>Image.GIF</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/GIF/__decode.html'>__decode()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/GIF/_decode.html'>_decode()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/GIF/_encode.html'>_encode()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/GIF/_gce_block.html'>_gce_block()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/GIF/_render_block.html'>_render_block()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/GIF/decode.html'>decode()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/GIF/decode_layer.html'>decode_layer()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/GIF/decode_layers.html'>decode_layers()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/GIF/decode_map.html'>decode_map()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;encode()</td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/GIF/encode_trans.html'>encode_trans()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/GIF/end_block.html'>end_block()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/GIF/header_block.html'>header_block()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/GIF/netscape_loop_block.html'>netscape_loop_block()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/GIF/render_block.html'>render_block()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/Image/GIF/decode_map.html"><img src="../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Image.GIF.decode_map()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/Image/GIF/encode_trans.html">Image.GIF.encode_trans()<img src="../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method Image.GIF.encode()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>encode</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>string</font> <b><font color='#000066'>encode</font>(</b><font color='#202020'>object</font> <font color='#005080'>img</font><b>)</b></tt><br />
+<tt><font color='#202020'>string</font> <b><font color='#000066'>encode</font>(</b><font color='#202020'>object</font> <font color='#005080'>img</font>, <font color='#202020'>int</font> <font color='#005080'>colors</font><b>)</b></tt><br />
+<tt><font color='#202020'>string</font> <b><font color='#000066'>encode</font>(</b><font color='#202020'>object</font> <font color='#005080'>img</font>, <font color='#202020'>object</font> <font color='#005080'>colortable</font><b>)</b></tt><br />
+<tt><font color='#202020'>string</font> <b><font color='#000066'>encode_trans</font>(</b><font color='#202020'>object</font> <font color='#005080'>img</font>, <font color='#202020'>object</font> <font color='#005080'>alpha</font><b>)</b></tt><br />
+<tt><font color='#202020'>string</font> <b><font color='#000066'>encode_trans</font>(</b><font color='#202020'>object</font> <font color='#005080'>img</font>, <font color='#202020'>int</font> <font color='#005080'>tr_r</font>, <font color='#202020'>int</font> <font color='#005080'>tr_g</font>, <font color='#202020'>int</font> <font color='#005080'>tr_b</font><b>)</b></tt><br />
+<tt><font color='#202020'>string</font> <b><font color='#000066'>encode_trans</font>(</b><font color='#202020'>object</font> <font color='#005080'>img</font>, <font color='#202020'>int</font> <font color='#005080'>colors</font>, <font color='#202020'>object</font> <font color='#005080'>alpha</font><b>)</b></tt><br />
+<tt><font color='#202020'>string</font> <b><font color='#000066'>encode_trans</font>(</b><font color='#202020'>object</font> <font color='#005080'>img</font>, <font color='#202020'>int</font> <font color='#005080'>colors</font>, <font color='#202020'>int</font> <font color='#005080'>tr_r</font>, <font color='#202020'>int</font> <font color='#005080'>tr_g</font>, <font color='#202020'>int</font> <font color='#005080'>tr_b</font><b>)</b></tt><br />
+<tt><font color='#202020'>string</font> <b><font color='#000066'>encode_trans</font>(</b><font color='#202020'>object</font> <font color='#005080'>img</font>, <font color='#202020'>int</font> <font color='#005080'>colors</font>, <font color='#202020'>object</font> <font color='#005080'>alpha</font>, <font color='#202020'>int</font> <font color='#005080'>tr_r</font>, <font color='#202020'>int</font> <font color='#005080'>tr_g</font>, <font color='#202020'>int</font> <font color='#005080'>tr_b</font><b>)</b></tt><br />
+<tt><font color='#202020'>string</font> <b><font color='#000066'>encode_trans</font>(</b><font color='#202020'>object</font> <font color='#005080'>img</font>, <font color='#202020'>object</font> <font color='#005080'>colortable</font>, <font color='#202020'>object</font> <font color='#005080'>alpha</font><b>)</b></tt><br />
+<tt><font color='#202020'>string</font> <b><font color='#000066'>encode_trans</font>(</b><font color='#202020'>object</font> <font color='#005080'>img</font>, <font color='#202020'>object</font> <font color='#005080'>colortable</font>, <font color='#202020'>int</font> <font color='#005080'>tr_r</font>, <font color='#202020'>int</font> <font color='#005080'>tr_g</font>, <font color='#202020'>int</font> <font color='#005080'>tr_b</font><b>)</b></tt><br />
+<tt><font color='#202020'>string</font> <b><font color='#000066'>encode_trans</font>(</b><font color='#202020'>object</font> <font color='#005080'>img</font>, <font color='#202020'>object</font> <font color='#005080'>colortable</font>, <font color='#202020'>object</font> <font color='#005080'>alpha</font>, <font color='#202020'>int</font> <font color='#005080'>a_r</font>, <font color='#202020'>int</font> <font color='#005080'>a_g</font>, <font color='#202020'>int</font> <font color='#005080'>a_b</font><b>)</b></tt><br />
+<tt><font color='#202020'>string</font> <b><font color='#000066'>encode_trans</font>(</b><font color='#202020'>object</font> <font color='#005080'>img</font>, <font color='#202020'>object</font> <font color='#005080'>colortable</font>, <font color='#202020'>int</font> <font color='#005080'>transp_index</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'>
+
+<p>Create a complete GIF file.</p>
+<p>The latter (<font face='courier'><a href='../../../predef_3A_3A/Image/GIF/encode.html'>encode_trans</a></font> ) functions
+add transparency capabilities.</p>
+<p>Example:
+<font face='courier'><pre>
+img=<font face='courier'><a href='../../../predef_3A_3A/Image/Image.html'>Image.Image</a></font> ([...]);
+[...] // make your very-nice image
+write(<font face='courier'><a href='../../../predef_3A_3A/Image/GIF/encode.html'>Image.GIF.encode</a></font> (img)); // write it as GIF on stdout
+</pre></font>
+</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>img</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'>
+<p>The image which to encode.</p></font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>colors</font></tt></font><dt>
+<dd></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>colortable</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'>
+<p>These arguments decides what colors the image should
+be encoded with. If a number is given, a colortable
+with be created with (at most) that amount of colors.
+Default is '256' (GIF maximum amount of colors).</p></font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>alpha</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'>
+<p>Alpha channel image (defining what is transparent); black
+color indicates transparency. GIF has only transparent
+or nontransparent (no real alpha channel).
+You can always dither a transparency channel:
+<tt>Image.Colortable(my_alpha, ({({0,0,0}),({255,255,255})}))<br />
+    -&gt;full()<br />-&gt;floyd_steinberg()<br />-&gt;map(my_alpha)</tt></p></font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>tr_r</font></tt></font><dt>
+<dd></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>tr_g</font></tt></font><dt>
+<dd></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>tr_b</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'>
+<p>Use this (or the color closest to this) color as transparent
+pixels.</p></font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>a_r</font></tt></font><dt>
+<dd></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>a_g</font></tt></font><dt>
+<dd></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>a_b</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'>
+<p>Encode transparent pixels (given by alpha channel image)
+to have this color. This option is for making GIFs for
+the decoders that doesn't support transparency.</p></font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>transp_index</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'>
+<p>Use this color no in the colortable as transparent color.
+</p></font></dd>
+<dt><font face='Helvetica'>Note</font><dt>
+<dd><font face='Helvetica'>
+
+<p>For advanced users:
+<font face='courier'><pre>Image.GIF.encode_trans(img,colortable,alpha);</pre></font>
+is equivalent of using
+<font face='courier'><pre>Image.GIF.header_block(img-&gt;xsize(),img-&gt;ysize(),colortable)+
+Image.GIF.render_block(img,colortable,0,0,0,alpha)+
+Image.GIF.end_block();</pre></font>
+and is actually implemented that way.</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

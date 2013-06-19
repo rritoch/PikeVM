@@ -1,0 +1,148 @@
+<html><head><title>Pike Reference Manual - Sql.mysql()-&gt;set_unicode_encode_mode()</title>
+<link rel='stylesheet' href='../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../ex/predef_3A_3A/Sql.html'><b>Sql</b></a><br />
+<a href='../../../../ex/predef_3A_3A/Sql/mysql.html'><b>Sql.mysql</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/mysql/big_query.html'>big_query()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/mysql/decode_date.html'>decode_date()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/mysql/decode_datetime.html'>decode_datetime()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/mysql/decode_time.html'>decode_time()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/mysql/encode_date.html'>encode_date()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/mysql/encode_datetime.html'>encode_datetime()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/mysql/encode_time.html'>encode_time()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/mysql/get_charset.html'>get_charset()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/mysql/get_unicode_decode_mode.html'>get_unicode_decode_mode()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/mysql/get_unicode_encode_mode.html'>get_unicode_encode_mode()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/mysql/is_keyword.html'>is_keyword()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/mysql/latin1_to_utf8.html'>latin1_to_utf8()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/mysql/quote.html'>quote()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/mysql/set_charset.html'>set_charset()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/mysql/set_unicode_decode_mode.html'>set_unicode_decode_mode()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;set_unicode_encode_mode()</td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/mysql/streaming_query.html'>streaming_query()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/mysql/utf8_encode_query.html'>utf8_encode_query()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/Sql/mysql/set_unicode_decode_mode.html"><img src="../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Sql.mysql()-&gt;set_unicode_decode_mode()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/Sql/mysql/streaming_query.html">Sql.mysql()-&gt;streaming_query()<img src="../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method Sql.mysql()-&gt;set_unicode_encode_mode()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>set_unicode_encode_mode</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>int</font>(0..1) <b><font color='#000066'>set_unicode_encode_mode</font>(</b><font color='#202020'>int</font> <font color='#005080'>enable</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Enables or disables unicode encode mode.</p>
+<p> In this mode, if the server supports UTF-8 and the connection
+ charset is <font face='courier'><code>latin1</code></font> (the default) or <font face='courier'><code>unicode</code></font> then
+ <font face='courier'><a href='../../../predef_3A_3A/Sql/mysql/big_query.html'>big_query</a></font>  handles wide unicode queries. Enabled by default.</p>
+<p> Unicode encode mode works as follows: Eight bit strings are sent
+ as <font face='courier'><code>latin1</code></font> and wide strings are sent using <font face='courier'><code>utf8</code></font>.
+ <font face='courier'><a href='../../../predef_3A_3A/Sql/mysql/big_query.html'>big_query</a></font>  sends <font face='courier'><code>SET&nbsp;character_set_client</code></font> statements as
+ necessary to update the charset on the server side. If the server
+ doesn't support that then it fails, but the wide string query
+ would fail anyway.</p>
+<p> To make this transparent, string literals with introducers (e.g.
+ <font face='courier'><code>_binary&nbsp;'foo'</code></font>) are excluded from the UTF-8 encoding. This
+ means that <font face='courier'><a href='../../../predef_3A_3A/Sql/mysql/big_query.html'>big_query</a></font>  needs to do some superficial parsing of
+ the query when it is a wide string.</p>
+</font></dd>
+<dt><font face='Helvetica'>Returns</font><dt>
+<dd><font face='Helvetica'><table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>1</font></tt></td><td bgcolor='white'><p>Unicode encode mode is enabled.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>0</font></tt></td><td bgcolor='white'><p>Unicode encode mode couldn't be enabled because an
+       incompatible connection charset is set. You need to do
+       <font face='courier'><code><font&nbsp;face='courier'><a&nbsp;href='../../../predef_3A_3A/Sql/mysql/set_charset.html'>set_charset</a></font>&nbsp;("latin1")</code></font> or
+       <font face='courier'><code><font&nbsp;face='courier'><a&nbsp;href='../../../predef_3A_3A/Sql/mysql/set_charset.html'>set_charset</a></font>&nbsp;("unicode")</code></font> to enable it.</p>
+</td></tr>
+</table></td></tr></table><br />
+
+</font></dd>
+<dt><font face='Helvetica'>Note</font><dt>
+<dd><font face='Helvetica'><p>Note that this mode doesn't affect the MySQL system variable
+   <font face='courier'><code>character_set_connection</code></font>, i.e. it will still be set to
+   <font face='courier'><code>latin1</code></font> by default which means server functions like
+   <font face='courier'><code>UPPER()</code></font> won't handle non-<font face='courier'><code>latin1</code></font> characters
+   correctly in all cases.</p>
+<p>   To fix that, do <font face='courier'><code><font&nbsp;face='courier'><a&nbsp;href='../../../predef_3A_3A/Sql/mysql/set_charset.html'>set_charset</a></font>&nbsp;("unicode")</code></font>. That will
+   allow unicode encode mode to work while <font face='courier'><code>utf8</code></font> is fully
+   enabled at the server side.</p>
+<p>   Tip: If you enable <font face='courier'><code>utf8</code></font> on the server side, you need to
+   send raw binary strings as <font face='courier'><code>_binary'...'</code></font>. Otherwise they
+   will get UTF-8 encoded by the server.</p>
+</font></dd>
+<dt><font face='Helvetica'>Note</font><dt>
+<dd><font face='Helvetica'><p>When unicode encode mode is enabled and the connection charset
+   is <font face='courier'><code>latin1</code></font>, the charset accepted by <font face='courier'><a href='../../../predef_3A_3A/Sql/mysql/big_query.html'>big_query</a></font>  is not
+   quite Unicode since <font face='courier'><code>latin1</code></font> is based on <font face='courier'><code>cp1252</code></font>.
+   The differences are in the range <font face='courier'><code>0x80..0x9f</code></font> where
+   Unicode has control chars.</p>
+<p>   This small discrepancy is not present when the connection
+   charset is <font face='courier'><code>unicode</code></font>.</p>
+</font></dd>
+<dt><font face='Helvetica'>See also</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'><a href='../../../predef_3A_3A/Sql/mysql/set_unicode_decode_mode.html'>set_unicode_decode_mode</a></font> , <font face='courier'><a href='../../../predef_3A_3A/Sql/mysql/set_charset.html'>set_charset</a></font> </p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

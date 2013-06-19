@@ -1,0 +1,203 @@
+<html><head><title>Pike Reference Manual - Protocols.HTTP.Session</title>
+<link rel='stylesheet' href='../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../ex/predef_3A_3A/Protocols.html'><b>Protocols</b></a><br />
+<a href='../../../../ex/predef_3A_3A/Protocols/HTTP.html'><b>Protocols.HTTP</b></a><br />
+<b>Protocols.HTTP.Session</b><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Classes</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Protocols/HTTP/Session/Request.html'><b>Request</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Protocols/HTTP/Session/SessionURL.html'><b>SessionURL</b></a></td></tr>
+<tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Protocols/HTTP/Session/async_delete_url.html'>async_delete_url()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Protocols/HTTP/Session/async_get_url.html'>async_get_url()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Protocols/HTTP/Session/async_post_url.html'>async_post_url()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Protocols/HTTP/Session/async_put_url.html'>async_put_url()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Protocols/HTTP/Session/decode_cookies.html'>decode_cookies()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Protocols/HTTP/Session/delete_url.html'>delete_url()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Protocols/HTTP/Session/encode_cookies.html'>encode_cookies()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Protocols/HTTP/Session/get_cookies.html'>get_cookies()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Protocols/HTTP/Session/get_url.html'>get_url()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Protocols/HTTP/Session/get_url_data.html'>get_url_data()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Protocols/HTTP/Session/get_url_nice.html'>get_url_nice()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Protocols/HTTP/Session/give_me_connection.html'>give_me_connection()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Protocols/HTTP/Session/post_url.html'>post_url()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Protocols/HTTP/Session/post_url_data.html'>post_url_data()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Protocols/HTTP/Session/post_url_nice.html'>post_url_nice()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Protocols/HTTP/Session/put_url.html'>put_url()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Protocols/HTTP/Session/return_connection.html'>return_connection()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Protocols/HTTP/Session/set_cookie.html'>set_cookie()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Protocols/HTTP/Session/set_http_cookie.html'>set_http_cookie()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/Protocols/HTTP/Query/unicode_data.html"><img src="../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Protocols.HTTP.Query()-&gt;unicode_data()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/Protocols/HTTP/Session/Request.html">Protocols.HTTP.Session()-&gt;Request<img src="../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Class Protocols.HTTP.Session</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'></font><dt>
+<dd><p></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>follow_redirects</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>int</font> Protocols.HTTP.Session.<b><font color='#F000F0'>follow_redirects</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>The number of redirects to follow, if any.
+	This is the default to the created Request objects.</p>
+<p>	A redirect automatically turns into a GET request,
+	and all header, query, post or put information is dropped.</p>
+<p>	Default is 20 redirects. A negative number will mean infinity.</p>
+</font></dd>
+<dt><font face='Helvetica'>Bugs</font><dt>
+<dd><font face='Helvetica'><p>Loops will currently not be detected, only the limit
+	works to stop loops.</p>
+</font></dd>
+<dt><font face='Helvetica'>See also</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'><a href='../../../predef_3A_3A/Protocols/HTTP/Session/Request.html'>Request.follow_redirects</a></font> </p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>default_headers</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>mapping</font> Protocols.HTTP.Session.<b><font color='#F000F0'>default_headers</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Default HTTP headers.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>hostname_cache</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>mapping</font> Protocols.HTTP.Session.<b><font color='#F000F0'>hostname_cache</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Cache of hostname to IP lookups. Given to and used by the
+	<font face='courier'><a href='../../../predef_3A_3A/Protocols/HTTP/Query.html'>Query</a></font>  objects.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>time_to_keep_unused_connections</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>int</font>|<font color='#202020'>float</font> Protocols.HTTP.Session.<b><font color='#F000F0'>time_to_keep_unused_connections</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>The time to keep unused connections in seconds. Set to zero
+	to never save any kept-alive connections.
+	(Might be good in a for instance totaly synchroneous script
+	that keeps the backend thread busy and never will get call_outs.)
+	Defaults to 10 seconds.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>maximum_connections_per_server</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>int</font> Protocols.HTTP.Session.<b><font color='#F000F0'>maximum_connections_per_server</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Maximum number of connections to the same server.
+	Used only by async requests.
+	Defaults to 10 connections.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>maximum_total_connections</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>int</font> Protocols.HTTP.Session.<b><font color='#F000F0'>maximum_total_connections</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Maximum total number of connections. Limits only
+	async requests, and the number of kept-alive connections
+	(live connections + kept-alive connections &lt;= this number)
+	Defaults to 50 connections.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>maximum_connection_reuse</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>int</font> Protocols.HTTP.Session.<b><font color='#F000F0'>maximum_connection_reuse</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Maximum times a connection is reused. 
+	Defaults to 1000000. &lt;2 means no reuse at all.</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

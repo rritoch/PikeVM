@@ -1,0 +1,124 @@
+<html><head><title>Pike Reference Manual - GTK.SpinButton</title>
+<link rel='stylesheet' href='../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../..//images/pike_line_middle.gif" width="98%"><img src="../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../ex/predef_3A_3A/GTK.html'><b>GTK</b></a><br />
+<b>GTK.SpinButton</b><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/SpinButton/configure.html'>configure()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/SpinButton/create.html'>create()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/SpinButton/get_climb_rate.html'>get_climb_rate()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/SpinButton/get_digits.html'>get_digits()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/SpinButton/get_numeric.html'>get_numeric()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/SpinButton/get_snap_to_ticks.html'>get_snap_to_ticks()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/SpinButton/get_update_policy.html'>get_update_policy()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/SpinButton/get_value_as_float.html'>get_value_as_float()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/SpinButton/get_value_as_int.html'>get_value_as_int()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/SpinButton/get_wrap.html'>get_wrap()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/SpinButton/set_adjustment.html'>set_adjustment()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/SpinButton/set_digits.html'>set_digits()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/SpinButton/set_numeric.html'>set_numeric()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/SpinButton/set_shadow_type.html'>set_shadow_type()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/SpinButton/set_snap_to_ticks.html'>set_snap_to_ticks()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/SpinButton/set_update_policy.html'>set_update_policy()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/SpinButton/set_value.html'>set_value()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/SpinButton/set_wrap.html'>set_wrap()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/SpinButton/spin.html'>spin()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/SpinButton/update.html'>update()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../ex/predef_3A_3A/GTK/Socket/steal.html"><img src="../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >GTK.Socket()-&gt;steal()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../ex/predef_3A_3A/GTK/SpinButton/configure.html">GTK.SpinButton()-&gt;configure()<img src="../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Class GTK.SpinButton</h1>
+    <dl>
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>The Spin Button widget is generally used to allow the user to
+ select a value from a range of numeric values. It consists of a
+ text entry box with up and down arrow buttons attached to the
+ side. Selecting one of the buttons causes the value to "spin" up
+ and down the range of possible values. The entry box may also be
+ edited directly to enter a specific value.</p>
+<p> The Spin Button allows the value to have zero or a number of
+ decimal places and to be incremented/decremented in configurable
+ steps. The action of holding down one of the buttons optionally
+ results in an acceleration of change in the value according to how
+ long it is depressed.</p>
+<p> The Spin Button uses an W(Adjustment) object to hold information about
+ the range of values that the spin button can take.</p>
+<p> The attributes of an W(Adjustment) are used by the Spin Button in the
+ following way:
+ &lt;ul&gt;&lt;li&gt;value: initial value for the Spin Button&lt;/li&gt;
+     &lt;li&gt;lower: lower range value&lt;/li&gt;
+     &lt;li&gt;upper: upper range value&lt;/li&gt;
+     &lt;li&gt;step_increment: value to increment/decrement when pressing mouse button 1 on a button&lt;/li&gt;
+     &lt;li&gt;page_increment: value to increment/decrement when pressing mouse button 2 on a button&lt;/li&gt;
+     &lt;li&gt;page_size: unused&lt;/li&gt;
+ &lt;/ul&gt;</p>
+<p> The argument order for the W(Adjustment) constructor is:
+ value, lower, upper, step_increment, page_increment, page_size</p>
+<p><font face='courier'><code>&nbsp;GTK.SpinButton(&nbsp;GTK.Adjustment(),0.1,&nbsp;1&nbsp;)-&gt;set_usize(60,20)</code></font>
+<img src='../../../images/predef.GTK.SpinButton.1.png' height='20' width='60' /></p>
+</font></dd></dl>
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Inherit</font>
+<font size='+1'><b>Entry</b></font>
+</font><dt>
+<dd><p><font face='courier'>inherit </font><font face='courier'><a href='../../predef_3A_3A/GTK/Entry.html'>GTK.Entry</a></font><font face='courier'> : <font color='#F000F0'>Entry</font></font></p></dd>
+</dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

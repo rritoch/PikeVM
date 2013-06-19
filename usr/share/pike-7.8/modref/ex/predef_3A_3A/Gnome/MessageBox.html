@@ -1,0 +1,93 @@
+<html><head><title>Pike Reference Manual - Gnome.MessageBox</title>
+<link rel='stylesheet' href='../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../..//images/pike_line_middle.gif" width="98%"><img src="../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../ex/predef_3A_3A/Gnome.html'><b>Gnome</b></a><br />
+<b>Gnome.MessageBox</b><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Gnome/MessageBox/create.html'>create()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../ex/predef_3A_3A/Gnome/Less/write_filestream.html"><img src="../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Gnome.Less()-&gt;write_filestream()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../ex/predef_3A_3A/Gnome/MessageBox/create.html">Gnome.MessageBox()-&gt;create()<img src="../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Class Gnome.MessageBox</h1>
+    <dl>
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>The GnomeMessageBox widget creates dialog boxes (of type
+ GnomeDialog) that contain a severity level (indicated by an icon
+ and a title), a message to be displayed and a list of buttons that
+ will be in the dialog.</p>
+<p> The programmer will use strings desired for each button. If the
+ strings are any of the GNOME_STOCK macros, then instead of creating
+ a button with the text, the button will be a GNOME stock button
+ with a stock icon.</p>
+<p> The list of known types for message boxes are:
+ <font face='courier'><a href='../../predef_3A_3A/GTK.html'>GNOME_MESSAGE_BOX_ERROR</a></font> , <font face='courier'><a href='../../predef_3A_3A/GTK.html'>GNOME_MESSAGE_BOX_GENERIC</a></font> , <font face='courier'><a href='../../predef_3A_3A/GTK.html'>GNOME_MESSAGE_BOX_INFO</a></font> , <font face='courier'><a href='../../predef_3A_3A/GTK.html'>GNOME_MESSAGE_BOX_QUESTION</a></font>  and <font face='courier'><a href='../../predef_3A_3A/GTK.html'>GNOME_MESSAGE_BOX_WARNING</a></font> .
+<font face='courier'><code>&nbsp;Gnome.MessageBox(&nbsp;"This&nbsp;is&nbsp;a&nbsp;nice&nbsp;message",&nbsp;Gnome.MessageBoxInfo,&nbsp;Gnome.StockButtonOk,&nbsp;&nbsp;Gnome.StockButtonCancel&nbsp;);</code></font>
+<img src='../../../images/predef.Gnome.MessageBox.1.png' height='32' width='219' /></p>
+<p><font face='courier'><code>&nbsp;Gnome.MessageBox(&nbsp;"This&nbsp;is&nbsp;another&nbsp;not&nbsp;so&nbsp;nice&nbsp;message",&nbsp;Gnome.MessageBoxError,&nbsp;Gnome.StockButtonClose,&nbsp;&nbsp;Gnome.StockButtonCancel&nbsp;);</code></font>
+<img src='../../../images/predef.Gnome.MessageBox.2.png' height='32' width='219' /></p>
+</font></dd></dl>
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Inherit</font>
+<font size='+1'><b>Dialog</b></font>
+</font><dt>
+<dd><p><font face='courier'>inherit </font><font face='courier'><a href='../../predef_3A_3A/Gnome/Dialog.html'>Gnome.Dialog</a></font><font face='courier'> : <font color='#F000F0'>Dialog</font></font></p></dd>
+</dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<html><head><title>Pike Reference Manual - Gmp.mpf</title>
+<link rel='stylesheet' href='../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../..//images/pike_line_middle.gif" width="98%"><img src="../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../ex/predef_3A_3A/Gmp.html'><b>Gmp</b></a><br />
+<b>Gmp.mpf</b><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Gmp/mpf/__hash.html'>__hash()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Gmp/mpf/_is_type.html'>_is_type()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Gmp/mpf/_sprintf.html'>_sprintf()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Gmp/mpf/_backtick_21.html'>`!()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Gmp/mpf/_backtick_21_eq.html'>`!=()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Gmp/mpf/_backtick_2A.html'>`*()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Gmp/mpf/_backtick_2A_eq.html'>`*=()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Gmp/mpf/_backtick_add.html'>`+()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Gmp/mpf/_backtick_add_eq.html'>`+=()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Gmp/mpf/_backtick_2D.html'>`-()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Gmp/mpf/_backtick_2F.html'>`/()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Gmp/mpf/_backtick_3C.html'>`&lt;()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Gmp/mpf/_backtick_3C_eq.html'>`&lt;=()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Gmp/mpf/_backtick_eq_eq.html'>`==()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Gmp/mpf/_backtick_3E.html'>`&gt;()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Gmp/mpf/_backtick_3E_eq.html'>`&gt;=()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Gmp/mpf/_backtick_backtick_2A.html'>``*()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Gmp/mpf/_backtick_backtick_2D.html'>``-()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Gmp/mpf/_backtick_backtick_2F.html'>``/()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Gmp/mpf/_backtick_7E.html'>`~()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Gmp/mpf/cast.html'>cast()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Gmp/mpf/create.html'>create()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Gmp/mpf/get_float.html'>get_float()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Gmp/mpf/get_int.html'>get_int()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Gmp/mpf/get_precision.html'>get_precision()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Gmp/mpf/get_string.html'>get_string()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Gmp/mpf/set_precision.html'>set_precision()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Gmp/mpf/sgn.html'>sgn()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../ex/predef_3A_3A/Gmp/bignum.html"><img src="../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Gmp.bignum</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../ex/predef_3A_3A/Gmp/mpf/__hash.html">Gmp.mpf()-&gt;__hash()<img src="../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Class Gmp.mpf</h1>
+    <dl>
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>GMP floating point number.</p>
+<p> The mantissa of each float has a user-selectable precision,
+ limited only by available memory. Each variable has its own
+ precision, and that can be increased or decreased at any time.</p>
+<p> The exponent of each float is a fixed precision, one machine word
+ on most systems. In the current implementation the exponent is a
+ count of limbs, so for example on a 32-bit system this means a
+ range of roughly 2^-68719476768 to 2^68719476736, or on a 64-bit
+ system this will be greater.</p>
+<p> Each variable keeps a size for the mantissa data actually in use.
+ This means that if a float is exactly represented in only a few
+ bits then only those bits will be used in a calculation, even if
+ the selected precision is high.</p>
+<p> All calculations are performed to the precision of the destination
+ variable. Each function is defined to calculate with "infinite
+ precision" followed by a truncation to the destination precision,
+ but of course the work done is only what's needed to determine a
+ result under that definition.</p>
+<p> The precision selected for a variable is a minimum value, GMP may
+ increase it a little to facilitate efficient calculation.
+ Currently this means rounding up to a whole limb, and then
+ sometimes having a further partial limb, depending on the high
+ limb of the mantissa. But applications shouldn't be concerned by
+ such details.</p>
+<p> The mantissa in stored in binary, as might be imagined from the
+ fact precisions are expressed in bits. One consequence of this is
+ that decimal fractions like 0.1 cannot be represented exactly. The
+ same is true of plain IEEE double floats. This makes both highly
+ unsuitable for calculations involving money or other values that
+ should be exact decimal fractions. (Suitably scaled integers, or
+ perhaps rationals, are better choices.)</p>
+<p> mpf functions and variables have no special notion of infinity or
+ not-a-number, and applications must take care not to overflow the
+ exponent or results will be unpredictable. This might change in a
+ future release.</p>
+<p> Note that the mpf functions are not intended as a smooth extension
+ to IEEE P754 arithmetic. In particular results obtained on one
+ computer often differ from the results on a computer with a
+ different word size.</p>
+</font></dd></dl>
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

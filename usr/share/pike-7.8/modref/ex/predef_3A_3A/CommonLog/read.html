@@ -1,0 +1,112 @@
+<html><head><title>Pike Reference Manual - CommonLog.read()</title>
+<link rel='stylesheet' href='../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../..//images/pike_line_middle.gif" width="98%"><img src="../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../ex/predef_3A_3A/CommonLog.html'><b>CommonLog</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;read()</td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../ex/predef_3A_3A/CommonLog.html"><img src="../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >CommonLog</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../ex/predef_3A_3A/Crypto.html">Crypto<img src="../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method CommonLog.read()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>read</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>int</font> <b><font color='#000066'>read</font>(</b><font color='#202020'>function</font>(<font color='#202020'>array</font>(<font color='#202020'>int</font>|<font color='#202020'>string</font>):<font color='#202020'>void</font>) <font color='#005080'>callback</font>, <font color='#005080'><font face='courier'><a href='../../predef_3A_3A/Stdio/File.html'>Stdio.File</a></font></font>|<font color='#202020'>string</font> <font color='#005080'>logfile</font>, <font color='#202020'>void</font>|<font color='#202020'>int</font> <font color='#005080'>offset</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Reads the log file and calls the callback function for every parsed line.
+ For lines that fails to be parsed the callback is not called not is any
+ error thrown. The number of bytes read are returned.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>callback</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>The callbacks first argument is an array with the different parts of the
+ log entry.</p>
+<table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white' colspan='2'>Array</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='#202020'>string</font> <font color='green'>remote_host</font></tt></td><td bgcolor='white'>&nbsp;</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='#202020'>int</font>(0..0)|<font color='#202020'>string</font> <font color='green'>ident_user</font></tt></td><td bgcolor='white'>&nbsp;</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='#202020'>int</font>(0..0)|<font color='#202020'>string</font> <font color='green'>auth_user</font></tt></td><td bgcolor='white'>&nbsp;</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='#202020'>int</font> <font color='green'>year</font></tt></td><td bgcolor='white'>&nbsp;</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='#202020'>int</font> <font color='green'>month</font></tt></td><td bgcolor='white'>&nbsp;</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='#202020'>int</font> <font color='green'>day</font></tt></td><td bgcolor='white'>&nbsp;</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='#202020'>int</font> <font color='green'>hours</font></tt></td><td bgcolor='white'>&nbsp;</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='#202020'>int</font> <font color='green'>minutes</font></tt></td><td bgcolor='white'>&nbsp;</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='#202020'>int</font> <font color='green'>seconds</font></tt></td><td bgcolor='white'>&nbsp;</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='#202020'>int</font> <font color='green'>timezone</font></tt></td><td bgcolor='white'>&nbsp;</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='#202020'>int</font>(0..0)|<font color='#202020'>string</font> <font color='green'>method</font></tt></td><td bgcolor='white'><p>One of "GET", "POST", "HEAD" etc.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='#202020'>int</font>(0..0)|<font color='#202020'>string</font> <font color='green'>path</font></tt></td><td bgcolor='white'>&nbsp;</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='#202020'>string</font> <font color='green'>protocol</font></tt></td><td bgcolor='white'><p>E.g. "HTTP/1.0"</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='#202020'>int</font> <font color='green'>reply_code</font></tt></td><td bgcolor='white'><p>One of 200, 404 etc.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='#202020'>int</font> <font color='green'>bytes</font></tt></td><td bgcolor='white'>&nbsp;</td></tr>
+</table></td></tr></table><br />
+<p>The second callback argument is the current offset to the end of the
+ current line.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>offset</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>The position in the file where the parser should begin.</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

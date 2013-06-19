@@ -1,0 +1,189 @@
+<html><head><title>Pike Reference Manual - Calendar.Time.TimeofDay()-&gt;format_ymd_xshort()</title>
+<link rel='stylesheet' href='../../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../../ex/predef_3A_3A/Calendar.html'><b>Calendar</b></a><br />
+<a href='../../../../../ex/predef_3A_3A/Calendar/Time.html'><b>Calendar.Time</b></a><br />
+<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay.html'><b>Calendar.Time.TimeofDay</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/call_out.html'>call_out()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/create.html'>create()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/format_iso_short.html'>format_iso_short()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/format_iso_time.html'>format_iso_time()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/format_iso_week.html'>format_iso_week()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/format_iso_week_short.html'>format_iso_week_short()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/format_iso_ymd.html'>format_iso_ymd()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/format_mod.html'>format_mod()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/format_month.html'>format_month()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/format_month_short.html'>format_month_short()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/format_mtime.html'>format_mtime()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/format_nice.html'>format_nice()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/format_nicez.html'>format_nicez()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/format_time.html'>format_time()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/format_time_short.html'>format_time_short()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/format_time_xshort.html'>format_time_xshort()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/format_tod.html'>format_tod()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/format_week.html'>format_week()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/format_week_short.html'>format_week_short()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/format_xtime.html'>format_xtime()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/format_xtod.html'>format_xtod()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/format_ymd.html'>format_ymd()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/format_ymd_short.html'>format_ymd_short()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;format_ymd_xshort()</td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/fraction_no.html'>fraction_no()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/hour.html'>hour()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/hour_no.html'>hour_no()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/hours.html'>hours()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/julian_day.html'>julian_day()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/minute.html'>minute()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/minute_no.html'>minute_no()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/minutes.html'>minutes()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/move_ns.html'>move_ns()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/move_seconds.html'>move_seconds()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/number_of_hours.html'>number_of_hours()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/number_of_minutes.html'>number_of_minutes()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/number_of_seconds.html'>number_of_seconds()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/second.html'>second()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/second_no.html'>second_no()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/seconds.html'>seconds()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/set_size_ns.html'>set_size_ns()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/set_size_seconds.html'>set_size_seconds()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/unix_time.html'>unix_time()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/format_ymd_short.html"><img src="../../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Calendar.Time.TimeofDay()-&gt;format_ymd_short()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/fraction_no.html">Calendar.Time.TimeofDay()-&gt;fraction_no()<img src="../../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method Calendar.Time.TimeofDay()-&gt;format_ymd_xshort()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>format_ymd_xshort</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>string</font> <b><font color='#000066'>format_iso_ymd</font>(</b><b>)</b></tt><br />
+<tt><font color='#202020'>string</font> <b><font color='#000066'>format_ymd</font>(</b><b>)</b></tt><br />
+<tt><font color='#202020'>string</font> <b><font color='#000066'>format_ymd_short</font>(</b><b>)</b></tt><br />
+<tt><font color='#202020'>string</font> <b><font color='#000066'>format_ymd_xshort</font>(</b><b>)</b></tt><br />
+<tt><font color='#202020'>string</font> <b><font color='#000066'>format_iso_week</font>(</b><b>)</b></tt><br />
+<tt><font color='#202020'>string</font> <b><font color='#000066'>format_iso_week_short</font>(</b><b>)</b></tt><br />
+<tt><font color='#202020'>string</font> <b><font color='#000066'>format_week</font>(</b><b>)</b></tt><br />
+<tt><font color='#202020'>string</font> <b><font color='#000066'>format_week_short</font>(</b><b>)</b></tt><br />
+<tt><font color='#202020'>string</font> <b><font color='#000066'>format_month</font>(</b><b>)</b></tt><br />
+<tt><font color='#202020'>string</font> <b><font color='#000066'>format_month_short</font>(</b><b>)</b></tt><br />
+<tt><font color='#202020'>string</font> <b><font color='#000066'>format_iso_time</font>(</b><b>)</b></tt><br />
+<tt><font color='#202020'>string</font> <b><font color='#000066'>format_time</font>(</b><b>)</b></tt><br />
+<tt><font color='#202020'>string</font> <b><font color='#000066'>format_time_short</font>(</b><b>)</b></tt><br />
+<tt><font color='#202020'>string</font> <b><font color='#000066'>format_iso_short</font>(</b><b>)</b></tt><br />
+<tt><font color='#202020'>string</font> <b><font color='#000066'>format_time_xshort</font>(</b><b>)</b></tt><br />
+<tt><font color='#202020'>string</font> <b><font color='#000066'>format_mtime</font>(</b><b>)</b></tt><br />
+<tt><font color='#202020'>string</font> <b><font color='#000066'>format_xtime</font>(</b><b>)</b></tt><br />
+<tt><font color='#202020'>string</font> <b><font color='#000066'>format_tod</font>(</b><b>)</b></tt><br />
+<tt><font color='#202020'>string</font> <b><font color='#000066'>format_xtod</font>(</b><b>)</b></tt><br />
+<tt><font color='#202020'>string</font> <b><font color='#000066'>format_mod</font>(</b><b>)</b></tt><br />
+<tt><font color='#202020'>string</font> <b><font color='#000066'>format_nice</font>(</b><b>)</b></tt><br />
+<tt><font color='#202020'>string</font> <b><font color='#000066'>format_nicez</font>(</b><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'>
+
+<p>Format the object into nice strings;
+<font face='courier'><pre>
+iso_ymd        "2000-06-02 (Jun) -W22-5 (Fri)" [2]
+ext_ymd        "Friday, 2 June 2000" [2]
+ymd            "2000-06-02"
+ymd_short      "20000602"
+ymd_xshort     "000602" [1]
+iso_week       "2000-W22"
+iso_week_short "2000W22"
+week           "2000-w22" [2]
+week_short     "2000w22" [2]
+month          "2000-06"
+month_short    "200006" [1]
+iso_time       "2000-06-02 (Jun) -W22-5 (Fri) 20:53:14 UTC+1" [2]
+ext_time       "Friday, 2 June 2000, 20:53:14" [2]
+ctime          "Fri Jun  4 20:53:14 2000\n" [2] [3]
+http           "Fri, 02 Jun 2000 19:53:14 GMT" [4]
+time           "2000-06-02 20:53:14"
+time_short     "20000602 20:53:14"
+time_xshort    "000602 20:53:14"
+iso_short      "20000602T20:53:14"
+mtime          "2000-06-02 20:53"
+xtime          "2000-06-02 20:53:14.000000"
+todz           "20:53:14 CET"
+todz_iso       "20:53:14 UTC+1"
+tod            "20:53:14"
+tod_short      "205314"
+xtod           "20:53:14.000000"
+mod            "20:53"
+nice           "2 Jun 20:53", "2 Jun 2000 20:53:14" [2][5]
+nicez          "2 Jun 20:53 CET" [2][5]
+smtp           "Fri, 2 Jun 2000 20:53:14 +0100" [6]
+commonlog      "02/Jun/2000:20:53:14 +0100" [2]
+</pre></font>
+<tt>[1]</tt> note conflict (think 1 February 2003)
+<br /><tt>[2]</tt> language dependent
+<br /><tt>[3]</tt> as from the libc function ctime()
+<br /><tt>[4]</tt> as specified by the HTTP standard;
+        this is always in GMT, ie, UTC. The timezone calculations
+        needed will be executed implicitly. It is not language
+        dependent.
+<br /><tt>[5]</tt> adaptive to type and with special cases
+        for yesterday, tomorrow and other years
+<br /><tt>[6]</tt> as seen in Date: headers in mails</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

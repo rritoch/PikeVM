@@ -1,0 +1,152 @@
+<html><head><title>Pike Reference Manual - Image.Color.Color()-&gt;dull()</title>
+<link rel='stylesheet' href='../../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../../ex/predef_3A_3A/Image.html'><b>Image</b></a><br />
+<a href='../../../../../ex/predef_3A_3A/Image/Color.html'><b>Image.Color</b></a><br />
+<a href='../../../../../ex/predef_3A_3A/Image/Color/Color.html'><b>Image.Color.Color</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Image/Color/Color/_backtick_eq_eq.html'>`==()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Image/Color/Color/bits.html'>bits()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Image/Color/Color/bright.html'>bright()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Image/Color/Color/cast.html'>cast()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Image/Color/Color/cmyk.html'>cmyk()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Image/Color/Color/create.html'>create()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Image/Color/Color/dark.html'>dark()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;dull()</td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Image/Color/Color/grey.html'>grey()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Image/Color/Color/greylevel.html'>greylevel()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Image/Color/Color/hex.html'>hex()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Image/Color/Color/hsv.html'>hsv()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Image/Color/Color/hsvf.html'>hsvf()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Image/Color/Color/html.html'>html()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Image/Color/Color/light.html'>light()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Image/Color/Color/name.html'>name()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Image/Color/Color/neon.html'>neon()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Image/Color/Color/rgb.html'>rgb()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Image/Color/Color/rgbf.html'>rgbf()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../../ex/predef_3A_3A/Image/Color/Color/dark.html"><img src="../../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Image.Color.Color()-&gt;dark()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../../ex/predef_3A_3A/Image/Color/Color/grey.html">Image.Color.Color()-&gt;grey()<img src="../../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method Image.Color.Color()-&gt;dull()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>dull</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>object</font> <b><font color='#000066'>light</font>(</b><b>)</b></tt><br />
+<tt><font color='#202020'>object</font> <b><font color='#000066'>dark</font>(</b><b>)</b></tt><br />
+<tt><font color='#202020'>object</font> <b><font color='#000066'>neon</font>(</b><b>)</b></tt><br />
+<tt><font color='#202020'>object</font> <b><font color='#000066'>bright</font>(</b><b>)</b></tt><br />
+<tt><font color='#202020'>object</font> <b><font color='#000066'>dull</font>(</b><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'>
+
+<p>Color modification methods. These returns
+a new color.
+<table>
+<tr><th>method</th><th width='50%'>effect</th>
+<th>h</th><th>s</th><th>v</th><th>as</th></tr>
+<tr><td>light </td><td>raise light level</td><td>±0</td><td> ±0</td><td>+50</td>
+<td><img src='../../../../../images/predef.Image.Color.Color.light.1.png' height='20' width='20' />
+<img src='../../../../../images/predef.Image.Color.Color.light.2.png' height='20' width='20' />
+<img src='../../../../../images/predef.Image.Color.Color.light.3.png' height='20' width='20' />
+<img src='../../../../../images/predef.Image.Color.Color.light.4.png' height='20' width='20' /></td></tr>
+<tr><td>dark  </td><td>lower light level</td><td>±0</td><td> ±0</td><td>-50</td>
+<td><img src='../../../../../images/predef.Image.Color.Color.light.5.png' height='20' width='20' />
+<img src='../../../../../images/predef.Image.Color.Color.light.6.png' height='20' width='20' />
+<img src='../../../../../images/predef.Image.Color.Color.light.7.png' height='20' width='20' />
+<img src='../../../../../images/predef.Image.Color.Color.light.8.png' height='20' width='20' /></td></tr>
+<tr><td>bright</td><td>brighter color   </td><td>±0</td><td>+50</td><td>+50</td>
+<td><img src='../../../../../images/predef.Image.Color.Color.light.9.png' height='20' width='20' />
+<img src='../../../../../images/predef.Image.Color.Color.light.10.png' height='20' width='20' />
+<img src='../../../../../images/predef.Image.Color.Color.light.11.png' height='20' width='20' />
+<img src='../../../../../images/predef.Image.Color.Color.light.12.png' height='20' width='20' /></td></tr>
+<tr><td>dull  </td><td>greyer color     </td><td>±0</td><td>-50</td><td>-50</td>
+<td><img src='../../../../../images/predef.Image.Color.Color.light.13.png' height='20' width='20' />
+<img src='../../../../../images/predef.Image.Color.Color.light.14.png' height='20' width='20' />
+<img src='../../../../../images/predef.Image.Color.Color.light.15.png' height='20' width='20' />
+<img src='../../../../../images/predef.Image.Color.Color.light.16.png' height='20' width='20' /></td></tr>
+<tr><td>neon  </td><td>set to extreme   </td><td>±0</td><td>max</td><td>max</td>
+<td><img src='../../../../../images/predef.Image.Color.Color.light.17.png' height='20' width='20' />
+<img src='../../../../../images/predef.Image.Color.Color.light.18.png' height='20' width='20' /></td></tr>
+</table></p>
+<p><font face='courier'><a href='../../../../predef_3A_3A/Image/Color/Color/light.html'>light</a></font>  and <font face='courier'><a href='../../../../predef_3A_3A/Image/Color/Color/light.html'>dark</a></font>  lower/highers saturation
+when value is min-/maximised respective.
+</p>
+</font></dd>
+<dt><font face='Helvetica'>Returns</font><dt>
+<dd><font face='Helvetica'>
+
+<p>the new color object</p>
+</font></dd>
+<dt><font face='Helvetica'>Note</font><dt>
+<dd><font face='Helvetica'>
+
+<p>The opposites may not always take each other out.
+The color is maximised at white and black levels,
+so, for instance
+<font face='courier'><a href='../../../../predef_3A_3A/Image/Color.html'>Image.Color</a></font> .white-&gt;<font face='courier'><a href='../../../../predef_3A_3A/Image/Color/Color/light.html'>light</a></font> ()-&gt;<font face='courier'><a href='../../../../predef_3A_3A/Image/Color/Color/light.html'>dark</a></font> ()
+doesn't give the white color back, but the equal to
+<font face='courier'><a href='../../../../predef_3A_3A/Image/Color.html'>Image.Color</a></font> .white-&gt;<font face='courier'><a href='../../../../predef_3A_3A/Image/Color/Color/light.html'>dark</a></font> (), since
+white can't get any <font face='courier'><a href='../../../../predef_3A_3A/Image/Color/Color/light.html'>light</a></font> er.</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

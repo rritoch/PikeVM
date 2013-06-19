@@ -1,0 +1,186 @@
+<html><head><title>Pike Reference Manual - Image.Layer()-&gt;available_modes()</title>
+<link rel='stylesheet' href='../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../ex/predef_3A_3A/Image.html'><b>Image</b></a><br />
+<a href='../../../../ex/predef_3A_3A/Image/Layer.html'><b>Image.Layer</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/Layer/alpha.html'>alpha()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/Layer/alpha_value.html'>alpha_value()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/Layer/autocrop.html'>autocrop()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;available_modes()</td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/Layer/cast.html'>cast()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/Layer/clone.html'>clone()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/Layer/create.html'>create()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/Layer/crop.html'>crop()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/Layer/description.html'>description()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/Layer/fill.html'>fill()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/Layer/fill_alpha.html'>fill_alpha()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/Layer/find_autocrop.html'>find_autocrop()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/Layer/get_misc_value.html'>get_misc_value()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/Layer/image.html'>image()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/Layer/mode.html'>mode()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/Layer/set_alpha_value.html'>set_alpha_value()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/Layer/set_fill.html'>set_fill()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/Layer/set_image.html'>set_image()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/Layer/set_misc_value.html'>set_misc_value()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/Layer/set_mode.html'>set_mode()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/Layer/set_offset.html'>set_offset()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/Layer/set_tiled.html'>set_tiled()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/Layer/tiled.html'>tiled()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/Layer/xoffset.html'>xoffset()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/Layer/xsize.html'>xsize()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/Layer/yoffset.html'>yoffset()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/Layer/ysize.html'>ysize()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/Image/Layer/autocrop.html"><img src="../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Image.Layer()-&gt;autocrop()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/Image/Layer/cast.html">Image.Layer()-&gt;cast()<img src="../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method Image.Layer()-&gt;available_modes()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>available_modes</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>object</font> <b><font color='#000066'>set_mode</font>(</b><font color='#202020'>string</font> <font color='#005080'>mode</font><b>)</b></tt><br />
+<tt><font color='#202020'>string</font> <b><font color='#000066'>mode</font>(</b><b>)</b></tt><br />
+<tt><font color='#202020'>array</font>(<font color='#202020'>string</font>) <b><font color='#000066'>available_modes</font>(</b><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'>
+
+<p>    Set/get layer mode. Mode is one of these:</p>
+<p><dl></dl>
+<i>All channels are calculated separately, if nothing else is specified.</i>
+<table cellpadding='1' cellspacing='0'><tr><td colspan='2' align='left'><b>top layer</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.1.jpeg' height='80' width='480' /></td><td align='left' valign='center'></td></tr>
+<tr><td colspan='2' align='left'><b>bottom layer</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.2.jpeg' height='80' width='480' /></td><td align='left' valign='center'></td></tr>
+<tr><td colspan='2' align='left'><b>normal</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.3.jpeg' height='80' width='480' /></td><td align='left' valign='center'>D=L applied with alpha: D=(L*aL+S*(1-aL)*aS) / (aL+(1-aL)*aS), aD=(aL+(1-aL)*aS)</td></tr>
+<tr><td></td></tr><tr><td colspan='2' align='left'><b>add</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.4.jpeg' height='80' width='480' /></td><td align='left' valign='center'>D=L+S applied with alpha, aD=aS</td></tr>
+<tr><td colspan='2' align='left'><b>subtract</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.5.jpeg' height='80' width='480' /></td><td align='left' valign='center'>D=S-L applied with alpha, aD=aS</td></tr>
+<tr><td colspan='2' align='left'><b>multiply</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.6.jpeg' height='80' width='480' /></td><td align='left' valign='center'>D=S*L applied with alpha, aD=aS</td></tr>
+<tr><td colspan='2' align='left'><b>divide</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.7.jpeg' height='80' width='480' /></td><td align='left' valign='center'>D=S/L applied with alpha, aD=aS</td></tr>
+<tr><td colspan='2' align='left'><b>negdivide</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.8.jpeg' height='80' width='480' /></td><td align='left' valign='center'>D=1.0-S/L applied with alpha, aD=aS</td></tr>
+<tr><td colspan='2' align='left'><b>modulo</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.9.jpeg' height='80' width='480' /></td><td align='left' valign='center'>D=S%L applied with alpha, aD=aS</td></tr>
+<tr><td colspan='2' align='left'><b>invsubtract</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.10.jpeg' height='80' width='480' /></td><td align='left' valign='center'>D=L-S applied with alpha, aD=aS</td></tr>
+<tr><td colspan='2' align='left'><b>invdivide</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.11.jpeg' height='80' width='480' /></td><td align='left' valign='center'>D=L/S applied with alpha, aD=aS</td></tr>
+<tr><td colspan='2' align='left'><b>invmodulo</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.12.jpeg' height='80' width='480' /></td><td align='left' valign='center'>D=L%S applied with alpha, aD=aS</td></tr>
+<tr><td colspan='2' align='left'><b>imultiply</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.13.jpeg' height='80' width='480' /></td><td align='left' valign='center'>D=(1-L)*S applied with alpha, aD=aS</td></tr>
+<tr><td colspan='2' align='left'><b>idivide</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.14.jpeg' height='80' width='480' /></td><td align='left' valign='center'>D=S/(1-L) applied with alpha, aD=aS</td></tr>
+<tr><td colspan='2' align='left'><b>invidivide</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.15.jpeg' height='80' width='480' /></td><td align='left' valign='center'>D=L/(1-S) applied with alpha, aD=aS</td></tr>
+<tr><td colspan='2' align='left'><b>difference</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.16.jpeg' height='80' width='480' /></td><td align='left' valign='center'>D=abs(L-S) applied with alpha, aD=aS</td></tr>
+<tr><td colspan='2' align='left'><b>max</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.17.jpeg' height='80' width='480' /></td><td align='left' valign='center'>D=max(L,S) applied with alpha, aD=aS</td></tr>
+<tr><td colspan='2' align='left'><b>min</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.18.jpeg' height='80' width='480' /></td><td align='left' valign='center'>D=min(L,S) applied with alpha, aD=aS</td></tr>
+<tr><td colspan='2' align='left'><b>bitwise_and</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.19.jpeg' height='80' width='480' /></td><td align='left' valign='center'>D=L&amp;amp;S applied with alpha, aD=aS</td></tr>
+<tr><td colspan='2' align='left'><b>bitwise_or</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.20.jpeg' height='80' width='480' /></td><td align='left' valign='center'>D=L|S applied with alpha, aD=aS</td></tr>
+<tr><td colspan='2' align='left'><b>bitwise_xor</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.21.jpeg' height='80' width='480' /></td><td align='left' valign='center'>D=L^S applied with alpha, aD=aS</td></tr>
+<tr><td></td></tr><tr><td colspan='2' align='left'><b>replace</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.22.jpeg' height='80' width='480' /></td><td align='left' valign='center'>D=(L*aL+S*(1-aL)*aS) / (aL+(1-aL)*aS), aD=aS</td></tr>
+<tr><td colspan='2' align='left'><b>red</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.23.jpeg' height='80' width='480' /></td><td align='left' valign='center'>Dr=(Lr*aLr+Sr*(1-aLr)*aSr) / (aLr+(1-aLr)*aSr), Dgb=Sgb, aD=aS</td></tr>
+<tr><td colspan='2' align='left'><b>green</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.24.jpeg' height='80' width='480' /></td><td align='left' valign='center'>Dg=(Lg*aLg+Sg*(1-aLg)*aSg) / (aLg+(1-aLg)*aSg), Drb=Srb, aD=aS</td></tr>
+<tr><td colspan='2' align='left'><b>blue</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.25.jpeg' height='80' width='480' /></td><td align='left' valign='center'>Db=(Lb*aLb+Sb*(1-aLb)*aSb) / (aLb+(1-aLb)*aSb), Drg=Srg, aD=aS</td></tr>
+<tr><td colspan='2' align='left'><b>hardlight</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.26.jpeg' height='80' width='480' /></td><td align='left' valign='center'>Like photoshop hardlight layer mode, aD=aS</td></tr>
+<tr><td></td></tr><tr><td colspan='2' align='left'><b>replace_hsv</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.27.jpeg' height='80' width='480' /></td><td align='left' valign='center'>Dhsv=Lhsv apply with alpha, aD=aS</td></tr>
+<tr><td colspan='2' align='left'><b>hue</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.28.jpeg' height='80' width='480' /></td><td align='left' valign='center'>Dh=Lh apply with alpha, Dsv=Lsv, aD=aS</td></tr>
+<tr><td colspan='2' align='left'><b>saturation</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.29.jpeg' height='80' width='480' /></td><td align='left' valign='center'>Ds=Ls apply with alpha, Dhv=Lhv, aD=aS</td></tr>
+<tr><td colspan='2' align='left'><b>value</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.30.jpeg' height='80' width='480' /></td><td align='left' valign='center'>Dv=Lv apply with alpha, Dhs=Lhs, aD=aS</td></tr>
+<tr><td colspan='2' align='left'><b>color</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.31.jpeg' height='80' width='480' /></td><td align='left' valign='center'>Dhs=Lhs apply with alpha, Dv=Lv, aD=aS</td></tr>
+<tr><td colspan='2' align='left'><b>value_mul</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.32.jpeg' height='80' width='480' /></td><td align='left' valign='center'>Dv=Lv*Sv apply with alpha, Dhs=Lhs, aD=aS</td></tr>
+<tr><td></td></tr><tr><td colspan='2' align='left'><b>darken</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.33.jpeg' height='80' width='480' /></td><td align='left' valign='center'>Dv=min(Lv,Sv) apply with alpha, Dhs=Lhs, aD=aS</td></tr>
+<tr><td colspan='2' align='left'><b>lighten</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.34.jpeg' height='80' width='480' /></td><td align='left' valign='center'>Dv=max(Lv,Sv) apply with alpha, Dhs=Lhs, aD=aS</td></tr>
+<tr><td colspan='2' align='left'><b>saturate</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.35.jpeg' height='80' width='480' /></td><td align='left' valign='center'>Ds=max(Ls,Ss) apply with alpha, Dhv=Lhv, aD=aS</td></tr>
+<tr><td colspan='2' align='left'><b>desaturate</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.36.jpeg' height='80' width='480' /></td><td align='left' valign='center'>Ds=min(Ls,Ss) apply with alpha, Dhv=Lhv, aD=aS</td></tr>
+<tr><td colspan='2' align='left'><b>hls_replace</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.37.jpeg' height='80' width='480' /></td><td align='left' valign='center'>Dhls=Lhls apply with alpha, aD=aS</td></tr>
+<tr><td colspan='2' align='left'><b>hls_hue</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.38.jpeg' height='80' width='480' /></td><td align='left' valign='center'>Dh=Lh apply with alpha, Dsv=Lsv, aD=aS</td></tr>
+<tr><td colspan='2' align='left'><b>hls_saturation</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.39.jpeg' height='80' width='480' /></td><td align='left' valign='center'>Ds=Ls apply with alpha, Dhv=Lhv, aD=aS</td></tr>
+<tr><td colspan='2' align='left'><b>hls_lightness</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.40.jpeg' height='80' width='480' /></td><td align='left' valign='center'>Dl=Ll apply with alpha, Dhs=Lhs, aD=aS</td></tr>
+<tr><td colspan='2' align='left'><b>hls_color</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.41.jpeg' height='80' width='480' /></td><td align='left' valign='center'>Dhs=Lhs apply with alpha, Dl=Ll, aD=aS</td></tr>
+<tr><td colspan='2' align='left'><b>hls_lightness_mul</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.42.jpeg' height='80' width='480' /></td><td align='left' valign='center'>Dl=Ll*Sl apply with alpha, Dhs=Lhs, aD=aS</td></tr>
+<tr><td colspan='2' align='left'><b>hls_darken</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.43.jpeg' height='80' width='480' /></td><td align='left' valign='center'>Dl=min(Ll,Sl) apply with alpha, Dhs=Lhs, aD=aS</td></tr>
+<tr><td colspan='2' align='left'><b>hls_lighten</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.44.jpeg' height='80' width='480' /></td><td align='left' valign='center'>Dl=max(Ll,Sl) apply with alpha, Dhs=Lhs, aD=aS</td></tr>
+<tr><td colspan='2' align='left'><b>hls_saturate</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.45.jpeg' height='80' width='480' /></td><td align='left' valign='center'>Ds=max(Ls,Ss) apply with alpha, Dhl=Lhl, aD=aS</td></tr>
+<tr><td colspan='2' align='left'><b>hls_desaturate</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.46.jpeg' height='80' width='480' /></td><td align='left' valign='center'>Ds=min(Ls,Ss) apply with alpha, Dhl=Lhl, aD=aS</td></tr>
+<tr><td></td></tr><tr><td colspan='2' align='left'><b>dissolve</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.47.jpeg' height='80' width='480' /></td><td align='left' valign='center'>i=random 0 or 1, D=i?L:S, aD=i+aS</td></tr>
+<tr><td colspan='2' align='left'><b>behind</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.48.jpeg' height='80' width='480' /></td><td align='left' valign='center'>D=(S*aS+L*(1-aS)*aL) / (aS+(1-aS)*aL), aD=(aS+(1-aS)*aL); simply swap S and L</td></tr>
+<tr><td colspan='2' align='left'><b>erase</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.49.jpeg' height='80' width='480' /></td><td align='left' valign='center'>D=S, aD=aS*(1-aL)</td></tr>
+<tr><td></td></tr><tr><td colspan='2' align='left'><b>screen</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.50.jpeg' height='80' width='480' /></td><td align='left' valign='center'>1-(1-S)*(1-L) applied with alpha, aD=aS</td></tr>
+<tr><td colspan='2' align='left'><b>overlay</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.51.jpeg' height='80' width='480' /></td><td align='left' valign='center'>(1-(1-a)*(1-b)-a*b)*a+a*b applied with alpha, aD=aS</td></tr>
+<tr><td colspan='2' align='left'><b>burn_alpha</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.52.jpeg' height='80' width='480' /></td><td align='left' valign='center'>aD=aL+aS applied with alpha, D=L+S; experimental, may change or be removed</td></tr>
+<tr><td></td></tr><tr><td colspan='2' align='left'><b>equal</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.53.jpeg' height='80' width='480' /></td><td align='left' valign='center'>each channel D=max if L==S, 0 otherwise, apply with alpha</td></tr>
+<tr><td colspan='2' align='left'><b>not_equal</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.54.jpeg' height='80' width='480' /></td><td align='left' valign='center'>each channel D=max if L!=S, 0 otherwise, apply with alpha</td></tr>
+<tr><td colspan='2' align='left'><b>less</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.55.jpeg' height='80' width='480' /></td><td align='left' valign='center'>each channel D=max if L&lt;S, 0 otherwise, apply with alpha</td></tr>
+<tr><td colspan='2' align='left'><b>more</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.56.jpeg' height='80' width='480' /></td><td align='left' valign='center'>each channel D=max if L&gt;S, 0 otherwise, apply with alpha</td></tr>
+<tr><td colspan='2' align='left'><b>less_or_equal</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.57.jpeg' height='80' width='480' /></td><td align='left' valign='center'>each channel D=max if L&lt;=S, 0 otherwise, apply with alpha</td></tr>
+<tr><td colspan='2' align='left'><b>more_or_equal</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.58.jpeg' height='80' width='480' /></td><td align='left' valign='center'>each channel D=max if L&gt;=S, 0 otherwise, apply with alpha</td></tr>
+<tr><td></td></tr><tr><td colspan='2' align='left'><b>logic_equal</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.59.jpeg' height='80' width='480' /></td><td align='left' valign='center'>logic: D=white and opaque if L==S, black and transparent otherwise</td></tr>
+<tr><td colspan='2' align='left'><b>logic_not_equal</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.60.jpeg' height='80' width='480' /></td><td align='left' valign='center'>logic: D=white and opaque if any L!=S, black and transparent otherwise</td></tr>
+<tr><td colspan='2' align='left'><b>logic_strict_less</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.61.jpeg' height='80' width='480' /></td><td align='left' valign='center'>logic: D=white and opaque if all L&lt;S, black and transparent otherwise</td></tr>
+<tr><td colspan='2' align='left'><b>logic_strict_more</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.62.jpeg' height='80' width='480' /></td><td align='left' valign='center'>logic: D=white and opaque if all L&gt;S, black and transparent otherwise</td></tr>
+<tr><td colspan='2' align='left'><b>logic_strict_less_equal</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.63.jpeg' height='80' width='480' /></td><td align='left' valign='center'>logic: D=white and opaque if all L&lt;=L, black and transparent otherwise</td></tr>
+<tr><td colspan='2' align='left'><b>logic_strict_more_equal</b></td></tr><tr><td align='right'><img src='../../../../images/predef.Image.Layer.set_mode.64.jpeg' height='80' width='480' /></td><td align='left' valign='center'>logic: D=white and opaque if all L&gt;=L, black and transparent otherwise</td></tr>
+</table></p>
+<p><font face='courier'><a href='../../../predef_3A_3A/Image/Layer/set_mode.html'>available_modes</a></font> () simply gives an array
+    containing the names of these modes.
+</p>
+</font></dd>
+<dt><font face='Helvetica'>Note</font><dt>
+<dd><font face='Helvetica'>
+
+<p>image and alpha channel must be of the same size,
+or canceled.</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

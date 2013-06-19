@@ -1,0 +1,141 @@
+<html><head><title>Pike Reference Manual - GTK2.Range</title>
+<link rel='stylesheet' href='../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../..//images/pike_line_middle.gif" width="98%"><img src="../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../ex/predef_3A_3A/GTK2.html'><b>GTK2</b></a><br />
+<b>GTK2.Range</b><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Range/get_adjustment.html'>get_adjustment()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Range/get_inverted.html'>get_inverted()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Range/get_update_policy.html'>get_update_policy()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Range/get_value.html'>get_value()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Range/set_adjustment.html'>set_adjustment()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Range/set_increments.html'>set_increments()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Range/set_inverted.html'>set_inverted()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Range/set_range.html'>set_range()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Range/set_update_policy.html'>set_update_policy()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Range/set_value.html'>set_value()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../ex/predef_3A_3A/GTK2/RadioToolButton/get_group.html"><img src="../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >GTK2.RadioToolButton()-&gt;get_group()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../ex/predef_3A_3A/GTK2/Range/get_adjustment.html">GTK2.Range()-&gt;get_adjustment()<img src="../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Class GTK2.Range</h1>
+    <dl>
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>The category of range widgets includes the ubiquitous scrollbar
+ widget and the less common "scale" widget. Though these two types
+ of widgets are generally used for different purposes, they are
+ quite similar in function and implementation. All range widgets
+ share a set of common graphic elements, each of which has its own X
+ window and receives events. They all contain a "trough" and a
+ "slider" (what is sometimes called a "thumbwheel" in other GUI
+ environments). Dragging the slider with the pointer moves it back
+ and forth within the trough, while clicking in the trough advances
+ the slider towards the location of the click, either completely, or
+ by a designated amount, depending on which mouse button is used.</p>
+<p> As mentioned in the W(Adjustment) page, all range widgets are
+ associated with an adjustment object, from which they calculate the
+ length of the slider and its position within the trough. When the
+ user manipulates the slider, the range widget will change the value
+ of the adjustment.</p>
+<p> All of the GTK range widgets react to mouse clicks in more or less
+ the same way. Clicking button-1 in the trough will cause its
+ adjustment's page_increment to be added or subtracted from its
+ value, and the slider to be moved accordingly. Clicking mouse
+ button-2 in the trough will jump the slider to the point at which
+ the button was clicked. Clicking any button on a scrollbar's arrows
+ will cause its adjustment's value to change step_increment at a
+ time.</p>
+<p> It may take a little while to get used to, but by default,
+ scrollbars as well as scale widgets can take the keyboard focus in
+ GTK. If you think your users will find this too confusing, you can
+ always disable this by unsetting the GTK2.CanFocus flag on the
+ scrollbar, like this:</p>
+<p><tt>scrollbar-&gt;unset_flag(GTK2.CanFocus);</tt></p>
+<p> The key bindings (which are, of course, only active when the widget
+ has focus) are slightly different between horizontal and vertical
+ range widgets, for obvious reasons. They are also not quite the
+ same for scale widgets as they are for scrollbars, for somewhat
+ less obvious reasons (possibly to avoid confusion between the keys
+ for horizontal and vertical scrollbars in scrolled windows, where
+ both operate on the same area).</p>
+<p> Properties:
+ GTK2.Adjustment adjustment
+ int inverted
+ int update-policy</p>
+<p> Style properties:
+ int arrow-displacement-x
+ int arrow-displacement-y
+ int slider-width
+ int stepper-size
+ int stepper-spacing
+ int trough-border</p>
+<p>  Signals:
+ <b>adjust_bounds</b></p>
+<p><b>change_value</b></p>
+<p><b>move_slider</b></p>
+<p><b>value_changed</b></p>
+</font></dd></dl>
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Inherit</font>
+<font size='+1'><b>Widget</b></font>
+</font><dt>
+<dd><p><font face='courier'>inherit </font><font face='courier'><a href='../../predef_3A_3A/GTK2/Widget.html'>GTK2.Widget</a></font><font face='courier'> : <font color='#F000F0'>Widget</font></font></p></dd>
+</dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

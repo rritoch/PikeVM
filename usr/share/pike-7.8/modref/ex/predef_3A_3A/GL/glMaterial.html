@@ -1,0 +1,324 @@
+<html><head><title>Pike Reference Manual - GL.glMaterial()</title>
+<link rel='stylesheet' href='../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../..//images/pike_line_middle.gif" width="98%"><img src="../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../ex/predef_3A_3A/GL.html'><b>GL</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glAccum.html'>glAccum()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glAlphaFunc.html'>glAlphaFunc()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glArrayElement.html'>glArrayElement()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glBegin.html'>glBegin()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glBindTexture.html'>glBindTexture()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glBlendFunc.html'>glBlendFunc()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glCallList.html'>glCallList()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glClear.html'>glClear()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glClearAccum.html'>glClearAccum()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glClearColor.html'>glClearColor()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glClearDepth.html'>glClearDepth()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glClearIndex.html'>glClearIndex()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glClearStencil.html'>glClearStencil()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glColor.html'>glColor()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glColorMask.html'>glColorMask()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glColorMaterial.html'>glColorMaterial()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glCopyPixels.html'>glCopyPixels()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glCopyTexImage1D.html'>glCopyTexImage1D()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glCopyTexImage2D.html'>glCopyTexImage2D()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glCopyTexSubImage1D.html'>glCopyTexSubImage1D()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glCopyTexSubImage2D.html'>glCopyTexSubImage2D()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glCullFace.html'>glCullFace()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glDeleteLists.html'>glDeleteLists()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glDepthFunc.html'>glDepthFunc()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glDepthMask.html'>glDepthMask()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glDepthRange.html'>glDepthRange()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glDisable.html'>glDisable()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glDisableClientState.html'>glDisableClientState()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glDrawArrays.html'>glDrawArrays()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glDrawBuffer.html'>glDrawBuffer()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glDrawPixels.html'>glDrawPixels()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glEdgeFlag.html'>glEdgeFlag()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glEnable.html'>glEnable()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glEnableClientState.html'>glEnableClientState()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glEnd.html'>glEnd()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glEndList.html'>glEndList()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glEvalCoord.html'>glEvalCoord()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glEvalPoint.html'>glEvalPoint()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glFinish.html'>glFinish()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glFlush.html'>glFlush()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glFog.html'>glFog()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glFrontFace.html'>glFrontFace()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glFrustum.html'>glFrustum()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glGenLists.html'>glGenLists()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glGetError.html'>glGetError()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glGetString.html'>glGetString()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glHint.html'>glHint()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glIndex.html'>glIndex()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glIndexMask.html'>glIndexMask()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glInitNames.html'>glInitNames()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glIsEnabled.html'>glIsEnabled()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glIsList.html'>glIsList()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glIsTexture.html'>glIsTexture()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glLight.html'>glLight()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glLightModel.html'>glLightModel()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glLineStipple.html'>glLineStipple()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glLineWidth.html'>glLineWidth()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glListBase.html'>glListBase()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glLoadIdentity.html'>glLoadIdentity()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glLoadMatrix.html'>glLoadMatrix()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glLoadName.html'>glLoadName()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glLogicOp.html'>glLogicOp()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;glMaterial()</td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glMatrixMode.html'>glMatrixMode()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glMultMatrix.html'>glMultMatrix()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glNewList.html'>glNewList()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glNormal.html'>glNormal()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glOrtho.html'>glOrtho()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPassThrough.html'>glPassThrough()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPixelZoom.html'>glPixelZoom()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPointSize.html'>glPointSize()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPolygonMode.html'>glPolygonMode()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPolygonOffset.html'>glPolygonOffset()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPopAttrib.html'>glPopAttrib()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPopClientAttrib.html'>glPopClientAttrib()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPopMatrix.html'>glPopMatrix()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPopName.html'>glPopName()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPushAttrib.html'>glPushAttrib()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPushClientAttrib.html'>glPushClientAttrib()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPushMatrix.html'>glPushMatrix()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPushName.html'>glPushName()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glRasterPos.html'>glRasterPos()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glReadBuffer.html'>glReadBuffer()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glRenderMode.html'>glRenderMode()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glRotate.html'>glRotate()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glScale.html'>glScale()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glScissor.html'>glScissor()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glShadeModel.html'>glShadeModel()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glStencilFunc.html'>glStencilFunc()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glStencilMask.html'>glStencilMask()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glStencilOp.html'>glStencilOp()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glTexCoord.html'>glTexCoord()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glTexEnv.html'>glTexEnv()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glTexGen.html'>glTexGen()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glTexImage2D.html'>glTexImage2D()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glTexParameter.html'>glTexParameter()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glTexSubImage2D.html'>glTexSubImage2D()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glTranslate.html'>glTranslate()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glVertex.html'>glVertex()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glViewport.html'>glViewport()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../ex/predef_3A_3A/GL/glLogicOp.html"><img src="../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >GL.glLogicOp()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../ex/predef_3A_3A/GL/glMatrixMode.html">GL.glMatrixMode()<img src="../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method GL.glMaterial()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>glMaterial</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>void</font> <b><font color='#000066'>glMaterial</font>(</b><font color='#202020'>int</font> <font color='#005080'>face</font>, <font color='#202020'>int</font> <font color='#005080'>pname</font>, <font color='#202020'>float</font>|<font color='#202020'>int</font>|<font color='#202020'>array</font>(<font color='#202020'>float</font>|<font color='#202020'>int</font>) <font color='#005080'>param</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'><a href='../../predef_3A_3A/GL/glMaterial.html'>glMaterial</a></font>  assigns values to material parameters.
+There are two matched sets of material parameters.
+One,
+the <i>front-facing</i> set,
+is used to shade points,
+lines,
+bitmaps,
+and all polygons
+(when two-sided lighting is disabled),
+or just front-facing polygons
+(when two-sided lighting is enabled).
+The other set,
+<i>back-facing</i>,
+is used to shade back-facing polygons only when two-sided lighting is enabled.
+Refer to the <font face='courier'><a href='../../predef_3A_3A/GL/glLightModel.html'>glLightModel</a></font>  reference page for details concerning one- and
+two-sided lighting calculations.</p>
+<p><font face='courier'><a href='../../predef_3A_3A/GL/glMaterial.html'>glMaterial</a></font>  takes three arguments.
+The first,
+<i>face</i>,
+specifies whether the
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_FRONT</a></font>  materials, the
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_BACK</a></font>  materials, or both
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_FRONT_AND_BACK</a></font>  materials will be modified.
+The second,
+<i>pname</i>,
+specifies which of several parameters in one or both sets will be modified.
+The third,
+<i>params</i>,
+specifies what value or values will be assigned to the specified parameter.</p>
+<p>Material parameters are used in the lighting equation that is optionally
+applied to each vertex.
+The equation is discussed in the <font face='courier'><a href='../../predef_3A_3A/GL/glLightModel.html'>glLightModel</a></font>  reference page.
+The parameters that can be specified using <font face='courier'><a href='../../predef_3A_3A/GL/glMaterial.html'>glMaterial</a></font> ,
+and their interpretations by the lighting equation, are as follows:</p>
+<p><table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_AMBIENT</a></font> 
+</td><td bgcolor='white'><i>params</i> contains four integer or floating-point values that specify
+the ambient RGBA reflectance of the material.
+Integer values are mapped linearly such that the most positive representable
+value maps to 1.0,
+and the most negative representable value maps to -1.0.
+Floating-point values are mapped directly.
+Neither integer nor floating-point values are clamped.
+The initial ambient reflectance for both front- and back-facing materials
+is (0.2, 0.2, 0.2, 1.0).
+</td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_DIFFUSE</a></font> 
+</td><td bgcolor='white'><i>params</i> contains four integer or floating-point values that specify
+the diffuse RGBA reflectance of the material.
+Integer values are mapped linearly such that the most positive representable
+value maps to 1.0,
+and the most negative representable value maps to -1.0.
+Floating-point values are mapped directly.
+Neither integer nor floating-point values are clamped.
+The initial diffuse reflectance for both front- and back-facing materials
+is (0.8, 0.8, 0.8, 1.0).
+</td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_SPECULAR</a></font> 
+</td><td bgcolor='white'><i>params</i> contains four integer or floating-point values that specify
+the specular RGBA reflectance of the material.
+Integer values are mapped linearly such that the most positive representable
+value maps to 1.0,
+and the most negative representable value maps to -1.0.
+Floating-point values are mapped directly.
+Neither integer nor floating-point values are clamped.
+The initial specular reflectance for both front- and back-facing materials
+is (0, 0, 0, 1).
+</td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_EMISSION</a></font> 
+</td><td bgcolor='white'><i>params</i> contains four integer or floating-point values that specify
+the RGBA emitted light intensity of the material.
+Integer values are mapped linearly such that the most positive representable
+value maps to 1.0,
+and the most negative representable value maps to -1.0.
+Floating-point values are mapped directly.
+Neither integer nor floating-point values are clamped.
+The initial emission intensity for both front- and back-facing materials
+is (0, 0, 0, 1).
+</td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_SHININESS</a></font> 
+</td><td bgcolor='white'><i>params</i> is a single integer or floating-point value that specifies
+the RGBA specular exponent of the material.
+Integer and floating-point values are mapped directly.
+Only values in the range [0,128] are accepted.
+The initial specular exponent for both front- and back-facing materials
+is 0.
+</td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_AMBIENT_AND_DIFFUSE</a></font> 
+</td><td bgcolor='white'>Equivalent to calling <font face='courier'><a href='../../predef_3A_3A/GL/glMaterial.html'>glMaterial</a></font>  twice with the same parameter values,
+once with <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_AMBIENT</a></font>  and once with <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_DIFFUSE</a></font> .
+</td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_COLOR_INDEXES</a></font> 
+</td><td bgcolor='white'><i>params</i> contains three integer or floating-point values specifying
+the color indices for ambient,
+diffuse,
+and specular lighting.
+These three values,
+and <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_SHININESS</a></font> ,
+are the only material values used by the color index mode lighting equation.
+Refer to the <font face='courier'><a href='../../predef_3A_3A/GL/glLightModel.html'>glLightModel</a></font>  reference page for a discussion 
+of color index lighting.
+</td></tr>
+</table></td></tr></table><br />
+</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>face</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Specifies which face or faces are being updated.
+Must be one of
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_FRONT</a></font> ,
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_BACK</a></font> , or
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_FRONT_AND_BACK</a></font> .</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>pname</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Specifies the single-valued material parameter of the face or faces
+that is being updated.
+Must be <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_SHININESS</a></font> .</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>param</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Specifies the value that parameter <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_SHININESS</a></font>  will be set to.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>face</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Specifies which face or faces are being updated.
+Must be one of
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_FRONT</a></font> ,
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_BACK</a></font> , or
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_FRONT_AND_BACK</a></font> .</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>pname</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Specifies the material parameter of the face or faces that is being updated.
+Must be one of
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_AMBIENT</a></font> ,
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_DIFFUSE</a></font> ,
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_SPECULAR</a></font> ,
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_EMISSION</a></font> ,
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_SHININESS</a></font> ,
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_AMBIENT_AND_DIFFUSE</a></font> ,  or
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_COLOR_INDEXES</a></font> .</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>params</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Specifies a pointer to the value or values that <i>pname</i> will be set to.</p>
+</font></dd>
+<dt><font face='Helvetica'>Throws</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_INVALID_ENUM</a></font>  is generated if either <i>face</i> or <i>pname</i> is not
+an accepted value.</p>
+<p><font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_INVALID_VALUE</a></font>  is generated if a specular exponent outside the range
+[0,128] is specified.</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

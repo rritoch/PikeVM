@@ -1,0 +1,110 @@
+<html><head><title>Pike Reference Manual - Crypto.crypt_md5()</title>
+<link rel='stylesheet' href='../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../..//images/pike_line_middle.gif" width="98%"><img src="../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../ex/7.4_3A_3A.html'><b>7.4::</b></a><br />
+<a href='../../../ex/7.4_3A_3A/Crypto.html'><b>Crypto</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Modules</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/7.4_3A_3A/Crypto/koremutake.html'><b>koremutake</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/7.4_3A_3A/Crypto/randomness.html'><b>randomness</b></a></td></tr>
+<tr><td nowrap='nowrap'><br /><b>Classes</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/7.4_3A_3A/Crypto/aes.html'><b>aes</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/7.4_3A_3A/Crypto/arcfour.html'><b>arcfour</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/7.4_3A_3A/Crypto/cast.html'><b>cast</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/7.4_3A_3A/Crypto/cbc.html'><b>cbc</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/7.4_3A_3A/Crypto/crypto.html'><b>crypto</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/7.4_3A_3A/Crypto/des.html'><b>des</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/7.4_3A_3A/Crypto/des3.html'><b>des3</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/7.4_3A_3A/Crypto/des3_cbc.html'><b>des3_cbc</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/7.4_3A_3A/Crypto/des_cbc.html'><b>des_cbc</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/7.4_3A_3A/Crypto/dsa.html'><b>dsa</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/7.4_3A_3A/Crypto/hmac.html'><b>hmac</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/7.4_3A_3A/Crypto/idea.html'><b>idea</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/7.4_3A_3A/Crypto/idea_cbc.html'><b>idea_cbc</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/7.4_3A_3A/Crypto/invert.html'><b>invert</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/7.4_3A_3A/Crypto/md2.html'><b>md2</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/7.4_3A_3A/Crypto/md4.html'><b>md4</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/7.4_3A_3A/Crypto/md5.html'><b>md5</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/7.4_3A_3A/Crypto/rijndael.html'><b>rijndael</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/7.4_3A_3A/Crypto/rsa.html'><b>rsa</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/7.4_3A_3A/Crypto/sha.html'><b>sha</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/7.4_3A_3A/Crypto/substitution.html'><b>substitution</b></a></td></tr>
+<tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;crypt_md5()</td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/7.4_3A_3A/Crypto/des_parity.html'>des_parity()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../ex/7.4_3A_3A/Crypto/randomness/some_entropy.html"><img src="../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Crypto.randomness.some_entropy()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../ex/7.4_3A_3A/Crypto/des_parity.html">Crypto.des_parity()<img src="../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method Crypto.crypt_md5()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>crypt_md5</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>string</font> <b><font color='#000066'>crypt_md5</font>(</b><font color='#202020'>string</font> <font color='#005080'>pw</font>, <font color='#202020'>void</font>|<font color='#202020'>string</font> <font color='#005080'>salt</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>From Pike 7.5 <font face='courier'>pw</font>  and <font face='courier'>salt</font>  are binary strings, so
+ the result is different if any of these includes <font face='courier'><code>"\0"</code></font>.</p>
+<p> The return type is also changed from string to int|string. If
+ the second argument is a hash, <font face='courier'>pw</font>  will be hashed with the
+ salt from the hash and compared with the hash.</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

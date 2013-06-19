@@ -1,0 +1,156 @@
+<html><head><title>Pike Reference Manual - GSSAPI.Cred()-&gt;cred_usage()</title>
+<link rel='stylesheet' href='../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../ex/predef_3A_3A/GSSAPI.html'><b>GSSAPI</b></a><br />
+<a href='../../../../ex/predef_3A_3A/GSSAPI/Cred.html'><b>GSSAPI.Cred</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GSSAPI/Cred/accept_lifetime.html'>accept_lifetime()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GSSAPI/Cred/acquire.html'>acquire()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GSSAPI/Cred/add.html'>add()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;cred_usage()</td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GSSAPI/Cred/init_lifetime.html'>init_lifetime()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GSSAPI/Cred/lifetime.html'>lifetime()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GSSAPI/Cred/mechs.html'>mechs()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GSSAPI/Cred/name.html'>name()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GSSAPI/Cred/release.html'>release()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/GSSAPI/Cred/add.html"><img src="../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >GSSAPI.Cred()-&gt;add()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/GSSAPI/Cred/init_lifetime.html">GSSAPI.Cred()-&gt;init_lifetime()<img src="../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method GSSAPI.Cred()-&gt;cred_usage()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>cred_usage</b></font>
+</font><dt>
+<dd><p><tt><font color='#005080'><font face='courier'><a href='../../../predef_3A_3A/GSSAPI/Name.html'>GSSAPI.Name</a></font></font> <b><font color='#000066'>name</font>(</b><font color='#202020'>void</font>|<font color='#202020'>string</font> <font color='#005080'>mech</font><b>)</b></tt><br />
+<tt><font color='#202020'>int</font> <b><font color='#000066'>cred_usage</font>(</b><font color='#202020'>void</font>|<font color='#202020'>string</font> <font color='#005080'>mech</font><b>)</b></tt><br />
+<tt><font color='#202020'>multiset</font>(<font color='#202020'>string</font>) <b><font color='#000066'>mechs</font>(</b><b>)</b></tt><br />
+<tt><font color='#202020'>int</font>(0..)|<font color='#005080'><font face='courier'><a href='../../../predef_3A_3A/Int.html'>Int.inf</a></font></font> <b><font color='#000066'>lifetime</font>(</b><b>)</b></tt><br />
+<tt><font color='#202020'>int</font>(0..)|<font color='#005080'><font face='courier'><a href='../../../predef_3A_3A/Int.html'>Int.inf</a></font></font> <b><font color='#000066'>init_lifetime</font>(</b><font color='#202020'>string</font> <font color='#005080'>mech</font><b>)</b></tt><br />
+<tt><font color='#202020'>int</font>(0..)|<font color='#005080'><font face='courier'><a href='../../../predef_3A_3A/Int.html'>Int.inf</a></font></font> <b><font color='#000066'>accept_lifetime</font>(</b><font color='#202020'>string</font> <font color='#005080'>mech</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Functions to query various properties about the credentials.</p>
+<p> These wrap <tt>GSS_Inquire_cred</tt> according to RFC 2743 section
+ 2.1.3 if <font face='courier'><a href='../../../predef_3A_3A/GSSAPI/Cred/name.html'>mech</a></font>  is not given, and
+ <tt>GSS_Inquire_cred_by_mech</tt> according to section 2.1.5
+ otherwise.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>mech</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>If this is given then the credential for that specific
+   mechanism is queried. <font face='courier'><a href='../../../predef_3A_3A/GSSAPI/Cred/name.html'>mech</a></font>  contains the OID of the
+   mechanism on dotted-decimal form.</p>
+<p>   Some of the query functions can only be used for a specific
+   mechanism, in which case <font face='courier'><a href='../../../predef_3A_3A/GSSAPI/Cred/name.html'>mech</a></font>  is required. Some can only be
+   used on the credentials in general, and the <font face='courier'><a href='../../../predef_3A_3A/GSSAPI/Cred/name.html'>mech</a></font>  argument
+   is not applicable. Some can be used both ways, and then
+   <font face='courier'><a href='../../../predef_3A_3A/GSSAPI/Cred/name.html'>mech</a></font>  is optional.</p>
+<dl><dd><p><tt>name (void|string mech)</tt>
+   Returns the name of the identity that the credential(s)
+   assert. If <font face='courier'><a href='../../../predef_3A_3A/GSSAPI/Cred/name.html'>mech</a></font>  is given then the returned name is a
+   Mechanism Name (MN).</p>
+<p>   The returned <font face='courier'><a href='../../../predef_3A_3A/GSSAPI/Name.html'>GSSAPI.Name</a></font>  object is always a newly created
+   one, even though it typically compares as equal with the ones
+   given to <font face='courier'><a href='../../../predef_3A_3A/GSSAPI/Cred/acquire.html'>acquire</a></font>  or <font face='courier'><a href='../../../predef_3A_3A/GSSAPI/Cred/add.html'>add</a></font> .</p>
+</dd>
+<dd><p><tt>cred_usage (void|string mech)</tt>
+   Returns how the credential(s) may be used, one of
+   <font face='courier'>GSSAPI.INITIATE</font> , <font face='courier'>GSSAPI.ACCEPT</font>  or <font face='courier'>GSSAPI.BOTH</font> .</p>
+<p>   If <font face='courier'><a href='../../../predef_3A_3A/GSSAPI/Cred/name.html'>mech</a></font>  is not given then the returned usage value reflects
+   the union of the capabilities in all credentials.</p>
+</dd>
+<dd><p><tt>mechs()</tt>
+   Returns the set of mechanisms supported by the credential. The
+   returned value is a multiset of strings with OIDs on
+   dotted-decimal form.</p>
+</dd>
+<dd><p><tt>lifetime()</tt>
+   Returns the shortest validity lifetime left in any of the
+   mechanisms that are part of the credentials, for either
+   initiator or acceptor use.</p>
+<p>   Returns zero if some part of the credentials has expired.</p>
+<p>   Returns <font face='courier'><a href='../../../predef_3A_3A/Int.html'>Int.inf</a></font>  if there is no time limit (in older pikes
+   without <font face='courier'><a href='../../../predef_3A_3A/Int.html'>Int.inf</a></font>  a large positive integer is returned
+   instead).</p>
+</dd>
+<dd><p><tt>init_lifetime (string mech)</tt>
+   Returns the validity lifetime left for initiator use.</p>
+<p>   Returns zero if the credential has expired for this use or if
+   its usage is <font face='courier'>GSSAPI.ACCEPT</font> .</p>
+<p>   Returns <font face='courier'><a href='../../../predef_3A_3A/Int.html'>Int.inf</a></font>  if there is no time limit (in older pikes
+   without <font face='courier'><a href='../../../predef_3A_3A/Int.html'>Int.inf</a></font>  a large positive integer is returned
+   instead).</p>
+</dd>
+<dd><p><tt>accept_lifetime (string mech)</tt>
+   Returns the validity lifetime left for acceptor use.</p>
+<p>   Returns zero if the credential has expired for this use or if
+   its usage is <font face='courier'>GSSAPI.INITIATE</font> .</p>
+<p>   Returns <font face='courier'><a href='../../../predef_3A_3A/Int.html'>Int.inf</a></font>  if there is no time limit (in older pikes
+   without <font face='courier'><a href='../../../predef_3A_3A/Int.html'>Int.inf</a></font>  a large positive integer is returned
+   instead).</p>
+</dd>
+</dl>
+</font></dd>
+<dt><font face='Helvetica'>Note</font><dt>
+<dd><font face='Helvetica'><p>RFC 2743 doesn't preclude that these functions might block on
+   network connections to remote authentication servers.</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

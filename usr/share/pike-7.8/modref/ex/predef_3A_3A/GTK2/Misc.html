@@ -1,0 +1,109 @@
+<html><head><title>Pike Reference Manual - GTK2.Misc</title>
+<link rel='stylesheet' href='../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../..//images/pike_line_middle.gif" width="98%"><img src="../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../ex/predef_3A_3A/GTK2.html'><b>GTK2</b></a><br />
+<b>GTK2.Misc</b><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Misc/get_alignment.html'>get_alignment()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Misc/get_padding.html'>get_padding()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Misc/set_alignment.html'>set_alignment()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/Misc/set_padding.html'>set_padding()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../ex/predef_3A_3A/GTK2/MessageDialog/set_markup.html"><img src="../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >GTK2.MessageDialog()-&gt;set_markup()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../ex/predef_3A_3A/GTK2/Misc/get_alignment.html">GTK2.Misc()-&gt;get_alignment()<img src="../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Class GTK2.Misc</h1>
+    <dl>
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>The GTK2.Misc widget is an abstract widget which is not useful
+ itself, but is used to derive subclasses which have alignment and
+ padding attributes.</p>
+<p> The horizontal and vertical padding attributes allows extra space
+ to be added around the widget.</p>
+<p> The horizontal and vertical alignment attributes enable the widget
+ to be positioned within its allocated area. Note that if the widget
+ is added to a container in such a way that it expands automatically
+ to fill its allocated area, the alignment settings will not alter
+ the widgets position.</p>
+<p><font face='courier'><code>&nbsp;GTK2.Vbox(0,0)-&gt;add(GTK2.Label("Label"))-&gt;set_size_request(100,20)</code></font>
+<img src='../../../images/predef.GTK2.Misc.1.png' height='20' width='100' /></p>
+<p><font face='courier'><code>&nbsp;GTK2.Vbox(0,0)-&gt;add(GTK2.Label("Label")-&gt;set_alignment(1.0,0.0))-&gt;set_size_request(100,20)</code></font>
+<img src='../../../images/predef.GTK2.Misc.2.png' height='20' width='100' /></p>
+<p><font face='courier'><code>&nbsp;GTK2.Vbox(0,0)-&gt;add(GTK2.Label("Label")-&gt;set_alignment(0.0,0.0))-&gt;set_size_request(100,20)</code></font>
+<img src='../../../images/predef.GTK2.Misc.3.png' height='20' width='100' /></p>
+<p> Properties:
+ float xalign
+   The horizontal alignment, from 0 (left) to 1 (right).
+ int xpad
+   The amount of space to add on the left and right of the widget, in 
+   pixels.
+ float yalign
+   The vertical alignment, from 0 (top) to 1 (bottom).
+ int ypad
+   The amount of space to add on the top and bottom of the widget, in
+   pixels.</p>
+</font></dd></dl>
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Inherit</font>
+<font size='+1'><b>Widget</b></font>
+</font><dt>
+<dd><p><font face='courier'>inherit </font><font face='courier'><a href='../../predef_3A_3A/GTK2/Widget.html'>GTK2.Widget</a></font><font face='courier'> : <font color='#F000F0'>Widget</font></font></p></dd>
+</dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

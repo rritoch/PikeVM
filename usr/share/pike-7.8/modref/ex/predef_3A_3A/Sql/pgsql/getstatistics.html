@@ -1,0 +1,162 @@
+<html><head><title>Pike Reference Manual - Sql.pgsql()-&gt;getstatistics()</title>
+<link rel='stylesheet' href='../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../ex/predef_3A_3A/Sql.html'><b>Sql</b></a><br />
+<a href='../../../../ex/predef_3A_3A/Sql/pgsql.html'><b>Sql.pgsql</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/big_query.html'>big_query()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/big_typed_query.html'>big_typed_query()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/cancelquery.html'>cancelquery()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/close.html'>close()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/create.html'>create()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/create_db.html'>create_db()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/drop_db.html'>drop_db()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/error.html'>error()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/get_charset.html'>get_charset()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/getruntimeparameters.html'>getruntimeparameters()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;getstatistics()</td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/host_info.html'>host_info()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/list_dbs.html'>list_dbs()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/list_fields.html'>list_fields()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/list_tables.html'>list_tables()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/quote.html'>quote()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/quotebinary.html'>quotebinary()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/reload.html'>reload()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/select_db.html'>select_db()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/server_info.html'>server_info()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/set_charset.html'>set_charset()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/set_notify_callback.html'>set_notify_callback()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/setcachedepth.html'>setcachedepth()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/setfetchlimit.html'>setfetchlimit()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/setportalbuffersize.html'>setportalbuffersize()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/settimeout.html'>settimeout()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/status_commit.html'>status_commit()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Sql/pgsql/streaming_query.html'>streaming_query()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/Sql/pgsql/getruntimeparameters.html"><img src="../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Sql.pgsql()-&gt;getruntimeparameters()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/Sql/pgsql/host_info.html">Sql.pgsql()-&gt;host_info()<img src="../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method Sql.pgsql()-&gt;getstatistics()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>getstatistics</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>mapping</font>(<font color='#202020'>string</font>:<font color='#202020'>mixed</font>) <b><font color='#000066'>getstatistics</font>(</b><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Returns a mapping with a set of statistics for the current session.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>warnings_dropped</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Number of warnings/notices generated by the database but not
+    collected by the application by using <font face='courier'><a href='../../../predef_3A_3A/Sql/pgsql/error.html'>error</a></font>  after the statements
+    that generated them.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>skipped_describe_count</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Number of times the driver skipped asking the database to
+    describe the statement parameters because it was already cached.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>used_prepared_statements</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Numer of times prepared statements were used from cache instead of
+    reparsing in the current session.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>current_prepared_statements</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Cache size of currently prepared statements.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>current_prepared_statement_hits</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Sum of the number hits on statements in the current statement cache.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>prepared_portal_count</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Total number of prepared portals generated.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>prepared_statement_count</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Total number of prepared statements generated.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>portals_opened_count</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Total number of portals opened, i.e. number of statements issued
+    to the database.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>blocked_count</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Number of times the driver had to (briefly) wait for the database to
+    send additional data.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>bytes_received</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Total number of bytes received from the database so far.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>messages_received</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Total number of messages received from the database (one SQL-statement
+    requires multiple messages to be exchanged).</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>bytes_sent</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Total number of bytes sent to the database so far.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>packets_sent</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Total number of packets sent to the database (one packet usually
+    contains multiple messages).</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>reconnect_count</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Number of times the connection to the database has been lost.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>portals_in_flight</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Currently still open portals, i.e. running statements.</p>
+<p> This function is PostgreSQL-specific, and thus it is not available
+ through the generic SQL-interface.</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

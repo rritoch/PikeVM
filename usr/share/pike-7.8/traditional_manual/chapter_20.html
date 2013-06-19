@@ -1,0 +1,297 @@
+<html><head><title>Reference Manual for Pike v7.8 release 116</title></head>
+<body bgcolor='white' text='black'>
+<dl><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 20. Pike Test Suite</font></td></tr></table><br />
+</dt><dd><p><font color='red'>FIXME: The goals of the test suite and an overview of it</font></p></dd>
+<dt><a name='1'></a>
+<table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 20.1. Running Tests</font></td></tr></table><br />
+</dt>
+<dd><p>The most common way of running tests from the test suite is to
+  use the top level make target <tt>verify</tt> which installs a test
+  Pike in the build directory and use it while running the entire test
+  suite. The following test-related make targets are defined in the top
+  level make file.</p><dl>
+<dt>tinstall</dt>
+<dd>Makes and installs a test Pike binary in the build directory. If
+  a test Pike binary was already installed, it will first be
+  removed.</dd>
+<dt>just_verify</dt>
+<dd>Runs the test suite with the flags "<tt>-F -a -v</tt>", without
+  installing a new test Pike binary.</dd>
+<dt>testsuites</dt>
+<dd>Creates testsuite files in the build tree from the
+  testsuite.in-files in the src/ and lib/ trees.</dd>
+<dt>verify</dt>
+<dd>Runs the <tt>testsuites</tt>, <tt>tinstall</tt> and
+  <tt>just_verify</tt> targets.</dd>
+<dt>verify_installed</dt>
+<dd>Runs the test suit with the flags "<tt>-F -a -v</tt>", with the
+  Pike binary installed on the system.</dd>
+<dt>check</dt>
+<dd>Alias for the <tt>verify</tt> make target.</dd>
+<dt>sure</dt>
+<dd>Alias for the <tt>verify</tt> make target.</dd>
+<dt>verbose_verify</dt>
+<dd>Runs the <tt>tinstall</tt> make target and then runs the test
+  suite with the flags "<tt>-F -v -v -a</tt>".</dd>
+<dt>gdb_verify</dt>
+<dd>Runs the test suite inside of gdb. The test suite is started
+  with the flags "<tt>-F -v -v -a</tt>".</dd>
+<dt>valgrind_verify</dt>
+<dd>Runs the test suite inside of valgrind. The test suite is
+  started with the flags "<tt>-F -v -a</tt>".</dd>
+<dt>valgrind_just_verify</dt>
+<dd>Runs the test suite inside of valgrind, without installing a
+  test pike. The test suite is started with the flags "<tt>-F -v
+  -a</tt>".</dd>
+</dl><p>It is possible to alter the flags given to the
+  <tt>test_install</tt> program by using the <tt>TESTARGS</tt> make
+  variable.</p><p><pre>
+make verify TESTARGS="-a -v4 -l2 -t1 -c1 -m"
+</pre></p>
+</dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 20.1.1. The Test Program</font></td></tr></table><br />
+</dt><dd><p>The actual testing is done by the program
+  <tt>bin/test_pike.pike</tt>, which can be run as a stand alone
+  application to test any Pike binary with any test suite or test
+  suites. The Pike binary that executes the test program will be
+  tested, and it will be tested with the test suites provided as
+  arguments to the test program.</p><p><pre>
+/home/visbur/Pike/7.2/bin/pike bin/test_pike.pike testsuite1 testsuite2
+</pre></p>
+<p>The individual testsuite files are generated from testsuite.in files
+  scattered about the lib/ and src/ trees. When you run the make targets
+  described above, those are made for you automagically, but to do it by hand
+  (i e if you added a test to one of them), cd to the top directory and run</p><p><pre>
+make testsuites
+</pre></p>
+<p>The testsuite files have now appeared in build/<i>arch</i> in
+  locations corresponding to where they lived in the pike tree, except
+  those from the lib/ hierarchy; those end up in
+  build/<i>arch</i>/tlib.</p><p>The test_pike.pike program takes the following attributes.</p><dl>
+<dt>-h, --help</dt>
+<dd>Displays a help message listing all possible arguments.</dd>
+<dt>-a, --auto</dt>
+<dd>Let the test program find the testsuits self. It will search for
+  files named <tt>testsuite</tt> or <tt>module_testsuite</tt> in the
+  current working directory and all subdirectories.</dd>
+<dt>--no-watchdog</dt>
+<dd>Normally the the test program has a watchdog activated that
+  aborts testing if a test takes more than 20 minutes to complete (or
+  80 minutes if Pike is compiled with dmalloc). With this argument the
+  watchdog will not be used.</dd>
+<dt>--watchdog=pid</dt>
+<dd>Run only the watchdog and monitor the process with the given pid.</dd>
+<dt>-v[level], --verbose[=level]</dt>
+<dd>Select the level of verbosity. Every verbose level includes the
+  printouts from the levels below.
+  <table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'>0</td><td bgcolor='white'>No extra printouts.</td></tr>
+<tr valign='top'><td bgcolor='white'>1</td><td bgcolor='white'>Some additional information printed out after every
+                finished block of tests.</td></tr>
+<tr valign='top'><td bgcolor='white'>2</td><td bgcolor='white'>Some extra information about test that will or won't be
+                run.</td></tr>
+<tr valign='top'><td bgcolor='white'>3</td><td bgcolor='white'>Every test is printed out.</td></tr>
+<tr valign='top'><td bgcolor='white'>4</td><td bgcolor='white'>Time spent in individual tests are printed out.</td></tr>
+<tr valign='top'><td bgcolor='white'>10</td><td bgcolor='white'>The actual pike code compiled, including wrappers, is
+                 printed. Note that the code will be quoted.</td></tr>
+</table></td></tr></table><br />
+
+<font face='courier'><pre>
+$ pike bin/test_pike.pike -v1 testsuite 
+Doing tests in testsuite (1 tests)
+Total tests: 1  (0 tests skipped)       
+</pre></font>
+<font face='courier'><pre>
+$ pike bin/test_pike.pike -v2 testsuite
+Doing tests in testsuite (1 tests)
+Doing test 1 (1 total) at /home/nilsson/Pike/7.3/lib/modules/ADT.pmod/testsuite.in:9
+Failed tests: 0.                        
+Total tests: 1  (0 tests skipped)
+</pre></font>
+<font face='courier'><pre>
+$ pike bin/test_pike.pike -v4 testsuite 
+Doing tests in testsuite (1 tests)
+Doing test 1 (1 total) at /home/nilsson/Pike/7.3/lib/modules/ADT.pmod/testsuite.in:9
+  0: mixed a() { 
+  1:   object s = ADT.Stack();
+  2:   s-&gt;push(1);
+  3:   return s-&gt;pop();
+  4: ; }
+  5: mixed b() { return 1; }
+
+Time in a(): 0.000, Time in b(): 0.000000
+Failed tests: 0.                        
+Total tests: 1  (0 tests skipped)
+</pre></font>
+<font face='courier'><pre>
+$ pike bin/test_pike.pike -v10 testsuite 
+Doing tests in testsuite (1 tests)
+Doing test 1 (1 total) at /home/nilsson/Pike/7.3/lib/modules/ADT.pmod/testsuite.in:9
+  0: mixed a() { 
+  1:   object s = ADT.Stack();
+  2:   s-&gt;push(1);
+  3:   return s-&gt;pop();
+  4: ; }
+  5: mixed b() { return 1; }
+
+  0: mixed a() { 
+  1:   object s = ADT.Stack();
+  2:   s-&gt;push(1);
+  3:   return s-&gt;pop();
+  4: ; }
+  5: mixed b() { return 1; }
+  6: int __cpp_line=__LINE__; int __rtl_line=[int]backtrace()[-1][1];
+  7: 
+  8: int \30306\30271\30310=0;
+  9: 
+
+Time in a(): 0.000, Time in b(): 0.000000
+Failed tests: 0.                        
+Total tests: 1  (0 tests skipped)
+</pre></font>
+</dd>
+<dt>-p, --prompt</dt>
+<dd>The user will be asked before every test is run.</dd>
+<dt>-sX, --start-test=X</dt>
+<dd>Where in the testsuite testing should start, e.g. ignores X
+  tests in every testsuite.</dd>
+<dt>-eX, --end-after=X</dt>
+<dd>How many tests should be run.</dd>
+<dt>-f, --fail</dt>
+<dd>If set, the test program exits on first failure.</dd>
+<dt>-F, --fork</dt>
+<dd>If set, each testsuite will run in a separate process.</dd>
+<dt>-lX, --loop=X</dt>
+<dd>The number of times the testsuite should be run. Default is 1.</dd>
+<dt>-tX, --trace=X</dt>
+<dd>Run tests with trace level X.</dd>
+<dt>-c[X], --check[=X]</dt>
+<dd>The level of extra pike consistency checks performed.
+  <table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'>1</td><td bgcolor='white'>_verify_internals is run before every test.</td></tr>
+<tr valign='top'><td bgcolor='white'>2</td><td bgcolor='white'>_verify_internals is run after every compilation.</td></tr>
+<tr valign='top'><td bgcolor='white'>3</td><td bgcolor='white'>_verify_internals is run after every test.</td></tr>
+<tr valign='top'><td bgcolor='white'>4</td><td bgcolor='white'>An extra gc and _verify_internals is run before
+    every test.</td></tr>
+<tr valign='top'><td bgcolor='white'>X&lt;0</td><td bgcolor='white'>For values below zero, _verify_internals will be run
+    before every n:th test, where n=abs(X).</td></tr>
+</table></td></tr></table><br />
+
+</dd>
+<dt>-m, --mem, --memory</dt>
+<dd>Prints out memory allocations after the tests.</dd>
+<dt>-T, --notty</dt>
+<dd>Format output for non-tty.</dd>
+<dt>-d, --debug</dt>
+<dd>Opens a debug port.</dd>
+</dl></dd>
+<dt><a name='2'></a>
+<table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 20.2. Writing New Tests</font></td></tr></table><br />
+</dt>
+<dd><p>Whenever you write a new function in a module or in Pike itself
+  it is good to add a few test cases in the test suite to ensure that
+  regressions are spotted as soon as they appear or to aid in finding
+  problems when porting Pike to another platform. Since you have
+  written the code, you are the one best suited to come up with tricky
+  tests cases. A good test suite for a function includes both some
+  trivial tests to ensure that the basic functionality works and some
+  nasty tests to test the borderlands of what the function is capable
+  of, e.g. empty in parameters.</p><p>Also, when a bug in Pike has been found, a minimized test case
+  the triggers the bug should also be added to the test suite. After
+  all, this test case has proven to be a useful once.</p></dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 20.2.1. test_any</font></td></tr></table><br />
+</dt><dd><p>The test_any macro tests if the result of two pike expressions
+    are similar, e.g. if a==b. Technically the actual test preformed
+    is !(a!=b). The first expression should be a complete block, that
+    returns a value, while the other expression should be a simple
+    pike statement.</p><p><pre>
+test_any([[
+  int f (int i) {i = 0; return i;};
+  return f (1);
+]],0)
+</pre></p>
+</dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 20.2.2. test_any_equal</font></td></tr></table><br />
+</dt><dd><p>The test_any_equal macro tests if the result of two pike
+    expressions are identical, e.g. if equal(a,b). The first
+    expression should be a complete block, that returns a value, while
+    the other expression should be a simple pike statement.</p><p><pre>
+test_any_equal([[
+  mixed a=({1,2,3});
+  a[*] += 1;
+  return a;
+]], [[ ({2,3,4}) ]])
+</pre></p>
+</dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 20.2.3. test_eq</font></td></tr></table><br />
+</dt><dd><p>The test_eq macro tests if the result of two pike statements
+    are similar, e.g. if a==b. Technicaly the actual test performed is
+    !(a!=b).</p><p><pre>
+test_eq(1e1,10.0);
+</pre></p>
+</dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 20.2.4. test_equal</font></td></tr></table><br />
+</dt><dd><p>The test_equal macro tests if the result of two pike statements
+    are identical, e.g. if equal(a,b).</p><p><pre>
+test_equal([[ ({10,20})[*] + 30  ]], [[ ({40, 50}) ]])
+</pre></p>
+</dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 20.2.5. test_do</font></td></tr></table><br />
+</dt><dd><p>test_do simply executes its code. This test fails if there is
+    any compilation error or if an error is thrown during
+    execution.</p><p><pre>
+test_do([[
+  int x;
+  if (time())
+    x = 1;
+  else
+    foo: break foo;
+]])
+</pre></p>
+</dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 20.2.6. test_true</font></td></tr></table><br />
+</dt><dd><p>This test succeeds if the pike expression is evaluated into a
+    non-zero value.</p><p><pre>
+test_true([[1.0e-40]]);
+</pre></p>
+</dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 20.2.7. test_false</font></td></tr></table><br />
+</dt><dd><p>This test succeeds if the pike expression is evaluated into a
+    zero value.</p><p><pre>
+test_false(glob("*f","foo"))
+</pre></p>
+</dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 20.2.8. test_compile</font></td></tr></table><br />
+</dt><dd><p>The test_compile macro only tries to compile an expression. It
+    fails upon compilarion warnings or errors.</p><p><pre>
+test_compile([[Stdio.File foo=Stdio.File();]])
+</pre></p>
+</dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 20.2.9. test_compile_any</font></td></tr></table><br />
+</dt><dd><p>Tests if the code compiles, just as <tt>test_compile</tt>, but
+    is a complete block of code and not just an expression.</p><p><pre>
+test_compile_any([[
+  void foo() 
+  {
+    Stdio.File bar(int x, int y)
+    { 
+      return 0;
+    }; 
+  } 
+]])
+</pre></p>
+</dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 20.2.10. test_compile_error</font></td></tr></table><br />
+</dt><dd><p>Does the inverse of <tt>test_compile</tt>; verifies that the
+    code does not compile.</p><p><pre>
+test_compile_error([[ int a="a"; ]])
+</pre></p>
+</dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 20.2.11. test_compile_error_any</font></td></tr></table><br />
+</dt><dd><p>Does the inverse of <tt>test_compile_any</tt>; verifies that
+    the code does not compile.</p><p><pre>
+test_compile_error_any([[
+  int a=5;
+  string b="a";
+  a=b;
+]])
+</pre></p>
+</dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 20.2.12. test_compile_warning</font></td></tr></table><br />
+</dt><dd></dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 20.2.13. test_compile_warning_any</font></td></tr></table><br />
+</dt><dd></dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 20.2.14. test_eval_error</font></td></tr></table><br />
+</dt><dd></dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 20.2.15. test_define_program</font></td></tr></table><br />
+</dt><dd></dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 20.2.16. test_program</font></td></tr></table><br />
+</dt><dd></dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 20.2.17. cond</font></td></tr></table><br />
+</dt><dd></dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 20.2.18. ifefun</font></td></tr></table><br />
+</dt><dd></dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 20.2.19. nonregression</font></td></tr></table><br />
+</dt><dd></dd></dl></body></html>

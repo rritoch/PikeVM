@@ -1,0 +1,102 @@
+<html><head><title>Pike Reference Manual - GTK.ProgressBar</title>
+<link rel='stylesheet' href='../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../..//images/pike_line_middle.gif" width="98%"><img src="../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../ex/predef_3A_3A/GTK.html'><b>GTK</b></a><br />
+<b>GTK.ProgressBar</b><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/ProgressBar/create.html'>create()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/ProgressBar/get_activity_blocks.html'>get_activity_blocks()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/ProgressBar/get_activity_dir.html'>get_activity_dir()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/ProgressBar/get_activity_pos.html'>get_activity_pos()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/ProgressBar/get_activity_step.html'>get_activity_step()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/ProgressBar/get_bar_style.html'>get_bar_style()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/ProgressBar/get_blocks.html'>get_blocks()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/ProgressBar/get_orientation.html'>get_orientation()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/ProgressBar/set_activity_blocks.html'>set_activity_blocks()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/ProgressBar/set_activity_step.html'>set_activity_step()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/ProgressBar/set_bar_style.html'>set_bar_style()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/ProgressBar/set_discrete_blocks.html'>set_discrete_blocks()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/ProgressBar/set_orientation.html'>set_orientation()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/ProgressBar/update.html'>update()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../ex/predef_3A_3A/GTK/Progress/set_value.html"><img src="../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >GTK.Progress()-&gt;set_value()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../ex/predef_3A_3A/GTK/ProgressBar/create.html">GTK.ProgressBar()-&gt;create()<img src="../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Class GTK.ProgressBar</h1>
+    <dl>
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>A simple progress bar. Useful when you are doing things that take a long
+ time. Try to always have an 'abort' button whenever it makes sence.
+<font face='courier'><code>&nbsp;GTK.ProgressBar()-&gt;update(0.1)</code></font>
+<img src='../../../images/predef.GTK.ProgressBar.1.png' height='20' width='150' /></p>
+<p><font face='courier'><code>&nbsp;GTK.ProgressBar()-&gt;set_show_text(1)-&gt;update(0.3)</code></font>
+<img src='../../../images/predef.GTK.ProgressBar.2.png' height='20' width='150' /></p>
+<p><font face='courier'><code>&nbsp;GTK.ProgressBar()-&gt;update(0.6)</code></font>
+<img src='../../../images/predef.GTK.ProgressBar.3.png' height='20' width='150' /></p>
+<p><font face='courier'><code>&nbsp;GTK.ProgressBar()-&gt;update(1.0)</code></font>
+<img src='../../../images/predef.GTK.ProgressBar.4.png' height='20' width='150' /></p>
+</font></dd></dl>
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Inherit</font>
+<font size='+1'><b>Progress</b></font>
+</font><dt>
+<dd><p><font face='courier'>inherit </font><font face='courier'><a href='../../predef_3A_3A/GTK/Progress.html'>GTK.Progress</a></font><font face='courier'> : <font color='#F000F0'>Progress</font></font></p></dd>
+</dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

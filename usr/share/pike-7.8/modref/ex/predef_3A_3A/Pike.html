@@ -1,0 +1,151 @@
+<html><head><title>Pike Reference Manual - Pike</title>
+<link rel='stylesheet' href='../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../..//images/pike_line_middle.gif" width="98%"><img src="../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../index.html'><b>[Top]</b></a><br />
+<b>Pike</b><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Modules</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Pike/DefaultBackend.html'><b>DefaultBackend</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Pike/Security.html'><b>Security</b></a></td></tr>
+<tr><td nowrap='nowrap'><br /><b>Classes</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Pike/BacktraceFrame.html'><b>BacktraceFrame</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Pike/Codec.html'><b>Codec</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Pike/Decoder.html'><b>Decoder</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Pike/Encoder.html'><b>Encoder</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Pike/PollBackend.html'><b>PollBackend</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Pike/PollDeviceBackend.html'><b>PollDeviceBackend</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Pike/SelectBackend.html'><b>SelectBackend</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Pike/__Backend.html'><b>__Backend</b></a></td></tr>
+<tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Pike/count_memory.html'>count_memory()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Pike/gc_parameters.html'>gc_parameters()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Pike/get_runtime_info.html'>get_runtime_info()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../ex/predef_3A_3A/Parser/parse_html_entities.html"><img src="../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Parser.parse_html_entities()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../ex/predef_3A_3A/Pike/BacktraceFrame.html">Pike.BacktraceFrame<img src="../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Module Pike</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'></font><dt>
+<dd><p><tt>constant Pike.<font color='#F000F0'>WEAK_INDICES</font></tt><br />
+<tt>constant Pike.<font color='#F000F0'>WEAK_VALUES</font></tt><br />
+<tt>constant Pike.<font color='#F000F0'>WEAK</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Flags for use together with <font face='courier'><a href='../predef_3A_3A/set_weak_flag.html'>set_weak_flag</a></font>  and <font face='courier'><a href='../predef_3A_3A/get_weak_flag.html'>get_weak_flag</a></font> .
+ See <font face='courier'><a href='../predef_3A_3A/set_weak_flag.html'>set_weak_flag</a></font>  for details.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'></font><dt>
+<dd><p><tt>constant Pike.<font color='#F000F0'>INDEX_FROM_BEG</font></tt><br />
+<tt>constant Pike.<font color='#F000F0'>INDEX_FROM_END</font></tt><br />
+<tt>constant Pike.<font color='#F000F0'>OPEN_BOUND</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Used with <font face='courier'><a href='../predef_3A_3A/_backtick_5B//_5D.html'>`[..]</a></font>  and <font face='courier'><a href='../lfun_3A_3A/_backtick_5B//_5D.html'>lfun::`[..]</a></font>  to specify how the
+ corresponding index maps to an upper or lower range bound:</p>
+<dl><dt>INDEX_FROM_BEG</dt>
+<dd><p>The index is relative to the beginning of the string or array
+     (or any other sequence implemented through an object).
+     Sequences typically start at zero.</p>
+</dd>
+<dt>INDEX_FROM_END</dt>
+<dd><p>The index is relative to the end of the sequence. In strings
+     and arrays, the last element is at zero, the one before that
+     at one, etc.</p>
+</dd>
+<dt>OPEN_BOUND</dt>
+<dd><p>The range is open in the corresponding direction. The index is
+     irrelevant in this case.</p>
+</dd>
+</dl>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>Backend</b></font>
+</font><dt>
+<dd><p><tt>constant Pike.<font color='#F000F0'>Backend</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>The class of the <font face='courier'><a href='../predef_3A_3A/Pike/DefaultBackend.html'>DefaultBackend</a></font> .</p>
+<p> Typically something that has inherited <font face='courier'><a href='../predef_3A_3A/Pike/__Backend.html'>__Backend</a></font> .</p>
+</font></dd>
+<dt><font face='Helvetica'>See also</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'><a href='../predef_3A_3A/Pike/__Backend.html'>__Backend</a></font> , <font face='courier'><a href='../predef_3A_3A/Pike/DefaultBackend.html'>DefaultBackend</a></font> </p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>SmallBackend</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>program</font> Pike.<b><font color='#F000F0'>SmallBackend</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>This is the most suitable backend implementation if you only want
+ to monitor a small number of <font face='courier'><a href='../predef_3A_3A/Stdio/File.html'>Stdio.File</a></font>  objects.</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

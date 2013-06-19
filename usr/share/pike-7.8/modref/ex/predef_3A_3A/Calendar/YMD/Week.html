@@ -1,0 +1,95 @@
+<html><head><title>Pike Reference Manual - Calendar.YMD.Week</title>
+<link rel='stylesheet' href='../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../ex/predef_3A_3A/Calendar.html'><b>Calendar</b></a><br />
+<a href='../../../../ex/predef_3A_3A/Calendar/YMD.html'><b>Calendar.YMD</b></a><br />
+<b>Calendar.YMD.Week</b><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Calendar/YMD/Week/create.html'>create()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Calendar/YMD/Week/day.html'>day()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/Calendar/YMD/Hour/parse.html"><img src="../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Calendar.YMD.Hour()-&gt;parse()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/Calendar/YMD/Week/create.html">Calendar.YMD.Week()-&gt;create()<img src="../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Class Calendar.YMD.Week</h1>
+    <dl>
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'>
+
+<p>The Calendar week represents a standard time period of
+a week. In the Gregorian calendar, the standard week
+starts on a sunday and ends on a saturday; in the ISO
+calendar, it starts on a monday and ends on a sunday.</p>
+<p>The week are might not be aligned to the year, and thus
+the week may cross year borders and the year of
+the week might not be the same as the year of all the
+days in the week. The basic rule is that the week year
+is the year that has the most days in the week, but
+since week number only is specified in the ISO calendar
+- and derivates - the week number of most calendars
+is the week number of most of the days in the ISO
+calendar, which modifies this rule for the Gregorian calendar;
+the week number and year is the same as for the ISO calendar,
+except for the sundays.</p>
+<p>When adding, moving and subtracting months
+to a week, it falls back to using days.</p>
+<p>When adding, moving or subtracting years,
+if tries to place the moved week in the
+resulting year.
+</p>
+</font></dd></dl>
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

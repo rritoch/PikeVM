@@ -1,0 +1,133 @@
+<html><head><title>Pike Reference Manual - GSSAPI.InitContext()-&gt;create()</title>
+<link rel='stylesheet' href='../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../ex/predef_3A_3A/GSSAPI.html'><b>GSSAPI</b></a><br />
+<a href='../../../../ex/predef_3A_3A/GSSAPI/InitContext.html'><b>GSSAPI.InitContext</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;create()</td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GSSAPI/InitContext/init.html'>init()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/GSSAPI/InitContext.html"><img src="../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >GSSAPI.InitContext</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/GSSAPI/InitContext/init.html">GSSAPI.InitContext()-&gt;init()<img src="../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method GSSAPI.InitContext()-&gt;create()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>create</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>void</font> GSSAPI.InitContext<b>(</b><font color='#202020'>void</font>|<font color='#005080'><font face='courier'><a href='../../../predef_3A_3A/GSSAPI/Cred.html'>Cred</a></font></font> <font color='#005080'>cred</font>, <font color='#202020'>void</font>|<font color='#005080'><font face='courier'><a href='../../../predef_3A_3A/GSSAPI/Name.html'>Name</a></font></font>|<font color='#202020'>string</font> <font color='#005080'>target_name</font>, <font color='#202020'>void</font>|<font color='#202020'>string</font> <font color='#005080'>mech</font>, <font color='#202020'>void</font>|<font color='#202020'>int</font> <font color='#005080'>required_services</font>, <font color='#202020'>void</font>|<font color='#202020'>int</font> <font color='#005080'>desired_services</font>, <font color='#202020'>void</font>|<font color='#202020'>int</font>(0..) <font color='#005080'>desired_time</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Creates a context for initiator use. This function only accepts
+ parameters to be used later during the <font face='courier'><a href='../../../predef_3A_3A/GSSAPI/InitContext/init.html'>init</a></font>  call. If there
+ are semantic problems with them, such as if the credentials are
+ stale or the mechanism isn't supported, then they will be
+ signalled later by <font face='courier'><a href='../../../predef_3A_3A/GSSAPI/InitContext/init.html'>init</a></font> .</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>cred</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Credentials for the identity this context claims. The
+   credentials for the default principal (if any) is used if zero
+   or left out.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>target_name</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>The name of the target.</p>
+<p>   This can be either a <font face='courier'><a href='../../../predef_3A_3A/GSSAPI/Name.html'>GSSAPI.Name</a></font>  object or a string. In the
+   latter case, the string is converted to a GSS-API name
+   according to a mechanism-specific default printable syntax,
+   i.e. just like if it would be given as the sole argument to
+   <font face='courier'><a href='../../../predef_3A_3A/GSSAPI/Name/create.html'>GSSAPI.Name.create</a></font> .</p>
+<p>   Some mechanisms support unnamed targets (as allowed in GSS-API
+   v2, update 1) and in such cases this may be zero or left out.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>mech</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>The mechanism to use. It is given as an OID on dotted-decimal
+   form. The GSS-API implementation chooses this using system
+   settings if it's zero or left out, which is the recommended way.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>required_services</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Bitfield of <tt>GSSAPI.*_FLAG</tt> flags specifying all services
+   that must be provided in the context. If the context fail to
+   provide any of them then it is closed and a
+   <font face='courier'><a href='../../../predef_3A_3A/GSSAPI/MissingServicesError.html'>GSSAPI.MissingServicesError</a></font>  is thrown.</p>
+<p><font face='courier'>GSSAPI.PROT_READY_FLAG</font>  is ignored in this parameter. The fact
+   that a user calls a per-message function indicates that this
+   service is required at that point, and a
+   <font face='courier'><a href='../../../predef_3A_3A/GSSAPI/MissingServicesError.html'>GSSAPI.MissingServicesError</a></font>  is thrown if it isn't.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>desired_services</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Bitfield of <tt>GSSAPI.*_FLAG</tt> flags specifying the context
+   services that are wanted but not required. I.e. errors won't
+   be thrown if any of these aren't provided. The services
+   specified in <font face='courier'>required_services</font>  are implicit, so they need
+   not be repeated here.</p>
+<p><font face='courier'>GSSAPI.PROT_READY_FLAG</font>  is ignored in this parameter.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>desired_time</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>The desired context validity time in seconds. Zero or left out
+   means use the default.</p>
+</font></dd>
+<dt><font face='Helvetica'>Note</font><dt>
+<dd><font face='Helvetica'><p>Channel bindings (RFC 2743, section 1.1.6) are not yet
+   implemented since that feature appear to not be in much active
+   use, and its format is not completely specified (RFC 2744,
+   section 3.11).</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

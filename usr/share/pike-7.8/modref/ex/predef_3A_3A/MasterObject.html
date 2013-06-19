@@ -1,0 +1,355 @@
+<html><head><title>Pike Reference Manual - MasterObject</title>
+<link rel='stylesheet' href='../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../..//images/pike_line_middle.gif" width="98%"><img src="../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../index.html'><b>[Top]</b></a><br />
+<b>MasterObject</b><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Classes</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/Codec.html'><b>Codec</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/CompatResolver.html'><b>CompatResolver</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/Decoder.html'><b>Decoder</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/Encoder.html'><b>Encoder</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/Pike06Resolver.html'><b>Pike06Resolver</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/Pike_0_5_master.html'><b>Pike_0_5_master</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/Pike_0_6_master.html'><b>Pike_0_6_master</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/Pike_7_0_master.html'><b>Pike_7_0_master</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/Pike_7_2_master.html'><b>Pike_7_2_master</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/Pike_7_4_master.html'><b>Pike_7_4_master</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/Pike_7_6_master.html'><b>Pike_7_6_master</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/Version.html'><b>Version</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/dirnode.html'><b>dirnode</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/joinnode.html'><b>joinnode</b></a></td></tr>
+<tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/_main.html'>_main()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/asyncp.html'>asyncp()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/backend_thread.html'>backend_thread()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/basename.html'>basename()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/cast_to_object.html'>cast_to_object()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/cast_to_program.html'>cast_to_program()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/compile_error.html'>compile_error()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/compile_exception.html'>compile_exception()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/compile_file.html'>compile_file()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/compile_string.html'>compile_string()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/compile_warning.html'>compile_warning()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/decode_charset.html'>decode_charset()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/describe_backtrace.html'>describe_backtrace()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/describe_error.html'>describe_error()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/describe_function.html'>describe_function()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/describe_module.html'>describe_module()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/describe_object.html'>describe_object()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/describe_program.html'>describe_program()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/dirname.html'>dirname()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/enable_source_cache.html'>enable_source_cache()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/error.html'>error()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/explode_path.html'>explode_path()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/fc_reverse_lookup.html'>fc_reverse_lookup()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/get_backtrace.html'>get_backtrace()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/get_compat_master.html'>get_compat_master()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/get_compilation_handler.html'>get_compilation_handler()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/getenv.html'>getenv()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/handle_error.html'>handle_error()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/handle_inherit.html'>handle_inherit()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/is_absolute_path.html'>is_absolute_path()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/master_read_file.html'>master_read_file()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/module_defined.html'>module_defined()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/normalize_path.html'>normalize_path()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/objects_reverse_lookup.html'>objects_reverse_lookup()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/program_path_to_name.html'>program_path_to_name()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/programs_reverse_lookup.html'>programs_reverse_lookup()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/putenv.html'>putenv()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/runtime_warning.html'>runtime_warning()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/show_doc.html'>show_doc()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/strlen.html'>strlen()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/unregister.html'>unregister()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/werror.html'>werror()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/MasterObject/write.html'>write()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../ex/predef_3A_3A/Iterator/value.html"><img src="../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Iterator()-&gt;value()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../ex/predef_3A_3A/MasterObject/Codec.html">MasterObject()-&gt;Codec<img src="../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Class MasterObject</h1>
+    <dl>
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Master control program for Pike.</p>
+</font></dd>
+<dt><font face='Helvetica'>See also</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'><a href='../predef_3A_3A/master.html'>master()</a></font> , <font face='courier'><a href='../predef_3A_3A/replace_master.html'>replace_master()</a></font> </p>
+</font></dd></dl>
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Inherit</font>
+<font size='+1'><b>Codec</b></font>
+</font><dt>
+<dd><p><font face='courier'>inherit </font><font face='courier'><a href='../predef_3A_3A/MasterObject/Codec.html'>Codec</a></font><font face='courier'> : <font color='#F000F0'>Codec</font></font></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>The master object is used as a fallback codec by <font face='courier'><a href='../predef_3A_3A/encode_value.html'>encode_value()</a></font> 
+   and <font face='courier'><a href='../predef_3A_3A/decode_value.html'>decode_value()</a></font>  if no codec was given.</p>
+<p>   It will also be used as a codec if <font face='courier'><a href='../predef_3A_3A/decode_value.html'>decode_value()</a></font>  encounters
+   old-style <font face='courier'><a href='../predef_3A_3A/encode_value.html'>encode_value()</a></font> 'ed data.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Inherit</font>
+<font size='+1'><b>CompilationHandler</b></font>
+</font><dt>
+<dd><p><font face='courier'>inherit </font><font face='courier'><a href='../predef_3A_3A/CompilationHandler.html'>CompilationHandler</a></font><font face='courier'> : <font color='#F000F0'>CompilationHandler</font></font></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>The master object acts as fallback compilation handler for
+ <font face='courier'><a href='../predef_3A_3A/compile.html'>compile()</a></font>  and <font face='courier'><a href='../predef_3A_3A/cpp.html'>cpp()</a></font> .</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Inherit</font>
+<font size='+1'><b>CompatResolver</b></font>
+</font><dt>
+<dd><p><font face='courier'>inherit </font><font face='courier'><a href='../predef_3A_3A/MasterObject/CompatResolver.html'>CompatResolver</a></font><font face='courier'> : <font color='#F000F0'>CompatResolver</font></font></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Inherit</font>
+<font size='+1'><b>Codec</b></font>
+</font><dt>
+<dd><p><font face='courier'>inherit </font><font face='courier'><a href='../predef_3A_3A/MasterObject/Codec.html'>Codec</a></font><font face='courier'> : <font color='#F000F0'>Codec</font></font></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>bt_max_string_len</b></font>
+</font><dt>
+<dd><p><tt>constant MasterObject.<font color='#F000F0'>bt_max_string_len</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>This constant contains the maximum length of a function entry in a
+ backtrace. Defaults to 200 if no BT_MAX_STRING_LEN define has been
+ given.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>out_of_date_warning</b></font>
+</font><dt>
+<dd><p><tt>constant MasterObject.<font color='#F000F0'>out_of_date_warning</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Should Pike complain about out of date compiled files.
+ 1 means yes and 0 means no. Controlled by the OUT_OF_DATE_WARNING
+ define.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>want_warnings</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>int</font> MasterObject.<b><font color='#F000F0'>want_warnings</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>If not zero compilation warnings will be written out on stderr.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>compat_major</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>int</font> MasterObject.<b><font color='#F000F0'>compat_major</font></b></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>compat_minor</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>int</font> MasterObject.<b><font color='#F000F0'>compat_minor</font></b></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>show_if_constant_errors</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>int</font> MasterObject.<b><font color='#F000F0'>show_if_constant_errors</font></b></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Inherit</font>
+<font size='+1'><b>Pike_7_6_master</b></font>
+</font><dt>
+<dd><p><font face='courier'>inherit </font><font face='courier'><a href='../predef_3A_3A/MasterObject/Pike_7_6_master.html'>Pike_7_6_master</a></font><font face='courier'> : <font color='#F000F0'>Pike_7_6_master</font></font></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Namespaces for compat masters.</p>
+<p> This inherit is used to provide compatibility namespaces
+ for <font face='courier'><a href='../predef_3A_3A/MasterObject/get_compat_master.html'>get_compat_master()</a></font> .</p>
+</font></dd>
+<dt><font face='Helvetica'>See also</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'><a href='../predef_3A_3A/MasterObject/get_compat_master.html'>get_compat_master()</a></font> </p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'></font><dt>
+<dd><p><tt><font color='#202020'>mapping</font>(<font color='#202020'>string</font>:<font color='#202020'>program</font>|<font color='#005080'><font face='courier'>NoValue</font></font>) MasterObject.<b><font color='#F000F0'>programs</font></b></tt><br />
+<tt><font color='#202020'>mapping</font>(<font color='#202020'>program</font>:<font color='#202020'>object</font>) MasterObject.<b><font color='#F000F0'>documentation</font></b></tt><br />
+<tt><font color='#202020'>mapping</font>(<font color='#202020'>program</font>:<font color='#202020'>string</font>) MasterObject.<b><font color='#F000F0'>source_cache</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Mapping containing the cache of currently compiled files.</p>
+<p> This mapping currently has the following structure:</p>
+<table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>filename</font> : <font color='#202020'>program</font></tt></td></tr>
+</table></td></tr></table><br />
+<p>The filename path separator is / on both NT and UNIX.</p>
+</font></dd>
+<dt><font face='Helvetica'>Note</font><dt>
+<dd><font face='Helvetica'><p>Special cases: The current master program is available under the
+   name <font face='courier'><code>"/master"</code></font>, and the program containing the <font face='courier'>main</font> 
+   function under <font face='courier'><code>"/main"</code></font>.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>include_prefix</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>string</font> MasterObject.<b><font color='#F000F0'>include_prefix</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Prefix for Pike-related C header files.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>doc_prefix</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>string</font> MasterObject.<b><font color='#F000F0'>doc_prefix</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Prefix for autodoc files.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>cflags</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>string</font> MasterObject.<b><font color='#F000F0'>cflags</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Flags suitable for use when compiling Pike C modules</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>ldflags</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>string</font> MasterObject.<b><font color='#F000F0'>ldflags</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Flags suitable for use when linking Pike C modules</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'></font><dt>
+<dd><p><tt><font color='#202020'>string</font> MasterObject.<b><font color='#F000F0'>_pike_file_name</font></b></tt><br />
+<tt><font color='#202020'>string</font> MasterObject.<b><font color='#F000F0'>_master_file_name</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>These are useful if you want to start other Pike processes
+ with the same options as this one was started with.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>currentversion</b></font>
+</font><dt>
+<dd><p><tt><font color='#005080'><font face='courier'><a href='../predef_3A_3A/MasterObject/Version.html'>Version</a></font></font> MasterObject.<b><font color='#F000F0'>currentversion</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Version information about the current Pike version.</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

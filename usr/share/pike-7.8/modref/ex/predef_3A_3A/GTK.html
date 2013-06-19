@@ -1,0 +1,5952 @@
+<html><head><title>Pike Reference Manual - GTK</title>
+<link rel='stylesheet' href='../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../..//images/pike_line_middle.gif" width="98%"><img src="../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../index.html'><b>[Top]</b></a><br />
+<b>GTK</b><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Classes</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/AccelGroup.html'><b>AccelGroup</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/AccelLabel.html'><b>AccelLabel</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Adjustment.html'><b>Adjustment</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Alignment.html'><b>Alignment</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Arrow.html'><b>Arrow</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/AspectFrame.html'><b>AspectFrame</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Bin.html'><b>Bin</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Box.html'><b>Box</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Button.html'><b>Button</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/ButtonBox.html'><b>ButtonBox</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/CTreeNode.html'><b>CTreeNode</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/CTreeRow.html'><b>CTreeRow</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Calendar.html'><b>Calendar</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/CheckButton.html'><b>CheckButton</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/CheckMenuItem.html'><b>CheckMenuItem</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Clist.html'><b>Clist</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Clock.html'><b>Clock</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/ColorSelection.html'><b>ColorSelection</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/ColorSelectionDialog.html'><b>ColorSelectionDialog</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Combo.html'><b>Combo</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Container.html'><b>Container</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Ctree.html'><b>Ctree</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Curve.html'><b>Curve</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Data.html'><b>Data</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Databox.html'><b>Databox</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Dial.html'><b>Dial</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Dialog.html'><b>Dialog</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/DrawingArea.html'><b>DrawingArea</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Editable.html'><b>Editable</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Entry.html'><b>Entry</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/EventBox.html'><b>EventBox</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/FileSelection.html'><b>FileSelection</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Fixed.html'><b>Fixed</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/FontSelection.html'><b>FontSelection</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/FontSelectionDialog.html'><b>FontSelectionDialog</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Frame.html'><b>Frame</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/GLArea.html'><b>GLArea</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/GammaCurve.html'><b>GammaCurve</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/GladeXML.html'><b>GladeXML</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/HandleBox.html'><b>HandleBox</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Hbox.html'><b>Hbox</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/HbuttonBox.html'><b>HbuttonBox</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Hpaned.html'><b>Hpaned</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Hruler.html'><b>Hruler</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Hscale.html'><b>Hscale</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Hscrollbar.html'><b>Hscrollbar</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Hseparator.html'><b>Hseparator</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Image.html'><b>Image</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/InputDialog.html'><b>InputDialog</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Invisible.html'><b>Invisible</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Item.html'><b>Item</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Label.html'><b>Label</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Layout.html'><b>Layout</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Menu.html'><b>Menu</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/MenuBar.html'><b>MenuBar</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/MenuItem.html'><b>MenuItem</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/MenuShell.html'><b>MenuShell</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Misc.html'><b>Misc</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Notebook.html'><b>Notebook</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Object.html'><b>Object</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/OptionMenu.html'><b>OptionMenu</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Packer.html'><b>Packer</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Paned.html'><b>Paned</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Pixmap.html'><b>Pixmap</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/PixmapMenuItem.html'><b>PixmapMenuItem</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Plug.html'><b>Plug</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Progress.html'><b>Progress</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/ProgressBar.html'><b>ProgressBar</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/RadioButton.html'><b>RadioButton</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/RadioMenuItem.html'><b>RadioMenuItem</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Range.html'><b>Range</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Ruler.html'><b>Ruler</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Scale.html'><b>Scale</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Scrollbar.html'><b>Scrollbar</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/ScrolledWindow.html'><b>ScrolledWindow</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/SelectionData.html'><b>SelectionData</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Separator.html'><b>Separator</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Socket.html'><b>Socket</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/SpinButton.html'><b>SpinButton</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Statusbar.html'><b>Statusbar</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Style.html'><b>Style</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Table.html'><b>Table</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/TearoffMenuItem.html'><b>TearoffMenuItem</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Text.html'><b>Text</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/TipsQuery.html'><b>TipsQuery</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/ToggleButton.html'><b>ToggleButton</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Toolbar.html'><b>Toolbar</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Tooltips.html'><b>Tooltips</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Vbox.html'><b>Vbox</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/VbuttonBox.html'><b>VbuttonBox</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Viewport.html'><b>Viewport</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Vpaned.html'><b>Vpaned</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Vruler.html'><b>Vruler</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Vscale.html'><b>Vscale</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Vscrollbar.html'><b>Vscrollbar</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Vseparator.html'><b>Vseparator</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Widget.html'><b>Widget</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/Window.html'><b>Window</b></a></td></tr>
+<tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/applet_widget_gtk_main.html'>applet_widget_gtk_main()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/applet_widget_gtk_main_quit.html'>applet_widget_gtk_main_quit()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/false.html'>false()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/flush.html'>flush()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/gnome_init.html'>gnome_init()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/grab_add.html'>grab_add()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/grab_remove.html'>grab_remove()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/gtk_init.html'>gtk_init()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/low_flush.html'>low_flush()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/main.html'>main()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/main_iteration_do.html'>main_iteration_do()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/main_level.html'>main_level()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/main_quit.html'>main_quit()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/parse_rc.html'>parse_rc()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/root_window.html'>root_window()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/set_new_signal_convention.html'>set_new_signal_convention()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/setup_gtk.html'>setup_gtk()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GTK/true.html'>true()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../ex/predef_3A_3A/GSSAPI/names_for_mech.html"><img src="../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >GSSAPI.names_for_mech()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../ex/predef_3A_3A/GTK/AccelGroup.html">GTK.AccelGroup<img src="../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Module GTK</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Inherit</font>
+<font size='+1'><b>GTKSupport</b></font>
+</font><dt>
+<dd><p><font face='courier'>inherit </font><font face='courier'><a href='../predef_3A_3A/GTKSupport.html'>GTKSupport</a></font><font face='courier'> : <font color='#F000F0'>GTKSupport</font></font></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>FALSE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>FALSE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_ACTION_ASK</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_ACTION_ASK</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_ACTION_COPY</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_ACTION_COPY</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_ACTION_DEFAULT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_ACTION_DEFAULT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_ACTION_LINK</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_ACTION_LINK</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_ACTION_MOVE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_ACTION_MOVE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_ACTION_PRIVATE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_ACTION_PRIVATE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_ALL_EVENTS_MASK</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_ALL_EVENTS_MASK</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_AND</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_AND</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_AND_INVERT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_AND_INVERT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_AND_REVERSE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_AND_REVERSE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_ARROW</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_ARROW</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_BASED_ARROW_DOWN</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_BASED_ARROW_DOWN</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_BASED_ARROW_UP</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_BASED_ARROW_UP</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_BOAT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_BOAT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_BOGOSITY</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_BOGOSITY</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_BOTTOM_LEFT_CORNER</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_BOTTOM_LEFT_CORNER</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_BOTTOM_RIGHT_CORNER</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_BOTTOM_RIGHT_CORNER</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_BOTTOM_SIDE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_BOTTOM_SIDE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_BOTTOM_TEE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_BOTTOM_TEE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_BOX_SPIRAL</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_BOX_SPIRAL</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_BUTTON1_MASK</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_BUTTON1_MASK</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_BUTTON1_MOTION_MASK</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_BUTTON1_MOTION_MASK</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_BUTTON2_MASK</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_BUTTON2_MASK</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_BUTTON2_MOTION_MASK</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_BUTTON2_MOTION_MASK</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_BUTTON3_MASK</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_BUTTON3_MASK</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_BUTTON3_MOTION_MASK</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_BUTTON3_MOTION_MASK</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_BUTTON_MOTION_MASK</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_BUTTON_MOTION_MASK</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_BUTTON_PRESS_MASK</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_BUTTON_PRESS_MASK</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_BUTTON_RELEASE_MASK</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_BUTTON_RELEASE_MASK</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_CAP_BUTT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_CAP_BUTT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_CAP_NOT_LAST</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_CAP_NOT_LAST</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_CAP_PROJECTING</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_CAP_PROJECTING</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_CAP_ROUND</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_CAP_ROUND</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_CENTER_PTR</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_CENTER_PTR</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_CIRCLE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_CIRCLE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_CLEAR</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_CLEAR</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_CLOCK</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_CLOCK</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_COFFEE_MUG</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_COFFEE_MUG</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_CONTROL_MASK</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_CONTROL_MASK</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_COPY</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_COPY</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_COPY_INVERT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_COPY_INVERT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_CROSS</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_CROSS</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_CROSSHAIR</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_CROSSHAIR</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_CROSS_REVERSE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_CROSS_REVERSE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_DECOR_ALL</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_DECOR_ALL</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_DECOR_BORDER</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_DECOR_BORDER</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_DECOR_MAXIMIZE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_DECOR_MAXIMIZE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_DECOR_MENU</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_DECOR_MENU</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_DECOR_MINIMIZE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_DECOR_MINIMIZE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_DECOR_RESIZEH</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_DECOR_RESIZEH</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_DECOR_TITLE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_DECOR_TITLE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_DIAMOND_CROSS</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_DIAMOND_CROSS</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_DOT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_DOT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_DOTBOX</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_DOTBOX</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_DOUBLE_ARROW</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_DOUBLE_ARROW</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_DRAFT_LARGE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_DRAFT_LARGE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_DRAFT_SMALL</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_DRAFT_SMALL</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_DRAG_PROTO_MOTIF</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_DRAG_PROTO_MOTIF</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_DRAG_PROTO_ROOTWIN</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_DRAG_PROTO_ROOTWIN</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_DRAG_PROTO_XDND</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_DRAG_PROTO_XDND</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_DRAPED_BOX</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_DRAPED_BOX</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_ENTER_NOTIFY_MASK</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_ENTER_NOTIFY_MASK</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_EQUIV</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_EQUIV</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_EVEN_ODD_RULE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_EVEN_ODD_RULE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_EXCHANGE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_EXCHANGE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_EXPOSURE_MASK</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_EXPOSURE_MASK</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_EXTENSION_EVENTS_ALL</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_EXTENSION_EVENTS_ALL</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_EXTENSION_EVENTS_CURSOR</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_EXTENSION_EVENTS_CURSOR</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_EXTENSION_EVENTS_NONE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_EXTENSION_EVENTS_NONE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_FLEUR</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_FLEUR</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_FOCUS_CHANGE_MASK</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_FOCUS_CHANGE_MASK</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_FUNC_ALL</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_FUNC_ALL</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_FUNC_CLOSE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_FUNC_CLOSE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_FUNC_MAXIMIZE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_FUNC_MAXIMIZE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_FUNC_MINIMIZE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_FUNC_MINIMIZE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_FUNC_MOVE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_FUNC_MOVE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_FUNC_RESIZE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_FUNC_RESIZE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_GL_ACCUM_ALPHA_SIZE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_GL_ACCUM_ALPHA_SIZE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_GL_ACCUM_BLUE_SIZE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_GL_ACCUM_BLUE_SIZE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_GL_ACCUM_GREEN_SIZE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_GL_ACCUM_GREEN_SIZE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_GL_ACCUM_RED_SIZE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_GL_ACCUM_RED_SIZE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_GL_ALPHA_SIZE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_GL_ALPHA_SIZE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_GL_AUX_BUFFERS</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_GL_AUX_BUFFERS</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_GL_BLUE_SIZE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_GL_BLUE_SIZE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_GL_BUFFER_SIZE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_GL_BUFFER_SIZE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_GL_DEPTH_SIZE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_GL_DEPTH_SIZE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_GL_DOUBLEBUFFER</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_GL_DOUBLEBUFFER</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_GL_GREEN_SIZE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_GL_GREEN_SIZE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_GL_LEVEL</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_GL_LEVEL</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_GL_NONE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_GL_NONE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_GL_RED_SIZE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_GL_RED_SIZE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_GL_RGBA</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_GL_RGBA</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_GL_STENCIL_SIZE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_GL_STENCIL_SIZE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_GL_STEREO</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_GL_STEREO</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_GL_TRANSPARENT_ALPHA_VALUE_EXT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_GL_TRANSPARENT_ALPHA_VALUE_EXT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_GL_TRANSPARENT_BLUE_VALUE_EXT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_GL_TRANSPARENT_BLUE_VALUE_EXT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_GL_TRANSPARENT_GREEN_VALUE_EXT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_GL_TRANSPARENT_GREEN_VALUE_EXT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_GL_TRANSPARENT_INDEX_VALUE_EXT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_GL_TRANSPARENT_INDEX_VALUE_EXT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_GL_TRANSPARENT_RED_VALUE_EXT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_GL_TRANSPARENT_RED_VALUE_EXT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_GL_TRANSPARENT_TYPE_EXT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_GL_TRANSPARENT_TYPE_EXT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_GL_USE_GL</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_GL_USE_GL</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_GL_X_VISUAL_TYPE_EXT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_GL_X_VISUAL_TYPE_EXT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_GOBBLER</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_GOBBLER</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_GUMBY</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_GUMBY</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_HAND1</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_HAND1</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_HAND2</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_HAND2</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_HEART</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_HEART</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_ICON</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_ICON</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_IM_PREEDIT_AREA</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_IM_PREEDIT_AREA</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_IM_PREEDIT_CALLBACKS</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_IM_PREEDIT_CALLBACKS</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_IM_PREEDIT_MASK</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_IM_PREEDIT_MASK</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_IM_PREEDIT_NONE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_IM_PREEDIT_NONE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_IM_PREEDIT_NOTHING</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_IM_PREEDIT_NOTHING</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_IM_PREEDIT_POSITION</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_IM_PREEDIT_POSITION</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_IM_STATUS_AREA</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_IM_STATUS_AREA</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_IM_STATUS_CALLBACKS</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_IM_STATUS_CALLBACKS</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_IM_STATUS_MASK</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_IM_STATUS_MASK</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_IM_STATUS_NONE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_IM_STATUS_NONE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_IM_STATUS_NOTHING</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_IM_STATUS_NOTHING</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_INVERT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_INVERT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_IRON_CROSS</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_IRON_CROSS</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_JOIN_BEVEL</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_JOIN_BEVEL</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_JOIN_MITER</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_JOIN_MITER</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_JOIN_ROUND</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_JOIN_ROUND</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_KEY_PRESS_MASK</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_KEY_PRESS_MASK</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_KEY_RELEASE_MASK</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_KEY_RELEASE_MASK</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_LEAVE_NOTIFY_MASK</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_LEAVE_NOTIFY_MASK</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_LEFTBUTTON</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_LEFTBUTTON</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_LEFT_PTR</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_LEFT_PTR</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_LEFT_SIDE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_LEFT_SIDE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_LEFT_TEE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_LEFT_TEE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_LINE_DOUBLE_DASH</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_LINE_DOUBLE_DASH</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_LINE_ON_OFF_DASH</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_LINE_ON_OFF_DASH</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_LINE_SOLID</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_LINE_SOLID</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_LL_ANGLE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_LL_ANGLE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_LOCK_MASK</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_LOCK_MASK</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_LR_ANGLE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_LR_ANGLE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_MAN</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_MAN</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_MIDDLEBUTTON</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_MIDDLEBUTTON</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_MOD1_MASK</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_MOD1_MASK</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_MOD2_MASK</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_MOD2_MASK</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_MOD3_MASK</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_MOD3_MASK</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_MOD4_MASK</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_MOD4_MASK</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_MOD5_MASK</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_MOD5_MASK</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_MOUSE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_MOUSE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_NAND</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_NAND</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_NOOP</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_NOOP</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_OPAQUE_STIPPLED</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_OPAQUE_STIPPLED</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_OR</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_OR</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_OR_INVERT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_OR_INVERT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_OR_REVERSE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_OR_REVERSE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_OVERLAP_RECTANGLE_IN</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_OVERLAP_RECTANGLE_IN</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_OVERLAP_RECTANGLE_OUT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_OVERLAP_RECTANGLE_OUT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_OVERLAP_RECTANGLE_PART</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_OVERLAP_RECTANGLE_PART</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_PENCIL</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_PENCIL</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_PIRATE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_PIRATE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_PLUS</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_PLUS</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_POINTER_MOTION_HINT_MASK</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_POINTER_MOTION_HINT_MASK</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_POINTER_MOTION_MASK</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_POINTER_MOTION_MASK</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_PROPERTY_CHANGE_MASK</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_PROPERTY_CHANGE_MASK</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_PROP_MODE_APPEND</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_PROP_MODE_APPEND</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_PROP_MODE_PREPEND</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_PROP_MODE_PREPEND</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_PROP_MODE_REPLACE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_PROP_MODE_REPLACE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_PROXIMITY_IN_MASK</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_PROXIMITY_IN_MASK</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_PROXIMITY_OUT_MASK</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_PROXIMITY_OUT_MASK</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_QUESTION_ARROW</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_QUESTION_ARROW</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_RIGHTBUTTON</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_RIGHTBUTTON</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_RIGHT_PTR</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_RIGHT_PTR</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_RIGHT_SIDE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_RIGHT_SIDE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_RIGHT_TEE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_RIGHT_TEE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_RTL_LOGO</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_RTL_LOGO</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_SAILBOAT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_SAILBOAT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_SB_DOWN_ARROW</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_SB_DOWN_ARROW</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_SB_H_DOUBLE_ARROW</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_SB_H_DOUBLE_ARROW</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_SB_LEFT_ARROW</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_SB_LEFT_ARROW</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_SB_RIGHT_ARROW</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_SB_RIGHT_ARROW</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_SB_UP_ARROW</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_SB_UP_ARROW</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_SB_V_DOUBLE_ARROW</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_SB_V_DOUBLE_ARROW</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_SELECTION_TYPE_ATOM</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_SELECTION_TYPE_ATOM</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_SELECTION_TYPE_BITMAP</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_SELECTION_TYPE_BITMAP</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_SELECTION_TYPE_COLORMAP</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_SELECTION_TYPE_COLORMAP</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_SELECTION_TYPE_DRAWABLE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_SELECTION_TYPE_DRAWABLE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_SELECTION_TYPE_INTEGER</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_SELECTION_TYPE_INTEGER</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_SELECTION_TYPE_PIXMAP</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_SELECTION_TYPE_PIXMAP</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_SELECTION_TYPE_STRING</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_SELECTION_TYPE_STRING</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_SELECTION_TYPE_WINDOW</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_SELECTION_TYPE_WINDOW</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_SET</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_SET</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_SHIFT_MASK</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_SHIFT_MASK</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_SHUTTLE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_SHUTTLE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_SIZING</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_SIZING</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_SOLID</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_SOLID</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_SPIDER</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_SPIDER</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_SPRAYCAN</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_SPRAYCAN</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_STAR</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_STAR</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_STIPPLED</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_STIPPLED</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_STRUCTURE_MASK</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_STRUCTURE_MASK</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_TARGET</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_TARGET</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_TARGET_BITMAP</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_TARGET_BITMAP</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_TARGET_COLORMAP</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_TARGET_COLORMAP</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_TARGET_DRAWABLE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_TARGET_DRAWABLE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_TARGET_PIXMAP</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_TARGET_PIXMAP</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_TARGET_STRING</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_TARGET_STRING</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_TCROSS</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_TCROSS</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_TILED</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_TILED</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_TOP_LEFT_ARROW</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_TOP_LEFT_ARROW</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_TOP_LEFT_CORNER</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_TOP_LEFT_CORNER</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_TOP_RIGHT_CORNER</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_TOP_RIGHT_CORNER</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_TOP_SIDE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_TOP_SIDE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_TOP_TEE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_TOP_TEE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_TREK</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_TREK</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_UL_ANGLE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_UL_ANGLE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_UMBRELLA</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_UMBRELLA</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_UR_ANGLE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_UR_ANGLE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_VISIBILITY_NOTIFY_MASK</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_VISIBILITY_NOTIFY_MASK</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_WATCH</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_WATCH</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_WINDING_RULE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_WINDING_RULE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_WINDOW_CHILD</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_WINDOW_CHILD</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_WINDOW_DIALOG</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_WINDOW_DIALOG</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_WINDOW_FOREIGN</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_WINDOW_FOREIGN</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_WINDOW_ROOT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_WINDOW_ROOT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_WINDOW_TEMP</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_WINDOW_TEMP</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_WINDOW_TOPLEVEL</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_WINDOW_TOPLEVEL</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_XOR</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_XOR</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GDK_XTERM</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GDK_XTERM</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_DOCK_BOTTOM</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_DOCK_BOTTOM</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_DOCK_ITEM_BEH_EXCLUSIVE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_DOCK_ITEM_BEH_EXCLUSIVE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_DOCK_ITEM_BEH_LOCKED</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_DOCK_ITEM_BEH_LOCKED</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_DOCK_ITEM_BEH_NEVER_FLOATING</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_DOCK_ITEM_BEH_NEVER_FLOATING</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_DOCK_ITEM_BEH_NEVER_HORIZONTAL</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_DOCK_ITEM_BEH_NEVER_HORIZONTAL</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_DOCK_ITEM_BEH_NEVER_VERTICAL</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_DOCK_ITEM_BEH_NEVER_VERTICAL</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_DOCK_ITEM_BEH_NORMAL</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_DOCK_ITEM_BEH_NORMAL</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_DOCK_LEFT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_DOCK_LEFT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_DOCK_RIGHT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_DOCK_RIGHT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_DOCK_TOP</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_DOCK_TOP</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_FONT_PICKER_MODE_FONT_INFO</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_FONT_PICKER_MODE_FONT_INFO</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_FONT_PICKER_MODE_PIXMAP</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_FONT_PICKER_MODE_PIXMAP</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_FONT_PICKER_MODE_UNKNOWN</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_FONT_PICKER_MODE_UNKNOWN</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_FONT_PICKER_MODE_USER_WIDGET</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_FONT_PICKER_MODE_USER_WIDGET</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_ICON_LIST_ICONS</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_ICON_LIST_ICONS</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_ICON_LIST_IS_EDITABLE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_ICON_LIST_IS_EDITABLE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_ICON_LIST_STATIC_TEXT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_ICON_LIST_STATIC_TEXT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_ICON_LIST_TEXT_BELOW</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_ICON_LIST_TEXT_BELOW</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_ICON_LIST_TEXT_RIGHT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_ICON_LIST_TEXT_RIGHT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_MESSAGE_BOX_ERROR</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_MESSAGE_BOX_ERROR</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_MESSAGE_BOX_GENERIC</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_MESSAGE_BOX_GENERIC</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_MESSAGE_BOX_INFO</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_MESSAGE_BOX_INFO</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_MESSAGE_BOX_QUESTION</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_MESSAGE_BOX_QUESTION</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_MESSAGE_BOX_WARNING</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_MESSAGE_BOX_WARNING</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_PREFERENCES_ALWAYS</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_PREFERENCES_ALWAYS</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_PREFERENCES_NEVER</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_PREFERENCES_NEVER</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_PREFERENCES_USER</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_PREFERENCES_USER</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_Panel_ORIENT_DOWN</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_Panel_ORIENT_DOWN</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_Panel_ORIENT_LEFT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_Panel_ORIENT_LEFT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_Panel_ORIENT_RIGHT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_Panel_ORIENT_RIGHT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_Panel_ORIENT_UP</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_Panel_ORIENT_UP</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_BUTTON_APPLY</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_BUTTON_APPLY</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_BUTTON_CANCEL</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_BUTTON_CANCEL</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_BUTTON_CLOSE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_BUTTON_CLOSE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_BUTTON_DOWN</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_BUTTON_DOWN</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_BUTTON_FONT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_BUTTON_FONT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_BUTTON_HELP</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_BUTTON_HELP</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_BUTTON_NEXT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_BUTTON_NEXT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_BUTTON_NO</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_BUTTON_NO</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_BUTTON_OK</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_BUTTON_OK</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_BUTTON_PREV</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_BUTTON_PREV</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_BUTTON_UP</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_BUTTON_UP</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_BUTTON_YES</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_BUTTON_YES</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_ABOUT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_ABOUT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_ALIGN_CENTER</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_ALIGN_CENTER</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_ALIGN_JUSTIFY</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_ALIGN_JUSTIFY</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_ALIGN_LEFT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_ALIGN_LEFT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_ALIGN_RIGHT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_ALIGN_RIGHT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_ATTACH</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_ATTACH</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_BACK</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_BACK</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_BLANK</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_BLANK</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_BOOK_BLUE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_BOOK_BLUE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_BOOK_GREEN</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_BOOK_GREEN</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_BOOK_OPEN</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_BOOK_OPEN</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_BOOK_RED</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_BOOK_RED</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_BOOK_YELLOW</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_BOOK_YELLOW</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_BOTTOM</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_BOTTOM</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_CDROM</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_CDROM</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_CLOSE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_CLOSE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_CONVERT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_CONVERT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_COPY</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_COPY</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_CUT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_CUT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_DOWN</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_DOWN</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_EXEC</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_EXEC</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_EXIT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_EXIT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_FIRST</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_FIRST</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_FONT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_FONT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_FORWARD</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_FORWARD</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_HOME</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_HOME</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_INDEX</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_INDEX</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_JUMP_TO</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_JUMP_TO</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_LAST</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_LAST</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_LINE_IN</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_LINE_IN</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_MAIL</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_MAIL</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_MAIL_FWD</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_MAIL_FWD</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_MAIL_NEW</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_MAIL_NEW</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_MAIL_RCV</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_MAIL_RCV</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_MAIL_RPL</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_MAIL_RPL</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_MAIL_SND</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_MAIL_SND</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_MIC</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_MIC</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_MIDI</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_MIDI</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_NEW</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_NEW</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_OPEN</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_OPEN</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_PASTE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_PASTE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_PREF</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_PREF</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_PRINT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_PRINT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_PROP</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_PROP</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_QUIT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_QUIT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_REDO</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_REDO</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_REFRESH</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_REFRESH</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_REVERT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_REVERT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_SAVE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_SAVE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_SAVE_AS</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_SAVE_AS</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_SCORES</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_SCORES</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_SEARCH</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_SEARCH</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_SPELLCHECK</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_SPELLCHECK</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_SRCHRPL</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_SRCHRPL</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_STOP</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_STOP</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_TEXT_BOLD</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_TEXT_BOLD</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_TEXT_ITALIC</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_TEXT_ITALIC</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_TEXT_STRIKEOUT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_TEXT_STRIKEOUT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_TEXT_UNDERLINE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_TEXT_UNDERLINE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_TIMER</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_TIMER</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_TIMER_STOP</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_TIMER_STOP</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_TOP</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_TOP</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_TRASH</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_TRASH</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_TRASH_FULL</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_TRASH_FULL</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_UNDELETE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_UNDELETE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_UNDO</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_UNDO</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_UP</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_UP</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_MENU_VOLUME</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_MENU_VOLUME</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_ABOUT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_ABOUT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_ADD</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_ADD</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_ALIGN_CENTER</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_ALIGN_CENTER</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_ALIGN_JUSTIFY</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_ALIGN_JUSTIFY</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_ALIGN_LEFT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_ALIGN_LEFT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_ALIGN_RIGHT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_ALIGN_RIGHT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_ATTACH</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_ATTACH</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_BACK</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_BACK</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_BOOK_BLUE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_BOOK_BLUE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_BOOK_GREEN</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_BOOK_GREEN</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_BOOK_OPEN</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_BOOK_OPEN</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_BOOK_RED</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_BOOK_RED</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_BOOK_YELLOW</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_BOOK_YELLOW</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_BOTTOM</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_BOTTOM</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_CDROM</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_CDROM</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_CLEAR</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_CLEAR</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_CLOSE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_CLOSE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_COLORSELECTOR</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_COLORSELECTOR</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_CONVERT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_CONVERT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_COPY</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_COPY</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_CUT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_CUT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_DISABLED</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_DISABLED</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_DOWN</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_DOWN</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_EXEC</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_EXEC</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_EXIT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_EXIT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_FIRST</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_FIRST</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_FOCUSED</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_FOCUSED</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_FONT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_FONT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_FORWARD</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_FORWARD</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_HELP</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_HELP</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_HOME</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_HOME</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_INDEX</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_INDEX</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_JUMP_TO</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_JUMP_TO</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_LAST</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_LAST</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_LINE_IN</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_LINE_IN</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_MAIL</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_MAIL</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_MAIL_FWD</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_MAIL_FWD</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_MAIL_NEW</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_MAIL_NEW</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_MAIL_RCV</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_MAIL_RCV</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_MAIL_RPL</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_MAIL_RPL</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_MAIL_SND</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_MAIL_SND</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_MIC</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_MIC</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_MIDI</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_MIDI</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_MULTIPLE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_MULTIPLE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_NEW</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_NEW</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_NOT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_NOT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_OPEN</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_OPEN</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_PASTE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_PASTE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_PREFERENCES</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_PREFERENCES</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_PRINT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_PRINT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_PROPERTIES</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_PROPERTIES</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_QUIT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_QUIT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_REDO</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_REDO</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_REFRESH</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_REFRESH</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_REGULAR</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_REGULAR</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_REMOVE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_REMOVE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_REVERT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_REVERT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_SAVE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_SAVE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_SAVE_AS</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_SAVE_AS</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_SCORES</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_SCORES</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_SEARCH</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_SEARCH</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_SPELLCHECK</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_SPELLCHECK</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_SRCHRPL</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_SRCHRPL</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_STOP</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_STOP</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_TABLE_BORDERS</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_TABLE_BORDERS</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_TABLE_FILL</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_TABLE_FILL</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_TEXT_BOLD</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_TEXT_BOLD</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_TEXT_BULLETED_LIST</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_TEXT_BULLETED_LIST</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_TEXT_INDENT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_TEXT_INDENT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_TEXT_ITALIC</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_TEXT_ITALIC</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_TEXT_NUMBERED_LIST</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_TEXT_NUMBERED_LIST</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_TEXT_STRIKEOUT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_TEXT_STRIKEOUT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_TEXT_UNDERLINE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_TEXT_UNDERLINE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_TEXT_UNINDENT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_TEXT_UNINDENT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_TIMER</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_TIMER</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_TIMER_STOP</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_TIMER_STOP</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_TOP</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_TOP</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_TRASH</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_TRASH</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_TRASH_FULL</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_TRASH_FULL</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_TYPE_DATA</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_TYPE_DATA</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_TYPE_FILE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_TYPE_FILE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_TYPE_GPIXMAP</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_TYPE_GPIXMAP</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_TYPE_IMLIB</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_TYPE_IMLIB</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_TYPE_IMLIB_SCALED</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_TYPE_IMLIB_SCALED</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_TYPE_NONE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_TYPE_NONE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_TYPE_PATH</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_TYPE_PATH</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_TYPE_WIDGET</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_TYPE_WIDGET</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_UNDELETE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_UNDELETE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_UNDO</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_UNDO</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_UP</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_UP</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>GNOME_STOCK_PIXMAP_VOLUME</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>GNOME_STOCK_PIXMAP_VOLUME</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>ACCEL_LOCKED</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>ACCEL_LOCKED</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>ACCEL_SIGNAL_VISIBLE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>ACCEL_SIGNAL_VISIBLE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>ACCEL_VISIBLE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>ACCEL_VISIBLE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>ANCHOR_CENTER</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>ANCHOR_CENTER</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>ANCHOR_E</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>ANCHOR_E</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>ANCHOR_EAST</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>ANCHOR_EAST</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>ANCHOR_N</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>ANCHOR_N</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>ANCHOR_NE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>ANCHOR_NE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>ANCHOR_NORTH</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>ANCHOR_NORTH</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>ANCHOR_NORTH_EAST</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>ANCHOR_NORTH_EAST</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>ANCHOR_NORTH_WEST</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>ANCHOR_NORTH_WEST</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>ANCHOR_NW</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>ANCHOR_NW</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>ANCHOR_S</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>ANCHOR_S</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>ANCHOR_SE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>ANCHOR_SE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>ANCHOR_SOUTH</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>ANCHOR_SOUTH</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>ANCHOR_SOUTH_EAST</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>ANCHOR_SOUTH_EAST</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>ANCHOR_SOUTH_WEST</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>ANCHOR_SOUTH_WEST</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>ANCHOR_SW</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>ANCHOR_SW</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>ANCHOR_W</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>ANCHOR_W</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>ANCHOR_WEST</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>ANCHOR_WEST</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>APP_PAINTABLE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>APP_PAINTABLE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>ARROW_DOWN</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>ARROW_DOWN</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>ARROW_LEFT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>ARROW_LEFT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>ARROW_RIGHT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>ARROW_RIGHT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>ARROW_UP</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>ARROW_UP</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>BUTTONBOX_DEFAULT_STYLE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>BUTTONBOX_DEFAULT_STYLE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>BUTTONBOX_EDGE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>BUTTONBOX_EDGE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>BUTTONBOX_END</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>BUTTONBOX_END</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>BUTTONBOX_SPREAD</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>BUTTONBOX_SPREAD</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>BUTTONBOX_START</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>BUTTONBOX_START</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>BUTTON_DRAGS</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>BUTTON_DRAGS</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>BUTTON_EXPANDS</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>BUTTON_EXPANDS</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>BUTTON_IGNORED</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>BUTTON_IGNORED</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>BUTTON_SELECTS</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>BUTTON_SELECTS</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>CALENDAR_NO_MONTH_CHANGE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>CALENDAR_NO_MONTH_CHANGE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>CALENDAR_SHOW_DAY_NAMES</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>CALENDAR_SHOW_DAY_NAMES</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>CALENDAR_SHOW_HEADING</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>CALENDAR_SHOW_HEADING</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>CALENDAR_SHOW_WEEK_NUMBERS</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>CALENDAR_SHOW_WEEK_NUMBERS</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>CALENDAR_WEEK_START_MONDAY</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>CALENDAR_WEEK_START_MONDAY</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>CAN_DEFAULT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>CAN_DEFAULT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>CAN_FOCUS</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>CAN_FOCUS</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>CELL_EMPTY</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>CELL_EMPTY</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>CELL_PIXMAP</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>CELL_PIXMAP</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>CELL_PIXTEXT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>CELL_PIXTEXT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>CELL_TEXT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>CELL_TEXT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>CELL_WIDGET</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>CELL_WIDGET</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>CENTIMETERS</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>CENTIMETERS</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>CLIST_ADD_MODE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>CLIST_ADD_MODE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>CLIST_AUTO_RESIZE_BLOCKED</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>CLIST_AUTO_RESIZE_BLOCKED</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>CLIST_AUTO_SORT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>CLIST_AUTO_SORT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>CLIST_DRAW_DRAG_LINE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>CLIST_DRAW_DRAG_LINE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>CLIST_DRAW_DRAG_RECT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>CLIST_DRAW_DRAG_RECT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>CLIST_IN_DRAG</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>CLIST_IN_DRAG</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>CLIST_REORDERABLE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>CLIST_REORDERABLE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>CLIST_ROW_HEIGHT_SET</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>CLIST_ROW_HEIGHT_SET</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>CLIST_SHOW_TITLES</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>CLIST_SHOW_TITLES</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>CLIST_USE_DRAG_ICONS</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>CLIST_USE_DRAG_ICONS</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>CLOCK_DECREASING</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>CLOCK_DECREASING</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>CLOCK_INCREASING</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>CLOCK_INCREASING</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>CLOCK_REALTIME</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>CLOCK_REALTIME</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>COMPOSITE_CHILD</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>COMPOSITE_CHILD</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>CORNER_BOTTOM_LEFT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>CORNER_BOTTOM_LEFT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>CORNER_BOTTOM_RIGHT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>CORNER_BOTTOM_RIGHT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>CORNER_TOP_LEFT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>CORNER_TOP_LEFT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>CORNER_TOP_RIGHT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>CORNER_TOP_RIGHT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>CTREE_EXPANDER_CIRCULAR</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>CTREE_EXPANDER_CIRCULAR</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>CTREE_EXPANDER_NONE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>CTREE_EXPANDER_NONE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>CTREE_EXPANDER_SQUARE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>CTREE_EXPANDER_SQUARE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>CTREE_EXPANDER_TRIANGLE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>CTREE_EXPANDER_TRIANGLE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>CTREE_EXPANSION_COLLAPSE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>CTREE_EXPANSION_COLLAPSE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>CTREE_EXPANSION_COLLAPSE_RECURSIVE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>CTREE_EXPANSION_COLLAPSE_RECURSIVE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>CTREE_EXPANSION_EXPAND</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>CTREE_EXPANSION_EXPAND</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>CTREE_EXPANSION_EXPAND_RECURSIVE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>CTREE_EXPANSION_EXPAND_RECURSIVE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>CTREE_EXPANSION_TOGGLE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>CTREE_EXPANSION_TOGGLE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>CTREE_EXPANSION_TOGGLE_RECURSIVE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>CTREE_EXPANSION_TOGGLE_RECURSIVE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>CTREE_LINES_DOTTED</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>CTREE_LINES_DOTTED</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>CTREE_LINES_NONE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>CTREE_LINES_NONE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>CTREE_LINES_SOLID</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>CTREE_LINES_SOLID</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>CTREE_LINES_TABBED</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>CTREE_LINES_TABBED</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>CTREE_POS_AFTER</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>CTREE_POS_AFTER</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>CTREE_POS_AS_CHILD</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>CTREE_POS_AS_CHILD</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>CTREE_POS_BEFORE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>CTREE_POS_BEFORE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>CURVE_TYPE_FREE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>CURVE_TYPE_FREE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>CURVE_TYPE_LINEAR</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>CURVE_TYPE_LINEAR</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>CURVE_TYPE_SPLINE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>CURVE_TYPE_SPLINE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>DATABOX_BARS</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>DATABOX_BARS</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>DATABOX_LINES</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>DATABOX_LINES</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>DATABOX_NOT_DISPLAYED</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>DATABOX_NOT_DISPLAYED</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>DATABOX_POINTS</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>DATABOX_POINTS</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>DEST_DEFAULT_ALL</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>DEST_DEFAULT_ALL</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>DEST_DEFAULT_DROP</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>DEST_DEFAULT_DROP</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>DEST_DEFAULT_HIGHLIGHT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>DEST_DEFAULT_HIGHLIGHT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>DEST_DEFAULT_MOTION</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>DEST_DEFAULT_MOTION</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>DIRECTION_LEFT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>DIRECTION_LEFT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>DIRECTION_RIGHT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>DIRECTION_RIGHT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>DIR_DOWN</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>DIR_DOWN</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>DIR_LEFT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>DIR_LEFT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>DIR_RIGHT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>DIR_RIGHT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>DIR_TAB_BACKWARD</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>DIR_TAB_BACKWARD</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>DIR_TAB_FORWARD</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>DIR_TAB_FORWARD</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>DIR_UP</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>DIR_UP</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>EXPAND</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>EXPAND</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>FILL</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>FILL</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>FILL_X</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>FILL_X</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>FILL_Y</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>FILL_Y</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>HAS_DEFAULT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>HAS_DEFAULT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>HAS_FOCUS</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>HAS_FOCUS</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>HAS_GRAB</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>HAS_GRAB</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>INCHES</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>INCHES</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>JUSTIFY_CENTER</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>JUSTIFY_CENTER</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>JUSTIFY_FILL</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>JUSTIFY_FILL</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>JUSTIFY_LEFT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>JUSTIFY_LEFT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>JUSTIFY_RIGHT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>JUSTIFY_RIGHT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>LEFT_RIGHT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>LEFT_RIGHT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>MAPPED</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>MAPPED</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>NO_REPARENT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>NO_REPARENT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>NO_WINDOW</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>NO_WINDOW</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>ORIENTATION_HORIZONTAL</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>ORIENTATION_HORIZONTAL</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>ORIENTATION_VERTICAL</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>ORIENTATION_VERTICAL</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>PACK_END</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>PACK_END</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>PACK_EXPAND</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>PACK_EXPAND</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>PACK_START</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>PACK_START</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>PARENT_SENSITIVE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>PARENT_SENSITIVE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>PIXELS</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>PIXELS</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>POLICY_ALWAYS</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>POLICY_ALWAYS</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>POLICY_AUTOMATIC</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>POLICY_AUTOMATIC</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>POLICY_NEVER</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>POLICY_NEVER</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>POS_BOTTOM</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>POS_BOTTOM</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>POS_LEFT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>POS_LEFT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>POS_RIGHT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>POS_RIGHT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>POS_TOP</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>POS_TOP</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>PREVIEW_COLOR</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>PREVIEW_COLOR</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>PREVIEW_GRAYSCALE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>PREVIEW_GRAYSCALE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>PROGRESS_BOTTOM_TO_TOP</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>PROGRESS_BOTTOM_TO_TOP</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>PROGRESS_CONTINUOUS</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>PROGRESS_CONTINUOUS</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>PROGRESS_DISCRETE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>PROGRESS_DISCRETE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>PROGRESS_LEFT_TO_RIGHT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>PROGRESS_LEFT_TO_RIGHT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>PROGRESS_RIGHT_TO_LEFT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>PROGRESS_RIGHT_TO_LEFT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>PROGRESS_TOP_TO_BOTTOM</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>PROGRESS_TOP_TO_BOTTOM</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>RC_STYLE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>RC_STYLE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>REALIZED</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>REALIZED</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>RELIEF_HALF</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>RELIEF_HALF</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>RELIEF_NONE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>RELIEF_NONE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>RELIEF_NORMAL</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>RELIEF_NORMAL</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>RESIZE_IMMEDIATE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>RESIZE_IMMEDIATE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>RESIZE_PARENT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>RESIZE_PARENT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>RESIZE_QUEUE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>RESIZE_QUEUE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>RUN_BOTH</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>RUN_BOTH</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>RUN_FIRST</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>RUN_FIRST</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>RUN_LAST</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>RUN_LAST</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>RUN_NO_RECURSE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>RUN_NO_RECURSE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>SCROLL_JUMP</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>SCROLL_JUMP</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>SCROLL_NONE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>SCROLL_NONE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>SCROLL_PAGE_BACKWARD</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>SCROLL_PAGE_BACKWARD</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>SCROLL_PAGE_FORWARD</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>SCROLL_PAGE_FORWARD</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>SCROLL_STEP_BACKWARD</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>SCROLL_STEP_BACKWARD</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>SCROLL_STEP_FORWARD</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>SCROLL_STEP_FORWARD</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>SELECTION_BROWSE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>SELECTION_BROWSE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>SELECTION_EXTENDED</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>SELECTION_EXTENDED</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>SELECTION_MULTIPLE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>SELECTION_MULTIPLE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>SELECTION_SINGLE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>SELECTION_SINGLE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>SENSITIVE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>SENSITIVE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>SHADOW_ETCHED_IN</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>SHADOW_ETCHED_IN</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>SHADOW_ETCHED_OUT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>SHADOW_ETCHED_OUT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>SHADOW_IN</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>SHADOW_IN</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>SHADOW_NONE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>SHADOW_NONE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>SHADOW_OUT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>SHADOW_OUT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>SHRINK</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>SHRINK</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>SIDE_BOTTOM</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>SIDE_BOTTOM</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>SIDE_LEFT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>SIDE_LEFT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>SIDE_RIGHT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>SIDE_RIGHT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>SIDE_TOP</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>SIDE_TOP</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>SORT_ASCENDING</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>SORT_ASCENDING</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>SORT_DESCENDING</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>SORT_DESCENDING</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>SPIN_END</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>SPIN_END</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>SPIN_HOME</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>SPIN_HOME</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>SPIN_PAGE_BACKWARD</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>SPIN_PAGE_BACKWARD</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>SPIN_PAGE_FORWARD</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>SPIN_PAGE_FORWARD</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>SPIN_STEP_BACKWARD</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>SPIN_STEP_BACKWARD</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>SPIN_STEP_FORWARD</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>SPIN_STEP_FORWARD</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>SPIN_USER_DEFINED</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>SPIN_USER_DEFINED</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>STATE_ACTIVE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>STATE_ACTIVE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>STATE_INSENSITIVE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>STATE_INSENSITIVE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>STATE_NORMAL</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>STATE_NORMAL</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>STATE_PRELIGHT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>STATE_PRELIGHT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>STATE_SELECTED</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>STATE_SELECTED</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>TOOLBAR_BOTH</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>TOOLBAR_BOTH</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>TOOLBAR_ICONS</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>TOOLBAR_ICONS</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>TOOLBAR_TEXT</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>TOOLBAR_TEXT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>TOPLEVEL</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>TOPLEVEL</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>TOP_BOTTOM</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>TOP_BOTTOM</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>TREE_VIEW_ITEM</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>TREE_VIEW_ITEM</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>TREE_VIEW_LINE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>TREE_VIEW_LINE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>TROUGH_END</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>TROUGH_END</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>TROUGH_JUMP</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>TROUGH_JUMP</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>TROUGH_NONE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>TROUGH_NONE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>TROUGH_START</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>TROUGH_START</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>UPDATE_ALWAYS</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>UPDATE_ALWAYS</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>UPDATE_CONTINUOUS</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>UPDATE_CONTINUOUS</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>UPDATE_DELAYED</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>UPDATE_DELAYED</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>UPDATE_DISCONTINUOUS</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>UPDATE_DISCONTINUOUS</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>UPDATE_IF_VALID</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>UPDATE_IF_VALID</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>VISIBILITY_FULL</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>VISIBILITY_FULL</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>VISIBILITY_NONE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>VISIBILITY_NONE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>VISIBILITY_PARTIAL</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>VISIBILITY_PARTIAL</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>VISIBLE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>VISIBLE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>WINDOW_DIALOG</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>WINDOW_DIALOG</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>WINDOW_POPUP</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>WINDOW_POPUP</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>WINDOW_TOPLEVEL</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>WINDOW_TOPLEVEL</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>WIN_POS_CENTER</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>WIN_POS_CENTER</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>WIN_POS_MOUSE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>WIN_POS_MOUSE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>WIN_POS_NONE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>WIN_POS_NONE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>TRUE</b></font>
+</font><dt>
+<dd><p><tt>constant GTK.<font color='#F000F0'>TRUE</font></tt></p></dd>
+</dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,491 @@
+<html><head><title>Reference Manual for Pike v7.8 release 116</title></head>
+<body bgcolor='white' text='black'>
+<dl><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 5. Preprocessor</font></td></tr></table><br />
+</dt><dd><p>Before the Pike code is sent to the compiler it is fed through the
+preprocessor. The preprocessor converts the source code from its
+character encoding into the Pike internal representation, performs
+some simple normalizations and consistency checks and executes the
+"preprocessor directives" that the programmer may have put into the
+file. The preprocessor directives are like a very simple programming
+language that allows for simple code generation and manipulation.
+The code preprocessor can be called from within Pike with the
+<font face='courier'>cpp</font>  call.</p></dd>
+<dt><a name='1'></a>
+<table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 5.1. Charset Heuristics</font></td></tr></table><br />
+</dt>
+<dd><p>Pike code is Unicode enabled, so the first thing the preprocessor
+has to do is to try to determine the character encoding of the file.
+It will first look at the two first bytes of the file and interpret
+them according to this chart.</p><table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><b>Byte 0</b></td><td bgcolor='white'><b>Byte 1</b></td><td bgcolor='white'><b>Interpretation</b></td></tr>
+<tr valign='top'><td bgcolor='white'>0</td><td bgcolor='white'>0</td><td bgcolor='white'>32bit wide string.</td></tr>
+<tr valign='top'><td bgcolor='white'>0</td><td bgcolor='white'>&gt;0</td><td bgcolor='white'>16bit Unicode string.</td></tr>
+<tr valign='top'><td bgcolor='white'>&gt;0</td><td bgcolor='white'>0</td><td bgcolor='white'>16bit Unicode string in reverse byte order.</td></tr>
+<tr valign='top'><td bgcolor='white'>0xfe</td><td bgcolor='white'>0xff</td><td bgcolor='white'>16bit Unicode string.</td></tr>
+<tr valign='top'><td bgcolor='white'>0xff</td><td bgcolor='white'>0xfe</td><td bgcolor='white'>16bit Unicode string in reverse byte order.</td></tr>
+<tr valign='top'><td bgcolor='white'>0x7b</td><td bgcolor='white'>0x83</td><td bgcolor='white'>EBCDIC-US ("#c").</td></tr>
+<tr valign='top'><td bgcolor='white'>0x7b</td><td bgcolor='white'>0x40</td><td bgcolor='white'>EBCDIC-US ("# ").</td></tr>
+<tr valign='top'><td bgcolor='white'>0x7b</td><td bgcolor='white'>0x09</td><td bgcolor='white'>EBCDIC-US ("#\t").</td></tr>
+</table></td></tr></table><br />
+<ul>
+<li>With any other combination of bytes the preprocessor will assume
+iso-8859-1 encoding until a #charset directive has been found.</li>
+<li>The file must be an multiple of 4 or 2 bytes in order to be correctly
+decoded as 32bit or 16bit wide string.</li>
+<li>It's an error for a program written in EBCDIC not to start with a
+#charset directive.</li>
+<li>For obfuscation it is possible to encode the #charset directive in
+a different charset than the charset stated in the #charset directive.</li>
+</ul></dd>
+<dt><a name='2'></a>
+<table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 5.2. Code Normalization</font></td></tr></table><br />
+</dt>
+<dd><p>The preprocessor collapses all consecutive white space characters
+outside of strings, except for newlines, to single space characters.
+All // and /**/ comments are removed, as are #! lines. Pike considers
+ANSI/DEC escape sequences as white space. Supported formats are
+&lt;ESC&gt;[\040-\077]+[\100-\177] and
+&lt;CSI&gt;[\040-\077]*[\100-\177]. Note that this means that it is
+possible to do color markup in the actual source file.</p><p>The preprocessor will treat seven consecutive &lt; characters
+outside of a string as an CVS conflict error and will return "CVS
+conflict detected."</p></dd>
+<dt><a name='3'></a>
+<table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 5.3. Defines and Macros</font></td></tr></table><br />
+</dt>
+<dd><p>Defining macros or constants is one of the most used preprocessor
+features. It enables you to make abstractions on a code generation
+level as well as altering constants cross-application. The simplest
+use of the #define directive however is to declare a "define" as
+present.</p><p><pre>
+#define DO_OVERSAMPLING
+</pre></p>
+<p>The existence of this definition can now be used by e.g. #ifdef and
+#ifndef to activate or deactivate blocks of program code.</p><p><pre>
+#ifdef DO_OVERSAMPLING
+  // This code is not always run.
+  img->render(size*4)->shrink(4);
+#endif
+</pre></p>
+<p>Note that defines can be given to pike at execution time. In order
+to set DO_OVERSAMPLING from a command line, the option
+-DDO_OVERSAMPLING is added before the name of the pike program. E.g.
+<tt>pike -DDO_OVERSAMPLING my_program.pike</tt>.</p><p>A define can also be given a specific value, which will be inserted
+everywhere the define is placed in the source code.</p><p><pre>
+#define CYCLES 20
+
+void do_stuff() {
+  for(int i; i<CYCLES; i++) do_other_stuff();
+}
+</pre></p>
+<p>Defines can be given specific values on the command line too, just
+be sure to quote them as required by your shell.</p><p><pre>
+~% pike '-DTEXT="Hello world!"' -e 'write("%s\n", TEXT);'
+Hello world!
+</pre></p>
+<p>Finally #define can also be used to define macros. Macros are just
+text expansion with arguments, but it is often very useful to make a
+cleaner looking code and to write less.</p><p><pre>
+#define VAR(X) id->misc->variable[X]
+#define ROL(X,Y) (((X)<<(Y))&7+((X)>>(8-(Y))))
+#define PLACEHOLDER(X) void X(mixed ... args) { \
+  error("Method " #X " is not implemented yet.\n"); }
+#define ERROR(X,Y ...) werror("MyClass" X "\n", Y)
+#define NEW_CONSTANTS(X) do{ int i=sizeof(all_constants()); \
+    X \
+    werror("Constant diff is %d\n", sizeof(all_constants())-i); \
+  }while(0)
+#define MY_FUNC(X,Y) void my##X##Y()
+</pre></p>
+<ul>
+<li>A macro can have up to 254 arguments.</li>
+<li>It can be wise to put extra parentheses around the arguments
+expanded since it is a purely textual expansion. E.g. if the macro
+DOUBLE(X) is defined as X*2, then DOUBLE(2+3) will produce 2+3*2,
+probably producing a hard to track down bug.</li>
+<li>Since the preprocessor works with textual expansion, it will not
+evaluate its arguments. Using one argument several time in the macro
+will thus cause it to evaluated several times during execution. E.g.
+#define MSG(X) werror("The value "+(X)+" can differ from "+(X)+"\n")
+when called with MSG(random(1000));.</li>
+<li>A backslash (\) at the end of the line can be used to make the
+definition span several lines.</li>
+<li>A hash (#) in front of a macro variable "casts" it to a string.</li>
+<li>It is possible to define macros with a variable list of arguments
+by using the ... syntax.</li>
+<li>Macros are often formulated so that a semicolon after it is
+apropriate, for improved code readability.</li>
+<li>In Pike code macros and defines are most often written in all caps.</li>
+<li>If a macro expands into several statements, you are well advised to
+group them together in containment block, such as do { BODY } while(0).
+If you do not, your macro could produce other hard to track down bugs,
+if put as a loop or if body without surrounding curly braces.</li>
+<li>A double hash (##) in front of a macro variable concatenates it with
+the text before it.</li>
+</ul></dd>
+<dt><a name='4'></a>
+<table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 5.4. Preprocessor Directives</font></td></tr></table><br />
+</dt>
+<dd><p>All the preprocessor directives should be at the beginning of the
+line. Although indentation is allowed currently, it is possible that
+it will generate warnings or errors in the future. It is however
+allowed to put spaces after the hash character to create indentation
+in code.</p></dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 5.4.1. #!</font></td></tr></table><br />
+</dt><dd><p>All lines beginning with <tt>#!</tt> will be regarded as comments,
+to enable shell integration. It is recommended that Pike applications
+begin with the line <tt>"#! /usr/bin/env pike"</tt> for maximum cross
+platform compatibility.</p></dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 5.4.2. #&lt;integer&gt; and #line</font></td></tr></table><br />
+</dt><dd><p>A hash character followed by a number or by the string
+<tt>"line"</tt> and a number will make the preprocessor line counter
+set this number as the line number for the next line and adjust the
+following lines accordingly. All error messages from Pike will use
+these line numbers. Optionally the number may be followed by a file
+name, e.g. <tt>#1 "/home/pike/program.pike.in"</tt>. Then this
+filename will be used instead of the current file for error
+messages.</p></dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 5.4.3. #""</font></td></tr></table><br />
+</dt><dd><p>If a string literal is opened with <tt>#"</tt> newlines in the
+string will end up in the string literal, instead of triggering a
+<tt>"newline in string"</tt> error. Newlines will be converted to
+<tt>\n</tt> characters if the newlines in the file is something else.
+This preprocessor directive may appear anywhere a string may
+appear.</p></dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 5.4.4. #string</font></td></tr></table><br />
+</dt><dd><p>The preprocessor directive #string will load the file in the
+string that follows and insert its contents as a string. This
+preprocessor directive may appear anywhere a string may appear.</p><p><pre>
+do_something(#string "the_file.wks");
+</pre></p>
+</dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 5.4.5. #include</font></td></tr></table><br />
+</dt><dd><p><tt>#include</tt> may be used to insert the contents of another
+file into the processed file at the place of the include directive.
+Files can be referenced either by absolute or relative path from the
+source file by using double quotes, or searched for in the include
+paths. To include a file with absolute or relative path, use double
+quotes, e.g. <tt>#include "constants.pike"</tt> or <tt>#include
+"../debug.h"</tt>. To include from the include paths, use less than
+and greater than, e.g. <tt>#include &lt;profiling.h&gt;</tt>. It is
+also possible to include a file whose path is defined in a
+preprocessor define, e.g. <tt>#include USER_SETTINGS</tt>.</p></dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 5.4.6. #if</font></td></tr></table><br />
+</dt><dd><p>The <tt>#if</tt> directive can evaluate simple expressions and, if
+the expression is evaluated to true, "activate" the code block that
+follows. The code block ends when an <tt>#endif</tt>, <tt>#else</tt>,
+<tt>#elseif</tt> or <tt>#elif</tt> block is encountered on the same
+nesting depth.</p><p>The <tt>#if</tt> expressions may include defines, integer, string
+and float constants, ?:, || and &amp;&amp; operations, ~, ^, !, | and
+&amp; operations, &lt;, &gt;, &lt;=, &gt;=, == and != operations, +,
+-, *, /, &lt;&lt; and &gt;&gt; operations and paranthesis. Strings may
+also be indexed with the [] index operator. Finally there are three
+special "functions" available in <tt>#if</tt> expressions; defined,
+efun and constant. Define returns true if the symbol given as argument
+is defined. <tt>#if defined(MY_DEF)</tt> is equal to <tt>#ifdef
+MY_DEF</tt>. Efun returns true if its argument is an efun and constant
+returns true if its argument can be resolved into a constant.</p></dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 5.4.7. #ifdef</font></td></tr></table><br />
+</dt><dd><p><tt>#ifdef</tt> works as <tt>#if</tt>, but instead of evaluating
+its arguments it just checks if the first symbol is a defined define
+or marcro.</p></dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 5.4.8. #ifndef</font></td></tr></table><br />
+</dt><dd><p>Works as an inverted <tt>#ifndef</tt>; it only "activates" the
+following block if the symbol is not defined.</p></dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 5.4.9. #endif</font></td></tr></table><br />
+</dt><dd><p>Ends a block opened by <tt>#if</tt>, <tt>#ifdef</tt>, <tt>#ifndef</tt>,
+<tt>#else</tt>, <tt>#elseif</tt> or <tt>#elif</tt>.</p><p><pre>
+#if DEBUG
+do_debug_stuff();
+#endif /* DEBUG */
+</pre></p>
+</dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 5.4.10. #else</font></td></tr></table><br />
+</dt><dd><p>This directive is used to divide the current code block into another
+code block with inverse activation.</p><p><pre>
+#ifdef FAST_ALGORITHM
+do_fast_algorithm();
+#elif defined(EXPERIMENTAL_ALGORITHM)
+do_experimental_algorithm();
+#else
+do_default_algorithm();
+#endif
+</pre></p>
+</dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 5.4.11. #elseif and #elif</font></td></tr></table><br />
+</dt><dd><p><tt>#elseif</tt> and <tt>#elif</tt> works as <tt>elseif</tt> in the
+<tt>#if</tt>/<tt>#ifdef</tt>/<tt>#ifndef</tt> context.</p></dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 5.4.12. #undefine and #undef</font></td></tr></table><br />
+</dt><dd><p><tt>#undefine</tt> and <tt>#undefine</tt> undefines the symbol
+given as argument.</p><p><pre>
+// Strip debug
+#define werror(X ...) lambda(X){}
+#include "/home/someone/experimental/stuff.h"
+#undef werror
+</pre></p>
+</dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 5.4.13. #error</font></td></tr></table><br />
+</dt><dd><p>Throws an error during preprocessing.</p><p><pre>
+#ifdef __NT__
+#error "This program can not run on MS Windows."
+#endif
+</pre></p>
+</dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 5.4.14. #charset</font></td></tr></table><br />
+</dt><dd><p>Tells the preprocessor which charset the file is encoded with. The
+Locale.Charset module is called with this string to decode the
+file.</p></dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 5.4.15. #pike</font></td></tr></table><br />
+</dt><dd><p>Tells the compiler which version of Pike it should emulate.</p><p><pre>
+#pike 7.2
+</pre></p>
+</dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 5.4.16. #pragma all_inline</font></td></tr></table><br />
+</dt><dd></dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 5.4.17. #pragma all_final</font></td></tr></table><br />
+</dt><dd><p>Instructs the compiler to mark all symbols as final.</p></dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 5.4.18. #pragma all_nomask</font></td></tr></table><br />
+</dt><dd><p>Deprecated version of #pragma all_final</p></dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 5.4.19. #pragma strict_types</font></td></tr></table><br />
+</dt><dd></dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 5.4.20. #pragma save_parent and #pragma dont_save_parent</font></td></tr></table><br />
+</dt><dd></dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 5.4.21. #warning</font></td></tr></table><br />
+</dt><dd><p>Generates a warning during compilation.</p><p><pre>
+#if !constant(Crypto.SHA1.hash)
+#warning SHA1 hash not available.
+#endif
+</pre></p>
+</dd>
+<dt><a name='5'></a>
+<table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 5.5. Predefined defines</font></td></tr></table><br />
+</dt>
+<dd><dl><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; Namespace <b>cpp::</b></font></td></tr></table><br />
+</dt><dd>
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>__VERSION__</b></font>
+</font><dt>
+<dd><p><tt>constant <font color='#F000F0'>__VERSION__</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>This define contains the current Pike version as a float. If
+ another Pike version is emulated, this define is updated
+ accordingly.</p>
+</font></dd>
+<dt><font face='Helvetica'>See also</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'>__REAL_VERSION__</font> </p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>__REAL_VERSION__</b></font>
+</font><dt>
+<dd><p><tt>constant <font color='#F000F0'>__REAL_VERSION__</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>This define always contains the version of the current Pike,
+ represented as a float.</p>
+</font></dd>
+<dt><font face='Helvetica'>See also</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'>__VERSION__</font> </p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>__MAJOR__</b></font>
+</font><dt>
+<dd><p><tt>constant <font color='#F000F0'>__MAJOR__</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>This define contains the major part of the current Pike version,
+ represented as an integer. If another Pike version is emulated,
+ this define is updated accordingly.</p>
+</font></dd>
+<dt><font face='Helvetica'>See also</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'>__REAL_MAJOR__</font> </p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>__REAL_MAJOR__</b></font>
+</font><dt>
+<dd><p><tt>constant <font color='#F000F0'>__REAL_MAJOR__</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>This define always contains the major part of the version of the
+ current Pike, represented as an integer.</p>
+</font></dd>
+<dt><font face='Helvetica'>See also</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'>__MAJOR__</font> </p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>__MINOR__</b></font>
+</font><dt>
+<dd><p><tt>constant <font color='#F000F0'>__MINOR__</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>This define contains the minor part of the current Pike version,
+ represented as an integer. If another Pike version is emulated,
+ this define is updated accordingly.</p>
+</font></dd>
+<dt><font face='Helvetica'>See also</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'>__REAL_MINOR__</font> </p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>__REAL_MINOR__</b></font>
+</font><dt>
+<dd><p><tt>constant <font color='#F000F0'>__REAL_MINOR__</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>This define always contains the minor part of the version of the
+ current Pike, represented as an integer.</p>
+</font></dd>
+<dt><font face='Helvetica'>See also</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'>__MINOR__</font> </p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>__BUILD__</b></font>
+</font><dt>
+<dd><p><tt>constant <font color='#F000F0'>__BUILD__</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>This constant contains the build number of the current Pike version,
+ represented as an integer. If another Pike version is emulated,
+ this constant remains unaltered.</p>
+</font></dd>
+<dt><font face='Helvetica'>See also</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'>__REAL_MINOR__</font> </p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>__REAL_BUILD__</b></font>
+</font><dt>
+<dd><p><tt>constant <font color='#F000F0'>__REAL_BUILD__</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>This define always contains the minor part of the version of the
+ current Pike, represented as an integer.</p>
+</font></dd>
+<dt><font face='Helvetica'>See also</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'>__BUILD__</font> </p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>__LINE__</b></font>
+</font><dt>
+<dd><p><tt>constant <font color='#F000F0'>__LINE__</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>This define contains the current line number, represented as an
+ integer, in the source file.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>__FILE__</b></font>
+</font><dt>
+<dd><p><tt>constant <font color='#F000F0'>__FILE__</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>This define contains the file path and name of the source file.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>__DIR__</b></font>
+</font><dt>
+<dd><p><tt>constant <font color='#F000F0'>__DIR__</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>This define contains the directory path of the source file.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>__DATE__</b></font>
+</font><dt>
+<dd><p><tt>constant <font color='#F000F0'>__DATE__</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>This define contains the current date at the time of compilation,
+ e.g. "Jul 28 2001".</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>__TIME__</b></font>
+</font><dt>
+<dd><p><tt>constant <font color='#F000F0'>__TIME__</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>This define contains the current time at the time of compilation,
+ e.g. "12:20:51".</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>__PIKE__</b></font>
+</font><dt>
+<dd><p><tt>constant <font color='#F000F0'>__PIKE__</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>This define is always true.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>__AUTO_BIGNUM__</b></font>
+</font><dt>
+<dd><p><tt>constant <font color='#F000F0'>__AUTO_BIGNUM__</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>This define is defined when automatic bignum conversion is enabled.
+ When enabled all integers will automatically be converted to
+ bignums when they get bigger than what can be represented by
+ an integer, hampering performance slightly instead of crashing
+ the program.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>__NT__</b></font>
+</font><dt>
+<dd><p><tt>constant <font color='#F000F0'>__NT__</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>This define is defined when the Pike is running on a Microsoft Windows OS,
+ not just Microsoft Windows NT, as the name implies.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>__amigaos__</b></font>
+</font><dt>
+<dd><p><tt>constant <font color='#F000F0'>__amigaos__</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>This define is defined when the Pike is running on Amiga OS.</p>
+</font></dd></dl>
+</dd></dl></dd></dl></body></html>

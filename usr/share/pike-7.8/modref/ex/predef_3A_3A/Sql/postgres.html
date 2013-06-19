@@ -1,0 +1,170 @@
+<html><head><title>Pike Reference Manual - Sql.postgres</title>
+<link rel='stylesheet' href='../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../..//images/pike_line_middle.gif" width="98%"><img src="../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../ex/predef_3A_3A/Sql.html'><b>Sql</b></a><br />
+<b>Sql.postgres</b><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Sql/postgres/big_query.html'>big_query()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Sql/postgres/create.html'>create()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Sql/postgres/create_db.html'>create_db()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Sql/postgres/drop_db.html'>drop_db()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Sql/postgres/error.html'>error()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Sql/postgres/host_info.html'>host_info()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Sql/postgres/list_dbs.html'>list_dbs()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Sql/postgres/list_fields.html'>list_fields()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Sql/postgres/list_tables.html'>list_tables()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Sql/postgres/reset.html'>reset()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Sql/postgres/select_db.html'>select_db()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Sql/postgres/server_info.html'>server_info()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Sql/postgres/set_notify_callback.html'>set_notify_callback()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Sql/postgres/streaming_query.html'>streaming_query()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../ex/predef_3A_3A/Sql/pgsqls.html"><img src="../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Sql.pgsqls</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../ex/predef_3A_3A/Sql/postgres/big_query.html">Sql.postgres()-&gt;big_query()<img src="../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Class Sql.postgres</h1>
+    <dl>
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>This is an interface to the Postgres (Postgres95, pgsql) database
+ server. This module may or may not be available on your Pike,
+ depending whether the appropriate include and library files could
+ be found at compile-time. Note that you <b>do not</b> need to have a
+ Postgres server running on your host to use this module: you can
+ connect to the database over a TCP/IP socket.</p>
+</font></dd>
+<dt><font face='Helvetica'>Note</font><dt>
+<dd><font face='Helvetica'><p>Please note that there is a more advanced driver to access PostgreSQL
+ databases: <font face='courier'><a href='../../predef_3A_3A/Sql/pgsql.html'>Sql.pgsql</a></font> .</p>
+</font></dd>
+<dt><font face='Helvetica'>Note</font><dt>
+<dd><font face='Helvetica'><p>Also note that <b>this module uses blocking I/O</b> to connect
+ to the server. It is thread-safe, and so it can be used in a
+ multithread environment.</p>
+<p> The behavior of the Postgres C API also depends on certain
+ environment variables defined in the environment of the Pike
+ interpreter; some notice and warning notifications might are dumped
+ on stderr.</p>
+<table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"PGHOST"</font></tt></td><td bgcolor='white'><p>Sets the name of the default host to connect to. It defaults
+ 	to <font face='courier'><code>"localhost"</code></font>.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"PGOPTIONS"</font></tt></td><td bgcolor='white'><p>Sets some extra flags for the frontend-backend connection.
+     <b>do not set</b> unless you're sure of what you're doing.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"PGPORT"</font></tt></td><td bgcolor='white'><p>Sets the default port to connect to, otherwise it will use
+     compile-time defaults (that is: the time you compiled the postgres
+ 	library, not the Pike driver).</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"PGTTY"</font></tt></td><td bgcolor='white'><p>Sets the file to be used for Postgres frontend debugging.
+     Do not use, unless you're sure of what you're doing.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"PGDATABASE"</font></tt></td><td bgcolor='white'><p>Sets the default database to connect to.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"PGREALM"</font></tt></td><td bgcolor='white'><p>Sets the default realm for Kerberos authentication. I never used
+   	this, so I can't help you.</p>
+</td></tr>
+</table></td></tr></table><br />
+<p>Refer to the Postgres documentation for further details.</p>
+</font></dd>
+<dt><font face='Helvetica'>See also</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'><a href='../../predef_3A_3A/Sql/pgsql.html'>Sql.pgsql</a></font> , <font face='courier'><a href='../../predef_3A_3A/Sql/Sql.html'>Sql.Sql</a></font> , <font face='courier'><a href='../../predef_3A_3A/Postgres/postgres.html'>Postgres.postgres</a></font> , <font face='courier'><a href='../../predef_3A_3A/Sql/postgres_result.html'>Sql.postgres_result</a></font> </p>
+</font></dd></dl>
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Inherit</font>
+<font size='+1'><b>mo</b></font>
+</font><dt>
+<dd><p><font face='courier'>inherit </font><font face='courier'><a href='../../predef_3A_3A/Postgres/postgres.html'>Postgres.postgres</a></font><font face='courier'> : <font color='#F000F0'>mo</font></font></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>version</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>string</font> Sql.postgres.<b><font color='#F000F0'>version</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Should you need to report a bug to the author, please submit along with
+ the report the driver version number, as returned by this call.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Inherit</font>
+<font size='+1'><b>pgsql</b></font>
+</font><dt>
+<dd><p><font face='courier'>inherit </font><font face='courier'><a href='../../predef_3A_3A/Sql/pgsql.html'>Sql.pgsql</a></font><font face='courier'> : <font color='#F000F0'>pgsql</font></font></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Maps SQL-urls for
+   <tt>postgres://[user[:password]@][hostname][:port][/database]</tt>
+ onto
+   <tt>pgsql://[user[:password]@][hostname][:port][/database]</tt></p>
+<p> The reason this happens, is because Pike was compiled without libpq
+ support, therefore Pike falls back to the faster, smaller memory
+ footprint, more advanced and native PostgreSQL driver called <font face='courier'><a href='../../predef_3A_3A/Sql/pgsql.html'>Sql.pgsql</a></font> .</p>
+</font></dd>
+<dt><font face='Helvetica'>See also</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'><a href='../../predef_3A_3A/Sql/pgsql.html'>Sql.pgsql</a></font> , <font face='courier'><a href='../../predef_3A_3A/Sql/Sql.html'>Sql.Sql</a></font> </p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

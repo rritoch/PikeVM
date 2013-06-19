@@ -1,0 +1,105 @@
+<html><head><title>Pike Reference Manual - Image.Dims.get()</title>
+<link rel='stylesheet' href='../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../ex/predef_3A_3A/Image.html'><b>Image</b></a><br />
+<a href='../../../../ex/predef_3A_3A/Image/Dims.html'><b>Image.Dims</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;get()</td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/Dims/get_GIF.html'>get_GIF()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/Dims/get_JPEG.html'>get_JPEG()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/Dims/get_PNG.html'>get_PNG()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/Dims/get_TIFF.html'>get_TIFF()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/Image/Dims.html"><img src="../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Image.Dims</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/Image/Dims/get_GIF.html">Image.Dims.get_GIF()<img src="../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method Image.Dims.get()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>get</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>array</font>(<font color='#202020'>int</font>) <b><font color='#000066'>get</font>(</b><font color='#202020'>string</font>|<font color='#005080'><font face='courier'><a href='../../../predef_3A_3A/Stdio/File.html'>Stdio.File</a></font></font> <font color='#005080'>file</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Read dimensions from a JPEG, GIF, PNG or TIFF file and return an array
+ with width and height, or if the file isn't a valid image,
+ <font face='courier'><code>0</code></font>. The argument <font face='courier'>file</font>  should be file object or the data
+ from a file. The offset pointer will be assumed to be at the start
+ of the file data and will be modified by the function.</p>
+<p> As a compatibility measure, if the <font face='courier'>file</font>  is a path to an image
+ file, it will be loaded and processed once the processing of the
+ path as data has failed.</p>
+</font></dd>
+<dt><font face='Helvetica'>Returns</font><dt>
+<dd><font face='Helvetica'><table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white' colspan='2'>Array</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='#202020'>int</font> <font color='green'>0</font></tt></td><td bgcolor='white'><p>Image width.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='#202020'>int</font> <font color='green'>1</font></tt></td><td bgcolor='white'><p>Image height.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='#202020'>string</font> <font color='green'>2</font></tt></td><td bgcolor='white'><p>Image type. Any of <font face='courier'><code>"gif"</code></font>, <font face='courier'><code>"png"</code></font>, <font face='courier'><code>"tiff"</code></font> and
+       <font face='courier'><code>"jpeg</code></font>.</p>
+</td></tr>
+</table></td></tr></table><br />
+
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

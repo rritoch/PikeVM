@@ -1,0 +1,16 @@
+<security>
+ <securityGroupList>
+  <securitygroup name="1">
+   <securityGroupList>
+   </securityGroupList>
+  </securitygroup>
+  <securitygroup name="0">
+   <securityGroupList>
+   </securityGroupList>
+  </securitygroup>
+ </securityGroupList> <paths>
+  <path name="/">
+   <reader>0</reader>
+   <writer>1</writer>
+  </path>
+ </paths></security>

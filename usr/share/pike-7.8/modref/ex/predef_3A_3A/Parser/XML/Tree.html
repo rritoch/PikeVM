@@ -1,0 +1,233 @@
+<html><head><title>Pike Reference Manual - Parser.XML.Tree</title>
+<link rel='stylesheet' href='../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../ex/predef_3A_3A/Parser.html'><b>Parser</b></a><br />
+<a href='../../../../ex/predef_3A_3A/Parser/XML.html'><b>Parser.XML</b></a><br />
+<b>Parser.XML.Tree</b><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Classes</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Parser/XML/Tree/AbstractNode.html'><b>AbstractNode</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Parser/XML/Tree/AbstractSimpleNode.html'><b>AbstractSimpleNode</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Parser/XML/Tree/Node.html'><b>Node</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Parser/XML/Tree/RootNode.html'><b>RootNode</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Parser/XML/Tree/SimpleNode.html'><b>SimpleNode</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Parser/XML/Tree/SimpleRootNode.html'><b>SimpleRootNode</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Parser/XML/Tree/VirtualNode.html'><b>VirtualNode</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Parser/XML/Tree/XMLNSParser.html'><b>XMLNSParser</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Parser/XML/Tree/XMLParser.html'><b>XMLParser</b></a></td></tr>
+<tr><td nowrap='nowrap'><br /><b>Enums</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Parser/XML/Tree/ParseFlags.html'><b>ParseFlags</b></a></td></tr>
+<tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Parser/XML/Tree/attribute_quote.html'>attribute_quote()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Parser/XML/Tree/parse_file.html'>parse_file()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Parser/XML/Tree/parse_input.html'>parse_input()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Parser/XML/Tree/roxen_attribute_quote.html'>roxen_attribute_quote()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Parser/XML/Tree/roxen_text_quote.html'>roxen_text_quote()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Parser/XML/Tree/simple_parse_file.html'>simple_parse_file()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Parser/XML/Tree/simple_parse_input.html'>simple_parse_input()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Parser/XML/Tree/text_quote.html'>text_quote()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/Parser/XML/SloppyDOM/parse.html"><img src="../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Parser.XML.SloppyDOM.parse()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/Parser/XML/Tree/AbstractNode.html">Parser.XML.Tree.AbstractNode<img src="../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Module Parser.XML.Tree</h1>
+    <dl>
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>XML parser that generates node-trees.</p>
+<p> Has some support for XML namespaces
+ <a href='http://www.w3.org/TR/REC-xml-names/'>http://www.w3.org/TR/REC-xml-names/</a>
+ RFC 2518 23.4.</p>
+</font></dd>
+<dt><font face='Helvetica'>Note</font><dt>
+<dd><font face='Helvetica'><p>This module defines two sets of node trees;
+   the <font face='courier'><a href='../../../predef_3A_3A/Parser/XML/Tree/SimpleNode.html'>SimpleNode</a></font> -based, and the <font face='courier'><a href='../../../predef_3A_3A/Parser/XML/Tree/Node.html'>Node</a></font> -based.
+   The main difference between the two, is that
+   the <font face='courier'><a href='../../../predef_3A_3A/Parser/XML/Tree/Node.html'>Node</a></font> -based trees have parent pointers,
+   which tend to generate circular data references
+   and thus garbage.</p>
+<p>   There are some more subtle differences between
+   the two. Please read the documentation carefully.</p>
+</font></dd></dl>
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>STOP_WALK</b></font>
+</font><dt>
+<dd><p><tt>constant Parser.XML.Tree.<font color='#F000F0'>STOP_WALK</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>XML_ROOT</b></font>
+</font><dt>
+<dd><p><tt>constant Parser.XML.Tree.<font color='#F000F0'>XML_ROOT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>XML_ELEMENT</b></font>
+</font><dt>
+<dd><p><tt>constant Parser.XML.Tree.<font color='#F000F0'>XML_ELEMENT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>XML_TEXT</b></font>
+</font><dt>
+<dd><p><tt>constant Parser.XML.Tree.<font color='#F000F0'>XML_TEXT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>XML_HEADER</b></font>
+</font><dt>
+<dd><p><tt>constant Parser.XML.Tree.<font color='#F000F0'>XML_HEADER</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>XML_PI</b></font>
+</font><dt>
+<dd><p><tt>constant Parser.XML.Tree.<font color='#F000F0'>XML_PI</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>XML_COMMENT</b></font>
+</font><dt>
+<dd><p><tt>constant Parser.XML.Tree.<font color='#F000F0'>XML_COMMENT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>XML_DOCTYPE</b></font>
+</font><dt>
+<dd><p><tt>constant Parser.XML.Tree.<font color='#F000F0'>XML_DOCTYPE</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>XML_ATTR</b></font>
+</font><dt>
+<dd><p><tt>constant Parser.XML.Tree.<font color='#F000F0'>XML_ATTR</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Attribute nodes are created on demand</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>DTD_ENTITY</b></font>
+</font><dt>
+<dd><p><tt>constant Parser.XML.Tree.<font color='#F000F0'>DTD_ENTITY</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>DTD_ELEMENT</b></font>
+</font><dt>
+<dd><p><tt>constant Parser.XML.Tree.<font color='#F000F0'>DTD_ELEMENT</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>DTD_ATTLIST</b></font>
+</font><dt>
+<dd><p><tt>constant Parser.XML.Tree.<font color='#F000F0'>DTD_ATTLIST</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>DTD_NOTATION</b></font>
+</font><dt>
+<dd><p><tt>constant Parser.XML.Tree.<font color='#F000F0'>DTD_NOTATION</font></tt></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>XML_NODE</b></font>
+</font><dt>
+<dd><p><tt>constant Parser.XML.Tree.<font color='#F000F0'>XML_NODE</font></tt></p></dd>
+</dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

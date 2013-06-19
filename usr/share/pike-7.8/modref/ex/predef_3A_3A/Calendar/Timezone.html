@@ -1,0 +1,146 @@
+<html><head><title>Pike Reference Manual - Calendar.Timezone</title>
+<link rel='stylesheet' href='../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../..//images/pike_line_middle.gif" width="98%"><img src="../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../ex/predef_3A_3A/Calendar.html'><b>Calendar</b></a><br />
+<b>Calendar.Timezone</b><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'></table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../ex/predef_3A_3A/Calendar/Time/TimeofDay/unix_time.html"><img src="../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Calendar.Time.TimeofDay()-&gt;unix_time()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../ex/predef_3A_3A/Calendar/YMD.html">Calendar.YMD<img src="../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Module Calendar.Timezone</h1>
+    <dl>
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'>
+
+<p>
+This module contains all the predefined timezones.
+Index it with whatever timezone you want to use.</p>
+<p>Example:
+<tt>Calendar.Calendar my_cal=
+    Calendar.ISO-&gt;set_timezone(Calendar.Timezone["Europe/Stockholm"]);
+</tt></p>
+<p>A simpler way of selecting timezones might be
+to just give the string to
+<font face='courier'><a href='../../predef_3A_3A/Calendar/Ruleset/set_timezone.html'>set_timezone</a></font> ;
+<font face='courier'><a href='../../predef_3A_3A/Calendar/Ruleset/set_timezone.html'>it</a></font>  indexes by itself:</p>
+<p><tt>Calendar.Calendar my_cal=
+    Calendar.ISO-&gt;set_timezone("Europe/Stockholm");
+</tt>
+</p>
+</font></dd>
+<dt><font face='Helvetica'>Note</font><dt>
+<dd><font face='Helvetica'>
+
+<p>Do not confuse this module with <font face='courier'>Ruleset.Timezone</font> ,
+which is the base class of a timezone object.</p>
+<p><tt>"CET"</tt> and some other standard abbreviations work too,
+but not all of them (due to more then one country using them).</p>
+<p>Do not call <font face='courier'>set_timezone</font> 
+too often, but remember the result if possible. It might take
+some time to initialize a timezone object.</p>
+<p>There are about 504 timezones with 127 different daylight
+saving rules. Most of them historic.</p>
+<p>The timezone information comes from
+<a href='ftp://elsie.nci.nih.gov/pub'>ftp://elsie.nci.nih.gov/pub/</a>
+and are not made up from scratch. Timezone bugs may be reported
+to the timezone mailing list,
+<a href='mailto:tz@elsie.nci.nih.gov'>tz@elsie.nci.nih.gov</a>,
+preferable with a <tt>cc</tt> to
+<a href='mailto:mirar+pike@mirar.org'>mirar+pike@mirar.org</a>. /Mirar
+</p>
+</font></dd>
+<dt><font face='Helvetica'>See also</font><dt>
+<dd><font face='Helvetica'>
+<p><font face='courier'><a href='../../predef_3A_3A/Calendar/TZnames.html'>TZnames</a></font> </p></font></dd></dl>
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>locale</b></font>
+</font><dt>
+<dd><p><tt>constant Calendar.Timezone.<font color='#F000F0'>locale</font> = <font color='#005080'><font face='courier'><a href='../../predef_3A_3A/Calendar/Rule/Timezone.html'>Rule.Timezone</a></font></font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'>
+
+<p>This contains the local timezone, found from
+various parts of the system, if possible.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>localtime</b></font>
+</font><dt>
+<dd><p><tt>constant Calendar.Timezone.<font color='#F000F0'>localtime</font> = <font color='#005080'><font face='courier'><a href='../../predef_3A_3A/Calendar/Rule/Timezone.html'>Rule.Timezone</a></font></font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'>
+
+<p>This is a special timezone, that uses <font face='courier'><a href='../../predef_3A_3A/Calendar/Timezone.html'>localtime</a></font> ()
+and <font face='courier'>tzname</font> 
+to find out what current offset and timezone string to use.</p>
+<p><font face='courier'><a href='../../predef_3A_3A/Calendar/Timezone.html'>locale</a></font>  uses this if there is no other
+way of finding a better timezone to use.</p>
+<p>This timezone is limited by <font face='courier'><a href='../../predef_3A_3A/Calendar/Timezone.html'>localtime</a></font>  and
+libc to the range of <tt>time_t</tt>,
+which is a MAXINT on most systems - 13 Dec 1901 20:45:52
+to 19 Jan 2038 3:14:07, UTC.</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

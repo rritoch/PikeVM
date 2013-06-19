@@ -1,0 +1,123 @@
+<html><head><title>Pike Reference Manual - GTK2.CellRendererText</title>
+<link rel='stylesheet' href='../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../..//images/pike_line_middle.gif" width="98%"><img src="../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../ex/predef_3A_3A/GTK2.html'><b>GTK2</b></a><br />
+<b>GTK2.CellRendererText</b><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/CellRendererText/create.html'>create()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/CellRendererText/set_fixed_height_from_font.html'>set_fixed_height_from_font()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../ex/predef_3A_3A/GTK2/CellRendererProgress/create.html"><img src="../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >GTK2.CellRendererProgress()-&gt;create()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../ex/predef_3A_3A/GTK2/CellRendererText/create.html">GTK2.CellRendererText()-&gt;create()<img src="../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Class GTK2.CellRendererText</h1>
+    <dl>
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Properties:
+ Pango.AttrList attributes
+ string background
+ GDK2.Color background-gdk
+ int background-set
+ int editable
+ int editable-set
+ int ellipsize 
+ int ellipsize-set
+ string family
+ int family-set
+ string font
+ Pango.FontDescription font-desc
+ string foreground
+ GDK2.Color foreground-gdk
+ int foreground-set
+ string language
+ int language-set
+ string markup
+ int rise
+ int rise-set
+ float scale
+ int scale-set
+ int single-paragraph-mode
+ int size
+ float size-points
+ int size-set
+ int stretch <font face='courier'><a href='../../predef_3A_3A/GTK2.html'>PANGO_STRETCH_CONDENSED</a></font> , <font face='courier'><a href='../../predef_3A_3A/GTK2.html'>PANGO_STRETCH_EXPANDED</a></font> , <font face='courier'><a href='../../predef_3A_3A/GTK2.html'>PANGO_STRETCH_EXTRA_CONDENSED</a></font> , <font face='courier'><a href='../../predef_3A_3A/GTK2.html'>PANGO_STRETCH_EXTRA_EXPANDED</a></font> , <font face='courier'><a href='../../predef_3A_3A/GTK2.html'>PANGO_STRETCH_NORMAL</a></font> , <font face='courier'><a href='../../predef_3A_3A/GTK2.html'>PANGO_STRETCH_SEMI_CONDENSED</a></font> , <font face='courier'><a href='../../predef_3A_3A/GTK2.html'>PANGO_STRETCH_SEMI_EXPANDED</a></font> , <font face='courier'><a href='../../predef_3A_3A/GTK2.html'>PANGO_STRETCH_ULTRA_CONDENSED</a></font>  and <font face='courier'><a href='../../predef_3A_3A/GTK2.html'>PANGO_STRETCH_ULTRA_EXPANDED</a></font> 
+ int stretch-set
+ int strikethrough
+ int strikethrough-set
+ int style <font face='courier'><a href='../../predef_3A_3A/GTK2.html'>PANGO_STYLE_ITALIC</a></font> , <font face='courier'><a href='../../predef_3A_3A/GTK2.html'>PANGO_STYLE_NORMAL</a></font>  and <font face='courier'><a href='../../predef_3A_3A/GTK2.html'>PANGO_STYLE_OBLIQUE</a></font> 
+ int style-set
+ string text
+ int underline <font face='courier'><a href='../../predef_3A_3A/GTK2.html'>PANGO_UNDERLINE_DOUBLE</a></font> , <font face='courier'><a href='../../predef_3A_3A/GTK2.html'>PANGO_UNDERLINE_ERROR</a></font> , <font face='courier'><a href='../../predef_3A_3A/GTK2.html'>PANGO_UNDERLINE_LOW</a></font> , <font face='courier'><a href='../../predef_3A_3A/GTK2.html'>PANGO_UNDERLINE_NONE</a></font>  and <font face='courier'><a href='../../predef_3A_3A/GTK2.html'>PANGO_UNDERLINE_SINGLE</a></font> 
+ int underline-set
+ int variant <font face='courier'><a href='../../predef_3A_3A/GTK2.html'>PANGO_VARIANT_NORMAL</a></font>  and <font face='courier'><a href='../../predef_3A_3A/GTK2.html'>PANGO_VARIANT_SMALL_CAPS</a></font> 
+ int variant-set
+ int weight
+ int weight-set
+ int width-chars</p>
+<p>  Signals:
+ <b>edited</b></p>
+</font></dd></dl>
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Inherit</font>
+<font size='+1'><b>CellRenderer</b></font>
+</font><dt>
+<dd><p><font face='courier'>inherit </font><font face='courier'><a href='../../predef_3A_3A/GTK2/CellRenderer.html'>GTK2.CellRenderer</a></font><font face='courier'> : <font color='#F000F0'>CellRenderer</font></font></p></dd>
+</dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

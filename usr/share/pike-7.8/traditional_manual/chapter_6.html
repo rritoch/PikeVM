@@ -1,0 +1,57 @@
+<html><head><title>Reference Manual for Pike v7.8 release 116</title></head>
+<body bgcolor='white' text='black'>
+<dl><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 6. Special Functions</font></td></tr></table><br />
+</dt><dd><p>There are some 'functions' in Pike that are not really functions at all but
+builtin items that can do things that no other functions can do. Some of them
+can not be re-defined or overloaded.
+In this chapter I will describe these functions and why they are implemented
+as special functions.</p></dd>
+<dt><a name='1'></a>
+<table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 6.1. sscanf</font></td></tr></table><br />
+</dt>
+<dd><p>Sscanf may look exactly like a normal function, but normal functions
+can not set the variables you send to it. The purpose of sscanf is to
+match one string against a format string and place the matching results
+into a list of variables. See <font face='courier'>sscanf</font>  for full documentation.</p></dd>
+<dt><a name='2'></a>
+<table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 6.2. catch</font></td></tr></table><br />
+</dt>
+<dd><p>Catch is used to trap errors and other exceptions in Pike.
+It works by making a block of code into an expression, like this:</p><p><pre>
+catch { statements }
+</pre></p>
+<p>If an error occurs, catch will return a description of the error.
+The description of the error has the following format:</p><p><pre>
+({
+   "error description",
+   backtrace()
+})
+</pre></p>
+<p>If no error occurs, catch will return zero. You may emulate your own errors
+using the function throw or error.</p><p><pre>
+int x,y;
+// This might generate "division by zero"
+array error = catch { x/=y; };
+</pre></p>
+</dd>
+<dt><a name='3'></a>
+<table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 6.3. gauge</font></td></tr></table><br />
+</dt>
+<dd><p>The syntax for gauge is the same as the syntax for catch:</p><p><pre>
+gauge { statements }
+</pre></p>
+<p>However, gauge simply returns how many seconds the code took to execute.
+This can be used to find out how fast your code actually is.. :)
+Only CPU time used by the Pike process is measured. This means that if it takes
+two seconds to execute but only uses 50 % CPU, this function will return 1.0.</p></dd>
+<dt><a name='4'></a>
+<table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 6.4. typeof</font></td></tr></table><br />
+</dt>
+<dd><p>This function returns the type of an expression as a string. It does not
+evaluate the expression at all, which might be somewhat confusing.</p><p><pre>
+typeof( exit(1) )
+</pre></p>
+<p>This will return the string <tt>"void"</tt> since exit is a function that
+returns void. It will not execute the function <tt>exit</tt> and exit the process as you
+might expect. If you want to know the type after evaluation, use
+<font face='courier'><code>sprintf("%t",&nbsp;expr)</code></font>.</p></dd></dl></body></html>

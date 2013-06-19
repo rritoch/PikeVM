@@ -1,0 +1,121 @@
+<html><head><title>Pike Reference Manual - Thread.Mutex()-&gt;lock()</title>
+<link rel='stylesheet' href='../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../ex/predef_3A_3A/Thread.html'><b>Thread</b></a><br />
+<a href='../../../../ex/predef_3A_3A/Thread/Mutex.html'><b>Thread.Mutex</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Thread/Mutex/current_locking_key.html'>current_locking_key()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Thread/Mutex/current_locking_thread.html'>current_locking_thread()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;lock()</td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Thread/Mutex/trylock.html'>trylock()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/Thread/Mutex/current_locking_thread.html"><img src="../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Thread.Mutex()-&gt;current_locking_thread()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/Thread/Mutex/trylock.html">Thread.Mutex()-&gt;trylock()<img src="../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method Thread.Mutex()-&gt;lock()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>lock</b></font>
+</font><dt>
+<dd><p><tt><font color='#005080'><font face='courier'><a href='../../../predef_3A_3A/Thread/MutexKey.html'>MutexKey</a></font></font> <b><font color='#000066'>lock</font>(</b><b>)</b></tt><br />
+<tt><font color='#005080'><font face='courier'><a href='../../../predef_3A_3A/Thread/MutexKey.html'>MutexKey</a></font></font> <b><font color='#000066'>lock</font>(</b><font color='#202020'>int</font> <font color='#005080'>type</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>This function attempts to lock the mutex. If the mutex is already
+ locked by a different thread the current thread will sleep until the
+ mutex is unlocked. The value returned is the 'key' to the lock. When
+ the key is destructed or has no more references the mutex will
+ automatically be unlocked.</p>
+<p> The <font face='courier'>type</font>  argument specifies what <font face='courier'><a href='../../../predef_3A_3A/Thread/Mutex/lock.html'>lock()</a></font>  should do if the
+ mutex is already locked by this thread:</p>
+<table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>0</font></tt></td><td bgcolor='white'><p>Throw an error.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>1</font></tt></td><td bgcolor='white'><p>Sleep until the mutex is unlocked. Useful if some
+     other thread will unlock it.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>2</font></tt></td><td bgcolor='white'><p>Return zero. This allows recursion within a locked region of
+     code, but in conjunction with other locks it easily leads
+     to unspecified locking order and therefore a risk for deadlocks.</p>
+</td></tr>
+</table></td></tr></table><br />
+
+</font></dd>
+<dt><font face='Helvetica'>Note</font><dt>
+<dd><font face='Helvetica'><p>If the mutex is destructed while it's locked or while threads are
+ waiting on it, it will continue to exist internally until the last
+ thread has stopped waiting and the last <font face='courier'><a href='../../../predef_3A_3A/Thread/MutexKey.html'>MutexKey</a></font>  has
+ disappeared, but further calls to the functions in this class will
+ fail as is usual for destructed objects.</p>
+</font></dd>
+<dt><font face='Helvetica'>Note</font><dt>
+<dd><font face='Helvetica'><p>Pike 7.4 and earlier destructed any outstanding lock when the
+ mutex was destructed, but threads waiting in <font face='courier'><a href='../../../predef_3A_3A/Thread/Mutex/lock.html'>lock</a></font>  still got
+ functioning locks as discussed above. This is inconsistent no
+ matter how you look at it, so it was changed in 7.6. The old
+ behavior is retained in compatibility mode for applications that
+ explicitly destruct mutexes to unlock them.</p>
+</font></dd>
+<dt><font face='Helvetica'>See also</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'><a href='../../../predef_3A_3A/Thread/Mutex/trylock.html'>trylock()</a></font> </p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

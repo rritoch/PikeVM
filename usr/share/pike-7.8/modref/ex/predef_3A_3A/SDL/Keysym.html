@@ -1,0 +1,132 @@
+<html><head><title>Pike Reference Manual - SDL.Keysym</title>
+<link rel='stylesheet' href='../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../..//images/pike_line_middle.gif" width="98%"><img src="../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../ex/predef_3A_3A/SDL.html'><b>SDL</b></a><br />
+<b>SDL.Keysym</b><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'></table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../ex/predef_3A_3A/SDL/Joystick/num_hats.html"><img src="../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >SDL.Joystick()-&gt;num_hats()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../ex/predef_3A_3A/SDL/Music.html">SDL.Music<img src="../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Class SDL.Keysym</h1>
+    <dl>
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>The Keysym class is used to report key presses and releases. It's
+ available from the <font face='courier'><a href='../../predef_3A_3A/SDL/Event.html'>SDL.Event</a></font>  class for keyboard events.</p>
+<p> The scancode field should generally be left alone - it is the
+ hardware dependent scancode returned by the keyboard. The sym
+ field is extremely useful. It is the SDL-defined value of the key. 
+ This field is very useful when you are checking for certain key presses.</p>
+<p> mod stores the current state of the keyboard modifiers as
+ explained in <font face='courier'><a href='../../predef_3A_3A/SDL/get_mod_state.html'>SDL.get_mod_state()</a></font> . The unicode field is only used
+ when UNICODE translation is enabled with <font face='courier'><a href='../../predef_3A_3A/SDL/enable_unicode.html'>SDL.enable_unicode()</a></font> . If
+ unicode is non-zero then this a the UNICODE character
+ corresponding to the keypress. If the high 9 bits of the character
+ are 0, then this maps to the equivalent ASCII character.</p>
+</font></dd>
+<dt><font face='Helvetica'>Note</font><dt>
+<dd><font face='Helvetica'><p>UNICODE translation does have a slight overhead so don't
+   enable it unless its needed.</p>
+</font></dd></dl>
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>scancode</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>int</font> SDL.Keysym.<b><font color='#F000F0'>scancode</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Hardware specific scancode</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>sym</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>int</font> SDL.Keysym.<b><font color='#F000F0'>sym</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>SDL virtual keysym</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>mod</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>int</font> SDL.Keysym.<b><font color='#F000F0'>mod</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Current key modifiers</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>unicode</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>int</font> SDL.Keysym.<b><font color='#F000F0'>unicode</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Translated character</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

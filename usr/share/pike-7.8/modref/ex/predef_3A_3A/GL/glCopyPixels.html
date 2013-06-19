@@ -1,0 +1,354 @@
+<html><head><title>Pike Reference Manual - GL.glCopyPixels()</title>
+<link rel='stylesheet' href='../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../..//images/pike_line_middle.gif" width="98%"><img src="../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../ex/predef_3A_3A/GL.html'><b>GL</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glAccum.html'>glAccum()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glAlphaFunc.html'>glAlphaFunc()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glArrayElement.html'>glArrayElement()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glBegin.html'>glBegin()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glBindTexture.html'>glBindTexture()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glBlendFunc.html'>glBlendFunc()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glCallList.html'>glCallList()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glClear.html'>glClear()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glClearAccum.html'>glClearAccum()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glClearColor.html'>glClearColor()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glClearDepth.html'>glClearDepth()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glClearIndex.html'>glClearIndex()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glClearStencil.html'>glClearStencil()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glColor.html'>glColor()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glColorMask.html'>glColorMask()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glColorMaterial.html'>glColorMaterial()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;glCopyPixels()</td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glCopyTexImage1D.html'>glCopyTexImage1D()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glCopyTexImage2D.html'>glCopyTexImage2D()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glCopyTexSubImage1D.html'>glCopyTexSubImage1D()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glCopyTexSubImage2D.html'>glCopyTexSubImage2D()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glCullFace.html'>glCullFace()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glDeleteLists.html'>glDeleteLists()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glDepthFunc.html'>glDepthFunc()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glDepthMask.html'>glDepthMask()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glDepthRange.html'>glDepthRange()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glDisable.html'>glDisable()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glDisableClientState.html'>glDisableClientState()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glDrawArrays.html'>glDrawArrays()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glDrawBuffer.html'>glDrawBuffer()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glDrawPixels.html'>glDrawPixels()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glEdgeFlag.html'>glEdgeFlag()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glEnable.html'>glEnable()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glEnableClientState.html'>glEnableClientState()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glEnd.html'>glEnd()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glEndList.html'>glEndList()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glEvalCoord.html'>glEvalCoord()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glEvalPoint.html'>glEvalPoint()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glFinish.html'>glFinish()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glFlush.html'>glFlush()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glFog.html'>glFog()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glFrontFace.html'>glFrontFace()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glFrustum.html'>glFrustum()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glGenLists.html'>glGenLists()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glGetError.html'>glGetError()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glGetString.html'>glGetString()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glHint.html'>glHint()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glIndex.html'>glIndex()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glIndexMask.html'>glIndexMask()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glInitNames.html'>glInitNames()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glIsEnabled.html'>glIsEnabled()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glIsList.html'>glIsList()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glIsTexture.html'>glIsTexture()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glLight.html'>glLight()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glLightModel.html'>glLightModel()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glLineStipple.html'>glLineStipple()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glLineWidth.html'>glLineWidth()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glListBase.html'>glListBase()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glLoadIdentity.html'>glLoadIdentity()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glLoadMatrix.html'>glLoadMatrix()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glLoadName.html'>glLoadName()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glLogicOp.html'>glLogicOp()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glMaterial.html'>glMaterial()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glMatrixMode.html'>glMatrixMode()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glMultMatrix.html'>glMultMatrix()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glNewList.html'>glNewList()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glNormal.html'>glNormal()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glOrtho.html'>glOrtho()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPassThrough.html'>glPassThrough()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPixelZoom.html'>glPixelZoom()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPointSize.html'>glPointSize()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPolygonMode.html'>glPolygonMode()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPolygonOffset.html'>glPolygonOffset()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPopAttrib.html'>glPopAttrib()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPopClientAttrib.html'>glPopClientAttrib()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPopMatrix.html'>glPopMatrix()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPopName.html'>glPopName()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPushAttrib.html'>glPushAttrib()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPushClientAttrib.html'>glPushClientAttrib()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPushMatrix.html'>glPushMatrix()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPushName.html'>glPushName()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glRasterPos.html'>glRasterPos()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glReadBuffer.html'>glReadBuffer()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glRenderMode.html'>glRenderMode()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glRotate.html'>glRotate()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glScale.html'>glScale()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glScissor.html'>glScissor()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glShadeModel.html'>glShadeModel()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glStencilFunc.html'>glStencilFunc()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glStencilMask.html'>glStencilMask()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glStencilOp.html'>glStencilOp()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glTexCoord.html'>glTexCoord()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glTexEnv.html'>glTexEnv()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glTexGen.html'>glTexGen()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glTexImage2D.html'>glTexImage2D()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glTexParameter.html'>glTexParameter()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glTexSubImage2D.html'>glTexSubImage2D()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glTranslate.html'>glTranslate()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glVertex.html'>glVertex()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glViewport.html'>glViewport()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../ex/predef_3A_3A/GL/glColorMaterial.html"><img src="../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >GL.glColorMaterial()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../ex/predef_3A_3A/GL/glCopyTexImage1D.html">GL.glCopyTexImage1D()<img src="../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method GL.glCopyPixels()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>glCopyPixels</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>void</font> <b><font color='#000066'>glCopyPixels</font>(</b><font color='#202020'>int</font> <font color='#005080'>x</font>, <font color='#202020'>int</font> <font color='#005080'>y</font>, <font color='#202020'>int</font> <font color='#005080'>width</font>, <font color='#202020'>int</font> <font color='#005080'>height</font>, <font color='#202020'>int</font> <font color='#005080'>type</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'><a href='../../predef_3A_3A/GL/glCopyPixels.html'>glCopyPixels</a></font>  copies a screen-aligned rectangle of pixels
+from the specified frame buffer location to a region relative to the
+current raster position.
+Its operation is well defined only if the entire pixel source region
+is within the exposed portion of the window.
+Results of copies from outside the window,
+or from regions of the window that are not exposed,
+are hardware dependent and undefined.</p>
+<p><i>x</i> and <i>y</i> specify the window coordinates of
+the lower left corner of the rectangular region to be copied.
+<i>width</i> and <i>height</i> specify the dimensions of the
+rectangular region to be copied.
+Both <i>width</i> and <i>height</i> must not be negative.</p>
+<p>Several parameters control the processing of the pixel data
+while it is being copied.
+These parameters are set with three commands:
+<font face='courier'>glPixelTransfer</font> ,
+<font face='courier'>glPixelMap</font> , and
+<font face='courier'><a href='../../predef_3A_3A/GL/glPixelZoom.html'>glPixelZoom</a></font> .
+This reference page describes the effects on <font face='courier'><a href='../../predef_3A_3A/GL/glCopyPixels.html'>glCopyPixels</a></font>  of most,
+but not all, of the parameters specified by these three commands.</p>
+<p><font face='courier'><a href='../../predef_3A_3A/GL/glCopyPixels.html'>glCopyPixels</a></font>  copies values from each pixel with the lower left-hand corner at
+(<i>x</i> + i, <i>y</i> + j) for 0\(&lt;=i&lt;<i>width</i>  and 0\(&lt;=j&lt;<i>height</i>.
+This pixel is said to be the ith pixel in the jth row. 
+Pixels are copied in row order from the lowest to the highest row,
+left to right in each row.</p>
+<p><i>type</i> specifies whether color, depth, or stencil data is to be copied.
+The details of the transfer for each data type are as follows:</p>
+<p><table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_COLOR</a></font> 
+</td><td bgcolor='white'>Indices or RGBA colors are read from the buffer currently specified as the
+read source buffer (see <font face='courier'><a href='../../predef_3A_3A/GL/glReadBuffer.html'>glReadBuffer</a></font> ).
+If the GL is in color index mode,
+each index that is read from this buffer is converted
+to a fixed-point format with an unspecified
+number of bits to the right of the binary point.
+Each index is then shifted left by <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_INDEX_SHIFT</a></font>  bits,
+and added to <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_INDEX_OFFSET</a></font> .
+If <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_INDEX_SHIFT</a></font>  is negative,
+the shift is to the right.
+In either case, zero bits fill otherwise unspecified bit locations in the
+result.
+If <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_MAP_COLOR</a></font>  is true,
+the index is replaced with the value that it references in lookup table
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_PIXEL_MAP_I_TO_I</a></font> .
+Whether the lookup replacement of the index is done or not,
+the integer part of the index is then ANDed with 2 sup b -1,
+where b is the number of bits in a color index buffer.
+
+If the GL is in RGBA mode,
+the red, green, blue, and alpha components of each pixel that is read
+are converted to an internal floating-point format with unspecified
+precision.
+The conversion maps the largest representable component value to 1.0,
+and component value 0 to 0.0.
+The resulting floating-point color values are then multiplied
+by GL_c_SCALE and added to GL_c_BIAS,
+where <i>c</i> is RED, GREEN, BLUE, and ALPHA 
+for the respective color components.
+The results are clamped to the range [0,1].
+If <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_MAP_COLOR</a></font>  is true,
+each color component is scaled by the size of lookup table
+<font face='courier'>GL_PIXEL_MAP_c_TO_c</font> ,
+then replaced by the value that it references in that table.
+<i>c</i> is R, G, B, or A.
+
+The GL then converts the resulting indices or RGBA colors to fragments
+by attaching the current raster position <i>z</i> coordinate and
+texture coordinates to each pixel,
+then assigning window coordinates
+(x sub r + i , y sub r + j),
+where (x sub r , y sub r) is the current raster position,
+and the pixel was the ith pixel in the jth row.
+These pixel fragments are then treated just like the fragments generated by
+rasterizing points, lines, or polygons.
+Texture mapping,
+fog,
+and all the fragment operations are applied before the fragments are written
+to the frame buffer.
+</td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_DEPTH</a></font> 
+</td><td bgcolor='white'>Depth values are read from the depth buffer and
+converted directly to an internal floating-point format
+with unspecified precision.
+The resulting floating-point depth value is then multiplied
+by <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_DEPTH_SCALE</a></font>  and added to <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_DEPTH_BIAS</a></font> .
+The result is clamped to the range [0,1].
+
+The GL then converts the resulting depth components to fragments
+by attaching the current raster position color or color index and
+texture coordinates to each pixel,
+then assigning window coordinates
+(x sub r + i , y sub r + j),
+where (x sub r , y sub r) is the current raster position,
+and the pixel was the ith pixel in the jth row.
+These pixel fragments are then treated just like the fragments generated by
+rasterizing points, lines, or polygons.
+Texture mapping,
+fog,
+and all the fragment operations are applied before the fragments are written
+to the frame buffer.
+</td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_STENCIL</a></font> 
+</td><td bgcolor='white'>Stencil indices are read from the stencil buffer and
+converted to an internal fixed-point format
+with an unspecified number of bits to the right of the binary point.
+Each fixed-point index is then shifted left by <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_INDEX_SHIFT</a></font>  bits,
+and added to <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_INDEX_OFFSET</a></font> .
+If <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_INDEX_SHIFT</a></font>  is negative,
+the shift is to the right.
+In either case, zero bits fill otherwise unspecified bit locations in the
+result.
+If <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_MAP_STENCIL</a></font>  is true,
+the index is replaced with the value that it references in lookup table
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_PIXEL_MAP_S_TO_S</a></font> .
+Whether the lookup replacement of the index is done or not,
+the integer part of the index is then ANDed with 2 sup b -1,
+where b is the number of bits in the stencil buffer.
+The resulting stencil indices are then written to the stencil buffer
+such that the index read from the ith location of the jth row
+is written to location
+(x sub r + i , y sub r + j),
+where (x sub r , y sub r) is the current raster position.
+Only the pixel ownership test,
+the scissor test,
+and the stencil writemask affect these write operations.
+</td></tr>
+</table></td></tr></table><br />
+</p>
+<p>The rasterization described thus far assumes pixel zoom factors of 1.0.
+If </p>
+<p><font face='courier'><a href='../../predef_3A_3A/GL/glPixelZoom.html'>glPixelZoom</a></font>  is used to change the x and y pixel zoom factors,
+pixels are converted to fragments as follows.
+If (x sub r, y sub r) is the current raster position,
+and a given pixel is in the ith location in the jth row of the source
+pixel rectangle,
+then fragments are generated for pixels whose centers are in the rectangle
+with corners at</p>
+<p>.ce
+(x sub r + zoom sub x i, y sub r + zoom sub y j)
+.sp .5
+.ce
+ and 
+.sp .5
+.ce
+(x sub r + zoom sub x (i + 1), y sub r + zoom sub y ( j + 1 ))</p>
+<p>where zoom sub x is the value of <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_ZOOM_X</a></font>  and 
+zoom sub y is the value of <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_ZOOM_Y</a></font> .</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>x</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Specify the window coordinates of the lower left corner
+of the rectangular region of pixels to be copied.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>width</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Specify the dimensions of the rectangular region of pixels to be copied.
+Both must be nonnegative.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>type</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Specifies whether color values,
+depth values,
+or stencil values are to be copied.
+Symbolic constants
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_COLOR</a></font> ,
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_DEPTH</a></font> ,
+and <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_STENCIL</a></font>  are accepted.</p>
+</font></dd>
+<dt><font face='Helvetica'>Throws</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_INVALID_ENUM</a></font>  is generated if <i>type</i> is not an accepted value.</p>
+<p><font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_INVALID_VALUE</a></font>  is generated if either <i>width</i> or <i>height</i> is negative.</p>
+<p><font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_INVALID_OPERATION</a></font>  is generated if <i>type</i> is <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_DEPTH</a></font> 
+and there is no depth buffer.</p>
+<p><font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_INVALID_OPERATION</a></font>  is generated if <i>type</i> is <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_STENCIL</a></font> 
+and there is no stencil buffer.</p>
+<p><font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_INVALID_OPERATION</a></font>  is generated if <font face='courier'><a href='../../predef_3A_3A/GL/glCopyPixels.html'>glCopyPixels</a></font> 
+is executed between the execution of <font face='courier'><a href='../../predef_3A_3A/GL/glBegin.html'>glBegin</a></font> 
+and the corresponding execution of <font face='courier'><a href='../../predef_3A_3A/GL/glEnd.html'>glEnd</a></font> .</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

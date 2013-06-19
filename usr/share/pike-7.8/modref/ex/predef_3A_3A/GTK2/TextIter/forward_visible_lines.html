@@ -1,0 +1,170 @@
+<html><head><title>Pike Reference Manual - GTK2.TextIter()-&gt;forward_visible_lines()</title>
+<link rel='stylesheet' href='../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../ex/predef_3A_3A/GTK2.html'><b>GTK2</b></a><br />
+<a href='../../../../ex/predef_3A_3A/GTK2/TextIter.html'><b>GTK2.TextIter</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/backward_char.html'>backward_char()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/backward_chars.html'>backward_chars()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/backward_cursor_position.html'>backward_cursor_position()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/backward_cursor_positions.html'>backward_cursor_positions()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/backward_line.html'>backward_line()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/backward_lines.html'>backward_lines()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/backward_search.html'>backward_search()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/backward_sentence_start.html'>backward_sentence_start()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/backward_sentence_starts.html'>backward_sentence_starts()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/backward_to_tag_toggle.html'>backward_to_tag_toggle()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/backward_visible_cursor_position.html'>backward_visible_cursor_position()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/backward_visible_cursor_positions.html'>backward_visible_cursor_positions()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/backward_visible_line.html'>backward_visible_line()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/backward_visible_lines.html'>backward_visible_lines()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/backward_visible_word_start.html'>backward_visible_word_start()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/backward_visible_word_starts.html'>backward_visible_word_starts()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/backward_word_start.html'>backward_word_start()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/backward_word_starts.html'>backward_word_starts()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/begins_tag.html'>begins_tag()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/can_insert.html'>can_insert()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/compare.html'>compare()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/editable.html'>editable()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/ends_line.html'>ends_line()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/ends_sentence.html'>ends_sentence()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/ends_tag.html'>ends_tag()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/ends_word.html'>ends_word()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/equal.html'>equal()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/forward_char.html'>forward_char()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/forward_chars.html'>forward_chars()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/forward_cursor_position.html'>forward_cursor_position()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/forward_cursor_positions.html'>forward_cursor_positions()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/forward_line.html'>forward_line()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/forward_lines.html'>forward_lines()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/forward_search.html'>forward_search()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/forward_sentence_end.html'>forward_sentence_end()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/forward_sentence_ends.html'>forward_sentence_ends()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/forward_to_end.html'>forward_to_end()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/forward_to_line_end.html'>forward_to_line_end()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/forward_to_tag_toggle.html'>forward_to_tag_toggle()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/forward_visible_cursor_position.html'>forward_visible_cursor_position()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/forward_visible_cursor_positions.html'>forward_visible_cursor_positions()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/forward_visible_line.html'>forward_visible_line()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;forward_visible_lines()</td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/forward_visible_word_end.html'>forward_visible_word_end()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/forward_visible_word_ends.html'>forward_visible_word_ends()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/forward_word_end.html'>forward_word_end()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/forward_word_ends.html'>forward_word_ends()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/free.html'>free()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/get_buffer.html'>get_buffer()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/get_bytes_in_line.html'>get_bytes_in_line()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/get_char.html'>get_char()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/get_chars_in_line.html'>get_chars_in_line()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/get_child_anchor.html'>get_child_anchor()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/get_line.html'>get_line()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/get_line_index.html'>get_line_index()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/get_line_offset.html'>get_line_offset()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/get_marks.html'>get_marks()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/get_offset.html'>get_offset()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/get_pixbuf.html'>get_pixbuf()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/get_slice.html'>get_slice()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/get_tags.html'>get_tags()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/get_text.html'>get_text()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/get_toggled_tags.html'>get_toggled_tags()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/get_visible_line_index.html'>get_visible_line_index()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/get_visible_line_offset.html'>get_visible_line_offset()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/get_visible_slice.html'>get_visible_slice()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/get_visible_text.html'>get_visible_text()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/has_tag.html'>has_tag()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/in_range.html'>in_range()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/inside_sentence.html'>inside_sentence()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/inside_word.html'>inside_word()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/is_cursor_position.html'>is_cursor_position()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/is_end.html'>is_end()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/is_start.html'>is_start()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/order.html'>order()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/set_line.html'>set_line()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/set_line_index.html'>set_line_index()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/set_line_offset.html'>set_line_offset()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/set_offset.html'>set_offset()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/set_visible_line_index.html'>set_visible_line_index()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/set_visible_line_offset.html'>set_visible_line_offset()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/starts_line.html'>starts_line()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/starts_sentence.html'>starts_sentence()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/starts_word.html'>starts_word()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GTK2/TextIter/toggles_tag.html'>toggles_tag()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/GTK2/TextIter/forward_visible_line.html"><img src="../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >GTK2.TextIter()-&gt;forward_visible_line()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/GTK2/TextIter/forward_visible_word_end.html">GTK2.TextIter()-&gt;forward_visible_word_end()<img src="../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method GTK2.TextIter()-&gt;forward_visible_lines()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>forward_visible_lines</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>int</font> <b><font color='#000066'>forward_visible_lines</font>(</b><font color='#202020'>int</font> <font color='#005080'>count</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Moves count visible lines forward, if possible (if count would move past
+ the start or end of the buffer, moves to the start or end of the buffer).
+ The return value indicates whether the iterator moved onto a
+ dereferenceable position; if the iterator didn't move, or moved onto the
+ end iterator, then FALSE is returned.  If count is 0, the function does
+ nothing and returns FALSE.  If count is negative, moves backward by
+ 0 - count lines.</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

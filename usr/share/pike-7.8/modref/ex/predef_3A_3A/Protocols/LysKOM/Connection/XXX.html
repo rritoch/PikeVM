@@ -1,0 +1,95 @@
+<html><head><title>Pike Reference Manual - Protocols.LysKOM.Connection()-&gt;XXX()</title>
+<link rel='stylesheet' href='../../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../../ex/predef_3A_3A/Protocols.html'><b>Protocols</b></a><br />
+<a href='../../../../../ex/predef_3A_3A/Protocols/LysKOM.html'><b>Protocols.LysKOM</b></a><br />
+<a href='../../../../../ex/predef_3A_3A/Protocols/LysKOM/Connection.html'><b>Protocols.LysKOM.Connection</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;XXX()</td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Protocols/LysKOM/Connection/async_XXX.html'>async_XXX()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Protocols/LysKOM/Connection/async_cb_XXX.html'>async_cb_XXX()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Protocols/LysKOM/Connection/create.html'>create()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../../ex/predef_3A_3A/Protocols/LysKOM/Connection.html"><img src="../../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Protocols.LysKOM.Connection</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../../ex/predef_3A_3A/Protocols/LysKOM/Connection/async_XXX.html">Protocols.LysKOM.Connection()-&gt;async_XXX()<img src="../../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method Protocols.LysKOM.Connection()-&gt;XXX()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>XXX</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>mixed</font> <b><font color='#000066'>XXX</font>(</b><font color='#202020'>mixed</font> ...  <font color='#005080'>args</font><b>)</b></tt><br />
+<tt><font color='#202020'>object</font> <b><font color='#000066'>async_XXX</font>(</b><font color='#202020'>mixed</font> ...  <font color='#005080'>args</font><b>)</b></tt><br />
+<tt><font color='#202020'>object</font> <b><font color='#000066'>async_cb_XXX</font>(</b><font color='#202020'>function</font> <font color='#005080'>callback</font>, <font color='#202020'>mixed</font> ...  <font color='#005080'>args</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Do a call to the server. This really
+	clones a <font face='courier'><a href='../../../../predef_3A_3A/Protocols/LysKOM/Request.html'>Protocols.LysKOM.Request</a></font>  object,
+	and initialises it. <tt>XXX</tt> is to be read as
+	one of the calls in the lyskom protocol. ('-' is replaced
+	with '_'.) (ie, logout, async_login or async_cb_get_conf_stat.)</p>
+<p>	The first method is a synchronous call. This will
+	send the command, wait for the server to execute it,
+	and then return the result.</p>
+<p>	The last two are asynchronous calls, returning an
+	initialised <font face='courier'><a href='../../../../predef_3A_3A/Protocols/LysKOM/Request.html'>Protocols.LysKOM.Request</a></font>  object.</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

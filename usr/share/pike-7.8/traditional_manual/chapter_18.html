@@ -1,0 +1,172 @@
+<html><head><title>Reference Manual for Pike v7.8 release 116</title></head>
+<body bgcolor='white' text='black'>
+<dl><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 18. Backward Compatibility</font></td></tr></table><br />
+</dt><dd><p>Pike is a language under active development. This can lead to
+   incompatibilities between different versions of Pike. To alleviate
+   this problem Pike has a backward compatibility layer.</p><p>The backward compatibility layer can be engaged in two ways;
+   either by starting the Pike interpreter with the <tt>-V</tt> option,
+   or by using the <tt>#pike</tt> preprocessor directive.</p><p>The backward compatibility layer affects both the compiler and the
+   available modules.</p><p>The remainder of this chapter describes the main incompatibilities
+   between the various versions of Pike and the current version.</p></dd>
+<dt><a name='1'></a>
+<table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 18.1. Pike 7.6</font></td></tr></table><br />
+</dt>
+<dd></dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 18.1.1. Global Functions</font></td></tr></table><br />
+</dt><dd></dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 18.1.2. Modules</font></td></tr></table><br />
+</dt><dd></dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 18.1.3. Compiler</font></td></tr></table><br />
+</dt><dd></dd>
+<dt><a name='2'></a>
+<table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 18.2. Pike 7.4</font></td></tr></table><br />
+</dt>
+<dd></dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 18.2.1. SQL Headerfiles</font></td></tr></table><br />
+</dt><dd><p>Pike 7.4 had some SQL-related headerfiles <tt>msql.h</tt>,
+      <tt>mysql.h</tt> and <tt>postgres.h</tt> that just performed
+      <tt>import</tt> of the corresponding module, and nothing else.</p></dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 18.2.2. Modules</font></td></tr></table><br />
+</dt><dd><p><font face='courier'>7.4::Standards.PKCS.Signature.build_digest()</font>  used to
+      expect a <font face='courier'>7.4::Crypto.md5</font> -style hash object as
+      the second argument.</p><p>The lifetime for the <font face='courier'>Stdio.Fd</font>  object used by a
+      <font face='courier'>7.4::Stdio.File</font>  object could differ from the lifetime
+      of the using object. This could in theory cause problems for code
+      that uses <font face='courier'>Stdio.File()-&gt;dup()</font>  or
+      <font face='courier'>Stdio.File()-&gt;assign()</font> .</p><p>Destructing a locked <font face='courier'>7.4::Thread.Mutex</font>  object had
+      the effect of also destructing the corresponding key object.</p><p><font face='courier'>7.4::Tools.Standalone.extract_autodoc</font>  had a different
+      argument list.</p><p><font face='courier'>7.4::explode_path()</font>  splitted a string on <tt>/</tt>
+      on all systems except NT, where it spitted on both <tt>/</tt> and
+      <tt>\</tt>.</p><p>The following modules and functions have moved, been renamed or
+      been deleted:
+      <table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.4::ADT.Heap()-&gt;top()</font> </td><td bgcolor='white'><font face='courier'>ADT.Heap()-&gt;pop()</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.4::Crypto</font> </td><td bgcolor='white'>(deprecated by <font face='courier'>Nettle</font> )</td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.4::_Crypto</font> </td><td bgcolor='white'>(deprecated by <font face='courier'>Nettle</font> )</td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.4::Locale.Charset.ascii</font> </td><td bgcolor='white'>(deprecated by <font face='courier'>Locale.Charset.ASCIIDec</font> )</td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.4::Locale.Charset._encoder</font> </td><td bgcolor='white'><font face='courier'>Locale.Charset.Encoder</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.4::Protocols.SMTP.protocol</font> </td><td bgcolor='white'><font face='courier'>Protocols.SMTP.Protocol</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.4::Protocols.SMTP.client</font> </td><td bgcolor='white'><font face='courier'>Protocols.SMTP.Client</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.4::Protocols.SMTP.client()-&gt;reply_codes</font> </td><td bgcolor='white'><font face='courier'>Protocols.SMTP.replycodes</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.4::Regexp</font> </td><td bgcolor='white'><font face='courier'>Regexp.SimpleRegexp</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.4::Sql.sql</font> </td><td bgcolor='white'><font face='courier'>Sql.Sql</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.4::Standards.ASN1.Encode</font> </td><td bgcolor='white'>(deprecated by <font face='courier'>Standards.ASN1.Types</font> )</td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.4::rusage()</font> </td><td bgcolor='white'>(deprecated by <font face='courier'>System.getrusage</font> )</td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.4::hash()</font> </td><td bgcolor='white'><font face='courier'>hash_7_4()</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.4::call_with_creds()</font> </td><td bgcolor='white'><font face='courier'>__builtin.security.call_with_creds()</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.4::get_current_creds()</font> </td><td bgcolor='white'><font face='courier'>__builtin.security.get_current_creds()</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.4::get_object_creds()</font> </td><td bgcolor='white'><font face='courier'>__builtin.security.get_object_creds()</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.4::_pipe_debug()</font> </td><td bgcolor='white'><font face='courier'>Pipe._pipe_debug()</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.4::getpwent()</font> </td><td bgcolor='white'><font face='courier'>System.getpwent()</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.4::endpwent()</font> </td><td bgcolor='white'><font face='courier'>System.endpwent()</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.4::setpwent()</font> </td><td bgcolor='white'><font face='courier'>System.setpwent()</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.4::getgrent()</font> </td><td bgcolor='white'><font face='courier'>System.getgrent()</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.4::endgrent()</font> </td><td bgcolor='white'><font face='courier'>System.endgrent()</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.4::setgrent()</font> </td><td bgcolor='white'><font face='courier'>System.getgrent()</font> </td></tr>
+</table></td></tr></table><br />
+
+</p></dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 18.2.3. Compiler</font></td></tr></table><br />
+</dt><dd></dd>
+<dt><a name='3'></a>
+<table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 18.3. Pike 7.2</font></td></tr></table><br />
+</dt>
+<dd></dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 18.3.1. Modules</font></td></tr></table><br />
+</dt><dd><p><font face='courier'>7.2::Parser.XML.Simple</font> , <font face='courier'>7.2::Parser.XML.Validating</font> 
+      as well as <font face='courier'>7.2::Parser.XML.Tree.parse_input()</font>  used to be more
+      lenient.</p><p>Most functions in <font face='courier'>7.2::Protocols.LDAP.client</font>  used to
+      have different calling conventions.</p><p><font face='courier'>7.2::Thread.Condition()-&gt;wait()</font>  used to support being called
+      without a <font face='courier'>Thread.Mutex</font> . This support was removed since it
+      introduced race-conditions in almost all code that used the feature.</p><p><font face='courier'>7.2::dirname()</font>  used to return <tt>""</tt> for the path
+      <tt>"/"</tt>.</p><p><font face='courier'>7.2::new()</font>  and <font face='courier'>7.2::clone()</font>  have been obsoleted
+      by <font face='courier'><code>((program)prog)(@args)</code></font>.</p><p>The following modules and functions have moved, been renamed or
+      been deleted:
+      <table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.2::Gmp.pow</font> </td><td bgcolor='white'><font face='courier'>pow</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.2::LR</font> </td><td bgcolor='white'><font face='courier'>Parser.LR</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.2::LR.item</font> </td><td bgcolor='white'><font face='courier'>Parser.LR.Parser.Item</font>  (protected)</td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.2::LR.parser</font> </td><td bgcolor='white'><font face='courier'>Parser.LR.Parser</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.2::LR.priority</font> </td><td bgcolor='white'><font face='courier'>Parser.LR.Priority</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.2::LR.rule</font> </td><td bgcolor='white'><font face='courier'>Parser.LR.Rule</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.2::LR.scanner</font> </td><td bgcolor='white'>(deleted)</td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.2::String.strmult</font> </td><td bgcolor='white'>(deprecated by <font face='courier'>`*</font> )</td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.2::String.String_buffer</font> </td><td bgcolor='white'>(deprecated by <font face='courier'>String.Buffer</font> )</td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.2::system</font> </td><td bgcolor='white'><font face='courier'>System</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.2::sleep</font> </td><td bgcolor='white'><font face='courier'>delay</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.2::default_yp_domain</font> </td><td bgcolor='white'><font face='courier'>Yp.default_domain</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.2::_low_program_name</font> </td><td bgcolor='white'><font face='courier'>spider._low_program_name</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.2::set_start_quote</font> </td><td bgcolor='white'><font face='courier'>spider.set_start_quote</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.2::set_end_quote</font> </td><td bgcolor='white'><font face='courier'>spider.set_end_quote</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.2::parse_accessed_database</font> </td><td bgcolor='white'><font face='courier'>spider.parse_accessed_database</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.2::_dump_obj_table</font> </td><td bgcolor='white'><font face='courier'>spider._dump_obj_table</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.2::parse_html</font> </td><td bgcolor='white'><font face='courier'>spider.parse_html</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.2::parse_html_lines</font> </td><td bgcolor='white'><font face='courier'>spider.parse_html_lines</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.2::discdate</font> </td><td bgcolor='white'><font face='courier'>spider.discdate</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.2::stardate</font> </td><td bgcolor='white'><font face='courier'>spider.stardate</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.2::get_all_active_fd</font> </td><td bgcolor='white'><font face='courier'>spider.get_all_active_fd</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.2::fd_info</font> </td><td bgcolor='white'><font face='courier'>spider.fd_info</font> </td></tr>
+</table></td></tr></table><br />
+
+</p></dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 18.3.2. Compiler</font></td></tr></table><br />
+</dt><dd></dd>
+<dt><a name='4'></a>
+<table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 18.4. Pike 7.0</font></td></tr></table><br />
+</dt>
+<dd></dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 18.4.1. Simulate</font></td></tr></table><br />
+</dt><dd><p><tt>#include</tt> of <tt>&lt;simulate.h&gt;</tt> or import of
+    the <font face='courier'>7.0::Simulate</font>  module provided some compatibility
+    with LPC.</p><p>The compatibility functions were
+    <font face='courier'>7.0::Simulate.member_array()</font> ,
+    <font face='courier'>7.0::Simulate.previous_object()</font> ,
+    <font face='courier'>7.0::Simulate.this_function()</font> ,
+    <font face='courier'>7.0::Simulate.get_function()</font> ,
+    <font face='courier'>7.0::Simulate.map_regexp()</font> 
+    as well was various functions from the <font face='courier'>Array</font> , <font face='courier'>String</font> 
+    and <font face='courier'>Process</font>  modules.</p><p>The following functions were provided under alternate names:
+      <table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.0::Simulate.all_efuns</font> </td><td bgcolor='white'><font face='courier'>all_constants</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.0::Simulate.explode</font> </td><td bgcolor='white'><font face='courier'>`/</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.0::Simulate.filter_array</font> </td><td bgcolor='white'><font face='courier'>filter</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.0::Simulate.map_array</font> </td><td bgcolor='white'><font face='courier'>map</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.0::Simulate.implode</font> </td><td bgcolor='white'><font face='courier'>`*</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.0::Simulate.m_indices</font> </td><td bgcolor='white'><font face='courier'>indices</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.0::Simulate.m_sizeof</font> </td><td bgcolor='white'><font face='courier'>sizeof</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.0::Simulate.m_values</font> </td><td bgcolor='white'><font face='courier'>values</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.0::Simulate.strstr</font> </td><td bgcolor='white'><font face='courier'>search</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.0::Simulate.sum</font> </td><td bgcolor='white'><font face='courier'>`+</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.0::Simulate.add_efun</font> </td><td bgcolor='white'><font face='courier'>add_constant</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.0::Simulate.l_sizeof</font> </td><td bgcolor='white'><font face='courier'>sizeof</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.0::Simulate.listp</font> </td><td bgcolor='white'><font face='courier'>multisetp</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.0::Simulate.mklist</font> </td><td bgcolor='white'><font face='courier'>mkmultiset</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.0::Simulate.aggregate_list</font> </td><td bgcolor='white'><font face='courier'>aggregate_multiset</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.0::Simulate.query_host_name</font> </td><td bgcolor='white'><font face='courier'>gethostname</font> </td></tr>
+</table></td></tr></table><br />
+
+</p><p>A single mathematical constant was also provided;
+      <font face='courier'>7.0::Simulate.PI</font>  with a value close to
+      <tt>3.1415926535897932384626433832795080</tt>.
+    </p></dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 18.4.2. Modules</font></td></tr></table><br />
+</dt><dd><p>The <font face='courier'>7.0::Colors</font>  module contained lots of color definitions
+       with three-element arrays containing the Red, Green and Blue components.
+       These color definitions are now provided by the <font face='courier'>Image.Colors</font> 
+       module.</p><p><font face='courier'>7.0::Stdio.File()-&gt;stat()</font>  and
+       <font face='courier'>7.0::Stdio.FILE()-&gt;stat()</font>  as well as
+       <font face='courier'>7.2::file_stat()</font>  used to return an array with
+       integers and not a <font face='courier'>Stdio.Stat</font>  object.</p><p><font face='courier'>7.0::_typeof()</font>  used to return a string and not a type.</p><p><font face='courier'>7.0::m_delete()</font>  used to return the mapping and not
+       the deleted value.</p><p>The following modules and functions have moved or been renamed:
+      <table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.0::Calendar</font> </td><td bgcolor='white'><font face='courier'>Calendar_I</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.0::hash</font> </td><td bgcolor='white'><font face='courier'>hash_7_0</font> </td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'>7.0::Stack.stack</font> </td><td bgcolor='white'><font face='courier'>ADT.Stack</font> </td></tr>
+</table></td></tr></table><br />
+
+</p></dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 18.4.3. Compiler</font></td></tr></table><br />
+</dt><dd></dd>
+<dt><a name='5'></a>
+<table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 18.5. Pike 0.6</font></td></tr></table><br />
+</dt>
+<dd></dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 18.5.1. Laxer Types</font></td></tr></table><br />
+</dt><dd><p>Several functions, including <font face='courier'>0.6::Array.map</font>  and
+    <font face='courier'>0.6::aggregate</font> , had much more lenient types than in
+    later versions.</p></dd><dt><table width='100%' cellpadding='3' cellspacing='0' border='0'><tr><td bgcolor='#EEEEEE'><font size='+3'>&nbsp; 18.5.2. readline</font></td></tr></table><br />
+</dt><dd><p>There was a global function <font face='courier'>0.6::readline()</font>  that
+    provided some simple readline support. This was obsoleted by
+    the <font face='courier'>Readline</font>  module.</p></dd></dl></body></html>

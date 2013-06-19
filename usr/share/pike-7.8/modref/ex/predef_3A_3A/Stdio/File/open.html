@@ -1,0 +1,254 @@
+<html><head><title>Pike Reference Manual - Stdio.File()-&gt;open()</title>
+<link rel='stylesheet' href='../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../ex/predef_3A_3A/Stdio.html'><b>Stdio</b></a><br />
+<a href='../../../../ex/predef_3A_3A/Stdio/File.html'><b>Stdio.File</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/_backtick_3C_3C.html'>`&lt;&lt;()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/assign.html'>assign()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/async_connect.html'>async_connect()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/close.html'>close()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/connect.html'>connect()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/connect_unix.html'>connect_unix()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/create.html'>create()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/dup.html'>dup()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/dup2.html'>dup2()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/errno.html'>errno()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/getxattr.html'>getxattr()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/grantpt.html'>grantpt()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/is_open.html'>is_open()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/line_iterator.html'>line_iterator()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/listxattr.html'>listxattr()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/lock.html'>lock()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/mode.html'>mode()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/notify.html'>notify()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;open()</td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/open_socket.html'>open_socket()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/openat.html'>openat()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/openpt.html'>openpt()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/peek.html'>peek()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/pipe.html'>pipe()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/proxy.html'>proxy()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/query_address.html'>query_address()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/query_backend.html'>query_backend()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/query_close_callback.html'>query_close_callback()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/query_fd.html'>query_fd()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/query_id.html'>query_id()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/query_read_callback.html'>query_read_callback()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/query_read_oob_callback.html'>query_read_oob_callback()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/query_write_callback.html'>query_write_callback()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/query_write_oob_callback.html'>query_write_oob_callback()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/read.html'>read()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/read_function.html'>read_function()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/read_oob.html'>read_oob()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/release_fd.html'>release_fd()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/removexattr.html'>removexattr()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/seek.html'>seek()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/set_backend.html'>set_backend()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/set_blocking.html'>set_blocking()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/set_blocking_keep_callbacks.html'>set_blocking_keep_callbacks()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/set_buffer.html'>set_buffer()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/set_close_callback.html'>set_close_callback()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/set_close_on_exec.html'>set_close_on_exec()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/set_id.html'>set_id()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/set_keepalive.html'>set_keepalive()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/set_nonblocking.html'>set_nonblocking()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/set_nonblocking_keep_callbacks.html'>set_nonblocking_keep_callbacks()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/set_read_callback.html'>set_read_callback()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/set_read_oob_callback.html'>set_read_oob_callback()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/set_write_callback.html'>set_write_callback()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/set_write_oob_callback.html'>set_write_oob_callback()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/setxattr.html'>setxattr()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/stat.html'>stat()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/statat.html'>statat()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/sync.html'>sync()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/take_fd.html'>take_fd()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/tcgetattr.html'>tcgetattr()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/tcsetattr.html'>tcsetattr()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/tell.html'>tell()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/truncate.html'>truncate()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/trylock.html'>trylock()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/unlinkat.html'>unlinkat()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/write.html'>write()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Stdio/File/write_oob.html'>write_oob()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/Stdio/File/notify.html"><img src="../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Stdio.File()-&gt;notify()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/Stdio/File/open_socket.html">Stdio.File()-&gt;open_socket()<img src="../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method Stdio.File()-&gt;open()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>open</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>int</font> <b><font color='#000066'>open</font>(</b><font color='#202020'>string</font> <font color='#005080'>filename</font>, <font color='#202020'>string</font> <font color='#005080'>mode</font><b>)</b></tt><br />
+<tt><font color='#202020'>int</font> <b><font color='#000066'>open</font>(</b><font color='#202020'>string</font> <font color='#005080'>filename</font>, <font color='#202020'>string</font> <font color='#005080'>mode</font>, <font color='#202020'>int</font> <font color='#005080'>mask</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Open a file for read, write or append. The parameter <font face='courier'><a href='../../../predef_3A_3A/Stdio/File/open.html'>mode</a></font>  should
+ contain one or more of the following letters:</p>
+<table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"r"</font></tt></td><td bgcolor='white'><p>Open file for reading.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"w"</font></tt></td><td bgcolor='white'><p>Open file for writing.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"a"</font></tt></td><td bgcolor='white'><p>Open file for append (use with <font face='courier'><code>"w"</code></font>).</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"t"</font></tt></td><td bgcolor='white'><p>Truncate file at open (use with <font face='courier'><code>"w"</code></font>).</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"c"</font></tt></td><td bgcolor='white'><p>Create file if it doesn't exist (use with <font face='courier'><code>"w"</code></font>).</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"x"</font></tt></td><td bgcolor='white'><p>Fail if file already exists (use with <font face='courier'><code>"c"</code></font>).</p>
+</td></tr>
+</table></td></tr></table><br />
+<p><font face='courier'><a href='../../../predef_3A_3A/Stdio/File/open.html'>mode</a></font>  should always contain at least one of the letters
+ <font face='courier'><code>"r"</code></font> or <font face='courier'><code>"w"</code></font>.</p>
+<p> The parameter <font face='courier'><a href='../../../predef_3A_3A/Stdio/File/open.html'>mask</a></font>  is protection bits to use if the file is
+ created. Default is <font face='courier'><code>0666</code></font> (read+write for all in octal
+ notation).</p>
+</font></dd>
+<dt><font face='Helvetica'>Returns</font><dt>
+<dd><font face='Helvetica'><p>This function returns <font face='courier'><code>1</code></font> for success, <font face='courier'><code>0</code></font> otherwise.</p>
+</font></dd>
+<dt><font face='Helvetica'>See also</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'><a href='../../../predef_3A_3A/Stdio/File/close.html'>close()</a></font> , <font face='courier'><a href='../../../predef_3A_3A/Stdio/File/create.html'>create()</a></font> </p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>open</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>int</font> <b><font color='#000066'>open</font>(</b><font color='#202020'>string</font> <font color='#005080'>filename</font>, <font color='#202020'>string</font> <font color='#005080'>mode</font><b>)</b></tt><br />
+<tt><font color='#202020'>int</font> <b><font color='#000066'>open</font>(</b><font color='#202020'>string</font> <font color='#005080'>filename</font>, <font color='#202020'>string</font> <font color='#005080'>mode</font>, <font color='#202020'>int</font> <font color='#005080'>access</font><b>)</b></tt><br />
+<tt><font color='#202020'>int</font> <b><font color='#000066'>open</font>(</b><font color='#202020'>int</font> <font color='#005080'>fd</font>, <font color='#202020'>string</font> <font color='#005080'>mode</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Open a file, or use an existing fd.</p>
+<p> If <font face='courier'><a href='../../../predef_3A_3A/Stdio/File/open.html'>filename</a></font>  is given, attempt to open the named file. If <font face='courier'><a href='../../../predef_3A_3A/Stdio/File/open.html'>fd</a></font> 
+ is given instead, it should be the file descriptor for an already
+ opened file, which will then be used by this object.</p>
+<p><font face='courier'><a href='../../../predef_3A_3A/Stdio/File/open.html'>mode</a></font>  describes how the file is opened. It's a case-insensitive
+ string consisting of one or more of the following letters:</p>
+<dl><dt>r</dt>
+<dd><p>Open for reading.</p>
+</dd>
+<dt>w</dt>
+<dd><p>Open for writing.</p>
+</dd>
+<dt>a</dt>
+<dd><p>Append new data to the end.</p>
+</dd>
+<dt>c</dt>
+<dd><p>Create the file if it doesn't exist already.</p>
+</dd>
+<dt>t</dt>
+<dd><p>Truncate the file to zero length if it already contains data.
+     Use only together with <font face='courier'><code>"w"</code></font>.</p>
+</dd>
+<dt>x</dt>
+<dd><p>Open exclusively - the open fails if the file already exists.
+     Use only together with <font face='courier'><code>"c"</code></font>. Note that it's not safe to
+     assume that this is atomic on some systems.</p>
+</dd>
+</dl><p><font face='courier'><a href='../../../predef_3A_3A/Stdio/File/open.html'>access</a></font>  specifies the permissions to use if a new file is
+ created. It is a UNIX style permission bitfield:</p>
+<dl><dt>0400</dt>
+<dd><p>User has read permission.</p>
+</dd>
+<dt>0200</dt>
+<dd><p>User has write permission.</p>
+</dd>
+<dt>0100</dt>
+<dd><p>User has execute permission.</p>
+</dd>
+<dt>0040</dt>
+<dd><p>Group has read permission.</p>
+</dd>
+<dt>0020</dt>
+<dd><p>Group has write permission.</p>
+</dd>
+<dt>0010</dt>
+<dd><p>Group has execute permission.</p>
+</dd>
+<dt>0004</dt>
+<dd><p>Others have read permission.</p>
+</dd>
+<dt>0002</dt>
+<dd><p>Others have write permission.</p>
+</dd>
+<dt>0001</dt>
+<dd><p>Others have execute permission.</p>
+</dd>
+</dl><p>It's system dependent on which of these bits that are actually
+ heeded. If <font face='courier'><a href='../../../predef_3A_3A/Stdio/File/open.html'>access</a></font>  is not specified, it defaults to
+ <font face='courier'><code>00666</code></font>, but note that on UNIX systems it's masked with the
+ process umask before use.</p>
+</font></dd>
+<dt><font face='Helvetica'>Returns</font><dt>
+<dd><font face='Helvetica'><p>Returns nonzero on success and <font face='courier'><code>0</code></font> (zero) on failure. If
+   there is a failure then <font face='courier'><a href='../../../predef_3A_3A/Stdio/File/errno.html'>errno</a></font>  returns the error code.</p>
+</font></dd>
+<dt><font face='Helvetica'>See also</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'><a href='../../../predef_3A_3A/Stdio/File/close.html'>close()</a></font> </p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

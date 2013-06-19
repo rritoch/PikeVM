@@ -1,0 +1,143 @@
+<html><head><title>Pike Reference Manual - SDL.Surface()-&gt;init()</title>
+<link rel='stylesheet' href='../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../ex/predef_3A_3A/SDL.html'><b>SDL</b></a><br />
+<a href='../../../../ex/predef_3A_3A/SDL/Surface.html'><b>SDL.Surface</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/SDL/Surface/blit.html'>blit()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/SDL/Surface/convert_surface.html'>convert_surface()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/SDL/Surface/display_format.html'>display_format()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/SDL/Surface/display_format_alpha.html'>display_format_alpha()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/SDL/Surface/fill.html'>fill()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/SDL/Surface/fill_rect.html'>fill_rect()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/SDL/Surface/get_pixel.html'>get_pixel()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;init()</td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/SDL/Surface/lock.html'>lock()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/SDL/Surface/set_alpha.html'>set_alpha()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/SDL/Surface/set_clip_rect.html'>set_clip_rect()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/SDL/Surface/set_color_key.html'>set_color_key()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/SDL/Surface/set_image.html'>set_image()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/SDL/Surface/set_pixel.html'>set_pixel()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/SDL/Surface/unlock.html'>unlock()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/SDL/Surface/get_pixel.html"><img src="../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >SDL.Surface()-&gt;get_pixel()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/SDL/Surface/lock.html">SDL.Surface()-&gt;lock()<img src="../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method SDL.Surface()-&gt;init()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>init</b></font>
+</font><dt>
+<dd><p><tt><font color='#005080'><font face='courier'><a href='../../../predef_3A_3A/SDL/Surface.html'>SDL.Surface</a></font></font> <b><font color='#000066'>init</font>(</b><font color='#202020'>int</font> <font color='#005080'>flags</font>, <font color='#202020'>int</font> <font color='#005080'>width</font>, <font color='#202020'>int</font> <font color='#005080'>height</font>, <font color='#202020'>int</font> <font color='#005080'>depth</font>, <font color='#202020'>int</font> <font color='#005080'>Rmask</font>, <font color='#202020'>int</font> <font color='#005080'>Gmask</font>, <font color='#202020'>int</font> <font color='#005080'>Bmask</font>, <font color='#202020'>int</font> <font color='#005080'>Amask</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>This (re)initializes this surface using the specified
+ parameters.  Any previously allocated data will be freed. 
+ If <b>depth</b> is 8 bits an empty palette is allocated for the surface,
+ otherwise a 'packed-pixel' <font face='courier'><a href='../../../predef_3A_3A/SDL/PixelFormat.html'>SDL.PixelFormat</a></font>  is created using
+ the <b>[RGBA]mask</b>'s provided. <b>width</b> and <b>height</b> specifies
+ the desired size of the image. The <b>flags</b> specifies the type of
+ surface that should be created. It is an OR'd combination of the
+ following possible values:</p>
+<dl><dt>SDL.SWSURFACE</dt>
+<dd><p>SDL will create the surface in system memory. This improves
+     the performance of pixel level access, however you may not
+     be able to take advantage of some types of hardware
+     blitting.</p>
+</dd>
+<dt>SDL.HWSURFACE</dt>
+<dd><p>SDL will attempt to create the surface in video memory. This
+     will allow SDL to take advantage of Video-&gt;Video blits
+     (which are often accelerated).</p>
+</dd>
+<dt>SDL.SRCCOLORKEY</dt>
+<dd><p>This flag turns on colourkeying for blits from this
+     surface. If SDL.HWSURFACE is also specified and colourkeyed
+     blits are hardware-accelerated, then SDL will attempt to
+     place the surface in video memory. Use <font face='courier'><a href='../../../predef_3A_3A/SDL/Surface/set_color_key.html'>set_color_key()</a></font>  to
+     set or clear this flag after surface creation.</p>
+</dd>
+<dt>SDL.SRCALPHA</dt>
+<dd><p>This flag turns on alpha-blending for blits from this
+     surface. If SDL.HWSURFACE is also specified and alpha
+     blending blits are hardware-accelerated, then the surface
+     will be placed in video memory if possible.  Use
+     <font face='courier'><a href='../../../predef_3A_3A/SDL/Surface/set_alpha.html'>set_alpha()</a></font>  to set or clear this flag after surface
+     creation.</p>
+</dd>
+</dl>
+</font></dd>
+<dt><font face='Helvetica'>Note</font><dt>
+<dd><font face='Helvetica'><p>If an alpha-channel is specified (that is, if Amask is
+   nonzero), then the SDL.SRCALPHA flag is automatically set. You
+   may remove this flag by calling <font face='courier'><a href='../../../predef_3A_3A/SDL/Surface/set_alpha.html'>set_alpha()</a></font>  after surface
+   creation.</p>
+</font></dd>
+<dt><font face='Helvetica'>Returns</font><dt>
+<dd><font face='Helvetica'><p>A reference to itself.</p>
+</font></dd>
+<dt><font face='Helvetica'>Note</font><dt>
+<dd><font face='Helvetica'><p>If this method fails, the surface will become uninitialized.</p>
+</font></dd>
+<dt><font face='Helvetica'>See also</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'><a href='../../../predef_3A_3A/SDL/Surface/set_image.html'>set_image()</a></font> </p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

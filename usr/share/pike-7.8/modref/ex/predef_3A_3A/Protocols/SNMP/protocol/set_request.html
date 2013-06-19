@@ -1,0 +1,138 @@
+<html><head><title>Pike Reference Manual - Protocols.SNMP.protocol()-&gt;set_request()</title>
+<link rel='stylesheet' href='../../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../../ex/predef_3A_3A/Protocols.html'><b>Protocols</b></a><br />
+<a href='../../../../../ex/predef_3A_3A/Protocols/SNMP.html'><b>Protocols.SNMP</b></a><br />
+<a href='../../../../../ex/predef_3A_3A/Protocols/SNMP/protocol.html'><b>Protocols.SNMP.protocol</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Protocols/SNMP/protocol/create.html'>create()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Protocols/SNMP/protocol/decode_asn1_msg.html'>decode_asn1_msg()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Protocols/SNMP/protocol/get_nextrequest.html'>get_nextrequest()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Protocols/SNMP/protocol/get_request.html'>get_request()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Protocols/SNMP/protocol/get_response.html'>get_response()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Protocols/SNMP/protocol/readmsg.html'>readmsg()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Protocols/SNMP/protocol/readmsg_from_pool.html'>readmsg_from_pool()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;set_request()</td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Protocols/SNMP/protocol/to_pool.html'>to_pool()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Protocols/SNMP/protocol/trap.html'>trap()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../../ex/predef_3A_3A/Protocols/SNMP/protocol/readmsg_from_pool.html"><img src="../../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Protocols.SNMP.protocol()-&gt;readmsg_from_pool()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../../ex/predef_3A_3A/Protocols/SNMP/protocol/to_pool.html">Protocols.SNMP.protocol()-&gt;to_pool()<img src="../../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method Protocols.SNMP.protocol()-&gt;set_request()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>set_request</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>int</font> <b><font color='#000066'>set_request</font>(</b><font color='#202020'>mapping</font> <font color='#005080'>varlist</font>, <font color='#202020'>string</font>|<font color='#202020'>void</font> <font color='#005080'>rem_addr</font>, <font color='#202020'>int</font>|<font color='#202020'>void</font> <font color='#005080'>rem_port</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>SetRequest-PDU call</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>varlist</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>a mapping of OIDs to SET</p>
+<table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>oid1</font> : <font color='#202020'>array</font></tt></td><td bgcolor='white'><table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white' colspan='2'>Array</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='#202020'>string</font> <font color='green'>type</font></tt></td><td bgcolor='white'><p>data type such as tick, oid, gauge, etc</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='#202020'>mixed</font> <font color='green'>data</font></tt></td><td bgcolor='white'><p>data to return for oid1</p>
+</td></tr>
+</table></td></tr></table><br />
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>oid2</font> : <font color='#202020'>array</font></tt></td><td bgcolor='white'><table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white' colspan='2'>Array</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='#202020'>string</font> <font color='green'>type</font></tt></td><td bgcolor='white'><p>data type such as tick, oid, gauge, etc</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='#202020'>mixed</font> <font color='green'>data</font></tt></td><td bgcolor='white'><p>data to return for oid2</p>
+</td></tr>
+</table></td></tr></table><br />
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>oidn</font> : <font color='#202020'>array</font></tt></td><td bgcolor='white'><table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white' colspan='2'>Array</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='#202020'>string</font> <font color='green'>type</font></tt></td><td bgcolor='white'><p>data type such as tick, oid, gauge, etc</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='#202020'>mixed</font> <font color='green'>data</font></tt></td><td bgcolor='white'><p>data to return for oidn</p>
+</td></tr>
+</table></td></tr></table><br />
+</td></tr>
+</table></td></tr></table><br />
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>rem_addr</font></tt></font><dt>
+<dd></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>rem_port</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>remote address an UDP port to send request to (optional)</p>
+</font></dd>
+<dt><font face='Helvetica'>Returns</font><dt>
+<dd><font face='Helvetica'><p>request ID</p>
+</font></dd>
+<dt><font face='Helvetica'>Example</font><dt>
+<dd><pre><p>// set the value of 1.3.6.1.4.1.1882.2.1 to "blah".
+   object s=Protocols.SNMP.protocol();
+   s-&gt;snmp_community="mysetcommunity";
+   mapping req=(["1.3.6.1.4.1.1882.2.1": ({"str", "blah"})]);
+   int id=s-&gt;set_request(req, "172.21.124.32");</p>
+</pre></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

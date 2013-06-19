@@ -1,0 +1,266 @@
+<html><head><title>Pike Reference Manual - Pike.count_memory()</title>
+<link rel='stylesheet' href='../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../..//images/pike_line_middle.gif" width="98%"><img src="../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../ex/predef_3A_3A/Pike.html'><b>Pike</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Modules</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Pike/DefaultBackend.html'><b>DefaultBackend</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Pike/Security.html'><b>Security</b></a></td></tr>
+<tr><td nowrap='nowrap'><br /><b>Classes</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Pike/BacktraceFrame.html'><b>BacktraceFrame</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Pike/Codec.html'><b>Codec</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Pike/Decoder.html'><b>Decoder</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Pike/Encoder.html'><b>Encoder</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Pike/PollBackend.html'><b>PollBackend</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Pike/PollDeviceBackend.html'><b>PollDeviceBackend</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Pike/SelectBackend.html'><b>SelectBackend</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Pike/__Backend.html'><b>__Backend</b></a></td></tr>
+<tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;count_memory()</td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Pike/gc_parameters.html'>gc_parameters()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Pike/get_runtime_info.html'>get_runtime_info()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../ex/predef_3A_3A/Pike/Security/get_object_creds.html"><img src="../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Pike.Security.get_object_creds()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../ex/predef_3A_3A/Pike/gc_parameters.html">Pike.gc_parameters()<img src="../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method Pike.count_memory()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>count_memory</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>int</font> <b><font color='#000066'>count_memory</font>(</b><font color='#202020'>int</font>|<font color='#202020'>mapping</font>(<font color='#202020'>string</font>:<font color='#202020'>int</font>) <font color='#005080'>options</font>, <font color='#202020'>array</font>|<font color='#202020'>multiset</font>|<font color='#202020'>mapping</font>|<font color='#202020'>object</font>|<font color='#202020'>program</font>|<font color='#202020'>string</font>|<font color='#202020'>type</font>(<font color='#202020'>mixed</font>)|<font color='#202020'>int</font> ...  <font color='#005080'>things</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>In brief, if you call <font face='courier'><code>Pike.count_memory(0,x)</code></font> you get back
+ the number of bytes <font face='courier'><code>x</code></font> occupies in memory.</p>
+<p> The detailed story is a bit longer:</p>
+<p> This function calculates the number of bytes that all <font face='courier'>things</font> 
+ occupy. Or put another way, it calculates the number of bytes that
+ would be freed if all those things would lose their references at
+ the same time, i.e. not only the memory in the things themselves,
+ but also in all the things that are directly and indirectly
+ referenced from those things and not from anywhere else.</p>
+<p> The memory counted is only that which is directly occupied by the
+ things in question, including any overallocation for mappings,
+ multisets and arrays. Other memory overhead that they give rise to
+ is not counted. This means that if you would count the memory
+ occupied by all the pike accessible things you would get a figure
+ significantly lower than what the OS gives for the pike process.</p>
+<p> Also, if you were to actually free the things, you should not
+ expect the size of the pike process to drop the amount of bytes
+ returned by this function. That since Pike often retains the
+ memory to be reused later.</p>
+<p> However, what you should expect is that if you actually free the
+ things and then later allocates some more things for which this
+ function returns the same size, there should be essentially no
+ increase in the size of the pike process (some increase might
+ occur due to internal fragmentation and memory pooling, but it
+ should be small in general and over time).</p>
+<p> The search for things only referenced from <font face='courier'>things</font>  can handle
+ limited cyclic structures. That is done by doing a "lookahead",
+ i.e. searching through referenced things that apparently have
+ other outside references. You can control how long this lookahead
+ should be through <font face='courier'>options</font>  (see below). If the lookahead is too
+ short to cover the cycles in a structure then a too low value is
+ returned. If the lookahead is made gradually longer then the
+ returned value will eventually become accurate and not increase
+ anymore. If the lookahead is too long then unnecessary time might
+ be spent searching through things that really have external
+ references.</p>
+<p> Objects that are known to be part of cyclic structures are
+ encouraged to have an integer constant or variable
+ <font face='courier'><code>pike_cycle_depth</code></font> that specifies the lookahead needed to
+ discover those cycles. When <font face='courier'><a href='../../predef_3A_3A/Pike/count_memory.html'>Pike.count_memory</a></font>  visits such
+ objects, it uses that as the lookahead when going through the
+ references emanating from them. Thus, assuming objects adhere to
+ this convention, you should rarely have to specify a lookahead
+ higher than zero to this function.</p>
+<p> Note that <font face='courier'><code>pike_cycle_depth</code></font> can also be set to zero to
+ effectively stop the lookahead from continuing through the object.
+ That can be useful to put in objects you know have global
+ references, to speed up the traversal.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>options</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>If this is an integer, it specifies the maximum lookahead
+   distance. -1 counts only the memory of the given <font face='courier'>things</font> ,
+   without following any references. 0 extends the count to all
+   their referenced things as long as there are no cycles (except
+   if <font face='courier'><code>pike_cycle_depth</code></font> is found in objects - see above). 1
+   makes it cover cycles of length 1 (e.g. a thing points to
+   itself), 2 handles cycles of length 2 (e.g. where two things
+   point at each other), and so on.</p>
+<p>   However, the lookahead is by default blocked by programs, i.e.
+   it never follows references emanating from programs. That since
+   programs seldom are part of dynamic data structures, and they
+   also typically contain numerous references to global data which
+   would add a lot of work to the lookahead search.</p>
+<p>   To control the search in more detail, <font face='courier'>options</font>  can be a
+   mapping instead:</p>
+<table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>lookahead</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'><p>The maximum lookahead distance, as described above. Defaults
+       to 0 if missing.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>block_arrays</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white' rowspan='5'><p>When any of these are given with a nonzero value, the
+       corresponding type is blocked when lookahead references are
+       followed. They are unblocked if the flag is given with a
+       zero value. Only programs are blocked by default.</p>
+<p>       These blocks are only active during the lookahead, so
+       blocked things are still recursed and memory counted if they
+       are given as arguments or only got internal references.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>block_mappings</font> : <font color='#202020'>int</font></tt></td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>block_multisets</font> : <font color='#202020'>int</font></tt></td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>block_objects</font> : <font color='#202020'>int</font></tt></td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>block_programs</font> : <font color='#202020'>int</font></tt></td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>block_pike_cycle_depth</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'><p>Do not heed <font face='courier'><code>pike_cycle_depth</code></font> values found in
+       objects. This is implicit if the lookahead is negative.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>return_count</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'><p>Return the number of things that memory was counted for,
+       instead of the byte count. (This is the same number
+       <font face='courier'><code>internal</code></font> contains if <font face='courier'><code>collect_stats</code></font> is set.)</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>collect_internals</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'><p>If this is nonzero then its value is replaced with an array
+       that contains the things that memory was counted for.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>collect_externals</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'><p>If set then the value is replaced with an array containing
+       the things that were visited but turned out to have external
+       references (within the limited lookahead).</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>collect_direct_externals</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'><p>If set then the value is replaced with an array containing
+       the things found during the lookahead that (appears to) have
+       direct external references. This list is a subset of the
+       <font face='courier'><code>collect_externals</code></font> list. It is useful if you get
+       unexpected global references to your data structure which
+       you want to track down.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>collect_stats</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'><p>If this is nonzero then the mapping is extended with more
+       elements containing statistics from the search; see below.</p>
+</td></tr>
+</table></td></tr></table><br />
+<p>When the <font face='courier'><code>collect_stats</code></font> flag is set, the mapping is
+   extended with these elements:</p>
+<table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>internal</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'><p>Number of things that were marked internal and hence memory
+       counted. It includes the things given as arguments.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>cyclic</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'><p>Number of things that were marked internal only after
+       resolving cycles.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>external</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'><p>Number of things that were visited through the lookahead but
+       were found to be external.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>visits</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'><p>Number of times things were visited in total. This figure
+       includes visits to various internal things that aren't
+       visible from the pike level, so it might be larger than what
+       is apparently motivated by the numbers above.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>revisits</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'><p>Number of times the same things were revisited. This can
+       occur in the lookahead when a thing is encountered through a
+       shorter path than the one it first got visited through. It
+       also occurs in resolved cycles. Like <font face='courier'><code>visits</code></font>, this
+       count can include things that aren't visible from pike.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>rounds</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'><p>Number of search rounds. This is usually 1 or 2. More rounds
+       are necessary only when blocked types turn out to be
+       (acyclic) internal, so that they need to be counted and
+       recursed anyway.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>work_queue_alloc</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'><p>The number of elements that was allocated to store the work
+       queue which is used to keep track of the things to visit
+       during the lookahead. This is usually bigger than the
+       maximum number of things the queue actually held.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>size</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'><p>The memory occupied by the internal things. This is the same
+       as the normal return value, but it's put here too for
+       convenience.</p>
+</td></tr>
+</table></td></tr></table><br />
+
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>things</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>One or more things to count memory size for. Only things passed
+   by reference are allowed, except for functions which are
+   forbidden because a meaningful size calculation can't be done
+   for them.</p>
+<p>   Integers are allowed because they are bignum objects when they
+   become sufficiently large. However, passing an integer that is
+   small enough to fit into the native integer type will return
+   zero.</p>
+</font></dd>
+<dt><font face='Helvetica'>Returns</font><dt>
+<dd><font face='Helvetica'><p>Returns the number of bytes occupied by the counted things. If
+   the <font face='courier'><code>return_count</code></font> option is set then the number of things
+   are returned instead.</p>
+</font></dd>
+<dt><font face='Helvetica'>Note</font><dt>
+<dd><font face='Helvetica'><p>The result of <font face='courier'><code>Pike.count_memory(0,a,b)</code></font> might be larger
+ than the sum of <font face='courier'><code>Pike.count_memory(0,a)</code></font> and
+ <font face='courier'><code>Pike.count_memory(0,b)</code></font> since <font face='courier'><code>a</code></font> and <font face='courier'><code>b</code></font>
+ together might reference things that aren't referenced from
+ anywhere else.</p>
+</font></dd>
+<dt><font face='Helvetica'>Note</font><dt>
+<dd><font face='Helvetica'><p>It's possible that a string that is referenced still isn't
+ counted, because strings are always shared in Pike and the same
+ string might be in use in some unrelated part of the program.</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

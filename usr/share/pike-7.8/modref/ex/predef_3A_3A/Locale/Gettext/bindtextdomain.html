@@ -1,0 +1,108 @@
+<html><head><title>Pike Reference Manual - Locale.Gettext.bindtextdomain()</title>
+<link rel='stylesheet' href='../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../ex/predef_3A_3A/Locale.html'><b>Locale</b></a><br />
+<a href='../../../../ex/predef_3A_3A/Locale/Gettext.html'><b>Locale.Gettext</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;bindtextdomain()</td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Locale/Gettext/dcgettext.html'>dcgettext()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Locale/Gettext/dgettext.html'>dgettext()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Locale/Gettext/gettext.html'>gettext()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Locale/Gettext/localeconv.html'>localeconv()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Locale/Gettext/setlocale.html'>setlocale()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Locale/Gettext/textdomain.html'>textdomain()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/Locale/Gettext.html"><img src="../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Locale.Gettext</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/Locale/Gettext/dcgettext.html">Locale.Gettext.dcgettext()<img src="../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method Locale.Gettext.bindtextdomain()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>bindtextdomain</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>string</font> <b><font color='#000066'>bindtextdomain</font>(</b><font color='#202020'>string</font>|<font color='#202020'>void</font> <font color='#005080'>domainname</font>, <font color='#202020'>string</font>|<font color='#202020'>void</font> <font color='#005080'>dirname</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Binds the path predicate for a message <font face='courier'>domainname</font>  domainname to
+ the directory name specified by <font face='courier'>dirname</font> .</p>
+<p> If <font face='courier'>domainname</font>  is a non-empty string and has not been bound
+ previously, bindtextdomain() binds <font face='courier'>domainname</font>  with <font face='courier'>dirname</font> .</p>
+<p> If <font face='courier'>domainname</font>  is a non-empty string and has been bound previously,
+ bindtextdomain() replaces the old binding with <font face='courier'>dirname</font> .</p>
+<p> The <font face='courier'>dirname</font>  argument can be an absolute or relative pathname
+ being resolved when <font face='courier'><a href='../../../predef_3A_3A/Locale/Gettext/gettext.html'>gettext()</a></font> , <font face='courier'><a href='../../../predef_3A_3A/Locale/Gettext/dgettext.html'>dgettext()</a></font>  or <font face='courier'><a href='../../../predef_3A_3A/Locale/Gettext/dcgettext.html'>dcgettext()</a></font> 
+ are called.</p>
+<p> If <font face='courier'>domainname</font>  is zero or an empty string, <font face='courier'><a href='../../../predef_3A_3A/Locale/Gettext/bindtextdomain.html'>bindtextdomain()</a></font> 
+ returns 0.</p>
+<p> User defined domain names cannot begin with the string <font face='courier'><code>"SYS_"</code></font>.
+ Domain names beginning with this string are reserved for system use.</p>
+</font></dd>
+<dt><font face='Helvetica'>Returns</font><dt>
+<dd><font face='Helvetica'><p>The return value from <font face='courier'><a href='../../../predef_3A_3A/Locale/Gettext/bindtextdomain.html'>bindtextdomain()</a></font>  is a string containing
+   <font face='courier'>dirname</font>  or the directory binding associated with <font face='courier'>domainname</font>  if
+   <font face='courier'>dirname</font>  is unspecified. If no binding is found, the default locale
+   path is returned. If <font face='courier'>domainname</font>  is unspecified or is an empty string,
+   <font face='courier'><a href='../../../predef_3A_3A/Locale/Gettext/bindtextdomain.html'>bindtextdomain()</a></font>  takes no action and returns a 0.</p>
+</font></dd>
+<dt><font face='Helvetica'>See also</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'><a href='../../../predef_3A_3A/Locale/Gettext/textdomain.html'>textdomain</a></font> , <font face='courier'><a href='../../../predef_3A_3A/Locale/Gettext/gettext.html'>gettext</a></font> , <font face='courier'><a href='../../../predef_3A_3A/Locale/Gettext/setlocale.html'>setlocale</a></font> , <font face='courier'><a href='../../../predef_3A_3A/Locale/Gettext/localeconv.html'>localeconv</a></font> </p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

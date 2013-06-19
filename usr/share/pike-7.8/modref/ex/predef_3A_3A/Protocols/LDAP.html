@@ -1,0 +1,667 @@
+<html><head><title>Pike Reference Manual - Protocols.LDAP</title>
+<link rel='stylesheet' href='../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../..//images/pike_line_middle.gif" width="98%"><img src="../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../ex/predef_3A_3A/Protocols.html'><b>Protocols</b></a><br />
+<b>Protocols.LDAP</b><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Classes</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Protocols/LDAP/FilterError.html'><b>FilterError</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Protocols/LDAP/client.html'><b>client</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Protocols/LDAP/protocol.html'><b>protocol</b></a></td></tr>
+<tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Protocols/LDAP/canonicalize_dn.html'>canonicalize_dn()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Protocols/LDAP/encode_dn_value.html'>encode_dn_value()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Protocols/LDAP/get_cached_filter.html'>get_cached_filter()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Protocols/LDAP/get_connection.html'>get_connection()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Protocols/LDAP/get_constant_name.html'>get_constant_name()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Protocols/LDAP/ldap_decode_string.html'>ldap_decode_string()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Protocols/LDAP/ldap_encode_string.html'>ldap_encode_string()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Protocols/LDAP/make_filter.html'>make_filter()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Protocols/LDAP/num_connections.html'>num_connections()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Protocols/LDAP/parse_ldap_url.html'>parse_ldap_url()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/Protocols/LDAP/return_connection.html'>return_connection()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../ex/predef_3A_3A/Protocols/Ident/lookup.html"><img src="../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Protocols.Ident.lookup()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../ex/predef_3A_3A/Protocols/LDAP/FilterError.html">Protocols.LDAP.FilterError<img src="../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Module Protocols.LDAP</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'></font><dt>
+<dd><p></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'></font><dt>
+<dd><p><tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_SUCCESS</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_OPERATIONS_ERROR</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_PROTOCOL_ERROR</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_TIMELIMIT_EXCEEDED</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_SIZELIMIT_EXCEEDED</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_COMPARE_FALSE</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_COMPARE_TRUE</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_AUTH_METHOD_NOT_SUPPORTED</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_STRONG_AUTH_NOT_SUPPORTED</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_STRONG_AUTH_REQUIRED</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_PARTIAL_RESULTS</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_REFERRAL</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_ADMINLIMIT_EXCEEDED</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_UNAVAILABLE_CRITICAL_EXTENSION</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_CONFIDENTIALITY_REQUIRED</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_SASL_BIND_IN_PROGRESS</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_NO_SUCH_ATTRIBUTE</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_UNDEFINED_TYPE</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_INAPPROPRIATE_MATCHING</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_CONSTRAINT_VIOLATION</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_TYPE_OR_VALUE_EXISTS</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_INVALID_SYNTAX</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_NO_SUCH_OBJECT</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_ALIAS_PROBLEM</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_INVALID_DN_SYNTAX</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_IS_LEAF</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_ALIAS_DEREF_PROBLEM</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_INAPPROPRIATE_AUTH</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_INVALID_CREDENTIALS</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_INSUFFICIENT_ACCESS</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_BUSY</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_UNAVAILABLE</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_UNWILLING_TO_PERFORM</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_LOOP_DETECT</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_SORT_CONTROL_MISSING</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_NAMING_VIOLATION</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_OBJECT_CLASS_VIOLATION</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_NOT_ALLOWED_ON_NONLEAF</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_NOT_ALLOWED_ON_RDN</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_ALREADY_EXISTS</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_NO_OBJECT_CLASS_MODS</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_RESULTS_TOO_LARGE</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_AFFECTS_MULTIPLE_DSAS</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_OTHER</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_SERVER_DOWN</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_LOCAL_ERROR</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_ENCODING_ERROR</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_DECODING_ERROR</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_TIMEOUT</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_AUTH_UNKNOWN</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_FILTER_ERROR</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_USER_CANCELLED</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_PARAM_ERROR</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_NO_MEMORY</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_CONNECT_ERROR</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_NOT_SUPPORTED</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_CONTROL_NOT_FOUND</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_NO_RESULTS_RETURNED</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_MORE_RESULTS_TO_RETURN</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_CLIENT_LOOP</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_REFERRAL_LIMIT_EXCEEDED</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>LDAP result codes.</p>
+</font></dd>
+<dt><font face='Helvetica'>See also</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'><a href='../../predef_3A_3A/Protocols/LDAP/protocol/error_number.html'>Protocols.LDAP.client.error_number</a></font> ,
+   <font face='courier'><a href='../../predef_3A_3A/Protocols/LDAP/client/result/error_number.html'>Protocols.LDAP.client.result.error_number</a></font> </p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>ldap_error_strings</b></font>
+</font><dt>
+<dd><p><tt>constant Protocols.LDAP.<font color='#F000F0'>ldap_error_strings</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Mapping from <font face='courier'><code>LDAP_*</code></font> result codes to descriptive strings.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'></font><dt>
+<dd><p><tt>constant Protocols.LDAP.<font color='#F000F0'>SEARCH_LOWER_ATTRS</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>SEARCH_MULTIVAL_ARRAYS_ONLY</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>SEARCH_RETURN_DECODE_ERRORS</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Bitfield flags given to <font face='courier'><a href='../../predef_3A_3A/Protocols/LDAP/client/search.html'>Protocols.LDAP.client.search</a></font> :</p>
+<dl><dt>SEARCH_LOWER_ATTRS</dt>
+<dd><p>Lowercase all attribute values. This makes it easier to match
+   specific attributes in the mappings returned by
+   <font face='courier'><a href='../../predef_3A_3A/Protocols/LDAP/client/result/fetch.html'>Protocols.LDAP.client.result.fetch</a></font>  since LDAP attribute names
+   are case insensitive.</p>
+</dd>
+<dt>SEARCH_MULTIVAL_ARRAYS_ONLY</dt>
+<dd><p>Only use arrays for attribute values where the attribute syntax
+   specify multiple values. I.e. the values for single valued
+   attributes are returned as strings instead of arrays containing
+   one string element.</p>
+<p>   If no value is returned for a single valued attribute, e.g. when
+   <font face='courier'><code>attrsonly</code></font> is set in the search call, then a zero will be
+   used as value.</p>
+<p>   The special <font face='courier'><code>"dn"</code></font> value is also returned as a string when
+   this flag is set.</p>
+<p>   Note that it's the attribute type descriptions that are used to
+   decide this, not the number of values a particular attribute
+   happens to have in the search result.</p>
+</dd>
+<dt>SEARCH_RETURN_DECODE_ERRORS</dt>
+<dd><p>Don't throw attribute value decode errors, instead return them
+   in the result from <font face='courier'><a href='../../predef_3A_3A/Protocols/LDAP/client/result/fetch.html'>Protocols.LDAP.client.result.fetch</a></font>  in
+   place of the value. I.e. anywhere an attribute value string
+   occurs, you might instead have a <font face='courier'><a href='../../predef_3A_3A/Locale/Charset/DecodeError.html'>Locale.Charset.DecodeError</a></font> 
+   object.</p>
+</dd>
+</dl>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'></font><dt>
+<dd><p><tt>constant Protocols.LDAP.<font color='#F000F0'>SCOPE_BASE</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>SCOPE_ONE</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>SCOPE_SUB</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Constants for the search scope used with e.g.
+ <font face='courier'><a href='../../predef_3A_3A/Protocols/LDAP/client/set_scope.html'>Protocols.LDAP.client.set_scope</a></font> .</p>
+<dl><dt>SCOPE_BASE</dt>
+<dd><p>Return the object specified by the DN.</p>
+</dd>
+<dt>SCOPE_ONE</dt>
+<dd><p>Return the immediate subobjects of the object specified by the DN.</p>
+</dd>
+<dt>SCOPE_SUB</dt>
+<dd><p>Return the object specified by the DN and all objects below it
+   (on any level).</p>
+</dd>
+</dl>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'></font><dt>
+<dd><p><tt>constant Protocols.LDAP.<font color='#F000F0'>MODIFY_ADD</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>MODIFY_DELETE</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>MODIFY_REPLACE</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Constants used in the <font face='courier'><code>attropval</code></font> argument to
+ <font face='courier'><a href='../../predef_3A_3A/Protocols/LDAP/client/modify.html'>Protocols.LDAP.client.modify</a></font> .</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>LDAP_CONTROL_MANAGE_DSA_IT</b></font>
+</font><dt>
+<dd><p><tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_CONTROL_MANAGE_DSA_IT</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>LDAP control: Manage DSA IT LDAPv3 control (RFC 3296): Control to
+ indicate that the operation is intended to manage objects within
+ the DSA (server) Information Tree.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>LDAP_CONTROL_VLVREQUEST</b></font>
+</font><dt>
+<dd><p><tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_CONTROL_VLVREQUEST</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>LDAP control: LDAP Extensions for Scrolling View Browsing of
+ Search Results (internet draft): Control used to request virtual
+ list view support from the server.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>LDAP_CONTROL_VLVRESPONSE</b></font>
+</font><dt>
+<dd><p><tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_CONTROL_VLVRESPONSE</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>LDAP control: LDAP Extensions for Scrolling View Browsing of
+ Search Results (internet draft): Control used to pass virtual list
+ view (VLV) data from the server to the client.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>LDAP_PAGED_RESULT_OID_STRING</b></font>
+</font><dt>
+<dd><p><tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_PAGED_RESULT_OID_STRING</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>LDAP control: Microsoft AD: Control to instruct the server to
+ return the results of a search request in smaller, more manageable
+ packets rather than in one large block.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>LDAP_SERVER_ASQ_OID</b></font>
+</font><dt>
+<dd><p><tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_SERVER_ASQ_OID</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>LDAP control: Microsoft AD: Control to force the query to be based
+ on a specific DN-valued attribute.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>LDAP_SERVER_CROSSDOM_MOVE_TARGET_OID</b></font>
+</font><dt>
+<dd><p><tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_SERVER_CROSSDOM_MOVE_TARGET_OID</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>LDAP control: Microsoft AD: Control used with an extended LDAP
+ rename function to move an LDAP object from one domain to another.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>LDAP_SERVER_DIRSYNC_OID</b></font>
+</font><dt>
+<dd><p><tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_SERVER_DIRSYNC_OID</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>LDAP control: Microsoft AD: Control that enables an application to
+ search the directory for objects changed from a previous state.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>LDAP_SERVER_DOMAIN_SCOPE_OID</b></font>
+</font><dt>
+<dd><p><tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_SERVER_DOMAIN_SCOPE_OID</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>LDAP control: Microsoft AD: Control used to instruct the LDAP
+ server not to generate any referrals when completing a request.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>LDAP_SERVER_EXTENDED_DN_OID</b></font>
+</font><dt>
+<dd><p><tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_SERVER_EXTENDED_DN_OID</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>LDAP control: Microsoft AD: Control to request an extended form of
+ an Active Directory object distinguished name.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>LDAP_SERVER_LAZY_COMMIT_OID</b></font>
+</font><dt>
+<dd><p><tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_SERVER_LAZY_COMMIT_OID</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>LDAP control: Microsoft AD: Control used to instruct the server to
+ return the results of a DS modification command, such as add,
+ delete, or replace, after it has been completed in memory, but
+ before it has been committed to disk.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>LDAP_SERVER_NOTIFICATION_OID</b></font>
+</font><dt>
+<dd><p><tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_SERVER_NOTIFICATION_OID</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>LDAP control: Microsoft AD: Control used with an extended LDAP
+ asynchronous search function to register the client to be notified
+ when changes are made to an object in Active Directory.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>LDAP_SERVER_PERMISSIVE_MODIFY_OID</b></font>
+</font><dt>
+<dd><p><tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_SERVER_PERMISSIVE_MODIFY_OID</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>LDAP control: Microsoft AD: An LDAP modify request will normally
+ fail if it attempts to add an attribute that already exists, or if
+ it attempts to delete an attribute that does not exist. With this
+ control, as long as the attribute to be added has the same value
+ as the existing attribute, then the modify will succeed. With this
+ control, deletion of an attribute that does not exist will also
+ succeed.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>LDAP_SERVER_QUOTA_CONTROL_OID</b></font>
+</font><dt>
+<dd><p><tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_SERVER_QUOTA_CONTROL_OID</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>LDAP control: Microsoft AD: Control used to pass the SID of a
+ security principal, whose quota is being queried, to the server in
+ a LDAP search operation.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>LDAP_SERVER_RESP_SORT_OID</b></font>
+</font><dt>
+<dd><p><tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_SERVER_RESP_SORT_OID</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>LDAP control: Microsoft AD: Control used by the server to indicate
+ the results of a search function initiated using the
+ <font face='courier'><a href='../../predef_3A_3A/Protocols/LDAP.html'>LDAP_SERVER_SORT_OID</a></font>  control.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>LDAP_SERVER_SD_FLAGS_OID</b></font>
+</font><dt>
+<dd><p><tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_SERVER_SD_FLAGS_OID</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>LDAP control: Microsoft AD: Control used to pass flags to the
+ server to control various security descriptor results.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>LDAP_SERVER_SEARCH_OPTIONS_OID</b></font>
+</font><dt>
+<dd><p><tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_SERVER_SEARCH_OPTIONS_OID</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>LDAP control: Microsoft AD: Control used to pass flags to the
+ server to control various search behaviors.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>LDAP_SERVER_SHOW_DELETED_OID</b></font>
+</font><dt>
+<dd><p><tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_SERVER_SHOW_DELETED_OID</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>LDAP control: Microsoft AD: Control used to specify that the
+ search results include any deleted objects that match the search
+ filter.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>LDAP_SERVER_SORT_OID</b></font>
+</font><dt>
+<dd><p><tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_SERVER_SORT_OID</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>LDAP control: Microsoft AD: Control used to instruct the server to
+ sort the search results before returning them to the client
+ application.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>LDAP_SERVER_TREE_DELETE_OID</b></font>
+</font><dt>
+<dd><p><tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_SERVER_TREE_DELETE_OID</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>LDAP control: Microsoft AD: Control used to delete an entire
+ subtree in the directory.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>LDAP_SERVER_VERIFY_NAME_OID</b></font>
+</font><dt>
+<dd><p><tt>constant Protocols.LDAP.<font color='#F000F0'>LDAP_SERVER_VERIFY_NAME_OID</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>LDAP control: Microsoft AD: Control used to instruct the DC
+ accepting the update which DC it should verify with, the existence
+ of any DN attribute values.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'></font><dt>
+<dd><p><tt>constant Protocols.LDAP.<font color='#F000F0'>SYNTAX_ATTR_TYPE_DESCR</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>SYNTAX_BINARY</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>SYNTAX_BIT_STRING</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>SYNTAX_BOOLEAN</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>SYNTAX_CERT</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>SYNTAX_CERT_LIST</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>SYNTAX_CERT_PAIR</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>SYNTAX_COUNTRY_STR</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>SYNTAX_DN</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>SYNTAX_DIRECTORY_STR</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>SYNTAX_DIT_CONTENT_RULE_DESCR</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>SYNTAX_FACSIMILE_PHONE_NUM</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>SYNTAX_FAX</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>SYNTAX_GENERALIZED_TIME</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>SYNTAX_IA5_STR</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>SYNTAX_INT</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>SYNTAX_JPEG</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>SYNTAX_MATCHING_RULE_DESCR</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>SYNTAX_MATCHING_RULE_USE_DESCR</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>SYNTAX_MHS_OR_ADDR</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>SYNTAX_NAME_AND_OPTIONAL_UID</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>SYNTAX_NAME_FORM_DESCR</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>SYNTAX_NUMERIC_STRING</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>SYNTAX_OBJECT_CLASS_DESCR</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>SYNTAX_OID</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>SYNTAX_OTHER_MAILBOX</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>SYNTAX_POSTAL_ADDR</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>SYNTAX_PRESENTATION_ADDR</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>SYNTAX_PRINTABLE_STR</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>SYNTAX_PHONE_NUM</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>SYNTAX_UTC_TIME</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>SYNTAX_LDAP_SYNTAX_DESCR</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>SYNTAX_DIT_STRUCTURE_RULE_DESCR</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>LDAP syntax: Standard syntaxes from RFC 2252.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>SYNTAX_CASE_EXACT_STR</b></font>
+</font><dt>
+<dd><p><tt>constant Protocols.LDAP.<font color='#F000F0'>SYNTAX_CASE_EXACT_STR</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'><code>"caseExactString"</code></font> is an alias used in e.g. RFC 2079.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'></font><dt>
+<dd><p><tt>constant Protocols.LDAP.<font color='#F000F0'>SYNTAX_DELIVERY_METHOD</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>SYNTAX_ENHANCED_GUIDE</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>SYNTAX_GUIDE</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>SYNTAX_OCTET_STR</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>SYNTAX_TELETEX_TERMINAL_ID</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>SYNTAX_TELETEX_NUM</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>SYNTAX_SUPPORTED_ALGORITHM</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>LDAP syntax: Standard syntaxes from RFC 2256.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'></font><dt>
+<dd><p><tt>constant Protocols.LDAP.<font color='#F000F0'>SYNTAX_AD_CASE_IGNORE_STR</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>SYNTAX_AD_LARGE_INT</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>SYNTAX_AD_OBJECT_SECURITY_DESCRIPTOR</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>LDAP syntax: Microsoft AD: Additional syntaxes used in AD. C.f.
+ &lt;http://community.roxen.com/(all)/developers/idocs/drafts/
+ draft-armijo-ldap-syntax-00.html&gt;.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>mapping</b></font>
+</font><dt>
+<dd><p><tt>constant Protocols.LDAP.<font color='#F000F0'>mapping</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Mapping containing functions to decode charsets in syntaxes where
+ that's necessary. If the syntax is complex in a way that makes the
+ result ambiguous if decoded with a single charset transformation
+ then it should typically not be decoded here.</p>
+<p> These decoders are used on all attribute values returned by
+ <font face='courier'><a href='../../predef_3A_3A/Protocols/LDAP/client/result.html'>Protocols.LDAP.client.result</a></font>  functions.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>mapping</b></font>
+</font><dt>
+<dd><p><tt>constant Protocols.LDAP.<font color='#F000F0'>mapping</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Mapping containing the reverse functions from <font face='courier'>syntax_decode_fns</font> .</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'></font><dt>
+<dd><p><tt>constant Protocols.LDAP.<font color='#F000F0'>GUID_USERS_CONTAINER</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>GUID_COMPUTERS_CONTAINER</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>GUID_SYSTEMS_CONTAINER</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>GUID_DOMAIN_CONTROLLERS_CONTAINER</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>GUID_INFRASTRUCTURE_CONTAINER</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>GUID_DELETED_OBJECTS_CONTAINER</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>GUID_LOSTANDFOUND_CONTAINER</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>GUID_FOREIGNSECURITYPRINCIPALS_CONTAINER</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>GUID_PROGRAM_DATA_CONTAINER</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>GUID_MICROSOFT_PROGRAM_DATA_CONTAINER</font></tt><br />
+<tt>constant Protocols.LDAP.<font color='#F000F0'>GUID_NTDS_QUOTAS_CONTAINER</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Constants for Microsoft AD Well-Known Object GUIDs. These are e.g.
+ used in LDAP URLs:</p>
+<font face='courier'><pre><code><dd><p>"ldap://server/&lt;WKGUID=" + Protocols.LDAP.GUID_USERS_CONTAINER +
+   ",dc=my,dc=domain,dc=com&gt;"</p>
+</dd>
+</code></pre></font>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

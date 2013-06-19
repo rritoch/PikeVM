@@ -1,0 +1,160 @@
+<html><head><title>Pike Reference Manual - Regexp.PCRE._pcre()-&gt;info()</title>
+<link rel='stylesheet' href='../../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../../ex/predef_3A_3A/Regexp.html'><b>Regexp</b></a><br />
+<a href='../../../../../ex/predef_3A_3A/Regexp/PCRE.html'><b>Regexp.PCRE</b></a><br />
+<a href='../../../../../ex/predef_3A_3A/Regexp/PCRE/_pcre.html'><b>Regexp.PCRE._pcre</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Regexp/PCRE/_pcre/_sprintf.html'>_sprintf()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Regexp/PCRE/_pcre/create.html'>create()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Regexp/PCRE/_pcre/exec.html'>exec()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Regexp/PCRE/_pcre/get_stringnumber.html'>get_stringnumber()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;info()</td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Regexp/PCRE/_pcre/study.html'>study()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../../ex/predef_3A_3A/Regexp/PCRE/_pcre/get_stringnumber.html"><img src="../../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Regexp.PCRE._pcre()-&gt;get_stringnumber()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../../ex/predef_3A_3A/Regexp/PCRE/_pcre/study.html">Regexp.PCRE._pcre()-&gt;study()<img src="../../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method Regexp.PCRE._pcre()-&gt;info()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>info</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>mapping</font> <b><font color='#000066'>info</font>(</b><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Returns additional information about a compiled pattern. Only
+ available if PCRE was compiled with Fullinfo.</p>
+</font></dd>
+<dt><font face='Helvetica'>Returns</font><dt>
+<dd><font face='Helvetica'><table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"backrefmax"</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'><p>Return the number of the highest back reference in the
+     pattern. The fourth argument should point to an int
+     variable. Zero is returned if there are no back references.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"capturecount"</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'><p>Return the number of capturing subpatterns in the pattern.
+     The fourth argument should point to an int variable.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"firstbyte"</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'><p>Return information about the first byte of any matched
+     string, for a non-anchored pattern. (This option used to be
+     called PCRE_INFO_FIRSTCHAR; the old name is still
+     recognized for backwards compatibility.)</p>
+<p>     If there is a fixed first byte, e.g. from a pattern such as
+     (cat|cow|coyote), it is returned in the integer pointed to
+     by where. Otherwise, if either</p>
+<p>     (a) the pattern was compiled with the PCRE_MULTILINE
+     option, and every branch starts with <font face='courier'><code>"^"</code></font>, or</p>
+<p>     (b) every branch of the pattern starts with <font face='courier'><code>".*"</code></font>
+     and PCRE_DOTALL is not set (if it were set, the pattern
+     would be anchored),</p>
+<p><font face='courier'><code>-1</code></font> is returned, indicating that the pattern matches
+     only at the start of a subject string or after any newline
+     within the string. Otherwise <font face='courier'><code>-2</code></font> is returned. For
+     anchored patterns, <font face='courier'><code>-2</code></font> is returned.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"lastliteral"</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'><p>Return the value of the rightmost literal byte that must
+     exist in any matched string, other than at its start, if
+     such a byte has been recorded. The fourth argument should
+     point to an int variable. If there is no such byte,
+     <font face='courier'><code>-1</code></font> is returned. For anchored patterns, a last
+     literal byte is recorded only if it follows something of
+     variable length. For example, for the pattern /^a\d+z\d+/
+     the returned value is <font face='courier'><code>"z"</code></font>, but for /^a\dz\d/ the
+     returned value is <font face='courier'><code>-1</code></font>.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"namecount"</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'>&nbsp;</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"nameentrysize"</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'>&nbsp;</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"options"</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'><p>Return a copy of the options with which the pattern was
+     compiled. The fourth argument should point to an unsigned
+     long int variable. These option bits are those specified in
+     the call to pcre_compile(), modified by any top-level
+     option settings within the pattern itself.</p>
+<p>     A pattern is automatically anchored by PCRE if all of its
+     top-level alternatives begin with one of the following:</p>
+<p><table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'>^</td><td bgcolor='white'>unless PCRE_MULTILINE is set</td></tr>
+<tr valign='top'><td bgcolor='white'>\A</td><td bgcolor='white'>always</td></tr>
+<tr valign='top'><td bgcolor='white'>\G</td><td bgcolor='white'>always</td></tr>
+<tr valign='top'><td bgcolor='white'>.*</td><td bgcolor='white'>if PCRE_DOTALL is set and there are no back
+ references to the subpattern in which .* appears</td></tr>
+</table></td></tr></table><br />
+</p>
+<p>     For such patterns, the PCRE_ANCHORED bit is set in the
+     options returned.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"size"</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'><p>Return the size of the compiled pattern, that is, the
+      value that was passed as the argument to pcre_malloc()
+      when PCRE was getting memory in which to place the
+      compiled data. The fourth argument should point to a
+      size_t variable.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"studysize"</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'><p>Returns the size of the data block pointed to by the
+      study_data field in a pcre_extra block. That is, it is the
+      value that was passed to pcre_malloc() when PCRE was
+      getting memory into which to place the data created by
+      pcre_study(). The fourth argument should point to a size_t
+      variable.</p>
+</td></tr>
+</table></td></tr></table><br />
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

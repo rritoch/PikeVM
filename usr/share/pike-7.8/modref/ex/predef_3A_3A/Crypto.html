@@ -1,0 +1,118 @@
+<html><head><title>Pike Reference Manual - Crypto</title>
+<link rel='stylesheet' href='../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../..//images/pike_line_middle.gif" width="98%"><img src="../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../index.html'><b>[Top]</b></a><br />
+<b>Crypto</b><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Modules</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Crypto/AES.html'><b>AES</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Crypto/Arcfour.html'><b>Arcfour</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Crypto/Blowfish.html'><b>Blowfish</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Crypto/CAST.html'><b>CAST</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Crypto/DES.html'><b>DES</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Crypto/DES3.html'><b>DES3</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Crypto/IDEA.html'><b>IDEA</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Crypto/Koremutake.html'><b>Koremutake</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Crypto/MD2.html'><b>MD2</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Crypto/MD4.html'><b>MD4</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Crypto/MD5.html'><b>MD5</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Crypto/NT.html'><b>NT</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Crypto/PGP.html'><b>PGP</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Crypto/Random.html'><b>Random</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Crypto/SHA1.html'><b>SHA1</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Crypto/SHA256.html'><b>SHA256</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Crypto/Serpent.html'><b>Serpent</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Crypto/Twofish.html'><b>Twofish</b></a></td></tr>
+<tr><td nowrap='nowrap'><br /><b>Classes</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Crypto/Buffer.html'><b>Buffer</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Crypto/CBC.html'><b>CBC</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Crypto/Cipher.html'><b>Cipher</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Crypto/DSA.html'><b>DSA</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Crypto/HMAC.html'><b>HMAC</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Crypto/Hash.html'><b>Hash</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Crypto/Pipe.html'><b>Pipe</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Crypto/RSA.html'><b>RSA</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Crypto/Substitution.html'><b>Substitution</b></a></td></tr>
+<tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Crypto/make_crypt_md5.html'>make_crypt_md5()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Crypto/rot13.html'>rot13()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Crypto/verify_crypt_md5.html'>verify_crypt_md5()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../ex/predef_3A_3A/CommonLog/read.html"><img src="../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >CommonLog.read()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../ex/predef_3A_3A/Crypto/Buffer.html">Crypto.Buffer<img src="../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Module Crypto</h1>
+    <dl>
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Various cryptographic classes and functions.</p>
+<p><b>Hash functions</b>
+ These are based on the <font face='courier'><a href='../predef_3A_3A/Crypto/Hash.html'>Hash</a></font>  API; <font face='courier'><a href='../predef_3A_3A/Crypto/MD2.html'>MD2</a></font> , <font face='courier'><a href='../predef_3A_3A/Crypto/MD4.html'>MD4</a></font> , <font face='courier'><a href='../predef_3A_3A/Crypto/MD5.html'>MD5</a></font> ,
+ <font face='courier'><a href='../predef_3A_3A/Crypto/SHA1.html'>SHA1</a></font> , <font face='courier'><a href='../predef_3A_3A/Crypto/SHA256.html'>SHA256</a></font> .</p>
+<p><b>Stream cipher functions</b>
+ These are based on the <font face='courier'><a href='../predef_3A_3A/Crypto/Cipher.html'>Cipher</a></font>  API; <font face='courier'><a href='../predef_3A_3A/Crypto/AES.html'>AES</a></font> , <font face='courier'><a href='../predef_3A_3A/Crypto/Arcfour.html'>Arcfour</a></font> ,
+ <font face='courier'><a href='../predef_3A_3A/Crypto/Blowfish.html'>Blowfish</a></font> , <font face='courier'><a href='../predef_3A_3A/Crypto/CAST.html'>CAST</a></font> , <font face='courier'><a href='../predef_3A_3A/Crypto/DES.html'>DES</a></font> , <font face='courier'><a href='../predef_3A_3A/Crypto/DES3.html'>DES3</a></font> , <font face='courier'><a href='../predef_3A_3A/Crypto/IDEA.html'>IDEA</a></font> , <font face='courier'><a href='../predef_3A_3A/Crypto/Serpent.html'>Serpent</a></font> ,
+ <font face='courier'><a href='../predef_3A_3A/Crypto/Twofish.html'>Twofish</a></font> . The <font face='courier'><a href='../predef_3A_3A/Crypto/Substitution.html'>Substitution</a></font>  program is compatible with the
+ CipherState. Also conforming to the API are the helper programs
+ <font face='courier'><a href='../predef_3A_3A/Crypto/Buffer.html'>Buffer</a></font> , <font face='courier'><a href='../predef_3A_3A/Crypto/CBC.html'>CBC</a></font>  and <font face='courier'><a href='../predef_3A_3A/Crypto/Pipe.html'>Pipe</a></font> .</p>
+<p> As the cryptographic services offered from this module isn't
+ necessarily used for security applications, none of the strings
+ inputted or outputted are marked as secure. This is up to the
+ caller.</p>
+</font></dd>
+<dt><font face='Helvetica'>Note</font><dt>
+<dd><font face='Helvetica'><p>This module is only available if Pike has been compiled with
+   <font face='courier'><a href='../predef_3A_3A/Nettle.html'>Nettle</a></font>  enabled (this is the default).</p>
+</font></dd></dl>
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

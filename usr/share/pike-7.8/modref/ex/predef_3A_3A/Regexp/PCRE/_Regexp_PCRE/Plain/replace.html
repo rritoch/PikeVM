@@ -1,0 +1,99 @@
+<html><head><title>Pike Reference Manual - Regexp.PCRE._Regexp_PCRE.Plain()-&gt;replace()</title>
+<link rel='stylesheet' href='../../../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../../../ex/predef_3A_3A/Regexp.html'><b>Regexp</b></a><br />
+<a href='../../../../../../ex/predef_3A_3A/Regexp/PCRE.html'><b>Regexp.PCRE</b></a><br />
+<a href='../../../../../../ex/predef_3A_3A/Regexp/PCRE/_Regexp_PCRE.html'><b>Regexp.PCRE._Regexp_PCRE</b></a><br />
+<a href='../../../../../../ex/predef_3A_3A/Regexp/PCRE/_Regexp_PCRE/Plain.html'><b>Regexp.PCRE._Regexp_PCRE.Plain</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../../ex/predef_3A_3A/Regexp/PCRE/_Regexp_PCRE/Plain/match.html'>match()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../../ex/predef_3A_3A/Regexp/PCRE/_Regexp_PCRE/Plain/matchall.html'>matchall()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;replace()</td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../../ex/predef_3A_3A/Regexp/PCRE/_Regexp_PCRE/Plain/replace1.html'>replace1()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../../ex/predef_3A_3A/Regexp/PCRE/_Regexp_PCRE/Plain/replace_positional.html'>replace_positional()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../../ex/predef_3A_3A/Regexp/PCRE/_Regexp_PCRE/Plain/split.html'>split()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../../ex/predef_3A_3A/Regexp/PCRE/_Regexp_PCRE/Plain/split2.html'>split2()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../../../ex/predef_3A_3A/Regexp/PCRE/_Regexp_PCRE/Plain/matchall.html"><img src="../../../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Regexp.PCRE._Regexp_PCRE.Plain()-&gt;matchall()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../../../ex/predef_3A_3A/Regexp/PCRE/_Regexp_PCRE/Plain/replace1.html">Regexp.PCRE._Regexp_PCRE.Plain()-&gt;replace1()<img src="../../../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method Regexp.PCRE._Regexp_PCRE.Plain()-&gt;replace()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>replace</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>string</font> <b><font color='#000066'>replace</font>(</b><font color='#202020'>string</font> <font color='#005080'>subject</font>, <font color='#202020'>string</font>|<font color='#202020'>function</font>(<font color='#202020'>string</font>:<font color='#202020'>string</font>) <font color='#005080'>with</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>replace all occurances of a pattern in a subject;
+ callbacks and replacements will be from the first occurance,
+ not from the last as in Regexp.Builtin.replace.</p>
+<p> example:
+ &gt; Regexp.PCRE("b[^-]*m")-&gt;replace("abam-boom-fooabadoom","gurka");
+ Result: "agurka-gurka-fooagurka"
+ &gt; Regexp.PCRE("b[^-]*m")-&gt;replace("abam-boom-fooabadoom",
+      lambda(string s) { werror("%O\n",s); return "gurka"; });
+ "bam"
+ "boom"
+ "badoom"
+ Result: "agurka-gurka-fooagurka"</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

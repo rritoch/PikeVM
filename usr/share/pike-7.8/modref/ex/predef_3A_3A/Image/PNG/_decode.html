@@ -1,0 +1,135 @@
+<html><head><title>Pike Reference Manual - Image.PNG._decode()</title>
+<link rel='stylesheet' href='../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../ex/predef_3A_3A/Image.html'><b>Image</b></a><br />
+<a href='../../../../ex/predef_3A_3A/Image/PNG.html'><b>Image.PNG</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/PNG/__decode.html'>__decode()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/PNG/_chunk.html'>_chunk()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;_decode()</td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/PNG/decode.html'>decode()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/PNG/decode_alpha.html'>decode_alpha()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/PNG/decode_header.html'>decode_header()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/PNG/encode.html'>encode()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/Image/PNG/_chunk.html"><img src="../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Image.PNG._chunk()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/Image/PNG/decode.html">Image.PNG.decode()<img src="../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method Image.PNG._decode()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>_decode</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>mapping</font> <b><font color='#000066'>_decode</font>(</b><font color='#202020'>string</font>|<font color='#202020'>array</font> <font color='#005080'>data</font><b>)</b></tt><br />
+<tt><font color='#202020'>mapping</font> <b><font color='#000066'>_decode</font>(</b><font color='#202020'>string</font>|<font color='#202020'>array</font> <font color='#005080'>data</font>, <font color='#202020'>mapping</font> <font color='#005080'>options</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Decode a PNG image file.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>options</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"colortable"</font> : <font color='#202020'>string</font>|<font color='#202020'>array</font>|<font color='#005080'><font face='courier'><a href='../../../predef_3A_3A/Image/Colortable.html'>Image.Colortable</a></font></font></tt></td><td bgcolor='white'><p>A replacement color table to be used instead of the one
+        in the PNG file, if any.</p>
+</td></tr>
+</table></td></tr></table><br />
+
+</font></dd>
+<dt><font face='Helvetica'>Returns</font><dt>
+<dd><font face='Helvetica'><table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"image"</font> : <font color='#005080'><font face='courier'><a href='../../../predef_3A_3A/Image/Image.html'>Image.Image</a></font></font></tt></td><td bgcolor='white'><p>The decoded image.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"bpp"</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'><p>Number of bitplanes in the image. One of 1, 2, 4, 8 and 16.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"type"</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'><p>Image color type. Bit values are:</p>
+<table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>1</font></tt></td><td bgcolor='white'><p>Palette used.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>2</font></tt></td><td bgcolor='white'><p>Color used.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>4</font></tt></td><td bgcolor='white'><p>Alpha channel used.</p>
+</td></tr>
+</table></td></tr></table><br />
+<p>Valid values are 0, 2, 3, 4 and 6.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"xsize"</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white' rowspan='2'><p>Image dimensions.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"ysize"</font> : <font color='#202020'>int</font></tt></td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"background"</font> : <font color='#202020'>array</font>(<font color='#202020'>int</font>)</tt></td><td bgcolor='white'><p>The background color, if any. An array of size three with
+       the RGB values.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"alpha"</font> : <font color='#005080'><font face='courier'><a href='../../../predef_3A_3A/Image/Image.html'>Image.Image</a></font></font></tt></td><td bgcolor='white'><p>The alpha channel, if any.</p>
+</td></tr>
+</table></td></tr></table><br />
+
+</font></dd>
+<dt><font face='Helvetica'>Throws</font><dt>
+<dd><font face='Helvetica'><p>Throws an error if the image data is erroneous.</p>
+</font></dd>
+<dt><font face='Helvetica'>Note</font><dt>
+<dd><font face='Helvetica'><p>Please read about the PNG file format.
+	This function ignores any checksum errors in the file.
+	A PNG of higher color resolution than the Image module
+	supports (8 bit) will lose that information in the conversion.</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

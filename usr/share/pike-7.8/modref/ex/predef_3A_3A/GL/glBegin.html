@@ -1,0 +1,356 @@
+<html><head><title>Pike Reference Manual - GL.glBegin()</title>
+<link rel='stylesheet' href='../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../..//images/pike_line_middle.gif" width="98%"><img src="../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../ex/predef_3A_3A/GL.html'><b>GL</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glAccum.html'>glAccum()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glAlphaFunc.html'>glAlphaFunc()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glArrayElement.html'>glArrayElement()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;glBegin()</td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glBindTexture.html'>glBindTexture()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glBlendFunc.html'>glBlendFunc()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glCallList.html'>glCallList()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glClear.html'>glClear()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glClearAccum.html'>glClearAccum()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glClearColor.html'>glClearColor()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glClearDepth.html'>glClearDepth()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glClearIndex.html'>glClearIndex()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glClearStencil.html'>glClearStencil()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glColor.html'>glColor()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glColorMask.html'>glColorMask()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glColorMaterial.html'>glColorMaterial()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glCopyPixels.html'>glCopyPixels()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glCopyTexImage1D.html'>glCopyTexImage1D()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glCopyTexImage2D.html'>glCopyTexImage2D()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glCopyTexSubImage1D.html'>glCopyTexSubImage1D()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glCopyTexSubImage2D.html'>glCopyTexSubImage2D()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glCullFace.html'>glCullFace()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glDeleteLists.html'>glDeleteLists()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glDepthFunc.html'>glDepthFunc()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glDepthMask.html'>glDepthMask()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glDepthRange.html'>glDepthRange()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glDisable.html'>glDisable()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glDisableClientState.html'>glDisableClientState()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glDrawArrays.html'>glDrawArrays()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glDrawBuffer.html'>glDrawBuffer()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glDrawPixels.html'>glDrawPixels()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glEdgeFlag.html'>glEdgeFlag()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glEnable.html'>glEnable()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glEnableClientState.html'>glEnableClientState()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glEnd.html'>glEnd()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glEndList.html'>glEndList()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glEvalCoord.html'>glEvalCoord()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glEvalPoint.html'>glEvalPoint()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glFinish.html'>glFinish()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glFlush.html'>glFlush()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glFog.html'>glFog()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glFrontFace.html'>glFrontFace()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glFrustum.html'>glFrustum()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glGenLists.html'>glGenLists()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glGetError.html'>glGetError()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glGetString.html'>glGetString()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glHint.html'>glHint()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glIndex.html'>glIndex()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glIndexMask.html'>glIndexMask()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glInitNames.html'>glInitNames()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glIsEnabled.html'>glIsEnabled()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glIsList.html'>glIsList()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glIsTexture.html'>glIsTexture()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glLight.html'>glLight()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glLightModel.html'>glLightModel()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glLineStipple.html'>glLineStipple()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glLineWidth.html'>glLineWidth()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glListBase.html'>glListBase()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glLoadIdentity.html'>glLoadIdentity()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glLoadMatrix.html'>glLoadMatrix()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glLoadName.html'>glLoadName()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glLogicOp.html'>glLogicOp()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glMaterial.html'>glMaterial()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glMatrixMode.html'>glMatrixMode()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glMultMatrix.html'>glMultMatrix()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glNewList.html'>glNewList()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glNormal.html'>glNormal()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glOrtho.html'>glOrtho()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPassThrough.html'>glPassThrough()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPixelZoom.html'>glPixelZoom()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPointSize.html'>glPointSize()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPolygonMode.html'>glPolygonMode()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPolygonOffset.html'>glPolygonOffset()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPopAttrib.html'>glPopAttrib()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPopClientAttrib.html'>glPopClientAttrib()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPopMatrix.html'>glPopMatrix()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPopName.html'>glPopName()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPushAttrib.html'>glPushAttrib()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPushClientAttrib.html'>glPushClientAttrib()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPushMatrix.html'>glPushMatrix()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glPushName.html'>glPushName()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glRasterPos.html'>glRasterPos()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glReadBuffer.html'>glReadBuffer()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glRenderMode.html'>glRenderMode()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glRotate.html'>glRotate()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glScale.html'>glScale()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glScissor.html'>glScissor()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glShadeModel.html'>glShadeModel()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glStencilFunc.html'>glStencilFunc()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glStencilMask.html'>glStencilMask()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glStencilOp.html'>glStencilOp()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glTexCoord.html'>glTexCoord()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glTexEnv.html'>glTexEnv()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glTexGen.html'>glTexGen()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glTexImage2D.html'>glTexImage2D()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glTexParameter.html'>glTexParameter()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glTexSubImage2D.html'>glTexSubImage2D()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glTranslate.html'>glTranslate()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glVertex.html'>glVertex()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GL/glViewport.html'>glViewport()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../ex/predef_3A_3A/GL/glArrayElement.html"><img src="../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >GL.glArrayElement()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../ex/predef_3A_3A/GL/glBindTexture.html">GL.glBindTexture()<img src="../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method GL.glBegin()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>glBegin</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>void</font> <b><font color='#000066'>glBegin</font>(</b><font color='#202020'>int</font> <font color='#005080'>mode</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'><a href='../../predef_3A_3A/GL/glBegin.html'>glBegin</a></font>  and <font face='courier'><a href='../../predef_3A_3A/GL/glEnd.html'>glEnd</a></font>  delimit the vertices that define a primitive or
+a group of like primitives.
+<font face='courier'><a href='../../predef_3A_3A/GL/glBegin.html'>glBegin</a></font>  accepts a single argument that specifies in which of ten ways the
+vertices are interpreted.
+Taking <i>n</i> as an integer count starting at one,
+and <i>N</i> as the total number of vertices specified,
+the interpretations are as follows:</p>
+<p><table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_POINTS</a></font> 
+</td><td bgcolor='white'>Treats each vertex as a single point.
+Vertex <i>n</i> defines point <i>n</i>.
+<i>N</i> points are drawn.
+</td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_LINES</a></font> 
+</td><td bgcolor='white'>Treats each pair of vertices as an independent line segment.
+Vertices <i>2n-1</i> and <i>2n</i> define line <i>n</i>.
+<i>N/2</i> lines are drawn.
+</td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_LINE_STRIP</a></font> 
+</td><td bgcolor='white'>Draws a connected group of line segments from the first vertex
+to the last.
+Vertices <i>n</i> and <i>n+1</i> define line <i>n</i>.
+<i>N-1</i> lines are drawn.
+</td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_LINE_LOOP</a></font> 
+</td><td bgcolor='white'>Draws a connected group of line segments from the first vertex
+to the last,
+then back to the first.
+Vertices <i>n</i> and <i>n+1</i> define line <i>n</i>.
+The last line, however, is defined by vertices <i>N</i> and <i>1</i>.
+<i>N</i> lines are drawn.
+</td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_TRIANGLES</a></font> 
+</td><td bgcolor='white'>Treats each triplet of vertices as an independent triangle.
+Vertices <i>3n-2</i>,
+<i>3n-1</i>,
+and <i>3n</i> define triangle <i>n</i>.
+<i>N/3</i> triangles are drawn.
+</td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_TRIANGLE_STRIP</a></font> 
+</td><td bgcolor='white'>Draws a connected group of triangles.
+One triangle is defined for each vertex presented after the first two vertices.
+For odd <i>n</i>, vertices <i>n</i>,
+<i>n+1</i>,
+and <i>n+2</i> define triangle <i>n</i>.
+For even <i>n</i>,
+vertices <i>n+1</i>,
+<i>n</i>,
+and <i>n+2</i> define triangle <i>n</i>.
+<i>N-2</i> triangles are drawn.
+</td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_TRIANGLE_FAN</a></font> 
+</td><td bgcolor='white'>Draws a connected group of triangles.
+One triangle is defined for each vertex presented after the first two vertices.
+Vertices <i>1</i>,
+<i>n+1</i>,
+and <i>n+2</i> define triangle <i>n</i>.
+<i>N-2</i> triangles are drawn.
+</td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_QUADS</a></font> 
+</td><td bgcolor='white'>Treats each group of four vertices as an independent quadrilateral.
+Vertices <i>4n-3</i>,
+<i>4n-2</i>,
+<i>4n-1</i>,
+and <i>4n</i> define quadrilateral <i>n</i>.
+<i>N/4</i> quadrilaterals are drawn.
+</td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_QUAD_STRIP</a></font> 
+</td><td bgcolor='white'>Draws a connected group of quadrilaterals.
+One quadrilateral is defined for each pair of vertices presented
+after the first pair.
+Vertices <i>2n-1</i>,
+<i>2n</i>,
+<i>2n+2</i>,
+and <i>2n+1</i> define quadrilateral <i>n</i>.
+<i>N/2-1</i> quadrilaterals are drawn.
+Note that the order in which vertices are used to construct a quadrilateral
+from strip data is different from that used with independent data.
+</td></tr>
+<tr valign='top'><td bgcolor='white'><font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_POLYGON</a></font> 
+</td><td bgcolor='white'>Draws a single,
+convex polygon.
+Vertices <i>1</i> through <i>N</i> define this polygon.
+</td></tr>
+</table></td></tr></table><br />
+</p>
+<p>Only a subset of GL commands can be used between <font face='courier'><a href='../../predef_3A_3A/GL/glBegin.html'>glBegin</a></font>  and <font face='courier'><a href='../../predef_3A_3A/GL/glEnd.html'>glEnd</a></font> .
+The commands are
+<font face='courier'><a href='../../predef_3A_3A/GL/glVertex.html'>glVertex</a></font> ,
+<font face='courier'><a href='../../predef_3A_3A/GL/glColor.html'>glColor</a></font> ,
+<font face='courier'><a href='../../predef_3A_3A/GL/glIndex.html'>glIndex</a></font> ,
+<font face='courier'><a href='../../predef_3A_3A/GL/glNormal.html'>glNormal</a></font> ,
+<font face='courier'><a href='../../predef_3A_3A/GL/glTexCoord.html'>glTexCoord</a></font> ,
+<font face='courier'><a href='../../predef_3A_3A/GL/glEvalCoord.html'>glEvalCoord</a></font> ,
+<font face='courier'><a href='../../predef_3A_3A/GL/glEvalPoint.html'>glEvalPoint</a></font> ,
+<font face='courier'><a href='../../predef_3A_3A/GL/glArrayElement.html'>glArrayElement</a></font> ,
+<font face='courier'><a href='../../predef_3A_3A/GL/glMaterial.html'>glMaterial</a></font> , and
+<font face='courier'><a href='../../predef_3A_3A/GL/glEdgeFlag.html'>glEdgeFlag</a></font> .
+Also,
+it is acceptable to use
+<font face='courier'><a href='../../predef_3A_3A/GL/glCallList.html'>glCallList</a></font>  or
+<font face='courier'>glCallLists</font>  to execute
+display lists that include only the preceding commands.
+If any other GL command is executed between <font face='courier'><a href='../../predef_3A_3A/GL/glBegin.html'>glBegin</a></font>  and <font face='courier'><a href='../../predef_3A_3A/GL/glEnd.html'>glEnd</a></font> ,
+the error flag is set and the command is ignored.</p>
+<p>Regardless of the value chosen for <i>mode</i>,
+there is no limit to the number of vertices that can be defined
+between <font face='courier'><a href='../../predef_3A_3A/GL/glBegin.html'>glBegin</a></font>  and <font face='courier'><a href='../../predef_3A_3A/GL/glEnd.html'>glEnd</a></font> .
+Lines,
+triangles,
+quadrilaterals,
+and polygons that are incompletely specified are not drawn.
+Incomplete specification results when either too few vertices are
+provided to specify even a single primitive or when an incorrect multiple 
+of vertices is specified. The incomplete primitive is ignored; the rest are drawn.</p>
+<p>The minimum specification of vertices
+for each primitive is as follows:
+1 for a point,
+2 for a line,
+3 for a triangle,
+4 for a quadrilateral,
+and 3 for a polygon.
+Modes that require a certain multiple of vertices are
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_LINES</a></font>  (2),
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_TRIANGLES</a></font>  (3),
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_QUADS</a></font>  (4),
+and <font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_QUAD_STRIP</a></font>  (2).</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>mode</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Specifies the primitive or primitives that will be created from vertices
+presented between <font face='courier'><a href='../../predef_3A_3A/GL/glBegin.html'>glBegin</a></font>  and the subsequent <font face='courier'><a href='../../predef_3A_3A/GL/glEnd.html'>glEnd</a></font> .
+Ten symbolic constants are accepted:
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_POINTS</a></font> ,
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_LINES</a></font> ,
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_LINE_STRIP</a></font> ,
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_LINE_LOOP</a></font> ,
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_TRIANGLES</a></font> ,
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_TRIANGLE_STRIP</a></font> ,
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_TRIANGLE_FAN</a></font> ,
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_QUADS</a></font> ,
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_QUAD_STRIP</a></font> , and
+<font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_POLYGON</a></font> .</p>
+</font></dd>
+<dt><font face='Helvetica'>Throws</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_INVALID_ENUM</a></font>  is generated if <i>mode</i> is set to an unaccepted value.</p>
+<p><font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_INVALID_OPERATION</a></font>  is generated if <font face='courier'><a href='../../predef_3A_3A/GL/glBegin.html'>glBegin</a></font>  is executed between a 
+<font face='courier'><a href='../../predef_3A_3A/GL/glBegin.html'>glBegin</a></font> 
+and the corresponding execution of <font face='courier'><a href='../../predef_3A_3A/GL/glEnd.html'>glEnd</a></font> .</p>
+<p><font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_INVALID_OPERATION</a></font>  is generated if <font face='courier'><a href='../../predef_3A_3A/GL/glEnd.html'>glEnd</a></font>  is executed without being
+preceded by a <font face='courier'><a href='../../predef_3A_3A/GL/glBegin.html'>glBegin</a></font> .</p>
+<p><font face='courier'><a href='../../predef_3A_3A/GL.html'>GL_INVALID_OPERATION</a></font>  is generated if a command other than
+<font face='courier'><a href='../../predef_3A_3A/GL/glVertex.html'>glVertex</a></font> ,
+<font face='courier'><a href='../../predef_3A_3A/GL/glColor.html'>glColor</a></font> ,
+<font face='courier'><a href='../../predef_3A_3A/GL/glIndex.html'>glIndex</a></font> ,
+<font face='courier'><a href='../../predef_3A_3A/GL/glNormal.html'>glNormal</a></font> ,
+<font face='courier'><a href='../../predef_3A_3A/GL/glTexCoord.html'>glTexCoord</a></font> ,
+<font face='courier'><a href='../../predef_3A_3A/GL/glEvalCoord.html'>glEvalCoord</a></font> ,
+<font face='courier'><a href='../../predef_3A_3A/GL/glEvalPoint.html'>glEvalPoint</a></font> ,
+<font face='courier'><a href='../../predef_3A_3A/GL/glArrayElement.html'>glArrayElement</a></font> ,
+<font face='courier'><a href='../../predef_3A_3A/GL/glMaterial.html'>glMaterial</a></font> ,
+<font face='courier'><a href='../../predef_3A_3A/GL/glEdgeFlag.html'>glEdgeFlag</a></font> ,
+<font face='courier'><a href='../../predef_3A_3A/GL/glCallList.html'>glCallList</a></font> , or
+<font face='courier'>glCallLists</font>  is executed between
+the execution of <font face='courier'><a href='../../predef_3A_3A/GL/glBegin.html'>glBegin</a></font>  and the corresponding
+execution <font face='courier'><a href='../../predef_3A_3A/GL/glEnd.html'>glEnd</a></font> .</p>
+<p>Execution of 
+<font face='courier'><a href='../../predef_3A_3A/GL/glEnableClientState.html'>glEnableClientState</a></font> ,
+<font face='courier'><a href='../../predef_3A_3A/GL/glDisableClientState.html'>glDisableClientState</a></font> ,
+<font face='courier'>glEdgeFlagPointer</font> ,
+<font face='courier'>glTexCoordPointer</font> ,
+<font face='courier'>glColorPointer</font> ,
+<font face='courier'>glIndexPointer</font> ,
+<font face='courier'>glNormalPointer</font> ,</p>
+<p><font face='courier'>glVertexPointer</font> ,
+<font face='courier'>glInterleavedArrays</font> , or
+<font face='courier'>glPixelStore</font>  is not allowed after a call to <font face='courier'><a href='../../predef_3A_3A/GL/glBegin.html'>glBegin</a></font>  and before
+the corresponding call to <font face='courier'><a href='../../predef_3A_3A/GL/glEnd.html'>glEnd</a></font> ,
+but an error may or may not be generated.</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

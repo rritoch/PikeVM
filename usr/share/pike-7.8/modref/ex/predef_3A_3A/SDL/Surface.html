@@ -1,0 +1,181 @@
+<html><head><title>Pike Reference Manual - SDL.Surface</title>
+<link rel='stylesheet' href='../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../..//images/pike_line_middle.gif" width="98%"><img src="../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../ex/predef_3A_3A/SDL.html'><b>SDL</b></a><br />
+<b>SDL.Surface</b><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/SDL/Surface/blit.html'>blit()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/SDL/Surface/convert_surface.html'>convert_surface()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/SDL/Surface/display_format.html'>display_format()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/SDL/Surface/display_format_alpha.html'>display_format_alpha()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/SDL/Surface/fill.html'>fill()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/SDL/Surface/fill_rect.html'>fill_rect()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/SDL/Surface/get_pixel.html'>get_pixel()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/SDL/Surface/init.html'>init()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/SDL/Surface/lock.html'>lock()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/SDL/Surface/set_alpha.html'>set_alpha()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/SDL/Surface/set_clip_rect.html'>set_clip_rect()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/SDL/Surface/set_color_key.html'>set_color_key()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/SDL/Surface/set_image.html'>set_image()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/SDL/Surface/set_pixel.html'>set_pixel()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/SDL/Surface/unlock.html'>unlock()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../ex/predef_3A_3A/SDL/Rect/cast.html"><img src="../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >SDL.Rect()-&gt;cast()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../ex/predef_3A_3A/SDL/Surface/blit.html">SDL.Surface()-&gt;blit()<img src="../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Class SDL.Surface</h1>
+    <dl>
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Surface's represent areas of "graphical" memory, memory that can
+ be drawn to.  The video framebuffer is returned as a
+ <font face='courier'><a href='../../predef_3A_3A/SDL/Surface.html'>SDL.Surface</a></font>  by <font face='courier'><a href='../../predef_3A_3A/SDL/set_video_mode.html'>SDL.set_video_mode()</a></font>  and
+ <font face='courier'><a href='../../predef_3A_3A/SDL/get_video_surface.html'>SDL.get_video_surface()</a></font> .</p>
+</font></dd></dl>
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'></font><dt>
+<dd><p><tt><font color='#202020'>int</font> SDL.Surface.<b><font color='#F000F0'>w</font></b></tt><br />
+<tt><font color='#202020'>int</font> SDL.Surface.<b><font color='#F000F0'>h</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>The width and height of the surface in pixels.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>clip_rect</b></font>
+</font><dt>
+<dd><p><tt><font color='#005080'><font face='courier'><a href='../../predef_3A_3A/SDL/Rect.html'>SDL.Rect</a></font></font> SDL.Surface.<b><font color='#F000F0'>clip_rect</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>This is the clipping rectangle as set by <font face='courier'><a href='../../predef_3A_3A/SDL/Surface/set_clip_rect.html'>set_clip_rect()</a></font> .</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>flags</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>int</font> SDL.Surface.<b><font color='#F000F0'>flags</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>The following are supported in the flags field.</p>
+<dl><dt>SDL.SWSURFACE</dt>
+<dd><p>Surface is stored in system memory</p>
+</dd>
+<dt>SDL.HWSURFACE</dt>
+<dd><p>Surface is stored in video memory</p>
+</dd>
+<dt>SDL.ASYNCBLIT</dt>
+<dd><p>Surface uses asynchronous blits if possible.</p>
+</dd>
+<dt>SDL.ANYFORMAT</dt>
+<dd><p>Allows any pixel-format (Display  surface).</p>
+</dd>
+<dt>SDL.HWPALETTE</dt>
+<dd><p>Surface has exclusive palette.</p>
+</dd>
+<dt>SDL.DOUBLEBUF</dt>
+<dd><p>Surface is double buffered (Display surface).</p>
+</dd>
+<dt>SDL.FULLSCREEN</dt>
+<dd><p>Surface is full screen (Display  Sur face).</p>
+</dd>
+<dt>SDL.OPENGL</dt>
+<dd><p>Surface has an OpenGL context (Display Surface).</p>
+</dd>
+<dt>SDL.OPENGLBLIT</dt>
+<dd><p>Surface supports OpenGL blitting (Display Surface).</p>
+</dd>
+<dt>SDL.RESIZABLE</dt>
+<dd><p>Surface is resizable (Display Surface).</p>
+</dd>
+<dt>SDL.HWACCEL</dt>
+<dd><p>Surface blit uses hardware acceleration.</p>
+</dd>
+<dt>SDL.SRCCOLORKEY</dt>
+<dd><p>Surface use colorkey blitting.</p>
+</dd>
+<dt>SDL.RLEACCEL</dt>
+<dd><p>Colorkey  blitting is accelerated with RLE.</p>
+</dd>
+<dt>SDL.SRCALPHA</dt>
+<dd><p>Surface blit uses alpha blending.</p>
+</dd>
+<dt>SDL.PREALLOC</dt>
+<dd><p>Surface uses preallocated memory.</p>
+</dd>
+</dl>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>format</b></font>
+</font><dt>
+<dd><p><tt><font color='#005080'><font face='courier'><a href='../../predef_3A_3A/SDL/PixelFormat.html'>SDL.PixelFormat</a></font></font> SDL.Surface.<b><font color='#F000F0'>format</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>The pixel format of this surface.</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

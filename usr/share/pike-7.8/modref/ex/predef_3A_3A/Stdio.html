@@ -1,0 +1,451 @@
+<html><head><title>Pike Reference Manual - Stdio</title>
+<link rel='stylesheet' href='../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../..//images/pike_line_middle.gif" width="98%"><img src="../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../index.html'><b>[Top]</b></a><br />
+<b>Stdio</b><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Modules</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Stdio/Terminfo.html'><b>Terminfo</b></a></td></tr>
+<tr><td nowrap='nowrap'><br /><b>Classes</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Stdio/BlockFile.html'><b>BlockFile</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Stdio/FILE.html'><b>FILE</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Stdio/FakeFile.html'><b>FakeFile</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Stdio/Fd.html'><b>Fd</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Stdio/Fd_ref.html'><b>Fd_ref</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Stdio/File.html'><b>File</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Stdio/NonblockingStream.html'><b>NonblockingStream</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Stdio/Port.html'><b>Port</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Stdio/Readline.html'><b>Readline</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Stdio/Stat.html'><b>Stat</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Stdio/Stream.html'><b>Stream</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Stdio/UDP.html'><b>UDP</b></a></td></tr>
+<tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Stdio/_sprintf.html'>_sprintf()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Stdio/append_file.html'>append_file()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Stdio/append_path.html'>append_path()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Stdio/append_path_nt.html'>append_path_nt()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Stdio/append_path_unix.html'>append_path_unix()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Stdio/async_cp.html'>async_cp()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Stdio/convert_modestring2int.html'>convert_modestring2int()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Stdio/cp.html'>cp()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Stdio/exist.html'>exist()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Stdio/file_equal.html'>file_equal()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Stdio/file_size.html'>file_size()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Stdio/get_all_active_fd.html'>get_all_active_fd()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Stdio/gethostip.html'>gethostip()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Stdio/is_dir.html'>is_dir()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Stdio/is_file.html'>is_file()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Stdio/is_link.html'>is_link()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Stdio/mkdirhier.html'>mkdirhier()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Stdio/perror.html'>perror()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Stdio/read_bytes.html'>read_bytes()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Stdio/read_file.html'>read_file()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Stdio/recursive_mv.html'>recursive_mv()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Stdio/recursive_rm.html'>recursive_rm()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Stdio/sendfile.html'>sendfile()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Stdio/simplify_path.html'>simplify_path()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Stdio/werror.html'>werror()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/Stdio/write_file.html'>write_file()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../ex/predef_3A_3A/Standards/XML/Wix/get_module_xml.html"><img src="../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Standards.XML.Wix.get_module_xml()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../ex/predef_3A_3A/Stdio/BlockFile.html">Stdio.BlockFile<img src="../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Module Stdio</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Inherit</font>
+<font size='+1'><b>files</b></font>
+</font><dt>
+<dd><p><font face='courier'>inherit </font><font face='courier'>files</font><font face='courier'> : <font color='#F000F0'>files</font></font></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>TCSANOW</b></font>
+</font><dt>
+<dd><p><tt>constant Stdio.<font color='#F000F0'>TCSANOW</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Argument to <font face='courier'><a href='../predef_3A_3A/Stdio/File/tcgetattr.html'>Stdio.File()-&gt;tcsetattr()</a></font> .</p>
+<p> Change immediately.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>TCSADRAIN</b></font>
+</font><dt>
+<dd><p><tt>constant Stdio.<font color='#F000F0'>TCSADRAIN</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Argument to <font face='courier'><a href='../predef_3A_3A/Stdio/File/tcgetattr.html'>Stdio.File()-&gt;tcsetattr()</a></font> .</p>
+<p> Change after all output has been written.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>TCSAFLUSH</b></font>
+</font><dt>
+<dd><p><tt>constant Stdio.<font color='#F000F0'>TCSAFLUSH</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Argument to <font face='courier'><a href='../predef_3A_3A/Stdio/File/tcgetattr.html'>Stdio.File()-&gt;tcsetattr()</a></font> .</p>
+<p> Change after all output has been written,
+ and empty the input buffers.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>stderr</b></font>
+</font><dt>
+<dd><p><tt><font color='#005080'><font face='courier'><a href='../predef_3A_3A/Stdio/FILE.html'>FILE</a></font></font> Stdio.<b><font color='#F000F0'>stderr</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>An instance of <tt>FILE("stderr")</tt>, the standard error stream. Use this
+ when you want to output error messages.</p>
+</font></dd>
+<dt><font face='Helvetica'>See also</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'><a href='../predef_3A_3A/werror.html'>werror()</a></font> </p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>stdout</b></font>
+</font><dt>
+<dd><p><tt><font color='#005080'><font face='courier'><a href='../predef_3A_3A/Stdio/FILE.html'>FILE</a></font></font> Stdio.<b><font color='#F000F0'>stdout</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>An instance of <tt>FILE("stdout")</tt>, the standatd output stream. Use this
+ when you want to write anything to the standard output.</p>
+</font></dd>
+<dt><font face='Helvetica'>See also</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'><a href='../predef_3A_3A/write.html'>write()</a></font> </p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>stdin</b></font>
+</font><dt>
+<dd><p><tt><font color='#005080'><font face='courier'><a href='../predef_3A_3A/Stdio/FILE.html'>FILE</a></font></font> Stdio.<b><font color='#F000F0'>stdin</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>An instance of <tt>FILE("stdin")</tt>, the standard input stream. Use this
+ when you want to read anything from the standard input.
+ This example will read lines from standard input for as long as there
+ are more lines to read. Each line will then be written to stdout together
+ with the line number. We could use <font face='courier'>Stdio.stdout.write()</font>  instead
+ of just <font face='courier'><a href='../predef_3A_3A/write.html'>write()</a></font> , since they are the same function.</p>
+</font></dd>
+<dt><font face='Helvetica'>Example</font><dt>
+<dd><pre><p>int main()
+  {
+    int line;
+    while(string s=Stdio.stdin.gets())
+ 	 write("%5d: %s\n", line++, s);
+  }</p>
+</pre></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>PROP_BIDIRECTIONAL</b></font>
+</font><dt>
+<dd><p><tt>constant Stdio.<font color='#F000F0'>PROP_BIDIRECTIONAL</font></tt></p></dd>
+<dt><font face='Helvetica' color='red'>FIXME</font></dt>
+<dd><font face='Heletica' color='red'><p>Document this constant.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>PROP_BUFFERED</b></font>
+</font><dt>
+<dd><p><tt>constant Stdio.<font color='#F000F0'>PROP_BUFFERED</font></tt></p></dd>
+<dt><font face='Helvetica' color='red'>FIXME</font></dt>
+<dd><font face='Heletica' color='red'><p>Document this constant.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>PROP_SHUTDOWN</b></font>
+</font><dt>
+<dd><p><tt>constant Stdio.<font color='#F000F0'>PROP_SHUTDOWN</font></tt></p></dd>
+<dt><font face='Helvetica' color='red'>FIXME</font></dt>
+<dd><font face='Heletica' color='red'><p>Document this constant.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>PROP_NONBLOCK</b></font>
+</font><dt>
+<dd><p><tt>constant Stdio.<font color='#F000F0'>PROP_NONBLOCK</font></tt></p></dd>
+<dt><font face='Helvetica' color='red'>FIXME</font></dt>
+<dd><font face='Heletica' color='red'><p>Document this constant.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>PROP_REVERSE</b></font>
+</font><dt>
+<dd><p><tt>constant Stdio.<font color='#F000F0'>PROP_REVERSE</font></tt></p></dd>
+<dt><font face='Helvetica' color='red'>FIXME</font></dt>
+<dd><font face='Heletica' color='red'><p>Document this constant.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>PROP_IPC</b></font>
+</font><dt>
+<dd><p><tt>constant Stdio.<font color='#F000F0'>PROP_IPC</font></tt></p></dd>
+<dt><font face='Helvetica' color='red'>FIXME</font></dt>
+<dd><font face='Heletica' color='red'><p>Document this constant.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>IPPROTO</b></font>
+</font><dt>
+<dd><p><tt>constant Stdio.<font color='#F000F0'>IPPROTO</font></tt></p></dd>
+<dt><font face='Helvetica' color='red'>FIXME</font></dt>
+<dd><font face='Heletica' color='red'><p>Document this constant.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>__OOB__</b></font>
+</font><dt>
+<dd><p><tt>constant Stdio.<font color='#F000F0'>__OOB__</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Implementation level of nonblocking I/O OOB support.</p>
+<table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>0</font></tt></td><td bgcolor='white'><p>Nonblocking OOB support is not supported.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>1</font></tt></td><td bgcolor='white'><p>Nonblocking OOB works a little.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>2</font></tt></td><td bgcolor='white'><p>Nonblocking OOB almost works.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>3</font></tt></td><td bgcolor='white'><p>Nonblocking OOB works as intended.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>-1</font></tt></td><td bgcolor='white'><p>Unknown level of nonblocking OOB support.</p>
+</td></tr>
+</table></td></tr></table><br />
+<p>This constant only exists when OOB operations are
+ available, i.e. when <font face='courier'><a href='../predef_3A_3A/Stdio.html'>__HAVE_OOB__</a></font>  is 1.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>__HAVE_OOB__</b></font>
+</font><dt>
+<dd><p><tt>constant Stdio.<font color='#F000F0'>__HAVE_OOB__</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Exists and has the value 1 if OOB operations are available.</p>
+</font></dd>
+<dt><font face='Helvetica'>Note</font><dt>
+<dd><font face='Helvetica'><p>In Pike 7.5 and later OOB operations are always present.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>XATTR_CREATE</b></font>
+</font><dt>
+<dd><p><tt>constant Stdio.<font color='#F000F0'>XATTR_CREATE</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Used by <font face='courier'><a href='../predef_3A_3A/setxattr.html'>setxattr</a></font>  function and method to signify a pure
+ create, which will fail if the attribute already exists.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>XATTR_REPLACE</b></font>
+</font><dt>
+<dd><p><tt>constant Stdio.<font color='#F000F0'>XATTR_REPLACE</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Used by <font face='courier'><a href='../predef_3A_3A/setxattr.html'>setxattr</a></font>  function and method to signify a replace,
+ which will fail the the attribute does not already exists.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>DN_ACCESS</b></font>
+</font><dt>
+<dd><p><tt>constant Stdio.<font color='#F000F0'>DN_ACCESS</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Used in <font face='courier'><a href='../predef_3A_3A/Stdio/File/notify.html'>File.notify()</a></font>  to get a callback when files
+ within a directory are accessed.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>DN_MODIFY</b></font>
+</font><dt>
+<dd><p><tt>constant Stdio.<font color='#F000F0'>DN_MODIFY</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Used in <font face='courier'><a href='../predef_3A_3A/Stdio/File/notify.html'>File.notify()</a></font>  to get a callback when files
+ within a directory are modified.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>DN_CREATE</b></font>
+</font><dt>
+<dd><p><tt>constant Stdio.<font color='#F000F0'>DN_CREATE</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Used in <font face='courier'><a href='../predef_3A_3A/Stdio/File/notify.html'>File.notify()</a></font>  to get a callback when new
+ files are created within a directory.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>DN_DELETE</b></font>
+</font><dt>
+<dd><p><tt>constant Stdio.<font color='#F000F0'>DN_DELETE</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Used in <font face='courier'><a href='../predef_3A_3A/Stdio/File/notify.html'>File.notify()</a></font>  to get a callback when files
+ are deleted within a directory.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>DN_RENAME</b></font>
+</font><dt>
+<dd><p><tt>constant Stdio.<font color='#F000F0'>DN_RENAME</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Used in <font face='courier'><a href='../predef_3A_3A/Stdio/File/notify.html'>File.notify()</a></font>  to get a callback when files
+ within a directory are renamed.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>DN_ATTRIB</b></font>
+</font><dt>
+<dd><p><tt>constant Stdio.<font color='#F000F0'>DN_ATTRIB</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Used in <font face='courier'><a href='../predef_3A_3A/Stdio/File/notify.html'>File.notify()</a></font>  to get a callback when attributes
+ of files within a directory are changed.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>DN_MULTISHOT</b></font>
+</font><dt>
+<dd><p><tt>constant Stdio.<font color='#F000F0'>DN_MULTISHOT</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Used in <font face='courier'><a href='../predef_3A_3A/Stdio/File/notify.html'>File.notify()</a></font> . If DN_MULTISHOT is used, signals will
+ be sent for all notifications the program has registred for. Otherwise
+ only the first event the program is listening for will be received and
+ then the program must reregister for the events to receive futher events.</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

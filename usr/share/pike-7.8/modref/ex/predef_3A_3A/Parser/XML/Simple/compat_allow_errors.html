@@ -1,0 +1,102 @@
+<html><head><title>Pike Reference Manual - Parser.XML.Simple()-&gt;compat_allow_errors()</title>
+<link rel='stylesheet' href='../../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../../ex/predef_3A_3A/Parser.html'><b>Parser</b></a><br />
+<a href='../../../../../ex/predef_3A_3A/Parser/XML.html'><b>Parser.XML</b></a><br />
+<a href='../../../../../ex/predef_3A_3A/Parser/XML/Simple.html'><b>Parser.XML.Simple</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Classes</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Parser/XML/Simple/Context.html'><b>Context</b></a></td></tr>
+<tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Parser/XML/Simple/allow_rxml_entities.html'>allow_rxml_entities()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;compat_allow_errors()</td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Parser/XML/Simple/define_entity.html'>define_entity()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Parser/XML/Simple/define_entity_raw.html'>define_entity_raw()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Parser/XML/Simple/lookup_entity.html'>lookup_entity()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Parser/XML/Simple/parse.html'>parse()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../../ex/predef_3A_3A/Parser/XML/Simple/parse_dtd.html'>parse_dtd()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../../ex/predef_3A_3A/Parser/XML/Simple/allow_rxml_entities.html"><img src="../../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Parser.XML.Simple()-&gt;allow_rxml_entities()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../../ex/predef_3A_3A/Parser/XML/Simple/define_entity.html">Parser.XML.Simple()-&gt;define_entity()<img src="../../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method Parser.XML.Simple()-&gt;compat_allow_errors()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>compat_allow_errors</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>void</font> <b><font color='#000066'>compat_allow_errors</font>(</b><font color='#202020'>string</font> <font color='#005080'>version</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Set whether the parser should allow certain errors for
+ compatibility with earlier versions. <font face='courier'>version</font>  can be:</p>
+<table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"7.2"</font></tt></td><td bgcolor='white'><p>Allow more data after the root element.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"7.6"</font></tt></td><td bgcolor='white'><p>Allow multiple and invalidly placed "&lt;?xml ... ?&gt;" and
+     "&lt;!DOCTYPE ... &gt;" declarations (invalid "&lt;?xml ... ?&gt;"
+     declarations are otherwise treated as normal PI:s). Allow
+     "&lt;![CDATA[ ... ]]&gt;" outside the root element. Allow the root
+     element to be absent.</p>
+</td></tr>
+</table></td></tr></table><br />
+<p><font face='courier'>version</font>  can also be zero to enable all error checks.</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

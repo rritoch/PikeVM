@@ -1,0 +1,169 @@
+<html><head><title>Pike Reference Manual - Protocols.OBEX.Request</title>
+<link rel='stylesheet' href='../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../ex/predef_3A_3A/Protocols.html'><b>Protocols</b></a><br />
+<a href='../../../../ex/predef_3A_3A/Protocols/OBEX.html'><b>Protocols.OBEX</b></a><br />
+<b>Protocols.OBEX.Request</b><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'></table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/Protocols/OBEX/HeaderIdentifier.html"><img src="../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Protocols.OBEX.HeaderIdentifier</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/Protocols/OBEX/decode_headers.html">Protocols.OBEX.decode_headers()<img src="../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Enum Protocols.OBEX.Request</h1>
+    <dl>
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>A request opcode, for use with the <font face='courier'>client.do_request()</font>  function.</p>
+</font></dd></dl>
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>REQ_CONNECT</b></font>
+</font><dt>
+<dd><p><tt>constant Protocols.OBEX.<font color='#F000F0'>REQ_CONNECT</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Establish a new OBEX connection</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>REQ_DISCONNECT</b></font>
+</font><dt>
+<dd><p><tt>constant Protocols.OBEX.<font color='#F000F0'>REQ_DISCONNECT</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Terminate an OBEX connection</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>REQ_PUT</b></font>
+</font><dt>
+<dd><p><tt>constant Protocols.OBEX.<font color='#F000F0'>REQ_PUT</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Send an object to the mobile device</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>REQ_GET</b></font>
+</font><dt>
+<dd><p><tt>constant Protocols.OBEX.<font color='#F000F0'>REQ_GET</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Receive an object from the mobile devuce</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>REQ_SETPATH</b></font>
+</font><dt>
+<dd><p><tt>constant Protocols.OBEX.<font color='#F000F0'>REQ_SETPATH</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Change the working directory</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>REQ_SESSION</b></font>
+</font><dt>
+<dd><p><tt>constant Protocols.OBEX.<font color='#F000F0'>REQ_SESSION</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Manage a session</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>REQ_ABORT</b></font>
+</font><dt>
+<dd><p><tt>constant Protocols.OBEX.<font color='#F000F0'>REQ_ABORT</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Abort the request currently being processed</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>REQ_FINAL</b></font>
+</font><dt>
+<dd><p><tt>constant Protocols.OBEX.<font color='#F000F0'>REQ_FINAL</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>For <font face='courier'><a href='../../../predef_3A_3A/Protocols/OBEX/Request.html'>REQ_PUT</a></font>  and <font face='courier'><a href='../../../predef_3A_3A/Protocols/OBEX/Request.html'>REQ_GET</a></font>  requests, REQ_FINAL must be set
+ for the request block containing the last portion of the headers.
+ Other requests must be sent as a single block and have the REQ_FINAL
+ bit encoded in their request opcode.</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

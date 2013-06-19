@@ -1,0 +1,330 @@
+<html><head><title>Pike Reference Manual - SSL.context</title>
+<link rel='stylesheet' href='../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../..//images/pike_line_middle.gif" width="98%"><img src="../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../ex/predef_3A_3A/SSL.html'><b>SSL</b></a><br />
+<b>SSL.context</b><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/SSL/context/dhe_dss_mode.html'>dhe_dss_mode()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/SSL/context/get_authorities.html'>get_authorities()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/SSL/context/get_trusted_issuers.html'>get_trusted_issuers()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/SSL/context/lookup_session.html'>lookup_session()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/SSL/context/new_session.html'>new_session()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/SSL/context/purge_session.html'>purge_session()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/SSL/context/record_session.html'>record_session()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/SSL/context/rsa_mode.html'>rsa_mode()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/SSL/context/set_authorities.html'>set_authorities()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/SSL/context/set_trusted_issuers.html'>set_trusted_issuers()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../ex/predef_3A_3A/SSL/connection/to_write.html"><img src="../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >SSL.connection()-&gt;to_write()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../ex/predef_3A_3A/SSL/context/dhe_dss_mode.html">SSL.context()-&gt;dhe_dss_mode()<img src="../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Class SSL.context</h1>
+    <dl>
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Keeps the state that is shared by all SSL-connections for
+ one server (or one port). It includes policy configuration, a server
+ certificate, the server's private key(s), etc. It also includes the
+ session cache.</p>
+</font></dd></dl>
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'></font><dt>
+<dd><p></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>rsa</b></font>
+</font><dt>
+<dd><p><tt><font color='#005080'><font face='courier'><a href='../../predef_3A_3A/Crypto/RSA.html'>Crypto.RSA</a></font></font> SSL.context.<b><font color='#F000F0'>rsa</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>The server's private key</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>client_rsa</b></font>
+</font><dt>
+<dd><p><tt><font color='#005080'><font face='courier'><a href='../../predef_3A_3A/Crypto/RSA.html'>Crypto.RSA</a></font></font> SSL.context.<b><font color='#F000F0'>client_rsa</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>The client's private key (used with client certificate authentication)</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>client_certificates</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>array</font>(<font color='#202020'>array</font>(<font color='#202020'>string</font>)) SSL.context.<b><font color='#F000F0'>client_certificates</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>An array of certificate chains a client may present to a server
+ when client certificate authentication is requested.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>client_certificate_selector</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>function</font>(<font color='#005080'><font face='courier'><a href='../../predef_3A_3A/SSL/context.html'>.context</a></font></font>:<font color='#202020'>array</font>(<font color='#202020'>string</font>)) SSL.context.<b><font color='#F000F0'>client_certificate_selector</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>A function which will select an acceptable client certificate for 
+ presentation to a remote server. This function will receive
+ the SSL context, an array of acceptable certificate types,
+ and a list of DNs of acceptable certificate authorities. This function
+ should return an array of strings containing a certificate chain,
+ with the client certificate first, (and the root certificate last, if
+ applicable.)</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>auth_level</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>int</font> SSL.context.<b><font color='#F000F0'>auth_level</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Policy for client authentication. One of <font face='courier'>SSL.Constants.AUTHLEVEL_none</font> ,
+ <font face='courier'>SSL.Constants.AUTHLEVEL_ask</font>  and <font face='courier'>SSL.Constants.AUTHLEVEL_require</font> .</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>require_trust</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>int</font> SSL.context.<b><font color='#F000F0'>require_trust</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>When set, require the chain to be known, even if the root is self signed.</p>
+<p> Note that if set, and certificates are set to be verified, trusted issuers must be
+ provided, or no connections will be accepted.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>verify_certificates</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>int</font> SSL.context.<b><font color='#F000F0'>verify_certificates</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Determines whether certificates presented by the peer are verified, or 
+ just accepted as being valid.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'></font><dt>
+<dd><p><tt><font color='#005080'><font face='courier'><a href='../../predef_3A_3A/Crypto/RSA.html'>Crypto.RSA</a></font></font> SSL.context.<b><font color='#F000F0'>long_rsa</font></b></tt><br />
+<tt><font color='#005080'><font face='courier'><a href='../../predef_3A_3A/Crypto/RSA.html'>Crypto.RSA</a></font></font> SSL.context.<b><font color='#F000F0'>short_rsa</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Temporary, non-certified, private keys, used with a
+ server_key_exchange message. The rules are as follows:</p>
+<p> If the negotiated cipher_suite has the "exportable" property, and
+ short_rsa is not zero, send a server_key_exchange message with the
+ (public part of) the short_rsa key.</p>
+<p> If the negotiated cipher_suite does not have the exportable
+ property, and long_rsa is not zero, send a server_key_exchange
+ message with the (public part of) the long_rsa key.</p>
+<p> Otherwise, dont send any server_key_exchange message.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>dsa</b></font>
+</font><dt>
+<dd><p><tt><font color='#005080'><font face='courier'><a href='../../predef_3A_3A/Crypto/DSA.html'>Crypto.DSA</a></font></font> SSL.context.<b><font color='#F000F0'>dsa</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Servers dsa key.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>dh_params</b></font>
+</font><dt>
+<dd><p><tt><font color='#005080'><font face='courier'><a href='../../predef_3A_3A/SSL/Cipher/DHParameters.html'>.Cipher.DHParameters</a></font></font> SSL.context.<b><font color='#F000F0'>dh_params</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Parameters for dh keyexchange.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>random</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>function</font>(<font color='#202020'>int</font>:<font color='#202020'>string</font>) SSL.context.<b><font color='#F000F0'>random</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Used to generate random cookies for the hello-message. If we use
+ the RSA keyexchange method, and this is a server, this random
+ number generator is not used for generating the master_secret.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>certificates</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>array</font>(<font color='#202020'>string</font>) SSL.context.<b><font color='#F000F0'>certificates</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>The server's certificate, or a chain of X509.v3 certificates, with the
+ server's certificate first and root certificate last.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>preferred_auth_methods</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>array</font>(<font color='#202020'>int</font>) SSL.context.<b><font color='#F000F0'>preferred_auth_methods</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>For client authentication. Used only if auth_level is AUTH_ask or
+ AUTH_require.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>preferred_suites</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>array</font>(<font color='#202020'>int</font>) SSL.context.<b><font color='#F000F0'>preferred_suites</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Cipher suites we want the server to support, best first.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>preferred_compressors</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>array</font>(<font color='#202020'>int</font>) SSL.context.<b><font color='#F000F0'>preferred_compressors</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Always ({ COMPRESSION_null })</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>use_cache</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>int</font> SSL.context.<b><font color='#F000F0'>use_cache</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Non-zero to enable cahing of sessions</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>session_lifetime</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>int</font> SSL.context.<b><font color='#F000F0'>session_lifetime</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Sessions are removed from the cache when they are older than this
+ limit (in seconds). Sessions are also removed from the cache if a
+ connection using the session dies unexpectedly.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Variable</font>
+<font size='+1'><b>max_sessions</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>int</font> SSL.context.<b><font color='#F000F0'>max_sessions</font></b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Maximum number of sessions to keep in the cache.</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

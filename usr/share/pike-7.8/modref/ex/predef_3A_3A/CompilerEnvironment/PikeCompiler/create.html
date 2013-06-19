@@ -1,0 +1,136 @@
+<html><head><title>Pike Reference Manual - CompilerEnvironment()-&gt;PikeCompiler()-&gt;create()</title>
+<link rel='stylesheet' href='../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../ex/predef_3A_3A/CompilerEnvironment.html'><b>CompilerEnvironment</b></a><br />
+<a href='../../../../ex/predef_3A_3A/CompilerEnvironment/PikeCompiler.html'><b>CompilerEnvironment()-&gt;PikeCompiler</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Classes</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/CompilerEnvironment/PikeCompiler/CompilerState.html'><b>CompilerState</b></a></td></tr>
+<tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/CompilerEnvironment/PikeCompiler/apply_attribute_constant.html'>apply_attribute_constant()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/CompilerEnvironment/PikeCompiler/apply_type_attribute.html'>apply_type_attribute()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/CompilerEnvironment/PikeCompiler/change_compiler_compatibility.html'>change_compiler_compatibility()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/CompilerEnvironment/PikeCompiler/compile.html'>compile()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;create()</td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/CompilerEnvironment/PikeCompiler/get_compilation_handler.html'>get_compilation_handler()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/CompilerEnvironment/PikeCompiler/get_default_module.html'>get_default_module()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/CompilerEnvironment/PikeCompiler/handle_inherit.html'>handle_inherit()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/CompilerEnvironment/PikeCompiler/pop_type_attribute.html'>pop_type_attribute()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/CompilerEnvironment/PikeCompiler/push_type_attribute.html'>push_type_attribute()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/CompilerEnvironment/PikeCompiler/report.html'>report()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/CompilerEnvironment/PikeCompiler/resolv.html'>resolv()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/CompilerEnvironment/PikeCompiler/compile.html"><img src="../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >CompilerEnvironment()-&gt;PikeCompiler()-&gt;compile()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/CompilerEnvironment/PikeCompiler/get_compilation_handler.html">CompilerEnvironment()-&gt;PikeCompiler()-&gt;get_compilation_handler()<img src="../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method CompilerEnvironment()-&gt;PikeCompiler()-&gt;create()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>create</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>void</font> CompilerEnvironment.PikeCompiler<b>(</b><font color='#202020'>string</font>|<font color='#202020'>void</font> <font color='#005080'>source</font>, <font color='#005080'><font face='courier'><a href='../../../predef_3A_3A/CompilationHandler.html'>CompilationHandler</a></font></font>|<font color='#202020'>void</font> <font color='#005080'>handler</font>, <font color='#202020'>int</font>|<font color='#202020'>void</font> <font color='#005080'>major</font>, <font color='#202020'>int</font>|<font color='#202020'>void</font> <font color='#005080'>minor</font>, <font color='#202020'>program</font>|<font color='#202020'>void</font> <font color='#005080'>target</font>, <font color='#202020'>object</font>|<font color='#202020'>void</font> <font color='#005080'>placeholder</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Create a PikeCompiler object for a source string.</p>
+<p>   This function takes a piece of Pike code as a string and
+   initializes a compiler object accordingly.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>source</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>Source code to compile.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>handler</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>The optional argument <font face='courier'>handler</font>  is used to specify an alternative
+   error handler. If it is not specified the current master object
+   at compile time will be used.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>major</font></tt></font><dt>
+<dd></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>minor</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>The optional arguments <font face='courier'>major</font>  and <font face='courier'>minor</font>  are used to tell the
+   compiler to attempt to be compatible with Pike <font face='courier'>major</font> .<font face='courier'>minor</font> .</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>target</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p><font face='courier'><a href='../../../predef_3A_3A/__empty_program.html'>__empty_program()</a></font>  program to fill in. The virgin program
+   returned by <font face='courier'><a href='../../../predef_3A_3A/__empty_program.html'>__empty_program()</a></font>  will be modified and returned
+   by <font face='courier'><a href='../../../predef_3A_3A/CompilerEnvironment/PikeCompiler/compile.html'>compile()</a></font>  on success.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>placeholder</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p><font face='courier'><a href='../../../predef_3A_3A.html'>__null_program()</a></font>  placeholder object to fill in. The object
+   will be modified into an instance of the resulting program
+   on successfull compile. Note that <font face='courier'><a href='../../../lfun_3A_3A/create.html'>lfun::create()</a></font>  in the
+   program will be called without any arguments.</p>
+</font></dd>
+<dt><font face='Helvetica'>Note</font><dt>
+<dd><font face='Helvetica'><p>Note that <font face='courier'>source</font>  must contain the complete source for a program.
+   It is not possible to compile a single expression or statement.</p>
+<p>   Also note that no preprocessing is performed.
+   To preprocess the program you can use <font face='courier'><a href='../../../predef_3A_3A/compile_string.html'>compile_string()</a></font>  or
+   call the preprocessor manually by calling <font face='courier'><a href='../../../predef_3A_3A/cpp.html'>cpp()</a></font> .</p>
+</font></dd>
+<dt><font face='Helvetica'>Note</font><dt>
+<dd><font face='Helvetica'><p>Note that all references to <font face='courier'>target</font>  and <font face='courier'>placeholder</font>  should
+   removed if <font face='courier'><a href='../../../predef_3A_3A/CompilerEnvironment/PikeCompiler/compile.html'>compile()</a></font>  failes. On failure the <font face='courier'>placeholder</font> 
+   object will be destructed.</p>
+</font></dd>
+<dt><font face='Helvetica'>See also</font><dt>
+<dd><font face='Helvetica'><p><font face='courier'><a href='../../../predef_3A_3A/compile_string.html'>compile_string()</a></font> , <font face='courier'><a href='../../../predef_3A_3A/compile_file.html'>compile_file()</a></font> , <font face='courier'><a href='../../../predef_3A_3A/cpp.html'>cpp()</a></font> , <font face='courier'><a href='../../../predef_3A_3A/master.html'>master()</a></font> ,
+   <font face='courier'><a href='../../../predef_3A_3A/CompilationHandler.html'>CompilationHandler</a></font> </p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

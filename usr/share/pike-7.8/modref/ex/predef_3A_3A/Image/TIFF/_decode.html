@@ -1,0 +1,142 @@
+<html><head><title>Pike Reference Manual - Image.TIFF._decode()</title>
+<link rel='stylesheet' href='../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../ex/predef_3A_3A/Image.html'><b>Image</b></a><br />
+<a href='../../../../ex/predef_3A_3A/Image/TIFF.html'><b>Image.TIFF</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;_decode()</td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/TIFF/_encode.html'>_encode()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/TIFF/decode.html'>decode()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/Image/TIFF/encode.html'>encode()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/Image/TIFF.html"><img src="../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >Image.TIFF</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/Image/TIFF/_encode.html">Image.TIFF._encode()<img src="../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method Image.TIFF._decode()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>_decode</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>mapping</font>(<font color='#202020'>string</font>:<font color='#202020'>mixed</font>) <b><font color='#000066'>_decode</font>(</b><font color='#202020'>string</font> <font color='#005080'>data</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Decodes a TIFF image to a mapping with at least the members image
+ and alpha.</p>
+<table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"image"</font> : <font color='#005080'><font face='courier'><a href='../../../predef_3A_3A/Image/Image.html'>Image.Image</a></font></font></tt></td><td bgcolor='white'><p>The actual image.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"alpha"</font> : <font color='#005080'><font face='courier'><a href='../../../predef_3A_3A/Image/Image.html'>Image.Image</a></font></font></tt></td><td bgcolor='white'><p>Image alpha channel.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"xres"</font> : <font color='#202020'>float</font></tt></td><td bgcolor='white' rowspan='2'><p>Resolution</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"yres"</font> : <font color='#202020'>float</font></tt></td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"unit"</font> : <font color='#202020'>string</font></tt></td><td bgcolor='white'><table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"unitless"</font></tt></td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"pixels/inch"</font></tt></td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"pixels/cm"</font></tt></td></tr>
+</table></td></tr></table><br />
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"xdpy"</font> : <font color='#202020'>float</font></tt></td><td bgcolor='white' rowspan='2'><p>Resolution</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"ydpy"</font> : <font color='#202020'>float</font></tt></td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"xposition"</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'>&nbsp;</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"yposition"</font> : <font color='#202020'>int</font></tt></td><td bgcolor='white'>&nbsp;</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"photometric"</font> : <font color='#202020'>string</font></tt></td><td bgcolor='white'><p>Type of photometric. Can be <font face='courier'><code>"unknown"</code></font>.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"extra_samples"</font> : <font color='#202020'>array</font>(<font color='#202020'>int</font>|<font color='#202020'>string</font>)</tt></td><td bgcolor='white'><p>Array elements are either integers or any of</p>
+<table bgcolor='black' border='0' cellspacing='0' cellpadding='0'><tr><td>
+<table cellspacing='1' cellpadding='3' border='0' bgcolor='black'>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"unspecified"</font></tt></td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"assoc-alpha"</font></tt></td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"unassoc-alpha"</font></tt></td></tr>
+</table></td></tr></table><br />
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"threshholding"</font> : <font color='#202020'>string</font></tt></td><td bgcolor='white'>&nbsp;</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"halftone_hints"</font> : <font color='#202020'>array</font>(<font color='#202020'>int</font>)</tt></td><td bgcolor='white'><p>Array is always two elements.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"artist"</font> : <font color='#202020'>string</font></tt></td><td bgcolor='white'>&nbsp;</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"datetime"</font> : <font color='#202020'>string</font></tt></td><td bgcolor='white'>&nbsp;</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"hostcomputer"</font> : <font color='#202020'>string</font></tt></td><td bgcolor='white'>&nbsp;</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"software"</font> : <font color='#202020'>string</font></tt></td><td bgcolor='white'>&nbsp;</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"name"</font> : <font color='#202020'>string</font></tt></td><td bgcolor='white'>&nbsp;</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"comment"</font> : <font color='#202020'>string</font></tt></td><td bgcolor='white'>&nbsp;</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"make"</font> : <font color='#202020'>string</font></tt></td><td bgcolor='white'>&nbsp;</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"model"</font> : <font color='#202020'>string</font></tt></td><td bgcolor='white'>&nbsp;</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"page_name"</font> : <font color='#202020'>string</font></tt></td><td bgcolor='white'>&nbsp;</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"page_number"</font> : <font color='#202020'>array</font>(<font color='#202020'>int</font>)</tt></td><td bgcolor='white'><p>Array is always two elements.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"colormap"</font> : <font color='#202020'>array</font>(<font color='#202020'>array</font>(<font color='#202020'>int</font>))</tt></td><td bgcolor='white'><p>Array of array of RGB values.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"whitepoint"</font> : <font color='#202020'>array</font>(<font color='#202020'>int</font>)</tt></td><td bgcolor='white'><p>Array is always two elements.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"primary_chromaticities"</font> : <font color='#202020'>array</font>(<font color='#202020'>float</font>)</tt></td><td bgcolor='white'><p>Array is always six elements.</p>
+</td></tr>
+<tr valign='top'><td bgcolor='white'><tt><font color='green'>"reference_black_white"</font> : <font color='#202020'>array</font>(<font color='#202020'>array</font>(<font color='#202020'>float</font>))</tt></td><td bgcolor='white'><p>Array of array of two elements.</p>
+</td></tr>
+</table></td></tr></table><br />
+
+</font></dd>
+<dt><font face='Helvetica'>Throws</font><dt>
+<dd><font face='Helvetica'><p>Throws upon error in data.</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,379 @@
+<html><head><title>Pike Reference Manual - GSSAPI</title>
+<link rel='stylesheet' href='../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../..//images/pike_line_middle.gif" width="98%"><img src="../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../index.html'><b>[Top]</b></a><br />
+<b>GSSAPI</b><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Classes</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GSSAPI/AcceptContext.html'><b>AcceptContext</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GSSAPI/Context.html'><b>Context</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GSSAPI/Cred.html'><b>Cred</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GSSAPI/Error.html'><b>Error</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GSSAPI/InitContext.html'><b>InitContext</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GSSAPI/MissingServicesError.html'><b>MissingServicesError</b></a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GSSAPI/Name.html'><b>Name</b></a></td></tr>
+<tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GSSAPI/describe_services.html'>describe_services()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GSSAPI/indicate_mechs.html'>indicate_mechs()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GSSAPI/major_status_messages.html'>major_status_messages()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GSSAPI/minor_status_messages.html'>minor_status_messages()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../ex/predef_3A_3A/GSSAPI/names_for_mech.html'>names_for_mech()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../ex/predef_3A_3A/GLUE/ysize.html"><img src="../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >GLUE.ysize()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../ex/predef_3A_3A/GSSAPI/AcceptContext.html">GSSAPI.AcceptContext<img src="../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Module GSSAPI</h1>
+    <dl>
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>This is pike glue for GSS-API ver 2 as specified in RFC 2743.</p>
+<p> GSS-API is used to authenticate users and servers, and optionally
+ also to encrypt communication between them. The API is generic and
+ can be used without any knowledge of the actual implementation of
+ these security services, which is typically provided by the
+ operating system.</p>
+<p> The most common implementation at the time of writing is Kerberos,
+ which means that the main benefit of this API is to allow clients
+ and servers to authenticate each other using Kerberos, thereby
+ making single sign-on possible in a Kerberized environment.</p>
+<p> All functions in this module that wraps GSS-API routines might throw
+ <font face='courier'><a href='../predef_3A_3A/GSSAPI/Error.html'>GSSAPI.Error</a></font> , and by default they do for all such errors. Only in
+ some special cases do they return when a GSS-API error has happened,
+ and that is noted in the documentation.</p>
+</font></dd></dl>
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>int</b></font>
+</font><dt>
+<dd><p><tt>constant GSSAPI.<font color='#F000F0'>int</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Bitfield mask for the routine error part of major status codes
+ like <font face='courier'><a href='../predef_3A_3A/GSSAPI/Error.html'>GSSAPI.Error.major_status</a></font> . After applying this mask, the
+ status values may be compared to any of the routine error
+ constants.</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>int</b></font>
+</font><dt>
+<dd><p><tt>constant GSSAPI.<font color='#F000F0'>int</font></tt><br />
+<tt>constant GSSAPI.<font color='#F000F0'>int</font></tt><br />
+<tt>constant GSSAPI.<font color='#F000F0'>int</font></tt><br />
+<tt>constant GSSAPI.<font color='#F000F0'>int</font></tt><br />
+<tt>constant GSSAPI.<font color='#F000F0'>int</font></tt><br />
+<tt>constant GSSAPI.<font color='#F000F0'>int</font></tt><br />
+<tt>constant GSSAPI.<font color='#F000F0'>int</font></tt><br />
+<tt>constant GSSAPI.<font color='#F000F0'>int</font></tt><br />
+<tt>constant GSSAPI.<font color='#F000F0'>int</font></tt><br />
+<tt>constant GSSAPI.<font color='#F000F0'>int</font></tt><br />
+<tt>constant GSSAPI.<font color='#F000F0'>int</font></tt><br />
+<tt>constant GSSAPI.<font color='#F000F0'>int</font></tt><br />
+<tt>constant GSSAPI.<font color='#F000F0'>int</font></tt><br />
+<tt>constant GSSAPI.<font color='#F000F0'>int</font></tt><br />
+<tt>constant GSSAPI.<font color='#F000F0'>int</font></tt><br />
+<tt>constant GSSAPI.<font color='#F000F0'>int</font></tt><br />
+<tt>constant GSSAPI.<font color='#F000F0'>int</font></tt><br />
+<tt>constant GSSAPI.<font color='#F000F0'>int</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Constants for routine errors in major status codes like
+ <font face='courier'><a href='../predef_3A_3A/GSSAPI/Error.html'>GSSAPI.Error.major_status</a></font> . See RFC 2743 section 1.2.1.1. Note
+ that major status codes have to be masked with
+ <font face='courier'>GSSAPI.ERROR_MASK</font>  before comparison with these.</p>
+<p> Brief descriptions of the flags:</p>
+<dl><dt>GSSAPI.BAD_BINDINGS</dt>
+<dd><p>Channel binding mismatch.</p>
+</dd>
+<dt>GSSAPI.BAD_MECH</dt>
+<dd><p>Unsupported mechanism requested.</p>
+</dd>
+<dt>GSSAPI.BAD_NAME</dt>
+<dd><p>Invalid name provided.</p>
+</dd>
+<dt>GSSAPI.BAD_NAMETYPE</dt>
+<dd><p>Name of unsupported type provided.</p>
+</dd>
+<dt>GSSAPI.BAD_STATUS</dt>
+<dd><p>Invalid input status selector.</p>
+</dd>
+<dt>GSSAPI.BAD_MIC</dt>
+<dd><p>Token had invalid integrity check.</p>
+</dd>
+<dt>GSSAPI.CONTEXT_EXPIRED</dt>
+<dd><p>Specified security context expired.</p>
+</dd>
+<dt>GSSAPI.CREDENTIALS_EXPIRED</dt>
+<dd><p>Expired credentials detected.</p>
+</dd>
+<dt>GSSAPI.DEFECTIVE_CREDENTIAL</dt>
+<dd><p>Defective credential detected.</p>
+</dd>
+<dt>GSSAPI.DEFECTIVE_TOKEN</dt>
+<dd><p>Defective token detected.</p>
+</dd>
+<dt>GSSAPI.FAILURE</dt>
+<dd><p>Failure, unspecified at GSS-API level.
+   <font face='courier'><a href='../predef_3A_3A/GSSAPI/Error.html'>GSSAPI.Error.minor_status</a></font>  should provide further details.</p>
+</dd>
+<dt>GSSAPI.NO_CONTEXT</dt>
+<dd><p>No valid security context specified.</p>
+</dd>
+<dt>GSSAPI.NO_CRED</dt>
+<dd><p>No valid credentials provided.</p>
+</dd>
+<dt>GSSAPI.BAD_QOP</dt>
+<dd><p>Unsupported QOP value.</p>
+</dd>
+<dt>GSSAPI.UNAUTHORIZED</dt>
+<dd><p>Operation unauthorized.</p>
+</dd>
+<dt>GSSAPI.UNAVAILABLE</dt>
+<dd><p>Operation unavailable.</p>
+</dd>
+<dt>GSSAPI.DUPLICATE_ELEMENT</dt>
+<dd><p>Duplicate credential element requested.</p>
+</dd>
+<dt>GSSAPI.NAME_NOT_MN</dt>
+<dd><p>Name contains multi-mechanism elements.</p>
+</dd>
+</dl></font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>int</b></font>
+</font><dt>
+<dd><p><tt>constant GSSAPI.<font color='#F000F0'>int</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Bitfield mask for the informatory part of major status codes like
+ <font face='courier'><a href='../predef_3A_3A/GSSAPI/Error.html'>GSSAPI.Error.major_status</a></font> .</p>
+</font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>int</b></font>
+</font><dt>
+<dd><p><tt>constant GSSAPI.<font color='#F000F0'>int</font></tt><br />
+<tt>constant GSSAPI.<font color='#F000F0'>int</font></tt><br />
+<tt>constant GSSAPI.<font color='#F000F0'>int</font></tt><br />
+<tt>constant GSSAPI.<font color='#F000F0'>int</font></tt><br />
+<tt>constant GSSAPI.<font color='#F000F0'>int</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Bitfield flags for informatory codes in major status codes like
+ <font face='courier'><a href='../predef_3A_3A/GSSAPI/Error.html'>GSSAPI.Error.major_status</a></font> . See RFC 2743 section 1.2.1.1. Any
+ combination of these might optionally be combined with one routine
+ error constant to form a major status code.</p>
+<p> Brief descriptions of the flags:</p>
+<dl><dt>GSSAPI.CONTINUE_NEEDED</dt>
+<dd><p>Continuation call to routine required.</p>
+</dd>
+<dt>GSSAPI.DUPLICATE_TOKEN</dt>
+<dd><p>Duplicate per-message token detected.</p>
+</dd>
+<dt>GSSAPI.OLD_TOKEN</dt>
+<dd><p>Timed-out per-message token detected.</p>
+</dd>
+<dt>GSSAPI.UNSEQ_TOKEN</dt>
+<dd><p>Reordered (early) per-message token detected.</p>
+</dd>
+<dt>GSSAPI.GAP_TOKEN</dt>
+<dd><p>Skipped predecessor token(s) detected.</p>
+</dd>
+</dl></font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>string</b></font>
+</font><dt>
+<dd><p><tt>constant GSSAPI.<font color='#F000F0'>string</font></tt><br />
+<tt>constant GSSAPI.<font color='#F000F0'>string</font></tt><br />
+<tt>constant GSSAPI.<font color='#F000F0'>string</font></tt><br />
+<tt>constant GSSAPI.<font color='#F000F0'>string</font></tt><br />
+<tt>constant GSSAPI.<font color='#F000F0'>string</font></tt><br />
+<tt>constant GSSAPI.<font color='#F000F0'>string</font></tt><br />
+<tt>constant GSSAPI.<font color='#F000F0'>string</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>OIDs on dotted-decimal form for the GSS-API mechanism-independent
+ name types, and some selected mechanism-specific ones:</p>
+<dl><dt>NT_HOSTBASED_SERVICE</dt>
+<dd><p>Name type for a service associated with a host computer. The
+   syntax is <tt>service@hostname</tt> where the <tt>@hostname</tt>
+   part may be omitted for the local host. See RFC 2743 section
+   4.1.</p>
+</dd>
+<dt>NT_USER_NAME</dt>
+<dd><p>Name type for a named user on a local system. The syntax is
+   <tt>username</tt>. See RFC 2743 section 4.2.</p>
+</dd>
+<dt>NT_MACHINE_UID_NAME</dt>
+<dd><p>Name type for a numeric user identifier corresponding to a user
+   on a local system. The string representing a name of this type
+   should contain a locally-significant user ID, represented in
+   host byte order. See RFC 2743 section 4.3.</p>
+</dd>
+<dt>NT_STRING_UID_NAME</dt>
+<dd><p>Name type for a string of digits representing the numeric user
+   identifier of a user on a local system. This name type is
+   similar to the Machine UID Form, except that the buffer contains
+   a string representing the user ID. See RFC 2743 section 4.4.</p>
+</dd>
+<dt>NT_ANONYMOUS</dt>
+<dd><p>Name type to identify anonymous names. See RFC 2743 section 4.5.</p>
+</dd>
+<dt>NT_EXPORT_NAME</dt>
+<dd><p>Name type for the Mechanism-Independent Exported Name Object
+   type, which is the type of the names returned by
+   <font face='courier'><a href='../predef_3A_3A/GSSAPI/Name/export.html'>GSSAPI.Name.export</a></font> . See RFC 2743 section 4.7.</p>
+</dd>
+<dt>KRB5_NT_PRINCIPAL_NAME</dt>
+<dd><p>Name type for a Kerberos principal. See RFC 1964 section 2.1.1.</p>
+</dd>
+</dl></font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>int</b></font>
+</font><dt>
+<dd><p><tt>constant GSSAPI.<font color='#F000F0'>int</font></tt><br />
+<tt>constant GSSAPI.<font color='#F000F0'>int</font></tt><br />
+<tt>constant GSSAPI.<font color='#F000F0'>int</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Flags for indicating how a <font face='courier'><a href='../predef_3A_3A/GSSAPI/Cred.html'>GSSAPI.Cred</a></font>  object may be used:</p>
+<dl><dt>INITIATE</dt>
+<dd><p>The credential can only be used to initiate security contexts
+   (i.e. using <font face='courier'><a href='../predef_3A_3A/GSSAPI/InitContext.html'>GSSAPI.InitContext</a></font> ).</p>
+</dd>
+<dt>ACCEPT</dt>
+<dd><p>The credential can only be used to accept security contexts
+   (i.e. using <font face='courier'><a href='../predef_3A_3A/GSSAPI/AcceptContext.html'>GSSAPI.AcceptContext</a></font> ).</p>
+</dd>
+<dt>BOTH</dt>
+<dd><p>The credential may be used both to initiate or accept security
+   contexts.</p>
+</dd>
+</dl></font></dd></dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Constant</font>
+<font size='+1'><b>int</b></font>
+</font><dt>
+<dd><p><tt>constant GSSAPI.<font color='#F000F0'>int</font></tt><br />
+<tt>constant GSSAPI.<font color='#F000F0'>int</font></tt><br />
+<tt>constant GSSAPI.<font color='#F000F0'>int</font></tt><br />
+<tt>constant GSSAPI.<font color='#F000F0'>int</font></tt><br />
+<tt>constant GSSAPI.<font color='#F000F0'>int</font></tt><br />
+<tt>constant GSSAPI.<font color='#F000F0'>int</font></tt><br />
+<tt>constant GSSAPI.<font color='#F000F0'>int</font></tt><br />
+<tt>constant GSSAPI.<font color='#F000F0'>int</font></tt><br />
+<tt>constant GSSAPI.<font color='#F000F0'>int</font></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Bitfield flags returned by e.g. <font face='courier'><a href='../predef_3A_3A/GSSAPI/Context/is_established.html'>GSSAPI.Context.services</a></font>  to
+ denote various services that are available in the context.</p>
+<p> Brief descriptions of the flags:</p>
+<dl><dt>GSSAPI.DELEG_FLAG</dt>
+<dd><p>Delegation. See RFC 2743 section 1.2.9.</p>
+</dd>
+<dt>GSSAPI.MUTUAL_FLAG</dt>
+<dd><p>Mutual authentication (actually, acceptor authentication). See
+   RFC 2743 sections 1.1.1.3 and 1.2.5.</p>
+</dd>
+<dt>GSSAPI.REPLAY_FLAG</dt>
+<dd><p>Per-message replay detection. See RFC 2743 section 1.2.3.</p>
+</dd>
+<dt>GSSAPI.SEQUENCE_FLAG</dt>
+<dd><p>Per-message sequencing. See RFC 2743 section 1.2.3.</p>
+</dd>
+<dt>GSSAPI.CONF_FLAG</dt>
+<dd><p>Per-message confidentiality. See RFC 2743 section 1.2.2.</p>
+</dd>
+<dt>GSSAPI.INTEG_FLAG</dt>
+<dd><p>Per-message integrity. See RFC 2743 section 1.2.2.</p>
+</dd>
+<dt>GSSAPI.ANON_FLAG</dt>
+<dd><p>Anonymous authentication. See RFC 2743 section 1.2.5.</p>
+</dd>
+<dt>GSSAPI.PROT_READY_FLAG</dt>
+<dd><p>Might be set before the context establishment has finished, to
+   denote that per-message protection already is available. See RFC
+   2743 section 1.2.7. Is always set in <font face='courier'><a href='../predef_3A_3A/GSSAPI/Context.html'>GSSAPI.Context</a></font>  and derived
+   classes when the context is established.</p>
+</dd>
+<dt>GSSAPI.TRANS_FLAG</dt>
+<dd><p>The context can be transferred between processes using
+   <font face='courier'><a href='../predef_3A_3A/GSSAPI/Context/export.html'>GSSAPI.Context.export</a></font>  and <font face='courier'>GSSAPI.Context.import</font> . See RFC
+   2743 section 1.2.10.</p>
+</dd>
+</dl></font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

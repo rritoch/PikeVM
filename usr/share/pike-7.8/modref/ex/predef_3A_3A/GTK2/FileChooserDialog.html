@@ -1,0 +1,106 @@
+<html><head><title>Pike Reference Manual - GTK2.FileChooserDialog</title>
+<link rel='stylesheet' href='../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../..//images/pike_line_middle.gif" width="98%"><img src="../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../ex/predef_3A_3A/GTK2.html'><b>GTK2</b></a><br />
+<b>GTK2.FileChooserDialog</b><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK2/FileChooserDialog/create.html'>create()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../ex/predef_3A_3A/GTK2/FileChooserButton/set_width_chars.html"><img src="../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >GTK2.FileChooserButton()-&gt;set_width_chars()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../ex/predef_3A_3A/GTK2/FileChooserDialog/create.html">GTK2.FileChooserDialog()-&gt;create()<img src="../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Class GTK2.FileChooserDialog</h1>
+    <dl>
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>GtkFileChooserDialog should be used to retrieve file or directory names
+ from the user. It will create a new dialog window containing a
+ directory list, and a file list corresponding to the current
+ working directory. The filesystem can be navigated using the
+ directory list, the drop-down history menu, or the TAB key can be
+ used to navigate using filename completion common in text based
+ editors such as emacs and jed.</p>
+<p> The default filename can be set using set_filename() and the
+ selected filename retrieved using get_filename().</p>
+<p> Use complete() to display files that match a given pattern. This
+ can be used for example, to show only *.txt files, or only files
+ beginning with gtk*.</p>
+<p> Simple file operations; create directory, delete file, and rename
+ file, are available from buttons at the top of the dialog. These
+ can be hidden using hide_fileop_buttons() and shown again using
+ show_fileop_buttons().</p>
+<p><font face='courier'><code>&nbsp;GTK2.FileChooserDialog("File&nbsp;selector",&nbsp;0,&nbsp;GTK2.FILE_CHOOSER_ACTION_OPEN,&nbsp;({(["text":"Transmogrify",&nbsp;"id":17]),&nbsp;(["text":"Never&nbsp;mind",&nbsp;"id":42])}))</code></font>
+<img src='../../../images/predef.GTK2.FileChooserDialog.1.png' height='384' width='584' /></p>
+</font></dd></dl>
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Inherit</font>
+<font size='+1'><b>Dialog</b></font>
+</font><dt>
+<dd><p><font face='courier'>inherit </font><font face='courier'><a href='../../predef_3A_3A/GTK2/Dialog.html'>GTK2.Dialog</a></font><font face='courier'> : <font color='#F000F0'>Dialog</font></font></p></dd>
+</dl>
+
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Inherit</font>
+<font size='+1'><b>FileChooser</b></font>
+</font><dt>
+<dd><p><font face='courier'>inherit </font><font face='courier'><a href='../../predef_3A_3A/GTK2/FileChooser.html'>GTK2.FileChooser</a></font><font face='courier'> : <font color='#F000F0'>FileChooser</font></font></p></dd>
+</dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

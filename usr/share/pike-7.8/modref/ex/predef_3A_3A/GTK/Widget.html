@@ -1,0 +1,266 @@
+<html><head><title>Pike Reference Manual - GTK.Widget</title>
+<link rel='stylesheet' href='../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../..//images/pike_line_middle.gif" width="98%"><img src="../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../ex/predef_3A_3A/GTK.html'><b>GTK</b></a><br />
+<b>GTK.Widget</b><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/activate.html'>activate()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/add_accelerator.html'>add_accelerator()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/add_events.html'>add_events()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/allocation.html'>allocation()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/class_path.html'>class_path()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/copy_area.html'>copy_area()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/drag_dest_set.html'>drag_dest_set()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/drag_dest_unset.html'>drag_dest_unset()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/drag_get_data.html'>drag_get_data()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/drag_highlight.html'>drag_highlight()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/drag_source_set.html'>drag_source_set()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/drag_source_set_icon.html'>drag_source_set_icon()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/drag_source_unset.html'>drag_source_unset()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/drag_unhighlight.html'>drag_unhighlight()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/ensure_style.html'>ensure_style()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/get_composite_name.html'>get_composite_name()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/get_events.html'>get_events()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/get_extension_events.html'>get_extension_events()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/get_gdkwindow.html'>get_gdkwindow()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/get_name.html'>get_name()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/get_parent.html'>get_parent()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/get_style.html'>get_style()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/get_toplevel.html'>get_toplevel()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/grab_default.html'>grab_default()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/grab_focus.html'>grab_focus()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/has_set_flags.html'>has_set_flags()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/hide.html'>hide()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/hide_all.html'>hide_all()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/intersect.html'>intersect()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/is_ancestor.html'>is_ancestor()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/lock_accelerators.html'>lock_accelerators()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/map.html'>map()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/path.html'>path()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/popup.html'>popup()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/queue_clear.html'>queue_clear()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/queue_clear_area.html'>queue_clear_area()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/queue_draw.html'>queue_draw()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/queue_draw_area.html'>queue_draw_area()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/queue_resize.html'>queue_resize()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/realize.html'>realize()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/remove_accelerator.html'>remove_accelerator()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/reparent.html'>reparent()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/reset_rc_styles.html'>reset_rc_styles()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/restore_default_style.html'>restore_default_style()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/selection_add_target.html'>selection_add_target()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/selection_owner_set.html'>selection_owner_set()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/selecton_convert.html'>selecton_convert()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/set_app_paintable.html'>set_app_paintable()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/set_background.html'>set_background()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/set_bitmap_cursor.html'>set_bitmap_cursor()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/set_composite_name.html'>set_composite_name()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/set_cursor.html'>set_cursor()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/set_events.html'>set_events()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/set_extension_events.html'>set_extension_events()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/set_flags.html'>set_flags()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/set_name.html'>set_name()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/set_rc_style.html'>set_rc_style()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/set_scroll_adjustments.html'>set_scroll_adjustments()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/set_sensitive.html'>set_sensitive()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/set_state.html'>set_state()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/set_style.html'>set_style()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/set_uposition.html'>set_uposition()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/set_usize.html'>set_usize()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/shape_combine_mask.html'>shape_combine_mask()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/show.html'>show()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/show_all.html'>show_all()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/show_now.html'>show_now()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/text_width.html'>text_width()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/unlock_accelerators.html'>unlock_accelerators()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/unmap.html'>unmap()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/unparent.html'>unparent()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/unrealize.html'>unrealize()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/unset_flags.html'>unset_flags()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/xoffset.html'>xoffset()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/xsize.html'>xsize()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/yoffset.html'>yoffset()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../ex/predef_3A_3A/GTK/Widget/ysize.html'>ysize()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../ex/predef_3A_3A/GTK/Vseparator/create.html"><img src="../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >GTK.Vseparator()-&gt;create()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../ex/predef_3A_3A/GTK/Widget/activate.html">GTK.Widget()-&gt;activate()<img src="../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Class GTK.Widget</h1>
+    <dl>
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>The basic widget, inherited (directly or indirectly) by all
+ widgets.  Thus, all functions and signals defined in this widget
+ works on all widgets.</p>
+<p> One of the most importat functions in this class is 'show',
+ it lets GTK know that we are done setting the attributes of the
+ widget, and it is ready to be displayed. You may also use hide to
+ make it disappear again. The order in which you show the widgets is
+ not important, but I suggest showing the toplevel window last so
+ the whole window pops up at once rather than seeing the individual
+ widgets come up on the screen as they're formed. The children of a
+ widget (a window is a widget too) will not be displayed until the
+ window itself is shown using the show() function.</p>
+<p>  Signals:
+ <b>add_accelerator</b>
+ Called when an accelarator (keyboard shortcut) is added to the widget</p>
+<p><b>button_press_event</b>
+ Called when a mouse button is pressed</p>
+<p><b>button_release_event</b>
+ Called when a mouse button is released</p>
+<p><b>client_event</b>
+ An event sent by another client application</p>
+<p><b>configure_event</b>
+ The size, position or stacking order of the widget has changed</p>
+<p><b>debug_msg</b></p>
+<p><b>delete_event</b>
+ Called when the user has requested that the widget should be closed</p>
+<p><b>destroy_event</b>
+ Called when the widget is destroyed</p>
+<p><b>drag_begin</b>
+ Called when the drag is initiated, on the sending side</p>
+<p><b>drag_data_delete</b>
+ Called when the data can be safely deleted (there is no need to use this function in pigtk, it's all handled automatically)</p>
+<p><b>drag_data_get</b>
+ Called on the sending side when the drop is initiated</p>
+<p><b>drag_data_received</b>
+ Called on the receiving side when the drop is finished.</p>
+<p><b>drag_drop</b>
+ Called on the receiving side when the drop is initiated</p>
+<p><b>drag_end</b>
+ Called when the drag is finished, on the sending side</p>
+<p><b>drag_leave</b>
+ Called when the mouse leaves the widget while the user is dragging something</p>
+<p><b>drag_motion</b>
+ Called on the receiving side when the cursor is moved over the widget while dragging something</p>
+<p><b>draw</b>
+ Called when the widget should draw itself.</p>
+<p><b>draw_default</b>
+ Called when the widget should draw itself, and indicate that it's the default widget</p>
+<p><b>draw_focus</b>
+ Called when the widget should draw itself, and a focus indicator around itself (or otherwise indicate that is has the keyboard focus)</p>
+<p><b>enter_notify_event</b>
+ Called when the mouse enters the widget</p>
+<p><b>event</b>
+ Called for all events</p>
+<p><b>expose_event</b>
+ Called when the widget, or a part of the widget gets and expose event</p>
+<p><b>focus_in_event</b>
+ The keyboard focus has entered the widget</p>
+<p><b>focus_out_event</b>
+ The keyboard focus has left the widget</p>
+<p><b>hide</b>
+ Called when the widget is hidden</p>
+<p><b>key_press_event</b>
+ Called when a keyboard key is pressed</p>
+<p><b>key_release_event</b>
+ Called when a keyboard key is released</p>
+<p><b>leave_notify_event</b>
+ Called when the mouse leaves the widget</p>
+<p><b>map</b>
+ Called when the window associated with the widget is mapped</p>
+<p><b>map_event</b>
+ Called just before the 'map' signal</p>
+<p><b>motion_notify_event</b>
+ Called when the mouse is moved inside the widget</p>
+<p><b>no_expose_event</b></p>
+<p><b>other_event</b></p>
+<p><b>parent_set</b>
+ Called when the parent widget is changed</p>
+<p><b>property_notify_event</b>
+ Called when a property of the GDK window associated with the widget is changed</p>
+<p><b>proximity_in_event</b></p>
+<p><b>proximity_out_event</b></p>
+<p><b>realize</b>
+ Called when the widget is realized. Some methods cannot be used until the widget has been realized, if you get assertion errors related to 'w-&gt;window' or similar, this is probably the cause.</p>
+<p><b>remove_accelerator</b>
+ Called when an accelerator (keyboard shortcut) is removed from the widget</p>
+<p><b>selection_clear_event</b>
+ NYI</p>
+<p><b>selection_notify_event</b>
+ NYI</p>
+<p><b>selection_received</b>
+ NYI</p>
+<p><b>selection_request_event</b>
+ NYI</p>
+<p><b>show</b>
+ Called when the widget is shown</p>
+<p><b>size_allocate</b>
+ Called when the widget gets the size it should be</p>
+<p><b>size_request</b>
+ Called when the widget should calculate how big it wants to be</p>
+<p><b>state_changed</b></p>
+<p><b>style_set</b>
+ Called when the style is changed</p>
+<p><b>unmap</b>
+ Called when the window associated with the widget is unmapped</p>
+<p><b>unmap_event</b>
+ Called just before the 'unmap' signal</p>
+<p><b>unrealize</b>
+ Called when the widget is unrealized.</p>
+<p><b>visibility_notify_event</b>
+ The widget has been mapped, unmapped, hidden, or otherwise had its visibility modified</p>
+</font></dd></dl>
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Inherit</font>
+<font size='+1'><b>Object</b></font>
+</font><dt>
+<dd><p><font face='courier'>inherit </font><font face='courier'><a href='../../predef_3A_3A/GTK/Object.html'>GTK.Object</a></font><font face='courier'> : <font color='#F000F0'>Object</font></font></p></dd>
+</dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

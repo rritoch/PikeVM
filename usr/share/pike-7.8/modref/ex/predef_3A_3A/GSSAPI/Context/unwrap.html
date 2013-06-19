@@ -1,0 +1,155 @@
+<html><head><title>Pike Reference Manual - GSSAPI.Context()-&gt;unwrap()</title>
+<link rel='stylesheet' href='../../../../style.css' /></head>
+<body topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'
+      bgcolor='#ffffff' text='#000000' link='#000099' alink='#002040'
+      vlink='#000099'>
+
+<table width="100%">
+  <tr>
+    <td colspan='3'></td>
+    <td colspan='2' align='right'>Extracted from Pike v7.8 release 116 at 2008-12-31.</td>
+  </tr>
+  <tr>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="1%">
+      <a href="http://pike.ida.liu.se/"><img src="../../../..//images/pike_logo.gif"
+      border="0" alt="pike.ida.liu.se" width="181" height="41" hspace="5"></a></td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+    <td width="99%">
+      <table align="center" border="0" width="100%" cellspacing="0" cellpadding="0" valign="middle">
+        <tr>
+          <td width="1%" align="right"><img src="../../../..//images/pike_line_left.gif" alt="" border="0" width="5" height="11"></td>
+          <td background="../../../..//images/pike_line_middle.gif" width="98%"><img src="../../../..//images/unit.gif" alt="" border="0" width="11" height="11"></td>
+          <td width="1%" align="left"><img src="../../../..//images/pike_line_right.gif" alt="" border="0" width="5" height="11"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="0%"><img src="../../../..//images/unit.gif" alt="" width="10" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../../..//images/unit.gif" alt="" width="1" height="10"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width='180' valign='top' bgcolor='#f0f0f0'><a href='../../../../index.html'><b>[Top]</b></a><br />
+<a href='../../../../ex/predef_3A_3A/GSSAPI.html'><b>GSSAPI</b></a><br />
+<a href='../../../../ex/predef_3A_3A/GSSAPI/Context.html'><b>GSSAPI.Context</b></a><br />
+<table border='0' cellpadding='1' cellspacing='0' class='sidebar'><tr><td nowrap='nowrap'><br /><b>Methods</b></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GSSAPI/Context/create.html'>create()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GSSAPI/Context/delete.html'>delete()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GSSAPI/Context/export.html'>export()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GSSAPI/Context/get_mic.html'>get_mic()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GSSAPI/Context/is_established.html'>is_established()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GSSAPI/Context/last_confidential.html'>last_confidential()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GSSAPI/Context/last_major_status.html'>last_major_status()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GSSAPI/Context/last_minor_status.html'>last_minor_status()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GSSAPI/Context/last_qop.html'>last_qop()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GSSAPI/Context/lifetime.html'>lifetime()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GSSAPI/Context/locally_initiated.html'>locally_initiated()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GSSAPI/Context/mech.html'>mech()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GSSAPI/Context/process_token.html'>process_token()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GSSAPI/Context/required_services.html'>required_services()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GSSAPI/Context/services.html'>services()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GSSAPI/Context/source_name.html'>source_name()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GSSAPI/Context/target_name.html'>target_name()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;unwrap()</td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GSSAPI/Context/verify_mic.html'>verify_mic()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GSSAPI/Context/wrap.html'>wrap()</a></td></tr>
+<tr><td nowrap='nowrap'>&nbsp;<a href='../../../../ex/predef_3A_3A/GSSAPI/Context/wrap_size_limit.html'>wrap_size_limit()</a></td></tr>
+</table></td>
+    <td width='520' valign='top'>
+
+    <table border="0" width="520" bgcolor="#e0e0e0"
+           cellpadding="0" cellspacing="4" class='sidebar'>
+      <tr>
+        <td valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/GSSAPI/Context/target_name.html"><img src="../../../../images/prev.gif" hspace="3"
+	         border="0" alt="previous" >GSSAPI.Context()-&gt;target_name()</a>
+          <br />
+	</td>
+	<td align="right" valign="middle">
+	  <a href="../../../../ex/predef_3A_3A/GSSAPI/Context/verify_mic.html">GSSAPI.Context()-&gt;verify_mic()<img src="../../../../images/next.gif" hspace="3"
+	          border="0" alt="next" ></a>
+	  <br />
+	</td>
+      </tr>
+    </table>
+
+    <h1>Method GSSAPI.Context()-&gt;unwrap()</h1>
+    
+
+<hr clear='all' size='1' noshadow='noshadow' />
+<dl>
+<dt><font face='Helvetica'><font face='Helvetica'>Method</font>
+<font size='+1'><b>unwrap</b></font>
+</font><dt>
+<dd><p><tt><font color='#202020'>string</font> <b><font color='#000066'>unwrap</font>(</b><font color='#202020'>string</font> <font color='#005080'>message</font>, <font color='#202020'>void</font>|<font color='#202020'>int</font> <font color='#005080'>accept_encrypted_only</font><b>)</b></tt></p></dd>
+
+<dt><font face='Helvetica'>Description</font><dt>
+<dd><font face='Helvetica'><p>Verifies the origin and integrity of the given message using the
+ MIC included in it, and also decrypts the message if it was
+ encrypted. The message has been calculated by the sender using
+ <font face='courier'><a href='../../../predef_3A_3A/GSSAPI/Context/wrap.html'>wrap</a></font>  or some other <tt>GSS_Wrap</tt> wrapper.</p>
+<p> This wraps <tt>GSS_Unwrap</tt> according to RFC 2743 section
+ 2.3.4.</p>
+<p> This function requires that the context is established, or that
+ the early per-message protection service is available (c.f.
+ <font face='courier'>GSSAPI.PROT_READY_FLAG</font> . If not, a
+ <font face='courier'><a href='../../../predef_3A_3A/GSSAPI/MissingServicesError.html'>GSSAPI.MissingServicesError</a></font>  is thrown (but the context is not
+ closed).</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>message</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>The message to be unwrapped.</p>
+</font></dd>
+<dt><font face='Helvetica'>Parameter <tt><font color='#8000F0'>accept_encrypted_only</font></tt></font><dt>
+<dd></dd><dd><font face='Helvetica'><p>If this is nonzero then it is an error if <font face='courier'>message</font>  isn't
+   encrypted, and zero is returned in that case (the status
+   returned by <font face='courier'><a href='../../../predef_3A_3A/GSSAPI/Context/last_major_status.html'>last_major_status</a></font>  will still indicate success,
+   though).</p>
+</font></dd>
+<dt><font face='Helvetica'>Returns</font><dt>
+<dd><font face='Helvetica'><p>Zero is returned if the verification fails with
+   <font face='courier'>GSSAPI.DEFECTIVE_TOKEN</font>  or <font face='courier'>GSSAPI.BAD_MIC</font> .</p>
+<p>   Zero is also returned if <font face='courier'>message</font>  isn't encrypted and
+   <font face='courier'>accept_encrypted_only</font>  is set.</p>
+<p>   Otherwise the message is successfully decrypted (provided it was
+   encrypted to begin with), and its origin and integrity checks
+   out, but it might still be considered wrong depending on whether
+   the replay detection or sequencing services are required (see
+   <font face='courier'><a href='../../../predef_3A_3A/GSSAPI/Context/required_services.html'>required_services</a></font> ):</p>
+<p>   If replay detection (c.f. <font face='courier'>GSSAPI.REPLAY_FLAG</font> ) is required
+   then zero is returned if the message is duplicated
+   (<font face='courier'>GSSAPI.DUPLICATE_TOKEN</font> ) or old (<font face='courier'>GSSAPI.OLD_TOKEN</font> ).</p>
+<p>   If sequencing (c.f. <font face='courier'>GSSAPI.SEQUENCE_FLAG</font> ) is required then in
+   addition to the replay detection conditions, zero is also
+   returned if the message is out of sequence
+   (<font face='courier'>GSSAPI.UNSEQ_TOKEN</font>  or <font face='courier'>GSSAPI.GAP_TOKEN</font> ).</p>
+<p>   Otherwise the unwrapped message is returned, which is valid
+   according to the currently required services (note however that
+   requiring the confidentiality service does not imply that an
+   error is signalled whenever an unencrypted message is received -
+   see instead <font face='courier'>accept_encrypted_only</font>  above).</p>
+</font></dd>
+<dt><font face='Helvetica'>Throws</font><dt>
+<dd><font face='Helvetica'><p>Any GSS-API errors except <font face='courier'>GSSAPI.DEFECTIVE_TOKEN</font>  and
+   <font face='courier'>GSSAPI.BAD_MIC</font>  are thrown.</p>
+</font></dd>
+<dt><font face='Helvetica'>Note</font><dt>
+<dd><font face='Helvetica'><p>This function sets the value returned by <font face='courier'><a href='../../../predef_3A_3A/GSSAPI/Context/last_confidential.html'>last_confidential</a></font> 
+   and <font face='courier'><a href='../../../predef_3A_3A/GSSAPI/Context/last_qop.html'>last_qop</a></font> .</p>
+</font></dd>
+<dt><font face='Helvetica'>Note</font><dt>
+<dd><font face='Helvetica'><p>Even if the message is considered valid by the return value,
+   <font face='courier'><a href='../../../predef_3A_3A/GSSAPI/Context/last_major_status.html'>last_major_status</a></font>  may be called to check for the informatory
+   codes mentioned above.</p>
+</font></dd></dl>
+
+
+    <hr size='1' noshade='1' />
+    </td>
+  </tr>
+</table>
+</body>
+</html>
