@@ -11,16 +11,17 @@
 
 #define DEBUG_REQUEST
 
-private string request;
 private object shell_ob;
 
 private object link_in;
 private object link_out;
 private object link_error;
-
+private mapping env;
 private int respawn;
+private string current_header;
 
-int recv_msg(mixed ... msg) {   
+int recv_msg(mixed ... msg) 
+{   
     return write(@msg);
 }
 
@@ -38,8 +39,7 @@ void handle_input_to(function fun,
 }
 
 
-private void flush() {
-    request="";                
+private void flush() {                    
 }
 
 string get_name() 
@@ -51,12 +51,45 @@ void save()
 {    
 }
 
+void dispatch_request() 
+{
+#ifdef DEBUG_REQUEST 
+    kernel()->console_write("httpd: Have headers (%O)\n",env["REQUEST_HEADERS_RAW"]);
+#endif
+}
+
+void have_header(string header_in) 
+{        
+    string header_part = strip_nl(header_in);    
+    if (sizeof(header_part) == 0) {        
+        dispatch_request();
+    } else {
+        env["REQUEST_HEADERS_RAW"] += header_in;
+        input_to(have_header,INPUT_IGNORE_BANG,"");    
+    }
+}
+
 void have_request(string rqst) 
 {
+    array (string) parts;
+    string request;
+    
+    env["REQUEST_LINE"] = rqst;    
     request = strip_nl(rqst);
+    
 #ifdef DEBUG_REQUEST 
-    kernel()->console_write("Have request (%s)\n",request);
-#endif 
+    kernel()->console_write("httpd: Have request (%s)\n",request);
+#endif
+
+    parts = request / " ";
+    if (sizeof(parts) == 3) {
+        env["REQUEST_METHOD"] = parts[0];
+        env["REQUEST_URI"] = parts[1];
+        env["REQUEST_HTTP_VERSION"] = parts[2];
+        current_header = "";
+        input_to(have_header,INPUT_IGNORE_BANG,"");
+        env["REQUEST_HEADERS_RAW"] = "";
+    }
 }
 
 private string strip_nl(string msg) {
@@ -115,7 +148,8 @@ void login_success() {
  }
 }
 
-void do_login() {
+void do_login() 
+{
     input_to(have_request,INPUT_IGNORE_BANG,"");  
 }
 
@@ -143,9 +177,9 @@ mixed get_link()
    return ({ link_in, link_out, link_error });
 }
 
-int main(int argc, array(string) argv, mapping env) { 
-
- return -1;
+int main(int argc, array(string) argv, mapping env_in) { 
+    env = copy_value(env_in);
+    return -1;
 }
 
 protected void create(mixed link, int persistent) { 
