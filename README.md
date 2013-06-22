@@ -43,6 +43,11 @@ Example: If Sources are installed in /opt/PikeVM
 
 pike -m /opt/PikeVM/root/boot/master-1.0.pike /opt/PikeVM/root/boot/system-1.0
 
+Note: At the login prompt the default username and password is "test". Raw pike 
+commands can be entered at the command line using the at "@" prefix. 
+
+Ex.
+  @ write("Hello World!")
 
 Contributions:
 
