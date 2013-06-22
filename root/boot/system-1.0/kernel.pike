@@ -1418,6 +1418,25 @@ object _this_user() {
  return 0;
 }
 
+object _this_player() 
+{
+    return _this_user();
+}
+
+int _in_edit(object user) {
+    return 0;
+}
+
+int _in_input(object user) 
+{
+    return 0;
+}
+
+int _query_idle(object user) 
+{
+    return -1;
+}
+
 array(object) _users() 
 {
     return indices(users);

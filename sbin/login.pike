@@ -66,6 +66,11 @@ string get_name()
     return user ? user : "";
 }
 
+string query_name() 
+{
+    return user ? user : "";
+}
+
 void save() 
 {
     if (user && user !="") {        

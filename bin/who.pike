@@ -1,19 +1,20 @@
-#include <stdio.h>
 
-int main(int argc, array(string) argv, mixed env) {
+#include <command.h>
 
+int main(int argc, array(string) argv, mixed env)
+{
+  string arg = argv * " "; 
+	array(object) list;
+	int j;
 
- object user; 
-
- foreach(users(), user) {
- 
-     if (user->get_name() != "") {
-         printf("%s %O\n",user->get_name(),user->get_link()[0]);     
-     } else {
-         printf("[login] %O\n",user->get_link()[0]);
-     }
-     
- }
- 
- return 0;
+	printf("%-25s idle\n", "name (*edit, +input)");
+	printf("--------------------      ----\n");
+	for (list = users(), j = 0; j < sizeof(list); j++) {
+		printf("%-25s %4d\n", (string)list[j]->query_name() +
+		(in_edit(this_player()) ? "*" : "") +
+		(in_input(this_player()) ? "+" : ""),
+		query_idle(this_player()) / 60
+		);
+	}
+	return 1;
 }
