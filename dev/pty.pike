@@ -493,6 +493,7 @@ protected void create(int fh) {
  }
  in_buff = "";
  connected = 1;
+ kill_fh = fh;
  Thread.Thread thread;
  if (!running)
   thread = Thread.Thread(backend);

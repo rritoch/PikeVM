@@ -280,6 +280,16 @@ public int _fopen(string fn, string mode) {
  VFS_RETURN(ret);
 }
 
+
+public int _fclose(int fh) 
+{
+    int ret; 
+    NEED_VFS(0);
+    ret = vfs->fclose(fh);
+    VFS_RETURN(ret);
+}
+
+
 public int|string _read_file(string fn) {
  int fh;
  

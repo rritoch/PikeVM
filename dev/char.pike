@@ -34,6 +34,8 @@ extern string _read_char(int noecho);
 extern void _write_error_message(mixed err);
 extern int _open();
 
+protected int kill_fh = 0;
+
 void input_to(function fun, 
               void|int flag, 
               void|string|function prompt, mixed ... args) {
@@ -91,10 +93,13 @@ protected int backend() {
  string str;
  string ch;
  mixed err;
+ int kfh;
  function f;
  if (!_open()) return 1;
  
- while (1) { // Master Loop
+ while (this) { // Master Loop
+ 
+  kfh = kill_fh;
   if (functionp(grab_cb)) {
    f = grab_cb;
    grab_cb = 0;
@@ -219,7 +224,11 @@ protected int backend() {
     }
    }
   } else {
-   sleep(1);
+    sleep(1);    
   }
  }
+ 
+    if (kfh) {
+        fclose(kfh);
+    }
 }

@@ -9,7 +9,7 @@
 
 #include "/includes/devices.h"
 
-#define DEBUG_REQUEST
+//#define DEBUG_REQUEST
 
 private object shell_ob;
 
@@ -23,6 +23,28 @@ private string current_header;
 int recv_msg(mixed ... msg) 
 {   
     return write(@msg);
+}
+
+int is_shell() {
+ return 1;
+}
+
+mapping(string:string) environment() 
+{
+    return copy_value(env);
+}
+
+string set_env(string vname, string val) 
+{
+    env[vname] = val;
+    return val;
+}
+
+string get_env(string vname) {
+    if (zero_type(env[vname])) {
+        return "";
+    }
+    return env[vname];
 }
 
 protected void handle_input_to_response(string data, function fun, mixed ... args) {
@@ -53,9 +75,19 @@ void save()
 
 void dispatch_request() 
 {
+   string src;
 #ifdef DEBUG_REQUEST 
     kernel()->console_write("httpd: Have headers (%O)\n",env["REQUEST_HEADERS_RAW"]);
 #endif
+// read file... output
+
+  src = "/var/www/html"+env["REQUEST_URI"];
+  write("HTTP/1.0 200 OK\r\nContent-type: text/html\r\n\r\n");
+  kernel()->shell_exec("/bin/sh.pike",({"/bin/sh.pike", "/bin/cat.pike",src}),env);
+  destruct(this_link()[0]);
+  destruct(this_link()[1]);
+  destruct(this_link()[2]);
+  destruct();
 }
 
 void have_header(string header_in) 
