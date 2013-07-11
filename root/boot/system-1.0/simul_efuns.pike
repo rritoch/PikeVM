@@ -106,7 +106,7 @@ array(string) explode(string str, string expstr)
    return str / expstr;
 }
 
-string implode(string *strlist, string impstr) 
+string implode(array(string) strlist, string impstr) 
 {
     return strlist * impstr;
 }
