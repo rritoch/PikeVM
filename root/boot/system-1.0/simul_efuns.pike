@@ -51,12 +51,49 @@ private void load_kernel_overrides() {
  return; 
 }
 
+int function_exists(string str, object ob)
+{
+    return functionp(ob[str]);
+}
+
+mixed call_other(object ob, string fun, mixed ... args) 
+{
+   string src;
+   object obc;
+   program p;
+   mixed ret;
+   
+   int i;
+   array(string) arga_enc = ({});
+        
+   for(i = 0; i < sizeof(args); i++) {
+      arga_enc[i] = "args["+i+"]";
+   }
+   
+   src = "mixed foo(object ob, array(mixed) args) { return ob->"
+         +fun
+         +"("
+         + (arga_enc * ",")
+         + ");}";
+      
+    p = compile_string(src);
+    obc = p();
+    ret = obc->foo(ob,args);
+    destruct(obc);    
+    return ret;   
+}
+
 void load_simul_efuns(array(object) init_ob,mixed lconstants) {
  
  init_process = init_ob;
  
  orig_constants = copy_value(lconstants);
  load_kernel_overrides();
+ 
+ // Functions
+ 
+ add_constant("function_exists",function_exists);
+ add_constant("call_other",call_other);
      
  //orig_constants["add_constant"]("call_out",this->do_call_out);
 }
