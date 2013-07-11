@@ -1,12 +1,8 @@
-/* ========================================================================== */
-/*                                                                            */
-/*   Filename.c                                                               */
-/*   (c) 2001 Author                                                          */
-/*                                                                            */
-/*   Description                                                              */
-/*                                                                            */
-/* ========================================================================== */
-
+/**
+ * Simul Efuns
+ *  
+ */
+ 
 private mixed orig_constants;
 private array(object) init_process;
 
@@ -83,17 +79,77 @@ mixed call_other(object ob, string fun, mixed ... args)
     return ret;   
 }
 
+array(mixed) map_array(array(mixed) arr, string|function fun, mixed ... args)
+{
+    array(mixed) ret = ({});
+    mixed extra;    
+    object ob;
+    int i;
+    
+    if (functionp(fun)) {
+       extra = args[0];
+       for(i=0;i<sizeof(arr);i++) {
+           ret[i] = fun(arr[i],extra);
+       }
+    } else {
+       ob = (object)args[0];
+       extra = args[1];
+       for(i=0;i<sizeof(arr);i++) {
+           ret[i] = call_other(ob,fun,arr[i],extra);
+       }       
+    }
+    return ret;    
+}
+
+array(string) explode(string str, string expstr) 
+{
+   return str / expstr;
+}
+
+string implode(string *strlist, string impstr) 
+{
+    return strlist * impstr;
+}
+
+int exists(string filename) 
+{
+    return file_stat(filename) != 0;
+}
+
+int file_size(string filename) 
+{
+    mixed s = file_stat(filename);    
+    return s != 0 ? s->size : -1;
+}
+
+string extract(string str, int start, int end) 
+{
+    string ret;    
+    if (start < 0) {    
+        ret = (end < 0) ? str[<(-1-start)..<(-1-end)] : str[<(start)..(end)]; 
+    } else {
+        ret = (end < 0) ? str[(start)..<(-1-end)] : str[(start)..(end)];   
+    }
+    return ret;
+}
+
 void load_simul_efuns(array(object) init_ob,mixed lconstants) {
  
- init_process = init_ob;
+    init_process = init_ob;
  
- orig_constants = copy_value(lconstants);
- load_kernel_overrides();
+    orig_constants = copy_value(lconstants);
+    load_kernel_overrides();
  
- // Functions
+    // Functions
  
- add_constant("function_exists",function_exists);
- add_constant("call_other",call_other);
-     
+    add_constant("function_exists",function_exists);
+    add_constant("call_other",call_other);
+    add_constant("map_array",map_array);
+    add_constant("explode",explode);
+    add_constant("implode",implode);
+    add_constant("exists",exists);
+    add_constant("file_size",file_size);
+    add_constant("extract",extract);
+              
  //orig_constants["add_constant"]("call_out",this->do_call_out);
 }
