@@ -783,7 +783,9 @@ int valid(string priv, mixed ... args) {
    ret = valid_write(@args);
    break; 
   default:
+#ifdef DEBUG_SECURITY  
   fprintf(stderr,"securityd: valid(%O,%O)\n",priv,args);
+#endif  
   ret = 1;
  }
 
