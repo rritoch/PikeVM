@@ -579,6 +579,56 @@ public int fwrite(int fh,mixed ... args)
    return 0;   
 }  
   
+  
+public string|int read_bytes(string fn, int ... args)
+{
+    string newpath = xlatepath(fn);
+    mixed s = predef::file_stat(newpath);
+             
+    mixed ret;
+    mixed fob;
+    int err;
+    int fh;
+    
+    pike_pointer rret = pike_pointer(-1);
+    
+    ret = -1;
+    if (s != 0 &&
+        (sizeof(args) != 1 || 
+            (args[0] >= 0 && args[0] <= s->size)
+        ) &&
+        (sizeof(args) != 2 || 
+            (args[0] >= 0 && args[1] >= 0 && (args[0] + args[1]) <= s->size)
+         )
+    ) {
+             
+        
+        fob = localfilehandle(newpath,"r");      
+        if (fob->is_open()) {
+            fh = alloc_fd();   
+            assign_fd(fh,fob);
+            if (sizeof(args) > 0 && args[0] > 0) {
+                fob->read(rret,args[0]);
+            }
+              
+            if (sizeof(args) > 1) {
+                err = fob->read(rret,args[1]);
+            } else {
+                err = fob->read(rret);
+            }
+              
+            if (!err) {
+                if (stringp(rret->value[0])) {
+                    ret = rret->value[0];
+                }
+            }
+            
+            fob->close();
+            free_fd(fh);                                                
+        }        
+    }
+    return ret;
+}  
     
 
  

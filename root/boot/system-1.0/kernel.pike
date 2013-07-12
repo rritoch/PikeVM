@@ -290,27 +290,76 @@ public int _fclose(int fh)
 }
 
 
-public int|string _read_file(string fn) {
- int fh;
- 
- NEED_VFS(0); 
-
- object caller;
- mixed bt = backtrace();
- if (sizeof(bt) > 1) caller = function_object(bt[-2][2]);  
- if (!valid("read",caller,fn)) {
-  VFS_RETURN(0);
- }
+public int|string _read_file(string fn, int ... args) 
+{
+    int fh;
+    int|string data = 0;
+    int|string buffer;
+    array(string) line_buffer;
   
- if ((fh = _fopen(fn,"r")) < 0) {
-  VFS_RETURN(0);
- } 
- int|string data;
- data = vfs->fread(fh);    
- vfs->fclose(fh);
- 
- VFS_RETURN2(data);
+    NEED_VFS(0); 
+
+    object caller;
+    mixed bt = backtrace();
+    if (sizeof(bt) > 1) caller = function_object(bt[-2][2]);  
+    if (!valid("read",caller,fn)) {
+        VFS_RETURN(0);
+    }
+  
+    if ((fh = _fopen(fn,"r")) < 0) {
+        VFS_RETURN(0);
+    } 
+
+    if (sizeof(args) < 1) {
+        data = vfs->fread(fh);
+    } else {
+        if (sizeof(args) == 1 && args[0] >= 0) {            
+            buffer = vfs->fread(fh);                        
+            line_buffer = buffer / "\n";
+            if (sizeof(line_buffer) >= args[0]) {
+                data = line_buffer[(args[0])..] * "\n";
+            }             
+        } else if (sizeof(args) == 2 && args[0] >= 0 && args[1] > 0) {
+            buffer = vfs->fread(fh);                        
+            line_buffer = buffer / "\n";
+            
+            if (sizeof(line_buffer) >= (args[0] + args[1])) {
+                if (sizeof(line_buffer) > (args[0] + args[1])) { 
+                    data = (line_buffer[(args[0])..(-1+args[0]+args[1])] * "\n") + "\n";
+                } else {
+                    data = (line_buffer[(args[0])..(-1+args[0]+args[1])] * "\n");
+                }
+            }            
+        }
+    }    
+    vfs->fclose(fh);
+    VFS_RETURN2(data);
 }
+
+public string|int _read_bytes(string fn, int ... args)
+{
+
+    NEED_VFS(0);
+ 
+    mixed ret = 0;
+    
+    object caller;
+    mixed bt = backtrace();
+    if (sizeof(bt) > 1) caller = function_object(bt[-2][2]);
+  
+    if (valid("read",caller,fn)) {  
+        if (sizeof(args) > 0) {
+            ret = vfs->read_bytes(fn,@args);
+        } else {
+            ret  = vfs->read_bytes(fn);
+        }
+    }
+            
+    VFS_RETURN(ret);
+} 
+
+
+
 
 public int _write_file(string fn, string data) {
  int fh;
