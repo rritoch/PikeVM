@@ -113,12 +113,12 @@ string implode(array(string) strlist, string impstr)
 
 int exists(string filename) 
 {
-    return file_stat(filename) != 0;
+    return kernel()->_file_stat(filename) != 0;
 }
 
 int file_size(string filename) 
 {
-    mixed s = file_stat(filename);    
+    mixed s = kernel()->_file_stat(filename);    
     return s != 0 ? s->size : -1;
 }
 
