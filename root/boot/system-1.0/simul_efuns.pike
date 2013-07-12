@@ -63,7 +63,7 @@ mixed call_other(object ob, string fun, mixed ... args)
    array(string) arga_enc = ({});
         
    for(i = 0; i < sizeof(args); i++) {
-      arga_enc[i] = "args["+i+"]";
+      arga_enc += ({ "args["+i+"]" });
    }
    
    src = "mixed foo(object ob, array(mixed) args) { return ob->"
@@ -150,6 +150,6 @@ void load_simul_efuns(array(object) init_ob,mixed lconstants) {
     add_constant("exists",exists);
     add_constant("file_size",file_size);
     add_constant("extract",extract);
-              
+                  
  //orig_constants["add_constant"]("call_out",this->do_call_out);
 }
