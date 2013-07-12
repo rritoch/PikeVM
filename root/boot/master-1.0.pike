@@ -14,13 +14,13 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 // Windows 7 Compatibility
-#define WIN7
+//#define WIN7
 
 // 32 Bit architecture
 #define ARCH32
 
 // 64 Bit architecture
-//#define ARCH64
+#define ARCH64
 
 //#define OVERRIDE_HANDLE_IMPORT
 #define OVERRIDE_GET_ROOT_MODULE
@@ -69,7 +69,7 @@
 #define STATIC_PIKE_LIBRARY_PATH "C:/Program Files/Pike/lib"
 #endif
 #else
-#define STATIC_PIKE_LIBRARY_PATH "/usr/lib/Pike/lib"
+#define STATIC_PIKE_LIBRARY_PATH "/usr/local/pike/7.8.700/lib"
 #endif
 
 #ifdef __amigaos__
@@ -2559,10 +2559,12 @@ protected void create()
 
 #if "C:/Program Files/Pike/lib"[0]!='#'
   // add path for architecture-dependant files
-  add_include_path("C:/Program Files/Pike/lib/include");
-  add_include_path("C:/Program Files (x86)/Pike/lib/include");
-  add_module_path("C:/Program Files/Pike/lib/modules");
-  add_module_path("C:/Program Files (x86)/Pike/lib/modules");
+  //add_include_path("C:/Program Files/Pike/lib/include");
+  //add_include_path("C:/Program Files (x86)/Pike/lib/include");
+  //add_module_path("C:/Program Files/Pike/lib/modules");
+  //add_module_path("C:/Program Files (x86)/Pike/lib/modules");
+  add_include_path("/usr/local/pike/7.8.700/lib/include");
+  add_module_path("/usr/local/pike/7.8.700/lib/modules");
 #endif
 
 #if "#cflags# "[0]!='#'

@@ -31,10 +31,31 @@ Installation:
 4. The machine was configured by default for Windows 7, 64 bit. Defines in
 the master object () may need to be changed to match your machine type.
 
+Linux Installation Notes:
+
+The following steps are to be followed to install on linux
+
+4.1 Comment out the following line
+//#define WIN7
+
+4.2 Set static library path
+#if defined(__NT__)
+#if defined(WIN7) && defined(ARCH32)
+#define STATIC_PIKE_LIBRARY_PATH "C:/Program Files (x86)/Pike/lib"
+#if defined(__NT__)
+#if defined(WIN7) && defined(ARCH32)
+#define STATIC_PIKE_LIBRARY_PATH "C:/Program Files (x86)/Pike/lib"
+#else
+#define STATIC_PIKE_LIBRARY_PATH "C:/Program Files/Pike/lib"
+#endif
+#else
+#define STATIC_PIKE_LIBRARY_PATH "/usr/local/pike/7.8.700/lib"
+#endif
+
 Starting the Machine:
 
 If you are on windows you can start the virtual machine using the
-batch file located at "root\boot\start.bat". Otherwise it can be started
+batch file located at "root\boot\start.bat" or on linux a shell script is located at "root\boot\start.sh". Otherwise it can be started
 using the following command.
 
 pike -m <path_to_master> <path_to_system>
