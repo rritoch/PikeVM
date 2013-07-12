@@ -10,14 +10,28 @@
 
 mapping(string:mixed) devices = ([]);
 
-void input_to(function fun, 
+void input_to(string|function fun, 
               void|int flag, 
               void|string|function prompt, mixed ... args) {
  
- if (kernel()->_this_user()) {
-  this_user()->handle_input_to(fun,flag,prompt,args);
- }
- return;  
+    function f;
+    object caller;
+    
+    if (stringp(fun)) {
+         mixed bt = backtrace();
+         if (sizeof(bt) > 1) {
+             caller = function_object(bt[-2][2]);
+             if (functionp(caller[fun])) {
+                 f = caller[fun];
+             }
+         }
+    } else {
+        f = fun;
+    }
+    if (kernel()->_this_user()) {
+        this_user()->handle_input_to(f,flag,prompt,args);
+    }
+    return;  
 }
 
 int add_device(string name, object dev) {
