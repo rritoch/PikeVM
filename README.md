@@ -22,7 +22,7 @@ Pre-requisites:
   Requires Pike version 7.8 or above which can be downloaded 
   from http://pike.lysator.liu.se/download/
 
-Installation:
+###Installation:
 
 1. Download and extract pike virtual machine to your preferred location
 2. Copy example configuration file in root\boot\system-1.0\kernel.conf.example
@@ -31,14 +31,18 @@ Installation:
 4. The machine was configured by default for Windows 7, 64 bit. Defines in
 the master object () may need to be changed to match your machine type.
 
-Linux Installation Notes:
+###Linux Installation Notes:
 
 The following steps are to be followed to install on linux
 
 4.1 Comment out the following line
+```
 //#define WIN7
+```
 
 4.2 Set static library path
+
+```
 #if defined(__NT__)
 #if defined(WIN7) && defined(ARCH32)
 #define STATIC_PIKE_LIBRARY_PATH "C:/Program Files (x86)/Pike/lib"
@@ -51,6 +55,7 @@ The following steps are to be followed to install on linux
 #else
 #define STATIC_PIKE_LIBRARY_PATH "/usr/local/pike/7.8.700/lib"
 #endif
+```
 
 Starting the Machine:
 
