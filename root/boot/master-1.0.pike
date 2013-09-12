@@ -34,7 +34,7 @@
 //#define ENCODE_DEBUG
 //#define DEBUG_INHERIT
 //#define DEBUG_INCLUDE
-#define SUPRESS_SPRINTF
+#define SUPPRESS_SPRINTF
 
 #ifndef PIKE_WARNINGS
 #define PIKE_WARNINGS 1
@@ -3046,7 +3046,7 @@ class dirnode
     return sizeof(_values());
   }
 
-#ifndef SUPRESS_SPRINTF
+#ifndef SUPPRESS_SPRINTF
   
   protected string _sprintf(int as)
   {
