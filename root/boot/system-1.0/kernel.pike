@@ -47,6 +47,12 @@ class k_pointer {
 constant no_value = (<>);
 constant NoValue = typeof (no_value);
 
+#if __REAL_VERSION__ < 7.9
+private constant Files = _static_modules.files;
+#else
+private constant Files = _static_modules._Stdio;
+#endif
+
 private string boot_path;
 private program fs;
 private mixed vfs;
@@ -1802,7 +1808,7 @@ int kernel_init(int argc,
   kwrite("Loading configuration variables.");
   config_vars = ([]);
   
-  tmp=_static_modules.files()->Fd();
+  tmp=Files()->Fd();
   
   if ( ([function(string, string : int)]tmp->open)(combine_path(boot_path,"kernel.conf"),"r") ) {
     cfg = ([function(void : string)]tmp->read)();
@@ -1864,9 +1870,9 @@ int kernel_init(int argc,
   vfs->register_kernel();
       
   kernel_registered = 1;
-  fdlist[0] = _static_modules.files()->_stdin;
-  fdlist[1] = _static_modules.files()->_stdout;   
-  fdlist[2] = _static_modules.files()->_stderr;
+  fdlist[0] = Files()->_stdin;
+  fdlist[1] = Files()->_stdout;   
+  fdlist[2] = Files()->_stderr;
 
              
   mapping(string:program) systemp = ([]);

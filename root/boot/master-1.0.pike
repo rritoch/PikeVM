@@ -88,7 +88,11 @@ constant pike_cycle_depth = 0;
 
 constant no_value = (<>);
 constant NoValue = typeof (no_value);
+#if __REAL_VERSION__ < 7.9
 private constant Files = _static_modules.files;
+#else
+private constant Files = _static_modules._Stdio;
+#endif
 
 int want_warnings = PIKE_WARNINGS;
 int compat_major=-1;
