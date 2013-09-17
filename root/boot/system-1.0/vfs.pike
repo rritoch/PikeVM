@@ -12,6 +12,11 @@
 //#define STRICT_XLATE_WARN
 //#define DEBUG_SOCKETS
 
+#if __REAL_VERSION__ < 7.9
+private constant Files = _static_modules.files;
+#else
+private constant Files = _static_modules._Stdio;
+#endif
 
 
 // These defines must be in <sys/socket.h>
@@ -155,7 +160,7 @@ class localfilehandle
      } else {
          mode = m;
      }    
-     fob=_static_modules.files()->Fd();  
+     fob=Files()->Fd();  
      if ( ([function(string, string : int)]fob->open)(filename,mode) ) {  
          status = 1;   
      } else {   

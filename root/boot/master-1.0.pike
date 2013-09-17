@@ -34,7 +34,7 @@
 //#define ENCODE_DEBUG
 //#define DEBUG_INHERIT
 //#define DEBUG_INCLUDE
-#define SUPRESS_SPRINTF
+#define SUPPRESS_SPRINTF
 
 #ifndef PIKE_WARNINGS
 #define PIKE_WARNINGS 1
@@ -88,7 +88,11 @@ constant pike_cycle_depth = 0;
 
 constant no_value = (<>);
 constant NoValue = typeof (no_value);
+#if __REAL_VERSION__ < 7.9
 private constant Files = _static_modules.files;
+#else
+private constant Files = _static_modules._Stdio;
+#endif
 
 int want_warnings = PIKE_WARNINGS;
 int compat_major=-1;
@@ -3046,7 +3050,7 @@ class dirnode
     return sizeof(_values());
   }
 
-#ifndef SUPRESS_SPRINTF
+#ifndef SUPPRESS_SPRINTF
   
   protected string _sprintf(int as)
   {

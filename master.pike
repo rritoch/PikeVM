@@ -89,7 +89,11 @@ int show_if_constant_errors = 0;
 
 // Have to access some stuff without going through the resolver.
 private object(_static_modules.Builtin) Builtin = _static_modules.Builtin();
+#if __REAL_VERSION__ < 7.9
 private constant Files = _static_modules.files;
+#else
+private constant Files = _static_modules._Stdio;
+#endif
 
 #define Stat Files.Stat
 #define capitalize(X) (upper_case((X)[..0])+(X)[1..])

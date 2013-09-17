@@ -2,8 +2,8 @@
 # Start PikeVM
 #
 
-# Change the path below to the location of your pike eecutable
-PIKEBIN="/usr/local/pike/7.8.700/bin/pike"
+# Change the path below to the location of your pike executable, if not in $PATH
+PIKEBIN="pike"
 
 
 ##
