@@ -4,7 +4,8 @@
 
 # Change the path below to the location of your pike executable, if not in $PATH
 PIKEBIN="pike"
-
+PIKEINCDIR="/usr/local/pike/7.8.700/lib/pike/lib/include"
+PIKEMODDIR="/usr/local/pike/7.8.700/lib/pike/lib/modules"
 
 ##
 ## Do not edit below this point unless you know what you are doing
@@ -16,7 +17,7 @@ cd $ORIGDIR
 
 PIKEMASTER="${BOOTDIR}/master-1.1.pike"
 PIKESYS="${BOOTDIR}/system-1.1"
-PIKELOGERR="${BOOTDIR}/error.log"
+PIKELOGERR="${BOOTDIR}/../../var/logs/error.log"
 
-$PIKEBIN -m $PIKEMASTER $PIKESYS
+$PIKEBIN -m $PIKEMASTER $PIKESYS -I $PIKEINCDIR -M $PIKEMODDIR
 
