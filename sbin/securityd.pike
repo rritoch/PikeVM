@@ -149,13 +149,20 @@ class securityGroup {
   
  int add_user(string user) {
   string w;
-  w = "";
+  
+  w = "";  
   if (this_user() && functionp(this_user()->user_id)) {
    w = this_user()->user_id();
   }
+      
   members[user] = w;
   return 0;
  }
+ 
+    array(string) get_members() 
+    {
+        return indices(members);
+    }
  
     int add_group_node(string name) 
     {
@@ -582,6 +589,38 @@ int add_privilege(string priv_id, string priv_name, string priv_desc) {
  return privileges->add_privilege(prev_object, priv_id,priv_name,priv_desc);
 }
 
+int is_group_member(string user_id, string|int group_id) 
+{        
+    array(string) members;
+    string u;    
+    members = query_group_members(group_id);    
+    foreach(members, u) {
+        if (user_id == u) {
+            return 1;
+        }
+    }
+    return 0;
+}
+
+array(string) query_group_members(string|int group) 
+{
+    object grp = getGroup((string)group);
+    if (grp) {    
+        return grp->get_members();
+    }
+    return ({});     
+}
+
+void create_admin(string user_id) 
+{
+    add_user_to_group(user_id,"developers");
+}
+
+void create_superadmin(string user_id) 
+{
+    add_user_to_group(user_id,1);
+}
+
 mixed add_admin_to_group(string user_id, string group_id) 
 {
     
@@ -658,13 +697,20 @@ mixed add_super_to_group(string user_id, string group_id) {
     return 0;
 }
 
-mixed add_user_to_group(string user_id, string group_id) {
+mixed add_user_to_group(string user_id, string|int group_id) {
 
- object grp;
+    object grp;
  
- grp = getGroup(group_id); 
+    grp = getGroup((string)group_id);
+ 
+    if (!grp && group_id == "developers") {
+        create_group("developers");
+        grp = getGroup("developers");
+    }
+  
  if (!grp) {
-  return ({ SERR_NOGROUP(group_id) , backtrace() });
+     error(SERR_NOGROUP(group_id));
+     return 1;
  }
  
  grp->add_user(user_id);

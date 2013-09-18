@@ -16,7 +16,7 @@ private object shell_ob;
 private object link_in;
 private object link_out;
 private object link_error;
-private mapping env;
+private mapping env = ([]);
 private int respawn;
 private string current_header;
 
@@ -29,7 +29,7 @@ int is_shell() {
  return 1;
 }
 
-mapping(string:string) environment() 
+mapping(string:mixed) environment() 
 {
     return copy_value(env);
 }
@@ -47,6 +47,19 @@ string get_env(string vname) {
     return env[vname];
 }
 
+mixed get_variable(string vname) {
+    return get_env(vname);
+}
+
+void set_variable(string vname, mixed value) {
+    set_env(vname,value);
+}
+
+void handle_call_out(function f, mixed ... args) {
+    f(@args);
+}
+
+/*
 protected void handle_input_to_response(string data, function fun, mixed ... args) {
  // can verify coming from 
  fun(data,@args);
@@ -59,7 +72,7 @@ void handle_input_to(function fun,
  link_in->input_to(handle_input_to_response,flag,prompt,fun,@args);
 
 }
-
+*/
 
 private void flush() {                    
 }
@@ -73,21 +86,42 @@ void save()
 {    
 }
 
+object get_server() 
+{
+    return load_object("/sbin/httpd.pike");	
+}
+
 void dispatch_request() 
 {
-   string src;
+	
+	string request_uri;
+	object server;
+	mapping resolved_resource;
+	program p;
+	object handler;
+	
 #ifdef DEBUG_REQUEST 
     kernel()->console_write("httpd: Have headers (%O)\n",env["REQUEST_HEADERS_RAW"]);
 #endif
-// read file... output
-
-  src = "/var/www/html"+env["REQUEST_URI"];
-  write("HTTP/1.0 200 OK\r\nContent-type: text/html\r\n\r\n");
-  kernel()->shell_exec("/bin/sh.pike",({"/bin/sh.pike", "/bin/cat.pike",src}),env);
-  destruct(this_link()[0]);
-  destruct(this_link()[1]);
-  destruct(this_link()[2]);
-  destruct();
+	
+   request_uri = get_variable("REQUEST_URI");
+   server = get_server();
+   
+   resolved_resource = server->resolve_request_uri(request_uri);
+   
+   kernel()->console_write(sprintf("[dispatch_request] %O\n",resolved_resource));
+   set_variable("PATH_TRANSLATED",resolved_resource["PATH_TRANSLATED"]);
+   
+   
+   p = resolved_resource["handler"];
+   
+   handler = p();
+   
+   if (handler->dispatch_request(env) >= 0) {
+       destruct(this_link());
+       destruct();
+   }
+   
 }
 
 void have_header(string header_in) 
@@ -181,10 +215,11 @@ void login_success() {
 }
 
 void do_login() 
-{
+{	
     input_to(have_request,INPUT_IGNORE_BANG,"");  
 }
 
+/*
 void handle_call_out(object sh_obj, function f, mixed ... args) {
  if (sh_obj && !zero_type(sh_obj) && functionp(sh_obj->handle_call_out)) {
   sh_obj->handle_call_out(f,@args);
@@ -193,6 +228,7 @@ void handle_call_out(object sh_obj, function f, mixed ... args) {
  f(@args);
  return;
 }
+*/
 
 private void welcome() 
 {
@@ -210,12 +246,13 @@ mixed get_link()
 }
 
 int main(int argc, array(string) argv, mapping env_in) { 
-    env = copy_value(env_in);
+    env = copy_value(env_in);    
     return -1;
 }
 
-protected void create(mixed link, int persistent) { 
+protected void create(mixed|void link, int|void persistent) { 
  
+ /*
  link_in    = link[0];
  link_out   = link[1];
  link_error = link[2];
@@ -225,4 +262,11 @@ protected void create(mixed link, int persistent) {
  if (functionp(link_error->grab)) link_error->grab();
  
  respawn = persistent;
+ */
+}
+
+void logon(mixed p) {
+	respawn = p;
+    welcome();
+    do_login();		
 }

@@ -6,10 +6,7 @@
 /*   Description                                                              */
 /*                                                                            */
 /* ========================================================================== */
-
 #ifndef __SECURITY_H
 #define __SECURITY_H
-
-#define SECURITYD (object)"/sbin/securityd.pike(1)"
-
+#include <daemons.h>
 #endif

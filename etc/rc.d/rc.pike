@@ -20,8 +20,11 @@ int main(int argc, array(string) argv) {
  array(string) startlist;
  array(string) stoplist; 
  string f;
+ 
+ 
  int priority;
  string name;
+ int idx;
  
  if (argc != 2) {
   fprintf(stderr,"usage: %s [runlevel]\n",argv[0]);
@@ -34,10 +37,22 @@ int main(int argc, array(string) argv) {
  status_programs = get_dir(sprintf("%s/rc.d/init",etcdir));
  
  
+ if (status_files) {
+ 	for(idx=0;idx<sizeof(status_files);idx++) {
+ 		status_files[idx] = basename(status_files[idx]);
+ 	}
+ }
+ 
+ if (status_programs) {
+ 	for(idx=0;idx<sizeof(status_programs);idx++) {
+ 		status_programs[idx] = basename(status_programs[idx]);
+ 	} 	
+ }
+ 
  startlist = ({});
  stoplist = ({});
  
- foreach(status_files,f) {
+ foreach(status_files,f) { 	
   if (sscanf(f,"S%s",name)) {
    startlist += ({ name });
   }
@@ -48,8 +63,8 @@ int main(int argc, array(string) argv) {
   
  startlist = sort(startlist);
  stoplist = sort(stoplist);
- 
- foreach(stoplist,f) {
+   
+ foreach(stoplist,f) { 	
   if (sscanf(f,"%2d%s",priority,name) > 1) {
    if (search(status_programs,name + ".pike") > -1) {     
      executef("%s/service %s stop",bindir,name);
@@ -57,7 +72,7 @@ int main(int argc, array(string) argv) {
   }
  }
 
- foreach(startlist,f) {
+ foreach(startlist,f) { 	
   if (sscanf(f,"%2d%s",priority,name) > 1) {
    if (search(status_programs,name + ".pike") > -1) {
      //write("Starting %s: ",name);

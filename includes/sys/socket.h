@@ -7,26 +7,21 @@
 /*                                                                            */
 /* ========================================================================== */
 
-
 #ifndef __SOCKET_H
 #define __SOCKET_H
 
 #ifndef LIBSOCKET
 inherit libsocket;
 #endif
-
 #include <sys/types.h>
 #include <sys/os_uio.h>
 
 #define socklen_t int
 #define sa_family_t int
-
-
 // need iovec
 
 class sockaddr {
- int    sa_family;    // address family, AF_xxx
- string sa_data;  // 14 bytes of protocol address
+ int    sa_family;    // address family, AF_xxx string sa_data;  // 14 bytes of protocol address
 }
 
 class msghdr {
@@ -55,7 +50,6 @@ class linger {
  int l_onoff;
  int l_linger;
 }
-
 
 #define SOCK_DGRAM     1    
 #define SOCK_STREAM    2

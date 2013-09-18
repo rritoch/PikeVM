@@ -13,7 +13,7 @@
 #include "/includes/master.h"
 
 
-private mapping(string:string) shell_env;
+private mapping(string:mixed) shell_env;
 
 #ifdef OVERRIDE_HANDLE_IMPORT
  
@@ -127,20 +127,33 @@ string get_cwd() {
  return ".";
 }
 
+void set_cwd(string path) 
+{
+    shell_env["CWD"] = path;
+}
+
 mapping(string:string) environment() {
  return copy_value(shell_env);
 }
 
-string set_env(string vname, string val) {
+string set_env(string vname, mixed val) {
  shell_env[vname] = val;
  return val;
 }
 
-string get_env(string vname) {
+mixed get_env(string vname) {
  if (zero_type(shell_env[vname])) {
   return "";
  }
  return shell_env[vname];
+}
+
+mixed get_variable(string vname) {
+    return get_env(vname);
+}
+
+void set_variable(string vname, mixed value) {
+    set_env(vname,value);
 }
 
 string shell_combine_path(string path1, string path2) {
@@ -161,6 +174,7 @@ string shell_combine_path(string path1, string path2) {
 
 int execute(string cmd_line) {
  
+ //kernel()->console_write(sprintf("execute %O\n",cmd_line));
  string cur_path;
  string path;
  string cur_cmd;
@@ -195,13 +209,14 @@ int execute(string cmd_line) {
     files = get_dir(cur_path);    
     if (files && sizeof(files)) {
      foreach (files, cur_file) {
-      if (cur_file == cmd) {
+      if (basename(cur_file) == cmd) {
        cur_cmd = shell_combine_path(cur_path,cur_file);
       }
      }
+     
      if (!sizeof(cur_cmd)) {
       foreach (files, cur_file) {
-       if (cur_file == (cmd + ".pike")) {
+       if (basename(cur_file) == (cmd + ".pike")) {
         cur_cmd = shell_combine_path(cur_path,cur_file);
        }
       }
@@ -226,9 +241,7 @@ void shell_loop(string raw_cmd) {
  mixed err;
  array(string) split_cmd;
  string cmd;
-
-
-
+  
  if (has_prefix(raw_cmd,"@")) {
   program p;
   object ob;
@@ -241,7 +254,12 @@ void shell_loop(string raw_cmd) {
    write("\nReturned: %O\n",ob->foo());
   };
   if (err) {
-   write("\nError: %O\n",err);
+     if (objectp(err)) {
+          write("\nError: %O %O\n",err,err->backtrace());
+      } else {
+          write("\nError: %O\n",err);
+      }
+     
   }
   destruct(ob);
   } else {

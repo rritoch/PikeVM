@@ -13,7 +13,7 @@ int main(int argc, array(string) argv, mixed env)
         return 1;
     }
 
-    sender = this_user()->get_name();
+    sender = functionp(this_user()->query_userid) ?  this_user()->query_userid() : "(someone)";
 
     name = argv[1];
     message = argv[2..] * " ";
@@ -21,7 +21,7 @@ int main(int argc, array(string) argv, mixed env)
     matches = ({});
 
     foreach(users(), user) { 
-        if (user->get_name() == name) {         
+        if (functionp(user->query_userid) && user->query_userid() == name) {         
             matches += ({ user });
         }     
     }
@@ -29,7 +29,11 @@ int main(int argc, array(string) argv, mixed env)
     if (sizeof(matches) > 0) {
         printf("You tell %s: %s\n",name,message);     
         foreach(matches,user) {
-            user->recv_msg("%s tells you: %s\n",sender,message);
+        	if (functionp(user->receive_message)) {
+                user->receive_message(sprintf("%s tells you: %s\n",sender,message));
+        	} else {
+        		fprintf(stderr,"%s is not listening to tells.\n");
+        	}
         }
     } else {
         fprintf(stderr,"%s cannot be found\n",name);

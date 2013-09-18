@@ -18,7 +18,7 @@ void welcome() {
 }
 
 int done() {
- printf("System startup complete!\n");
+ //printf("System startup complete!\n");
  return -1;
 }
 

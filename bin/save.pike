@@ -10,6 +10,7 @@
 #include <stdio.h>
 
 int main(int argc, array(string) argv, mixed env) {
-    this_user()->save();    
+    this_user()->save_me();
+    write("Saved.\n");    
     return 0;
 }

@@ -40,6 +40,13 @@ int main(int argc, array(string) argv, mixed env) {
   return 0;
  }
  
+    if ((p = kernel()->find_program(argv[1]+".pike",cwd)) != -1) {
+        name = sprintf("%O",p);
+        kernel()->unload_program(p);
+        write("Program %O destroyed!\n",name);
+        return 0;
+    }
+ 
  write("Object or Program not found!\n");
  return 1;
 }

@@ -40,11 +40,12 @@ void handle_input_to(function fun,
 
 }
 
-
+/*
 private void flush() {
     user="";
     pass="";            
 }
+*/
 
 private int authenticate(string username, string password) {
 
@@ -71,7 +72,7 @@ string query_name()
     return user ? user : "";
 }
 
-void save() 
+void save_me() 
 {
     if (user && user !="") {        
         mapping data = ([       
@@ -206,7 +207,9 @@ int main(int argc, array(string) argv, mapping env) {
  return -1;
 }
 
+/*
 protected void create(mixed link, int persistent) { 
+
  
  link_in    = link[0];
  link_out   = link[1];
@@ -217,4 +220,11 @@ protected void create(mixed link, int persistent) {
  if (functionp(link_error->grab)) link_error->grab();
  
  respawn = persistent;
+}
+*/
+
+void logon(int persistent) {
+   respawn = persistent;
+   welcome();
+   do_login();
 }

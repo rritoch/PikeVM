@@ -59,7 +59,11 @@ protected string _read_char(int noecho) {
 }
 
 protected void _write_error_message(mixed err) {
- write(sprintf("Console error: %O\n",err));
+    if (objectp(err) && functionp(err->backtrace)) {
+        write(sprintf("Console error: %O\n backtrace = %O\n",err,err->backtrace()));
+    } else {
+        write(sprintf("Console error: %O\n",err));
+     }
 }
 
 /* Core Functions */

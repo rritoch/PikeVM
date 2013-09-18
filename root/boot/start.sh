@@ -14,8 +14,8 @@ ORIGDIR=`pwd`
 BOOTDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $ORIGDIR
 
-PIKEMASTER="${BOOTDIR}/master-1.0.pike"
-PIKESYS="${BOOTDIR}/system-1.0"
+PIKEMASTER="${BOOTDIR}/master-1.1.pike"
+PIKESYS="${BOOTDIR}/system-1.1"
 PIKELOGERR="${BOOTDIR}/error.log"
 
 $PIKEBIN -m $PIKEMASTER $PIKESYS

@@ -10,9 +10,10 @@
 //#define DEBUG_PTY
 
 inherit "char.pike";
-#include <sys/types.h>
-#include <stdio.h>
-#include <sys/ioctl.h>
+
+#include "/includes/sys/types.h"
+#include "/includes/stdio.h"
+#include "/includes/sys/ioctl.h"
 
 
 #define TN_SE                     240  /*  End of subnegotiation parameters. */
@@ -125,7 +126,12 @@ protected string _read_char(int noecho) {
 }
 
 protected void _write_error_message(mixed err) {
- write("Pty error: %O\n",err);
+	object p = pike_pointer();
+	if (objectp(err)) {
+		io_write(p,"Pty error: %O %O\n",err,err->backtrace());
+	} else {
+        io_write(p,"Pty error: %O\n",err);
+	}
 }
 
 protected int _open() {
@@ -148,9 +154,10 @@ protected int _open() {
   int idx;
   
 #ifdef DEBUG_PTY
-  //write("*pty*io_write(%O,%O)\n",ret,args);
-#endif  
-  msg = sprintf(@args);
+  kernel()->console_write("*pty*io_write(%O,%O)\n",ret,args);
+#endif
+    
+  msg = sizeof(args) == 1 ? sprintf("%s",args[0]) : sprintf(@args);
   
   lines = msg / "\n";
   

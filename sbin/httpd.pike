@@ -17,13 +17,258 @@
 #define PORT 8082
 #define BACKLOG 100
 
+inherit "/lib/core/hookprovider.pike";
+
 mapping(string:string) shell_env = ([]);
 mapping(string:object) modules = ([]);
 mapping(string:mixed) cfg_vars = ([]);
 
+class default_handler 
+{
+	
+	string version = "1.0";
+	string proto = "HTTP";
+	int code = 200;
+	string message = "OK";
+	string content_type = "text/html";
+	
+	mapping _env;
+	mapping headers = ([]);
+	
+	string data = "";
+	int content_length;
+	
+	private void send_header() 
+	{	    	    
+	    write("%s/%s %s %s\r\n",proto,version,replace(sprintf("%3d",code)," ","0"), message);	    
+	    write("Content-type: %s\r\n",content_type);
+	    write("Connection: close\r\n");	    
+	    write("\r\n");	
+	}
+	
+	void send_file(string src) 
+	{	       
+            kernel()->shell_exec("/bin/sh.pike",({"/bin/sh.pike", "/bin/cat.pike",src}),this_shell()->environment());
+    }	
+	
+	private void die() 
+	{
+		kernel()->console_write("HTTPD->DIE");
+		
+        destruct(this_link());
+        destruct();				
+	}
+
+	void poll() 
+	{				
+        input_to(have_poll,3);	
+	}
+	
+	void render() 
+	{		
+	    send_header();
+		send_file(this_shell()->get_variable("PATH_TRANSLATED"));				
+	}
+	
+	void have_poll(string c) {        		
+		data += c;						
+		if(sizeof(data) < content_length) {
+			poll();
+		} else {			
+            render();
+            die();
+		}
+	}
+
+		
+	int dispatch_request(mapping env) {
+		string line;		
+		_env = env;
+		content_length = 0;		
+		array(string) hparts = env["REQUEST_HEADERS_RAW"] / "\n";
+		
+		array(string) lparts;
+		
+		string lkey = "";
+		
+		foreach(hparts,line) {
+			if (sizeof(lkey) && (line[0..0] == " " || line[0..0] == "\t")) {
+				headers[lkey] += line;
+			} else {
+		        lparts = line / ":";		    
+		        lkey = upper_case(lparts[0]);		    
+		        headers[lkey] = lparts[1..] * ":";
+			}	
+		}
+		
+		if (!zero_type(headers["CONTENT-LENGTH"])) {			
+			content_length = (int)headers["CONTENT-LENGTH"];					
+			if (content_length > 0) {
+                poll();
+			    return -1;
+			}
+		}
+		render();		
+		return 0;
+	}
+}
+
+
+class default_404_handler 
+{
+	
+	string version = "1.0";
+	string proto = "HTTP";
+	int code = 400;
+	string message = "Page not found";
+	string content_type = "text/html";
+	
+	mapping _env;
+	mapping headers = ([]);
+	
+	string data = "";
+	int content_length;
+	
+	private void send_header() 
+	{	    	    
+	    write("%s/%s %s %s\r\n",proto,version,replace(sprintf("%3d",code)," ","0"), message);	    
+	    write("Content-type: %s\r\n",content_type);
+	    write("Connection: close\r\n");	    
+	    write("\r\n");	
+	}
+	
+	private void send_file() 
+	{	       
+        write("%s",
+            "<HTML><HEAD>\n" +
+            "    <TITLE>404 Page Not Found</TITLE>\n"+
+            "</HEAD><BODY>\n" +
+            "    <H1>Page not found (404)</H1>\n" +
+            "    <P>The page you requested could not be located</P>\n"+
+             "</BODY></HTML>\n"
+        );
+    }	
+	
+	private void die() 
+	{
+        destruct(this_link());
+        destruct();				
+	}
+
+	void poll() 
+	{		
+        input_to(have_poll,3);	
+	}
+	
+	void render() 
+	{		
+	    send_header();
+		send_file();				
+	}
+	
+	void have_poll(string c) 
+	{
+		data += c;
+		if(sizeof(data) < content_length) {
+			poll();
+		} else {			
+            render();
+            die();
+		}		
+		
+	}
+
+		
+	int dispatch_request(mapping env) {
+		string line;		
+		_env = env;
+		content_length = 0;		
+		array(string) hparts = env["REQUEST_HEADERS_RAW"] / "\n";
+		
+		array(string) lparts;
+		
+		string lkey = "";
+		
+		foreach(hparts,line) {
+			if (sizeof(lkey) && (line[0..0] == " " || line[0..0] == "\t")) {
+				headers[lkey] += line;
+			} else {
+		        lparts = line / ":";		    
+		        lkey = upper_case(lparts[0]);		    
+		        headers[lkey] = lparts[1..] * ":";
+			}	
+		}
+		
+		if (!zero_type(headers["CONTENT-LENGTH"])) {			
+			content_length = (int)headers["CONTENT-LENGTH"];					
+			if (content_length > 0) {
+                poll();
+			    return -1;
+			}
+		}
+		render();		
+		return 0;
+	}
+}
+
+protected void selectHandler(mapping info) 
+{
+	//kernel()->console_write(sprintf("[selectHandler] %O\n",info));
+	
+	info["handler"] = default_handler;
+	call_hooks("select_handler",info);
+	
+}
+
+void loadModule(string path) 
+{
+	
+	mixed err = catch {
+		program p = (program)path;
+		object ob = p(this_object());	
+		
+		modules[ob->moduleId()] = ob;	
+	};
+	
+	if (err) {
+		debug(sprintf("[loadModule] error %O",err));
+	}
+	
+}
+
+mapping resolve_request_uri(string uri) 
+{
+	array indexes;
+	
+	string document_root = cfg_vars["document_root"];
+	
+	string filename = document_root+uri;
+	mapping ret = ([]);
+			
+	if (is_directory(filename)) {
+		indexes = cfg_vars["indexes"];		
+		foreach(indexes,string index) {
+			if (file_exists(filename+"/"+index)) {				
+				ret["PATH_TRANSLATED"] = filename+"/"+index;
+				selectHandler(ret);			
+				return ret; 
+			}
+		}
+	} else if (file_exists(filename)) {
+		ret["PATH_TRANSLATED"] = filename;		
+		ret["handler"] = default_handler;	
+		selectHandler(ret);	
+	} else {
+		ret["PATH_TRANSLATED"] = filename;
+		ret["handler"] = default_404_handler;
+	}
+	
+	return ret;		
+}
+
 void debug(mixed msg) 
 {
-    //printf("[debug] %O %O\n",msg, backtrace()[-2]);
+    printf("[debug] %O %O\n",msg, backtrace()[-2]);
 }
 
 int is_shell() 
@@ -113,7 +358,9 @@ void handle_connect(int fd)
     pty = (program)"/dev/pty.pike";
     mypty = pty(fd);
  
-    kernel()->make_user(mypty->name(), mypty->name(), mypty->name(), 0,"/sbin/httpd_worker.pike");  
+    object u = kernel()->make_user(mypty->name(), mypty->name(), mypty->name(), 0,"/sbin/httpd_worker.pike");
+    
+    u->main(1, ({"/sbin/httpd_worker.pike"}), shell_env);   
 }
 
 
@@ -144,7 +391,7 @@ private void httpd()
         printf("server: got connection from %s on %O\n", s, new_fd);                
         handle_connect(new_fd);
 
-        close(new_fd);  // parent doesn't need this
+        //close(new_fd);  // parent doesn't need this
     }
 
     return 0;
@@ -159,7 +406,7 @@ private void init()
     // if (file exists) {
     program cfgp = (program)cfg_vars["config_filename"];    
     object cfg = cfgp();
-    cfg->init(cfg_vars,modules);
+    cfg->init(this_object(),cfg_vars,modules);
     // } // endif
             
     debug("Init Complete");
@@ -168,7 +415,9 @@ private void init()
 private void pre_init(int argc, array(string) argv) 
 {
     debug("Pre-Init Started");
+    cfg_vars["document_root"] = "/var/www/html";
     cfg_vars["config_filename"] = "/etc/httpd/httpd.conf.pike";
+    cfg_vars["indexes"] = ({ "index.html","index.htm" });    
     debug("Pre-Init Complete");
 }
 

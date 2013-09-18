@@ -6,11 +6,7 @@
 /*   Description                                                              */
 /*    service header file                                                     */
 /* ========================================================================== */
-
-
 #ifndef __SERVICE_H
 #define __SERVICE_H
-
 inherit libservice;
-
 #endif

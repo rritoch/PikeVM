@@ -1,63 +1,63 @@
-/* ========================================================================== */
-/*                                                                            */
-/*   Filename.c                                                               */
-/*   (c) 2001 Author                                                          */
-/*                                                                            */
-/*   Description                                                              */
-/*                                                                            */
-/* ========================================================================== */
-
-
-int is_init;
-
-void system(mixed ... args) {
- mixed err;
-  
- if (sizeof(args)) {
-  if (objectp(args[0])) {
-   if (functionp(args[0]->handle_call_out)) {
-    args[0]->handle_call_out(@args[1..]);
-   } else {
-    write("init: Error: Callback lost, %O is not a complete shell! handle_call_out funciton missing\n");
-   }
-  } else {
-   write("init: Error: Callback lost, Shell Died!\n");
-  }
-  return;
- }
- if (is_init) return;
- is_init = 1;
- while(1) {
-  while(1) {
-   err=catch 
-    {
-      while(1) Builtin.__backend(3600.0);
-    };
-    handle_init_error(err);
-  }
- } 
-}
-
-void handle_init_error(mixed err) {
- write(sprintf("Error in init process (%O)",err));
-}
-
-int main(int argc, mixed argv, mixed env) { 
-   
- kernel()->add_include_path("/includes");     
- spawn(({ "/bin/sh" ,"/etc/rc.d/rc.runonce"}),([ "stdin" : "/dev/console", "stdout" : "/dev/console", "stderr" : "/dev/console" ]));
-  
- Thread.Thread thread;
- if (!is_init)
-  thread = Thread.Thread(system);
-
- 
- while(1) {
-  sleep(10000);
- }
-
-}
-
-void create() {
- is_init = 0;
-}
+/* ========================================================================== */
+/*                                                                            */
+/*   Filename.c                                                               */
+/*   (c) 2001 Author                                                          */
+/*                                                                            */
+/*   Description                                                              */
+/*                                                                            */
+/* ========================================================================== */
+
+
+int is_init;
+
+void system(mixed ... args) {
+ mixed err;
+  
+ if (sizeof(args)) {
+  if (objectp(args[0])) {
+   if (functionp(args[0]->handle_call_out)) {
+    args[0]->handle_call_out(@args[1..]);
+   } else {
+    write("init: Error: Callback lost, %O is not a complete shell! handle_call_out funciton missing\n");
+   }
+  } else {
+   write("init: Error: Callback lost, Shell Died!\n");
+  }
+  return;
+ }
+ if (is_init) return;
+ is_init = 1;
+ while(1) {
+  while(1) {
+   err=catch 
+    {
+      while(1) Builtin.__backend(3600.0);
+    };
+    handle_init_error(err);
+  }
+ } 
+}
+
+void handle_init_error(mixed err) {
+ write(sprintf("Error in init process (%O)",err));
+}
+
+int main(int argc, mixed argv, mixed env) { 
+   
+ kernel()->add_include_path("/includes");     
+ spawn(({ "/bin/sh" ,"/etc/rc.d/rc.runonce"}),([ "stdin" : "/dev/console", "stdout" : "/dev/console", "stderr" : "/dev/console" ]));
+  
+ Thread.Thread thread;
+ if (!is_init)
+  thread = Thread.Thread(system);
+
+ 
+ while(1) {
+  sleep(10000);
+ }
+
+}
+
+void create() {
+ is_init = 0;
+}

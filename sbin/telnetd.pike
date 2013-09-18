@@ -12,104 +12,34 @@
 #include <stdio.h>
 #include <unistd.h>
 
-#include "/includes/devices.h"
-#include "/includes/master.h"
+#include <devices.h>
 
-#define PORT 3333
-#define BACKLOG 100
+#include <daemons/telnet.h>
 
-mapping(string:string) shell_env = ([]);
 
-void debug(mixed msg) {
- //printf("[debug] %O %O\n",msg, backtrace()[-2]);
+inherit "/lib/domain/secure/modules/m_shell.pike";
+inherit "/lib/domain/secure/modules/m_shellvars.pike";
+
+private int sockfd;
+
+void debug(mixed msg) 
+{
+    //printf("[debug] %O %O\n",msg, backtrace()[-2]);
 }
 
- int is_shell() {
-  return 1;
- }
-
- void handle_call_out(function f, mixed ... args) {
-  f(@args);
- }
-
-string get_cwd() {
- if (!zero_type(shell_env["CWD"])) {
-  return shell_env["CWD"];
- }
- return ".";
-}
-
-mapping(string:string) environment() {
- return copy_value(shell_env);
-}
-
-string set_env(string vname, string val) {
- shell_env[vname] = val;
- return val;
-}
-
-string get_env(string vname) {
- if (zero_type(shell_env[vname])) {
-  return "";
- }
- return shell_env[vname];
-}
-
- joinnode_t get_root_module(object|void current_handler) {
-  string lib_path;
-  string p;
-  array(string) paths;
-  string cwd;
-  string clean_path;
-  joinnode_t root_module;
- 
-#ifdef DEBUG_GET_ROOT_MODULE
-  write("sh.pike: get_root_module(%O)",current_handler);
-#endif  
-  
-  if (zero_type(shell_env["LIB_PATHS"])) {
-   lib_path = "";
-  } else {
-   lib_path = shell_env["LIB_PATHS"];
-  }
-  
-  // Cache!
-  //if (last_root_module_path && last_root_module_path == lib_path) return root_module;
-  
-  // New Tree
-  root_module = master()->joinnode(({}));
-  
-  // Init Vars
-  paths = lib_path / ";";  
-  cwd = get_cwd();
-  
-  // Build Tree
-  foreach(paths,p) {
-   clean_path = combine_path(cwd,p);
-   // Can Read/Exec Check here????
-   root_module->add_path(clean_path);
-  }
-  // Init Cache!
-  //last_root_module_path = lib_path;
-  // Done!
-  return root_module; 
- } 
-
-
-
-void handle_connect(int fd) { 
- program pty;
- object mypty;
- 
- pty = (program)"/dev/pty.pike";
- mypty = pty(fd);
- 
- kernel()->make_user(mypty->name(), mypty->name(), mypty->name(), 0);
+void handle_connect(int fd) 
+{ 
+    program pty;
+    object mypty; 
+    pty = (program)"/dev/pty.pike";
+    mypty = pty(fd); 
+    kernel()->make_user(mypty->name(), mypty->name(), mypty->name(), 0,TELNET_LOGIN_OB);
   
 }
 
 
-private void telnetd() {
+private void telnetd() 
+{
     sockaddr_storage their_addr; // connector's address information
     socklen_t sin_size;
     int new_fd;
@@ -137,18 +67,30 @@ private void telnetd() {
         
         handle_connect(new_fd);
 
-        close(new_fd);  // parent doesn't need this
+        //close(new_fd);  // parent doesn't need this
     }
 
     return 0;
 }
 
-private int sockfd;
+private void init_shell() 
+{
+    set_variable("INCLUDE_PATHS","/includes");
+    set_variable("LIB_PATHS","/lib");        	
+}
 
-int main(int argc, array(string) argv, mixed env) {
+int main(int argc, array(string) argv, mixed env) 
+{
+	
     addrinfo hints, servinfo, p;
     //struct sigaction sa;
-    shell_env = copy_value(env);
+    
+    if (mappingp(env)) {
+    	foreach(env; string k; mixed v) {
+    		set_variable(k,v);
+    	}
+    }
+    
     int yes = 1;
     
     //char s[INET6_ADDRSTRLEN];
@@ -156,8 +98,9 @@ int main(int argc, array(string) argv, mixed env) {
     int rv;
 
     //memset(&hints, 0, sizeof hints);
-    
+        
     debug("start");
+    init_shell();
     
     hints = addrinfo();
     

@@ -38,8 +38,8 @@ protected int kill_fh = 0;
 
 void input_to(function fun, 
               void|int flag, 
-              void|string|function prompt, mixed ... args) {
- 
+              mixed ... args) {
+     
  array(mixed) ent;
  
  int no_echo; 
@@ -52,8 +52,14 @@ void input_to(function fun,
  } 
    
  array(mixed) input_prompt = ({ });    
- if (flag & INPUT_PROMPT) input_prompt = ({ prompt }) + args;    
-  
+ 
+ //if (flag & INPUT_PROMPT) input_prompt = ({ prompt }) + args;    
+
+ if (flag & INPUT_PROMPT) {     
+     input_prompt = args;
+     args = args[1..];
+ }
+   
  int ignore_bang = 0; 
  if ( (flag & INPUT_IGNORE_BANG) && 
       (master()->valid) && 
@@ -62,7 +68,7 @@ void input_to(function fun,
  }
  
  ent = ({ fun, no_echo, ignore_bang, charmode, input_prompt, this_user(), args });
- 
+   
  /* if INPUT_APPEND add to end of array otherwise add to begin */ 
 
  while (sizeof(call_stack) < (bangptr + 1)) call_stack += ({({})});
@@ -82,7 +88,7 @@ void input_to(function fun,
   }
      
  }
-  
+   
 }
 
 
@@ -150,7 +156,7 @@ protected int backend() {
    }
    
    r = 0;   
-   while(sizeof(str) > 0) {
+   while(stringp(str) && sizeof(str) > 0) {
      
     ent = call_stack[bangptr][-1];
 #ifdef DEBUG_CONSOLE    
@@ -214,6 +220,7 @@ protected int backend() {
       }     
       // call function
       // catch so we don't screw up our bangptr
+            
       err = catch {
        ent[I_FUNC](ch,@ent[I_ARGS]);
       };
