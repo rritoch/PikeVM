@@ -2710,8 +2710,11 @@ int _say(string str, object|array(object)|void exclude)
 
 void init_gui() {
 	if (objectp(GTK2)) {
-		if (functionp(GTK2.setup_gtk)) {
-			GTK2.setup_gtk();
+		if (
+                    (!zero_type(GTK2["setup_gtk"])) && 
+                    functionp(GTK2["setup_gtk"])
+                   ) {
+			GTK2->setup_gtk();
 			kwrite("GTK2 Initialized");
 		}
 	}
