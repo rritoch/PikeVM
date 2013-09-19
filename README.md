@@ -1,15 +1,15 @@
-Title: Pike Virtual Machine
-Version: Pre-release
-Author: Ralph Ritoch <rritoch@gmail.com>
-Company: VNetPublishing - http://www.vnetpublishing.com 
-Content-type: text/plain
-Source: https://github.com/rritoch/PikeVM/
-Copyright:  Ralph Ritoch 2009 - 2013 ALL RIGHTS RESERVED
-Licence: http://www.vnetpublishing.com/Legal/Licenses/2010/10/vnetlpl.txt
+* Title: Pike Virtual Machine
+* Version: 1.1 (Alpha)
+* Author: Ralph Ritoch <rritoch@gmail.com>
+* Company: VNetPublishing - http://www.vnetpublishing.com 
+* Content-type: text/plain
+* Source: https://github.com/rritoch/PikeVM/
+* Copyright:  Ralph Ritoch 2009 - 2013 ALL RIGHTS RESERVED
+* Licence: http://www.vnetpublishing.com/Legal/Licenses/2010/10/vnetlpl.txt
 
 The pike VirtualMachine is a pike language Sandbox environment. Much of the
-core functionality of the master object has been moved into a kernel object. 
-This makes it possible to modify core functionality without needing to restart 
+core functionality of the master object has been moved into a kernel object 
+which makes it possible to modify core functionality without needing to restart 
 the machine. The system has also been designed to make it possible to protect 
 all core functionality from applications running in the virtual machine. With 
 modifications to the kernel and security system system operators should be able 
@@ -25,51 +25,38 @@ Pre-requisites:
 ###Installation:
 
 1. Download and extract pike virtual machine to your preferred location
-2. Copy example configuration file in root\boot\system-1.0\kernel.conf.example
- to root\boot\system-1.0\kernel.conf
+2. Copy example configuration file in root\boot\system-1.1\kernel.conf.example
+ to root\boot\system-1.1\kernel.conf
 3. Edit the kernel configuration file to match your preferences
-4. The machine was configured by default for Windows 7, 64 bit. Defines in
-the master object () may need to be changed to match your machine type.
+4. The machine was configured by default for Windows 7, 64 bit. Command line 
+arguments can be used to match your platform.
 
-###Linux Installation Notes:
+### Installation Notes:
 
-The following steps are to be followed to install on linux
+The following environment settings are evaluated by PikeVM to locate Pike
 
-4.1 Comment out the following line
-```
-//#define WIN7
-```
+* PIKE_INCLUDE_PATH - Path to pike distribution includes, can also be set in command line argument -I
+* PIKE_MODULE_PATH - Path to pike distribution includes modules, can also be set in command line argument -M
+* PIKE_PROGRAM_PATH - Default search path for pike files, can also be set in command line argument -P
 
-4.2 Set static library path
 
-```
-#if defined(__NT__)
-#if defined(WIN7) && defined(ARCH32)
-#define STATIC_PIKE_LIBRARY_PATH "C:/Program Files (x86)/Pike/lib"
-#if defined(__NT__)
-#if defined(WIN7) && defined(ARCH32)
-#define STATIC_PIKE_LIBRARY_PATH "C:/Program Files (x86)/Pike/lib"
-#else
-#define STATIC_PIKE_LIBRARY_PATH "C:/Program Files/Pike/lib"
-#endif
-#else
-#define STATIC_PIKE_LIBRARY_PATH "/usr/local/pike/7.8.700/lib"
-#endif
-```
 
 Starting the Machine:
 
 If you are on windows you can start the virtual machine using the
-batch file located at "root\boot\start.bat" or on linux a shell script is located at "root\boot\start.sh". Otherwise it can be started
+batch file located at "root\boot\start.bat" or on linux a shell script is located at "root\boot\start.sh". 
+These scripts may need to be edited to match your platform, otherwise it can be started
 using the following command.
 
-pike -m <path_to_master> <path_to_system>
+pike -m <path_to_master> <path_to_system> [-I <pike_includes>] [-M <pike_modules>]
 
 Example: If Sources are installed in /opt/PikeVM
 
-pike -m /opt/PikeVM/root/boot/master-1.0.pike /opt/PikeVM/root/boot/system-1.0
+```
+pike -m /opt/PikeVM/root/boot/master-1.0.pike /opt/PikeVM/root/boot/system-1.0 -I "C:\Program Files\Pike\lib\include" -M C:\Program Files\Pike\lib\modules
+```
 
-Note: At the login prompt the default username and password is "test". Raw pike 
+Note: At the login prompt enter any username and follow the prompts for a user account to be created. Raw pike 
 commands can be entered at the command line using the at "@" prefix. 
 
 Ex.

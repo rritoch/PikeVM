@@ -1,5 +1,5 @@
 # Kernel Configuration
 
 init_root_path = C:\www\PikeVM
-boot_path = C:\www\PikeVM\root\boot\system-1.0
+boot_path = C:\www\PikeVM\root\boot\system-1.1
 include_path = C:\www\PikeVM\includes
