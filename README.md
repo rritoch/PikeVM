@@ -48,7 +48,7 @@ batch file located at "root\boot\start.bat" or on linux a shell script is locate
 These scripts may need to be edited to match your platform, otherwise it can be started
 using the following command.
 
-pike -m <path_to_master> <path_to_system> [-I <pike_includes>] [-M <pike_modules>]
+pike -m &#60;path_to_master&#62; &#60;path_to_system&#62; [-I &#60;pike_includes&#62;] [-M &#60;pike_modules&#62;]
 
 Example: If Sources are installed in /opt/PikeVM
 
