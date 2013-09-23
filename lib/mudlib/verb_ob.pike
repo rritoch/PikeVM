@@ -2,7 +2,7 @@
 #include <daemons.h>
 #include <mudlib/verbs.h>
 
-string verb = split_path(file_name())[1];
+string verb = (split_path(file_name())[1] / ".")[0];
 int flags = NEED_TO_SEE | NEED_TO_BE_ALIVE | NEED_TO_THINK;
 
 protected void add_rules(array rules, array|void syns)

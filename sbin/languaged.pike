@@ -5,6 +5,7 @@ inherit M_PREPOSITIONS;
 inherit "/lib/mudlib/secure/modules/m_messages.pike";
 
 #define USE_PARSER
+//#define DEBUG_PARSER
 
 array(string) tokens = ({"WRD","STR","OBJ","OBS","LIV","LVS"});
 
@@ -14,11 +15,20 @@ mapping verb_syns = ([]);
 class parse_context 
 {	
 	string verb;
-	array(string) args;
-	string offset;
+	string args;
+	int offset;
 	string syntax;
 	array(mixed) matches;
 	object caller;	
+}
+
+protected void log(mixed ... args) 
+{
+	if (sizeof(args) > 1) {
+	    kernel()->console_write(sprintf("[LANGUAGED] %s\n",sprintf(@args)));
+	} else if (sizeof(args) == 1) {
+	    kernel()->console_write(args[0]);	
+	}
 }
 
 mixed parser_root_environment( object ob ) 
@@ -97,7 +107,7 @@ object|int locate_object(string id, object|void ref)
 		items += all_inventory(env);
 	}
 	
-	items -= ref;
+	items -= ({ref});
 	
 	
 	foreach(items, object ob) {
@@ -151,6 +161,11 @@ private int match_rule(string rule, mixed context)
     int multi;
     array(string) ids;
     array(object) ob_matches;
+    
+#ifdef DEBUG_PARSER
+    log("match_rule(rule=%O,context=%O)",rule,context);
+    log("context[args] = %O e_args = %O",context["args"],e_args);
+#endif	
 		
     if (zero_type(context["caller"])) {
         context["caller"] = previous_object();
@@ -194,7 +209,7 @@ private int match_rule(string rule, mixed context)
 		    	tmp = locate_living(cur_word,context["caller"]);
 		    	if (tmp) {
 		            n_context->matches += ({ tmp });		    
-		            if (sizeof(context["syntax"])) {
+		            if (stringp(context["syntax"]) && sizeof(context["syntax"])) {
 		    	        n_context->syntax += "_liv"; 
 		            } else {
 		    	        n_context->syntax = "liv";
@@ -218,7 +233,7 @@ private int match_rule(string rule, mixed context)
             
             if (sizeof(ob_matches) == sizeof(ids)) {            	
 		        n_context->matches += ({  ob_matches });		    
-		        if (sizeof(context["syntax"])) {
+		        if (stringp(context["syntax"]) && sizeof(context["syntax"])) {
 		    	    n_context->syntax += "_liv"; 
 		        } else {
 		    	    n_context->syntax = "liv";
@@ -235,7 +250,7 @@ private int match_rule(string rule, mixed context)
 		    	tmp = locate_object(cur_word,context["caller"]);
 		    	if (tmp) {
 		            n_context->matches += ({ tmp });		    
-		            if (sizeof(context["syntax"])) {
+		            if (stringp(context["syntax"]) && sizeof(context["syntax"])) {
 		    	        n_context->syntax += "_obj"; 
 		            } else {
 		    	        n_context->syntax = "obj";
@@ -258,7 +273,7 @@ private int match_rule(string rule, mixed context)
             
             if (sizeof(ob_matches) == sizeof(ids)) {            	
 		        n_context->matches += ({  ob_matches });		    
-		        if (sizeof(context["syntax"])) {
+		        if (stringp(context["syntax"]) && sizeof(context["syntax"])) {
 		    	    n_context->syntax += "_liv"; 
 		        } else {
 		    	    n_context->syntax = "liv";
@@ -273,7 +288,7 @@ private int match_rule(string rule, mixed context)
 		    	ret = 0;
 		    } else {		    		    		    
 		        n_context->matches += ({ cur_word });		    
-		        if (sizeof(context["syntax"])) {
+		        if (stringp(context["syntax"]) && sizeof(context["syntax"])) {
 		    	    n_context->syntax += "_wrd"; 
 		        } else {
 		    	    n_context->syntax = "wrd";
@@ -285,7 +300,7 @@ private int match_rule(string rule, mixed context)
 				
 		    ptr = n_context->offset;
 		    n_context->matches += ({ cur_word });		    
-		    if (sizeof(context["syntax"])) {
+		    if (stringp(context["syntax"]) && sizeof(context["syntax"])) {
 		        n_context->syntax += "_wrd"; 
 		    } else {
 		    	n_context->syntax = "wrd";
@@ -327,7 +342,7 @@ private int match_rule(string rule, mixed context)
 		    if (cur_token != cur_word) {
 		    	ret = 0;
 		    } else {		        		    
-		        if (sizeof(context["syntax"])) {
+		        if (stringp(context["syntax"]) && sizeof(context["syntax"])) {
 		    	    n_context->syntax += "_"; 
 		        } else {
 		        	n_context->syntax = "";
@@ -352,9 +367,10 @@ private int match_rule(string rule, mixed context)
 
 mixed parse_sentence(string str,mixed|void debug, mixed|void objs) 
 {
-#ifdef USE_PARSER
 	
-		
+#ifdef DEBUG_PARSER
+    log("parse_sentence(str=%O,debug=%O,objs=%O)",str,debug,objs);
+#endif		
 	object context = parse_context();
 	object base_context = parse_context();
 	string parsed_str = normalize_str(str);
@@ -364,7 +380,12 @@ mixed parse_sentence(string str,mixed|void debug, mixed|void objs)
 	array(string) rparts;
 	
 	base_context->verb = (parsed_str/" ")[0];
-	base_context->args = (parsed_str/" ")[1..];
+	base_context->args = ((parsed_str/" ")[1..]) * " ";
+	
+#ifdef DEBUG_PARSER
+    log("base_context->verb = %O",base_context->verb);
+    log("base_context->args = %O",base_context->args);
+#endif
 	
     array rule_list = ({});
     
@@ -375,7 +396,11 @@ mixed parse_sentence(string str,mixed|void debug, mixed|void objs)
     if (!zero_type(verb_syns[base_context->verb])) {
     	rule_list += verb_syns[base_context->verb];
     }
-    			
+    
+#ifdef DEBUG_PARSER
+    log("rule_list = %O",rule_list);
+#endif
+			
 	foreach(rule_list, mixed rule) {
 		array rparts = rule[0] / " ";
 		handler = rule[1];
@@ -385,8 +410,9 @@ mixed parse_sentence(string str,mixed|void debug, mixed|void objs)
 		context->args = base_context->args;
 		context->offset = 0;
 		context->caller = caller;
+		context->matches = ({});
 		
-		if (match_rule(rule,context)) {
+		if (match_rule(rule[0],context)) {
 		   	if (functionp(handler["can_"+base_context->verb+context->syntax])) {
 		   		if (handler["can_"+base_context->verb+context->syntax](@(context->matches + context->matches_raw))) {
 		   			handler["do_"+base_context->verb+context->syntax](@(context->matches + context->matches_raw));
@@ -395,19 +421,24 @@ mixed parse_sentence(string str,mixed|void debug, mixed|void objs)
 		}
 							
 	}
-#endif	
+
 	return 0;
 }
 
 void parse_add_rule(string verb, string rule, int|void flags) 
 {
+#ifdef DEBUG_PARSER
+    log("parse_add_rule(verb=%O,rule=%O,flags=%O) called by %O",verb,rule,flags,previous_object());
+#endif
 	verb_obs[verb] += ({ ({ rule, previous_object() }) });
 }
 
 void parse_add_synonym(string syn, string verb, void | string rule) 
 {
 	array val2;
-	
+#ifdef DEBUG_PARSER
+    log("parse_add_synonym(syn=%O,verb=%O,rule=%O)",syn,verb,rule);
+#endif
 	if (zero_type(verb_syns[syn])) {
 		verb_syns[syn] = ({});
 	}
