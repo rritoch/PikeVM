@@ -453,6 +453,7 @@ int strsrch( string str, string|int needle, int|void flag )
     array(string) tmpa;
     int tmp;
 
+
     if (!stringp(needle)) {
         tmp = needle;
         str = " ";
@@ -461,7 +462,11 @@ int strsrch( string str, string|int needle, int|void flag )
 
     tmpa = str / needle;
 
-    return sizeof(tmpa) < 2 ? -1 : sizeof(tmpa[0]);
+    if (sizeof(tmpa) < 2) {
+    	return -1;
+    }
+
+    return (flag < 0) ?  sizeof(tmpa[0..<1] * needle) : sizeof(tmpa[0]);
 }
 
 private array(string) wiz_dir_parts = (ADMIN_DIR / "/") - ({ "", "." });
@@ -469,7 +474,7 @@ private array(string) wiz_dir_parts = (ADMIN_DIR / "/") - ({ "", "." });
 array(string) split_path( string p ) {
     int pos;
     while(p[-1] == '/' && strlen(p) > 1) p = p[0..<2];
-    pos = strsrch(p, '/', -1); /* find the last '/' */
+    pos = strsrch(p, "/", -1); /* find the last '/' */
     return ({ p[0..pos], p[pos+1..] });
 }
 
