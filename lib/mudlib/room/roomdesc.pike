@@ -90,24 +90,24 @@ void do_looking(int force_long_desc, object who)
 
     if ( adminp(who) && who->query_link()->query_shell_ob()->get_variable("show_loc") )
     {
-tell(who, sprintf("[%s]\n", file_name(this_object())));
+        tell(who, sprintf("[%s]\n", file_name(this_object())));
     }
 
     if ( query_light() < 1 )
     {
-tell(who, "Someplace dark\nIt is dark here.\n");
+        tell(who, "Someplace dark\nIt is dark here.\n");
     }
     else
     {
 #ifdef OBVIOUS_EXITS
-tell(who, sprintf("%%^ROOM_SHORT%%^%s%%^RESET%%^ [exits: %%^ROOM_EXIT%%^%s%%^RESET%%^]\n", short(), show_exits()));
+        tell(who, sprintf("%%^ROOM_SHORT%%^%s%%^RESET%%^ [exits: %%^ROOM_EXIT%%^%s%%^RESET%%^]\n", short(), show_exits()));
 #else
-tell(who, sprintf("%%^ROOM_SHORT%%^%s%%^RESET%%^\n", short()));
+        tell(who, sprintf("%%^ROOM_SHORT%%^%s%%^RESET%%^\n", short()));
 #endif
 
-this_look_is_forced = force_long_desc;
-tell(who, long());
-this_look_is_forced = 0;
+        this_look_is_forced = force_long_desc;
+        tell(who, long());
+        this_look_is_forced = 0;
     }
 }
 

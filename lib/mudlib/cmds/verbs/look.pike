@@ -32,7 +32,10 @@ void create()
     );
 }
 
-
+mixed can_look() 
+{
+	return 1;
+}
 mixed can_look_str(string str) 
 {
     return "That doesn't seem to be possible.\n";

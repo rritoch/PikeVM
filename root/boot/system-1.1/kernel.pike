@@ -992,12 +992,26 @@ array(object)|int _children(string|program p)
 
 protected object previous_object() 
 {
-    return function_object(backtrace()[-3][2]);  
+	return function_object(backtrace()[-3][2]);
+
 }
 
 public object _previous_object() 
 {
-    return function_object(backtrace()[-3][2]);
+	array bt = backtrace();
+	int ctr = sizeof(bt)-2;
+	object ret;
+	object ob = function_object(bt[ctr][2]);
+	object cur;
+	
+	for(ctr -= 1; ctr > -1; ctr--) {
+		cur = function_object(bt[ctr][2]);
+		if (cur != ob) {
+			ret = cur;
+			ctr = -1;
+		}
+	}
+    return ret;  
 }
 
 

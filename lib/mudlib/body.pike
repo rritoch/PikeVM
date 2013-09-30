@@ -5,6 +5,7 @@
 #include "/includes/mudlib/move.h"
 #include "/includes/mudlib/size.h"
 #include "/includes/mudlib/flags.h"
+#include "/includes/mudlib/msgtypes.h"
 
 inherit LIVING;
 
@@ -201,6 +202,11 @@ simple_action("$N $vhave left "+mud_name()+".");
 
 
     remove();
+}
+
+void catch_tell(string msg) 
+{
+	do_receive(msg,PRIVATE_MSG);
 }
 
 void do_receive(string msg, int msg_type) {

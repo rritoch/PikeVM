@@ -62,7 +62,7 @@ string get_extra_long()
 {
     // WTF is this?
     //return call_hooks("extra_long", (: $1 + $2 :), "") || "";
-    return long();
+    return "";
 }
 
 
