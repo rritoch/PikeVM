@@ -1,12 +1,18 @@
-/* Include the required headers from httpd */
+/* mod_pikevm.c:  */
+#include <stdio.h>
+#include "apr_hash.h"
+#include "ap_config.h"
+#include "ap_provider.h"
 #include "httpd.h"
 #include "http_core.h"
+#include "http_config.h"
+#include "http_log.h"
 #include "http_protocol.h"
 #include "http_request.h"
 
 /* Define prototypes of our functions in this module */
 static void register_hooks(apr_pool_t *pool);
-static int example_handler(request_rec *r);
+static int pikevm_handler(request_rec *r);
 
 /* Define our module as an entity and assign a function for registering hooks  */
 
@@ -27,7 +33,7 @@ static void register_hooks(apr_pool_t *pool)
 {
     
     /* Hook the request handler */
-    ap_hook_handler(example_handler, NULL, NULL, APR_HOOK_LAST);
+    ap_hook_handler(pikevm_handler, NULL, NULL, APR_HOOK_LAST);
 }
 
 /* The handler function for our module.
