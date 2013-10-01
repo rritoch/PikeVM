@@ -67,6 +67,12 @@ The simplest way to compile this package is:
      all sorts of other programs in order to regenerate files that came
      with the distribution.
 
+  6. To begin using the plugin you will need to ensure the following two 
+     lines are in your httpd.conf apache configuration file.
+
+	LoadModule pikevm_module modules/mod_pikevm.so
+	AddHandler pikevm-handler .pike
+
 Compilers and Options
 =====================
 
