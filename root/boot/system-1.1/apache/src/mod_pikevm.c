@@ -23,7 +23,7 @@ void pikevm_init(apr_pool_t *pool);
 
 /* Define Commands */
 
-static const cmd_rec ap_pikevm_cmds[] = {
+static const command_rec ap_pikevm_cmds[] = {
     AP_INIT_TAKE1("PikeVMHost", ap_set_string_slot,(void*)APR_OFFSETOF(pikevm_dir_cfg, host), OR_ALL,
 	    "Set PikeVM Server Host"),
     AP_INIT_TAKE1("PikeVMPort", ap_set_int_slot,(void*)APR_OFFSETOF(pikevm_dir_cfg, port), OR_ALL,
@@ -47,7 +47,7 @@ module AP_MODULE_DECLARE_DATA   pikevm_module =
 // Globals
 
 /* Create Server Configuration */
-static void* ap_create_pikevm_svr_config(apr_pool_t* pool, server_rec* svr) 
+static void* ap_create_pikevm_svr_config(apr_pool_t *pool, server_rec *sr) 
 {
     pikevm_svr_cfg *svr = apr_pcalloc(pool, sizeof(pikevm_svr_cfg));
     /* Set up the default values for fields of svr */
