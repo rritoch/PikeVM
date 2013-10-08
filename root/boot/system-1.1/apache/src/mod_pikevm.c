@@ -11,8 +11,8 @@
 #include "http_request.h"
 
 /* Define prototypes of our functions in this module */
-static void register_hooks(apr_pool_t *pool);
-static int pikevm_handler(request_rec *r);
+static void ap_pikevm_register_hooks(apr_pool_t *pool);
+static int ap_pikevm_handler(request_rec *r);
 
 /* Define our module as an entity and assign a function for registering hooks  */
 
@@ -24,25 +24,23 @@ module AP_MODULE_DECLARE_DATA   pikevm_module =
     NULL,            // Per-server configuration handler
     NULL,            // Merge handler for per-server configurations
     NULL,            // Any directives we may have for httpd
-    register_hooks   // Our hook registering function
+    ap_pikevm_register_hooks   // Our hook registering function
 };
 
 
-/* register_hooks: Adds a hook to the httpd process */
-static void register_hooks(apr_pool_t *pool) 
+/* ap_pikevm_register_hooks: Adds a hook to the httpd process */
+static void ap_pikevm_register_hooks(apr_pool_t *pool) 
 {
     
     /* Hook the request handler */
-    ap_hook_handler(pikevm_handler, NULL, NULL, APR_HOOK_LAST);
+    ap_hook_handler(ap_pikevm_handler, NULL, NULL, APR_HOOK_LAST);
 }
 
-/* The handler function for our module.
- * This is where all the fun happens!
- */
+/* ap_pikevm_handler: The handler function for our module. */
 
-static int pikevm_handler(request_rec *r)
+static int ap_pikevm_handler(request_rec *r)
 {
-    /* First off, we need to check if this is a call for the "example" handler.
+    /* First off, we need to check if this is a call for the "pikevm" handler.
      * If it is, we accept it and do our things, it not, we simply return DECLINED,
      * and Apache will try somewhere else.
      */
