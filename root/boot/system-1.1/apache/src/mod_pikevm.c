@@ -102,13 +102,18 @@ static int ap_pikevm_handler(request_rec *r)
      */
     if (!r->handler || strcmp(r->handler, "pikevm-handler")) return (DECLINED);
     
+    // grab configuration
+    pikevm_dir_cfg *dir_config = (pikevm_dir_cfg*) ap_get_module_config(r->per_dir_config, &pikevm_module);
+    
     // set content type
     ap_set_content_type(r, "text/html");
     
     
     // The first thing we will do is write a simple "Hello, world!" back to the client.
     //ap_rputs("Hello, world!<br/>", r);
-    ap_rprintf(r, "Hello, world!");
+    ap_rprintf(r, "Hello, world!<br />");
+    ap_rprintf(r, "Port: %i<br />",dir_config->port);
+    ap_rprintf(r, "Host: %s<br />", dir_config->host == NULL ? "<b class=\"null_value\">NULL</b>" :dir_config->host);
     return OK;
 }
 
