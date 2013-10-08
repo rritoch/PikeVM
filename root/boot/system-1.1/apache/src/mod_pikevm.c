@@ -13,6 +13,7 @@
 /* Define prototypes of our functions in this module */
 static void ap_pikevm_register_hooks(apr_pool_t *pool);
 static int ap_pikevm_handler(request_rec *r);
+void pikevm_init(apr_pool_t *pool);
 
 /* Define our module as an entity and assign a function for registering hooks  */
 
@@ -28,10 +29,12 @@ module AP_MODULE_DECLARE_DATA   pikevm_module =
 };
 
 
+// Globals
+
 /* ap_pikevm_register_hooks: Adds a hook to the httpd process */
 static void ap_pikevm_register_hooks(apr_pool_t *pool) 
 {
-    
+    pikevm_init(pool);
     /* Hook the request handler */
     ap_hook_handler(ap_pikevm_handler, NULL, NULL, APR_HOOK_LAST);
 }
@@ -55,3 +58,14 @@ static int ap_pikevm_handler(request_rec *r)
     ap_rprintf(r, "Hello, world!");
     return OK;
 }
+
+// Local
+
+/* pikevm_init: PikeVM Apache Module Initialization */
+void pikevm_init(apr_pool_t *pool) 
+{
+    // Reserved for future use
+}
+
+
+
