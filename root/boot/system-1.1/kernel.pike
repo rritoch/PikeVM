@@ -2722,6 +2722,10 @@ int _say(string str, object|array(object)|void exclude)
 
 }
 
+void precompile(mapping(string:mixed) code) {
+	// no action!	
+}
+
 void init_gui() {
 	if (objectp(GTK2)) {
 		if (
