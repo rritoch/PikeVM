@@ -16,6 +16,7 @@ int main(int argc, array(string) argv, mixed env)
     string name;
     string cwd;
     mixed err;
+    object ob;
  
     cwd = this_shell()->get_cwd();
     
@@ -30,8 +31,16 @@ int main(int argc, array(string) argv, mixed env)
     	name = name[0..<5];
     }
  
+    if (ob =kernel()->find_object(name,cwd)) {
+    	destruct(ob);
+    }
+    
     if ((p = kernel()->find_program(name,cwd)) != -1) {  
         kernel()->unload_program(p);
+    }
+    
+    if (ob =kernel()->find_object(name + ".pike",cwd)) {
+    	destruct(ob);
     }
     
     if ((p = kernel()->find_program(name + ".pike",cwd)) != -1) {  
