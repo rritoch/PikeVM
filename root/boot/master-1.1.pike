@@ -4476,30 +4476,46 @@ void _main(array(string) orig_argv)
       if(!kernel->kernel_init)
          error("Error: %s has no entry point.\n", argv[0]);
 
+      string c;
+      mapping(string:mixed) k_save_constants = copy_value(save_constants);
+      
         ret=kernel->kernel_init(
           sizeof(argv),
           argv,getenv(),
-          save_constants,
+          k_save_constants,
           programs,
           rev_programs,
           fc,
           rev_fc,
           pike_module_path,
-          pike_include_path);
+          pike_include_path
+        );
+        
+        // restore constants...
+        foreach(indices(all_constants()), c) {
+        	if (zero_type(save_constants[c])) {
+        		add_constant(c); // delete constant
+        	}
+        }
+        foreach(indices(save_constants),c) {
+        	add_constant(c,save_constants[c]);
+        }
     };
-
+    
    }
 
   // Disable tracing.
   trace = predef::trace(trace);
   if (err) {
     handle_error (err);
-    ret = 10;
-  }
-  if(!intp(ret))
+    exit(10,"\nCatostrophic kernel failure! Sytem halted.\n");
+  } else {
+     if(!intp(ret))
     exit(10, "Error: Non-integer value %O returned from kernel.\n", ret);
 
-  if(ret >=0) exit([int]ret);
+     if(ret >=0) exit([int]ret);
+  
+  }
   _async=1;
 
   // Reenable tracing.

@@ -1786,41 +1786,74 @@ object|int _find_object(string name)
 
 /* Kernel System */
 
-private mixed start_init(mixed argv, mixed env) {
- program p;
- string fn;
- mixed err; 
- 
- err = 0;
- 
-  fn = argv[0];
-        
-  p = (program)fn;
-  
-  
-  if (!programp(p)) {
-   kwrite(sprintf("kexec error: Failed to load program %O.",fn));
-   return 1;
-  }
-  
-  err = catch {
-   pinit = ({ p() }); 
-  };
+private mapping(string:mixed) init_params;
+private Thread.Thread init_thread;
+private int restart = 1;
 
-  if (err) {
-   kwrite(sprintf("kexec error:2: %O",err));
-   return err;
-  }  
+public void shutdown() 
+{
+	if (init_thread) {
+		restart = 0;
+	    init_thread->kill();
+	}
+}
+
+public void reboot() 
+{
+	if (init_thread) {
+	    init_thread->kill();
+	}
+}
+
+private mixed do_init() 
+{
+	mixed err;
+	mixed argv = init_params["argv"];
+	mixed env = init_params["env"];
+    err = catch { 
+        pinit[0]->main(sizeof(argv),argv,env);
+    };
+    if (err) {
+        kwrite(sprintf("kexec runtime error: %O",err));
+    }
+    return err;
+}
+
+private mixed start_init(mixed argv, mixed env) 
+{
+    program p;
+    string fn;
+    mixed err;
+    Thread.Thread thread;
+ 
+    err = 0;
+ 
+    fn = argv[0];
+        
+    p = (program)fn;
+ 
+    if (!programp(p)) {
+        kwrite(sprintf("kexec error: Failed to load program %O.",fn));
+       return 1;
+    }
+  
+    err = catch {
+        pinit = ({ p() }); 
+    };
+
+    if (err) {
+        kwrite(sprintf("kexec error:2: %O",err));
+        return err;
+    }  
    
-  err = catch { 
-   pinit[0]->main(sizeof(argv),argv,env);
-  };
-  
-  if (err) {
-   kwrite(sprintf("kexec runtime error: %O",err));
-  }
-  
-  return 0;  
+    init_params = ([
+        "argv":argv,
+        "env" : env
+    ]);
+    
+    init_thread = Thread.Thread(do_init);
+    
+    return init_thread.wait();  
 }
 
 int shell_exec(string cmd, mixed argv, mixed env) {
@@ -2738,6 +2771,8 @@ void init_gui() {
 	}
 	
 }
+
+
 /* Entry Point */
 
 int kernel_init(int argc, 
@@ -2938,12 +2973,17 @@ int kernel_init(int argc,
   init_argv = ({"/sbin/init"});      
   err = start_init(init_argv,env);
   if (err) {
-   kwrite("Unable to start init. System Halted!");
-   return 1;
+    kwrite("Unable to start init. System Halted!");
+    return 1;
   } else {
-   kwrite("Init process ended. System Restart!");
+  	if (restart) {
+        kwrite("Init process ended. System Restart!");
+        return -1;
+  	} else {
+  		kwrite("System halted.");
+  	}
   }
   
-  return -1;
+  return 0;
 }
 
