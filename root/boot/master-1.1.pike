@@ -2490,13 +2490,15 @@ void handle_error(array|object trace)
 {
   // NB: Use predef::trace() to modify trace level here.
   // predef::trace(2);
+  //werror(sprintf("%O",trace));
+  
   if(mixed x=catch {
     werror(describe_backtrace(trace));
   }) {
     // One reason for this might be too little stack space, which
     // easily can occur for "out of stack" errors. It should help to
     // tune up the STACK_MARGIN values in interpret.c then.
-    werror("Error in handle_error in master object:\n");
+    werror("Error in handle_error in master object:  ");
     if(catch {
       // NB: Splited werror calls to retain some information
       //     even if/when werror throws.
@@ -2504,10 +2506,10 @@ void handle_error(array|object trace)
     if (catch {
       string msg = [string]x[0];
       array bt = [array]x[1];
-      werror("%s", msg);
-      werror("%O\n", bt);
+      werror("1: %s", msg);
+      werror("2: %O\n", bt);
     }) {
-      werror("%O\n", x);
+      werror("3: %O\n", x);
     }
       };
       werror("Original error:\n"
@@ -4057,10 +4059,13 @@ private void restore_master_context(mapping(string:mixed) context)
         if (kills > 0) {
             foreach(kill_list, obj) {
                 if (obj) {
-                	catch {
+                	mixed x = catch {
                 		write(sprintf("master: Killing %O\n",obj));
                         destruct(obj);
                 	};
+                	if (x) {
+                		write(sprintf("%O",x));
+                	}
                 }
             }
         }
@@ -4068,6 +4073,7 @@ private void restore_master_context(mapping(string:mixed) context)
     }
     
     root_module = context["root_module"]->createClone();
+    write("master: System restore complete");
 }
 
 //! This function is called when all the driver is done with all setup
@@ -5325,75 +5331,83 @@ string describe_function (function f)
 //!
 string describe_backtrace(mixed trace, void|int linewidth)
 {
-  int e;
-  string ret;
-  int backtrace_len=((int)getenv("PIKE_BACKTRACE_LEN")) || bt_max_string_len;
+    int e;
+    string ret;
+    int backtrace_len=((int)getenv("PIKE_BACKTRACE_LEN")) || bt_max_string_len;
 
-  if(!linewidth)
-  {
-    linewidth=99999;
-    catch
-    {
-      linewidth=[int]Files()->_stdin->tcgetattr()->columns;
-    };
-    if(linewidth<10) linewidth=99999;
-  }
-
-  // Note: Partial code duplication in describe_error and get_backtrace.
-
-  if (objectp(trace) && ([object]trace)->is_generic_error) {
-    object err_obj = [object] trace;
-    if (mixed err = catch {
-
-    if (functionp (err_obj->message))
-      ret = err_obj->message();
-    else if (zero_type (ret = err_obj->error_message))
-      // For compatibility with error objects trying to behave
-      // like arrays.
-      ret = err_obj[0];
-    if (!ret)
-      ret = "";
-    else if (!stringp (ret))
-      ret = sprintf ("<Message in %O is %t, expected string>\n",
-             err_obj, ret);
-
-    if (functionp (err_obj->backtrace))
-      trace = err_obj->backtrace();
-    else if (zero_type (trace = err_obj->error_backtrace))
-      // For compatibility with error objects trying to behave
-      // like arrays.
-      trace = err_obj[1];
-    if (!trace)
-      return ret + "<No backtrace>\n";
-    else if (!arrayp (trace))
-      return sprintf ("%s<Backtrace in %O is %t, expected array>\n",
-              ret, err_obj, trace);
-
-      })
-      return sprintf ("<Failed to index backtrace object %O: %s>\n",
-              err_obj, trim_all_whites (describe_error (err)));
-  }
-
-  else if (arrayp(trace)) {
-    if (sizeof([array]trace)==2 && stringp(ret = ([array]trace)[0])) {
-      trace = ([array] trace)[1];
-      if(!trace)
-    return ret + "<No backtrace>\n";
-      else if (!arrayp (trace))
-    return sprintf ("%s<Backtrace in error array is %t, expected array>\n",
-            ret, trace);
+    if(!linewidth) {
+        linewidth=99999;
+        catch {
+            linewidth=[int]Files()->_stdin->tcgetattr()->columns;
+        };
+        if (linewidth<10) {
+            linewidth=99999;
+        }
     }
-    else
-      ret = "";
-  }
 
-  else {
+    // Note: Partial code duplication in describe_error and get_backtrace.
+
+    if (objectp(trace) && ([object]trace)->is_generic_error) {
+        object err_obj = [object] trace;
+        if (mixed err = catch {
+
+            if (functionp (err_obj->message)) {
+            	ret = err_obj->message();
+            } else if (zero_type (ret = err_obj->error_message)) {
+                // For compatibility with error objects trying to behave
+                // like arrays.
+                ret = err_obj[0];
+            }
+            
+            if (!ret) {
+            	ret = "";
+            } else if (!stringp (ret)) {
+                ret = sprintf ("<Message in %O is %t, expected string>\n",
+                    err_obj, ret);
+            }
+
+            if (functionp (err_obj->backtrace)) {
+                trace = err_obj->backtrace();
+            } else if (zero_type (trace = err_obj->error_backtrace)) {
+                // For compatibility with error objects trying to behave
+                // like arrays.
+                trace = err_obj[1];
+            }
+            
+            if (!trace) {
+                return ret + "<No backtrace>\n";
+            } else if (!arrayp (trace)) {
+                return sprintf ("%s<Backtrace in %O is %t, expected array>\n",
+                    ret, err_obj, trace);
+            }
+
+        }) {
+            return sprintf ("<Failed to index backtrace object %O: %s>\n",
+                err_obj, trim_all_whites (describe_error (err)));
+        }
+    } else if (arrayp(trace)) {
+        if (sizeof([array]trace)==2 && stringp(ret = ([array]trace)[0])) {
+            trace = ([array] trace)[1];
+            if(!trace) {
+                return ret + "<No backtrace>\n";
+            } else if (!arrayp (trace)) {
+                return sprintf ("%s<Backtrace in error array is %t, expected array>\n",
+                    ret, trace);
+            }
+        } else {
+            ret = "";
+        }
+        return ret + sprintf(" trace = %O\n",trace); // Simple trace
+    } else {
 #if constant(_gdb_breakpoint)
-    _gdb_breakpoint();
+        _gdb_breakpoint();
 #endif
-    return sprintf ("<Invalid backtrace/error container: %O>\n"
+        /*
+        return sprintf ("<Invalid backtrace/error container: %O>\n"
             "%s\n", trace, describe_backtrace(backtrace()));
-  }
+        */
+        return "<invalid backtrace!>\n";
+    }
 
   {
     Describer desc = Describer();
@@ -5548,7 +5562,7 @@ string describe_backtrace(mixed trace, void|int linewidth)
     ret += frames * "";
   }
 
-  return ret;
+    return ret;
 }
 
 //! @appears describe_error

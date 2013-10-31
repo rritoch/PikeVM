@@ -373,12 +373,13 @@ private void httpd()
     
     printf("server: waiting for connections...\n");
     
-    while(1) {  // main accept() loop
+    while(this) {  // main accept() loop
         sin_size = _SS_SIZE; // this means nothing... oh well... orig: sizeof their_addr;
         their_addr = sockaddr_storage();        
         new_fd = accept(sockfd, their_addr, sin_size);
         if (new_fd == -1) {
-            perror("accept");
+            if (this) 
+                perror("accept");
             continue;
         }
         
