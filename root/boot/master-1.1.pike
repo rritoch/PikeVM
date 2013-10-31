@@ -3110,7 +3110,7 @@ class joinnode
 
     public object createClone() 
     {
-    	return joinnode(joined_modules,compilation_handler,fallback_module);
+        return joinnode(joined_modules,compilation_handler,fallback_module);
     }
     
     protected void create(array(object|mapping) _joined_modules,
@@ -3982,30 +3982,92 @@ int stat_pike_module_reloc() {
 private mapping(string:mixed) save_master_context() 
 {
 
-	
-	//root_module??
-	return ([
-	    "save_constants":copy_value(save_constants),
-	    "pike_module_path":copy_value(pike_module_path),
-	    "pike_include_path":copy_value(pike_include_path),
-	    "programs":copy_value(programs),
-	    "rev_programs":copy_value(rev_programs),
-	    "fc":copy_value(fc),
-	    "rev_fc":copy_value(rev_fc),
-	    "root_module": root_module->createClone()
-	]);
+    
+    //root_module??
+    mapping (object:int) threads = ([]);
+    mapping (object:int) objects = ([]);
+    object obj;
+    
+    foreach(all_threads(), object thread) {
+        threads[thread] = 1;
+    }
+    
+    mapping(string:mixed) context = ([
+        "save_constants":copy_value(save_constants),
+        "pike_module_path":copy_value(pike_module_path),
+        "pike_include_path":copy_value(pike_include_path),
+        "programs":copy_value(programs),
+        "rev_programs":copy_value(rev_programs),
+        "fc":copy_value(fc),
+        "rev_fc":copy_value(rev_fc),
+        "root_module": root_module->createClone(),
+        "threads": threads,
+    ]);
+    
+    obj = next_object();
+    objects[obj] = 1;
+    while(obj = next_object(obj)) {
+        objects[obj] = 1;
+    }
+    context["objects"] = objects;
+    return context;
 }
+
 
 private void restore_master_context(mapping(string:mixed) context)
 {
-	save_constants = copy_value(context["save_constants"]);
-	pike_module_path = copy_value(context["pike_module_path"]);
-	pike_include_path = copy_value(context["pike_include_path"]);
-	programs = copy_value(context["programs"]);
-	rev_programs = copy_value(context["rev_programs"]);
-	fc = copy_value(context["fc"]);
-	rev_fc = copy_value(context["rev_fc"]);
-	root_module = context["root_module"]->createClone();
+
+
+    int ctr = 0;
+    int kills = 1;
+    object obj;
+    array(object) kill_list = ({});
+    
+    save_constants = copy_value(context["save_constants"]);
+    pike_module_path = copy_value(context["pike_module_path"]);
+    pike_include_path = copy_value(context["pike_include_path"]);
+    programs = copy_value(context["programs"]);
+    rev_programs = copy_value(context["rev_programs"]);
+    fc = copy_value(context["fc"]);
+    rev_fc = copy_value(context["rev_fc"]);
+        
+    foreach(all_threads(), object thread) {
+        if (zero_type(context["threads"][thread])) {
+        	write("master: Killing thread %O\n",thread);
+            thread->kill();
+        }
+    }
+    
+    while(kills > 0 && ctr < 100) {
+        ctr++;
+        obj = next_object();
+        if (zero_type(context["objects"][obj])) {
+            kill_list = ({ obj }) + kill_list;
+        }
+        
+        while(obj = next_object(obj)) {
+            if (zero_type(context["objects"][obj])) {
+                kill_list = ({ obj }) + kill_list;
+            }
+        }
+        
+        kill_list -= all_threads();
+        
+        kills = sizeof(kill_list);
+        if (kills > 0) {
+            foreach(kill_list, obj) {
+                if (obj) {
+                	catch {
+                		write(sprintf("master: Killing %O\n",obj));
+                        destruct(obj);
+                	};
+                }
+            }
+        }
+        kill_list = ({});
+    }
+    
+    root_module = context["root_module"]->createClone();
 }
 
 //! This function is called when all the driver is done with all setup
@@ -4498,9 +4560,9 @@ void _main(array(string) orig_argv)
     ret = -1;
     
     while (ret == -1) {
-    	kernel_registered = 0;
-    	restore_master_context(m_context);
-    	
+        kernel_registered = 0;
+        restore_master_context(m_context);
+        
         ret = 1;
         err = catch {
             // The main reason for this catch is actually to get a new call
