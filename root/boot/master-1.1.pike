@@ -3108,6 +3108,11 @@ class joinnode
         return as=='O' && sprintf("master()->joinnode(%O)",joined_modules);
     }
 
+    public object createClone() 
+    {
+    	return joinnode(joined_modules,compilation_handler,fallback_module);
+    }
+    
     protected void create(array(object|mapping) _joined_modules,
             object|void _compilation_handler,
             joinnode|void _fallback_module)
@@ -3717,40 +3722,39 @@ class CompatResolver
   }
 
   //!
-  mixed resolv_base(string identifier, string|void current_file,
-            object|void current_handler)
-  {
-    //      werror("Resolv_base(%O)\n",identifier);
+    mixed resolv_base(string identifier, string|void current_file,
+                object|void current_handler
+    ) {
+        //      werror("Resolv_base(%O)\n",identifier);
 #ifdef DEBUG_RESOLVER
-    write(sprintf("Resolv_base(%O)\n",identifier));
+        write(sprintf("*:resolv_base(%O,%O,%O)\n",identifier,current_file,current_handler));
 #endif
-    return get_root_module(current_handler)[identifier];
-  }
+        return get_root_module(current_handler)[identifier];
+}
 
-  //! Same as @[resolv], but throws an error instead of returning
-  //! @[UNDEFINED] if the resolv failed.
-  mixed resolv_or_error(string identifier, string|void current_file,
+    //! Same as @[resolv], but throws an error instead of returning
+    //! @[UNDEFINED] if the resolv failed.
+    mixed resolv_or_error(string identifier, string|void current_file,
             void|object current_handler)
-  {
-    mixed res = resolv(identifier, current_file, current_handler);
-    if(zero_type(res)) error("Could not resolve %s.\n", identifier);
-    return res;
-  }
+    {
+        mixed res = resolv(identifier, current_file, current_handler);
+        if(zero_type(res)) error("Could not resolve %s.\n", identifier);
+        return res;
+    }
 
-  //!
-  mixed resolv(string identifier, string|void current_file,
-           object|void current_handler)
-  {
+//!
+mixed resolv(string identifier, string|void current_file,
+           object|void current_handler) {
 
 #ifdef DEBUG_RESOLVER
-    write(sprintf("*:Resolv(%s,)\n",identifier));
+    write(sprintf("*:resolv(%O,%O,%O)\n",identifier,current_file,current_handler));
 #endif
 
     if (block_resolv > 0) {
 #ifdef DEBUG_RESOLVER
-     write("Resolve Blocked!\n");
+        write("Resolve Blocked!\n");
 #endif
-     return UNDEFINED;
+        return UNDEFINED;
     }
 
     resolv_debug("resolv(%O, %O)\n",identifier, current_file);
@@ -3758,48 +3762,49 @@ class CompatResolver
 
     // FIXME: Support having the cache in the handler?
     if( no_resolv[ identifier ] ) {
-      DEC_RESOLV_MSG_DEPTH();
-      resolv_debug("resolv(%O, %O) => excluded\n",identifier, current_file);
-      return UNDEFINED;
+        DEC_RESOLV_MSG_DEPTH();
+        resolv_debug("resolv(%O, %O) => excluded\n",identifier, current_file);
+        return UNDEFINED;
     }
 
     if (current_file && !stringp(current_file)) {
-      error("resolv(%O, %O, %O): current_file is not a string!\n",
-        identifier, current_file, current_handler);
+        error("resolv(%O, %O, %O): current_file is not a string!\n",
+          identifier, current_file, current_handler);
     }
 
     array(string) tmp = identifier/"::";
     mixed ret;
     if (sizeof(tmp) > 1) {
-      string scope = tmp[0];
-      tmp = tmp[1]/".";
-      switch(scope) {
-      case "predef":
-    ret = all_constants();
-    break;
-      default:
-    if (sscanf(scope, "%d.%d%*s", int major, int minor) == 3) {
-      // Versioned identifier.
-      ret = get_compilation_handler(major, minor);
-      if (ret) {
-        mixed mod = ret->get_default_module();
-        if (!zero_type(mod = mod[tmp[0]])) {
-          ret = mod;
-        } else {
-          ret = ret->resolv(tmp[0]);
+        string scope = tmp[0];
+        tmp = tmp[1]/".";
+        switch(scope) {
+            case "predef":
+                ret = all_constants();
+                break;
+            default:
+                if (sscanf(scope, "%d.%d%*s", int major, int minor) == 3) {
+                    // Versioned identifier.
+                    ret = get_compilation_handler(major, minor);
+                    if (ret) {
+                        mixed mod = ret->get_default_module();
+                        if (!zero_type(mod = mod[tmp[0]])) {
+                            ret = mod;
+                        } else {
+                            ret = ret->resolv(tmp[0]);
+                        }
+                        tmp = tmp[1..];
+                        break;
+                    }
+                }
+                error("resolv(%O, %O, %O): Unsupported scope: %O!\n",
+                    identifier, current_file, current_handler, scope);
         }
-        tmp = tmp[1..];
-        break;
-      }
-    }
-    error("resolv(%O, %O, %O): Unsupported scope: %O!\n",
-          identifier, current_file, current_handler, scope);
-      }
     } else {
-      tmp = identifier/".";
-      ret = resolv_base(tmp[0], current_file, current_handler);
-      tmp = tmp[1..];
+        tmp = identifier/".";
+        ret = resolv_base(tmp[0], current_file, current_handler);
+        tmp = tmp[1..];
     }
+    
     foreach(tmp,string index) {
       resolv_debug("indexing %O with %O...\n",
            ret, index);
@@ -3819,7 +3824,7 @@ class CompatResolver
 #endif
 
     return ret;
-  }
+}
 
 
   //! This function is called whenever an #include directive is
@@ -3855,19 +3860,19 @@ class CompatResolver
   }
 
   //!
-  string read_include(string f)
-  {
+    string read_include(string f)
+    {
     AUTORELOAD_CHECK_FILE(f);
     if (array|object err = catch {
     return master_read_file (f);
       })
       compile_cb_rethrow (err);
-  }
+    }
 
-  string _sprintf(int t)
-  {
-    return t=='O' && sprintf("CompatResolver(%O)",ver);
-  }
+    string _sprintf(int t)
+    {
+      return t=='O' && sprintf("CompatResolver(%O)",ver);
+    }
 }
 
 inherit CompatResolver;
@@ -3932,19 +3937,24 @@ protected mixed main_resolv(string sym, CompatResolver|void resolver) {
   return v;
 };
 
-private void welcome() {
- write(sprintf("[%O] Loading Kernel...\n",object_program(this)));
+private void welcome()
+{
+    write(sprintf("[%O] Loading Kernel...\n",object_program(this)));
 
 #ifdef __NT__
-  write(sprintf("[%O] __NT__ Is defined\n",object_program(this)));
+    write(sprintf("[%O] __NT__ Is defined\n",object_program(this)));
 #endif
 }
 
-void register_kernel() {
- if (kernel_registered) return;
- system_module_path = pike_module_path;
- write(sprintf("[%O] Kernel (%O) Registered\n",object_program(this),kernel));
- kernel_registered = 1;
+void register_kernel()
+{
+    if (kernel_registered) {
+        return;
+    }
+
+    system_module_path = pike_module_path;
+    write(sprintf("[%O] Kernel (%O) Registered\n",object_program(this),kernel));
+    kernel_registered = 1;
 }
 
 program master_empty_program(int|void line, string|void file) {
@@ -3968,21 +3978,51 @@ int stat_pike_module_reloc() {
  #endif
 }
 
+
+private mapping(string:mixed) save_master_context() 
+{
+
+	
+	//root_module??
+	return ([
+	    "save_constants":copy_value(save_constants),
+	    "pike_module_path":copy_value(pike_module_path),
+	    "pike_include_path":copy_value(pike_include_path),
+	    "programs":copy_value(programs),
+	    "rev_programs":copy_value(rev_programs),
+	    "fc":copy_value(fc),
+	    "rev_fc":copy_value(rev_fc),
+	    "root_module": root_module->createClone()
+	]);
+}
+
+private void restore_master_context(mapping(string:mixed) context)
+{
+	save_constants = copy_value(context["save_constants"]);
+	pike_module_path = copy_value(context["pike_module_path"]);
+	pike_include_path = copy_value(context["pike_include_path"]);
+	programs = copy_value(context["programs"]);
+	rev_programs = copy_value(context["rev_programs"]);
+	fc = copy_value(context["fc"]);
+	rev_fc = copy_value(context["rev_fc"]);
+	root_module = context["root_module"]->createClone();
+}
+
 //! This function is called when all the driver is done with all setup
 //! of modules, efuns, tables etc. etc. and is ready to start executing
 //! _real_ programs. It receives the arguments not meant for the driver.
 void _main(array(string) orig_argv)
 {
-  array(string) argv=copy_value(orig_argv);
-  save_constants = copy_value(all_constants());
-  welcome();
-  //write(sprintf("argv = %O\n",argv));
-  int debug,trace,run_tool;
-  object tmp;
-  string postparseaction=0;
-  predefines = initial_predefines =
+    array(string) argv=copy_value(orig_argv);
+    save_constants = copy_value(all_constants());
+    welcome();
+    //write(sprintf("argv = %O\n",argv));
+    int debug,trace,run_tool;
+    object tmp;
+    string postparseaction=0;
+    predefines = initial_predefines =
     Builtin._take_over_initial_predefines();
-  _pike_file_name = orig_argv[0];
+    _pike_file_name = orig_argv[0];
 #if constant(thread_create)
   _backend_thread = this_thread();
 #endif
@@ -4003,259 +4043,255 @@ void _main(array(string) orig_argv)
 //  }
 //#endif
 
-  string last_arg;
+    string last_arg;
 
-  foreach(argv,string cur_arg) {
+    foreach(argv,string cur_arg) {
 
-     if (!zero_type(last_arg)) {
-         switch(last_arg) {
-            case "-I":
-            case "--include-path":
-                add_include_path(cur_arg);
-                break;
-            case "-M":
-            case "--module-path":
-                add_module_path(cur_arg);
-                break;
-         }
+        if (!zero_type(last_arg)) {
+            switch(last_arg) {
+                case "-I":
+                case "--include-path":
+                    add_include_path(cur_arg);
+                    break;
+                case "-M":
+                case "--module-path":
+                    add_module_path(cur_arg);
+                    break;
+            }
+        }
+        last_arg = cur_arg;
+    }
+    // Some configure scripts depends on this format.
+    string format_paths() {
+        return  ("master.pike...: " + (_master_file_name || __FILE__) + "\n"
+            "Module path...: " + pike_module_path*"\n"
+            "                " + "\n"
+            "Include path..: " + pike_include_path*"\n"
+            "                " + "\n"
+            "Program path..: " + pike_program_path*"\n"
+            "                " + "\n");
+    };
 
-     }
-     last_arg = cur_arg;
-  }
-  // Some configure scripts depends on this format.
-  string format_paths() {
-    return  ("master.pike...: " + (_master_file_name || __FILE__) + "\n"
-         "Module path...: " + pike_module_path*"\n"
-         "                " + "\n"
-         "Include path..: " + pike_include_path*"\n"
-         "                " + "\n"
-         "Program path..: " + pike_program_path*"\n"
-         "                " + "\n");
-  };
+    Version cur_compat_ver;
 
-  Version cur_compat_ver;
+    if(sizeof(argv)>1 && sizeof(argv[1]) && argv[1][0]=='-') {
+        array q;
+        tmp = main_resolv( "Getopt" );
 
-  if(sizeof(argv)>1 && sizeof(argv[1]) && argv[1][0]=='-')
-  {
-    array q;
-    tmp = main_resolv( "Getopt" );
+        int NO_ARG = tmp->NO_ARG;
+        int MAY_HAVE_ARG = tmp->MAY_HAVE_ARG;
+        int HAS_ARG = tmp->HAS_ARG;
 
-    int NO_ARG = tmp->NO_ARG;
-    int MAY_HAVE_ARG = tmp->MAY_HAVE_ARG;
-    int HAS_ARG = tmp->HAS_ARG;
+        q=tmp->find_all_options(
+            argv,
+            ({
+                ({"compat_version", HAS_ARG, ({"-V", "--compat"}), 0, 0}),
+                ({"version",        NO_ARG,  ({"-v", "--version"}), 0, 0}),
+                ({"dumpversion",    NO_ARG,  ({"--dumpversion"}), 0, 0}),
+                ({"help",           MAY_HAVE_ARG, ({"-h", "--help"}), 0, 0}),
+                ({"features",       NO_ARG,  ({"--features"}), 0, 0}),
+                ({"info",           NO_ARG,  ({"--info"}), 0, 0}),
+                ({"execute",        HAS_ARG, ({"-e", "--execute"}), 0, 0}),
+                ({"debug_without",  HAS_ARG, ({"--debug-without"}), 0, 0}),
+                ({"preprocess",     HAS_ARG, ({"-E", "--preprocess"}), 0, 0}),
+                ({"modpath",        HAS_ARG, ({"-M", "--module-path"}), 0, 0}),
+                ({"ipath",          HAS_ARG, ({"-I", "--include-path"}), 0, 0}),
+                ({"ppath",          HAS_ARG, ({"-P", "--program-path"}), 0, 0}),
+                ({"showpaths",      MAY_HAVE_ARG, ({"--show-paths"}), 0, 0}),
+                ({"warnings",       NO_ARG,  ({"-w", "--warnings"}), 0, 0}),
+                ({"nowarnings",     NO_ARG,  ({"-W", "--woff", "--no-warnings"}), 0, 0}),
+                ({"autoreload",     NO_ARG,  ({"--autoreload"}), 0, 0}),
+                ({"master",         HAS_ARG, ({"-m"}), 0, 0}),
+                ({"compiler_trace", NO_ARG,  ({"--compiler-trace"}), 0, 0}),
+                ({"assembler_debug",MAY_HAVE_ARG, ({"--assembler-debug"}), 0, 0}),
+                ({"optimizer_debug",MAY_HAVE_ARG, ({"--optimizer-debug"}), 0, 0}),
+                ({"debug",          MAY_HAVE_ARG, ({"--debug"}), 0, 1}),
+                ({"trace",          MAY_HAVE_ARG, ({"--trace"}), 0, 1}),
+                ({"ignore",         MAY_HAVE_ARG, ({"-Dqdatplr"}), 0, 1}),
+                ({"ignore",         HAS_ARG, ({"-s"}), 0, 0}),
+                ({"run_tool",       NO_ARG,  ({"-x"}), 0, 0}),
+                ({"show_cpp_warn",  NO_ARG,  ({"--show-all-cpp-warnings","--picky-cpp"}), 0, 0}),
+            }),
+            1
+        );
 
-    q=tmp->find_all_options(argv,({
-      ({"compat_version", HAS_ARG, ({"-V", "--compat"}), 0, 0}),
-      ({"version",        NO_ARG,  ({"-v", "--version"}), 0, 0}),
-      ({"dumpversion",    NO_ARG,  ({"--dumpversion"}), 0, 0}),
-      ({"help",           MAY_HAVE_ARG, ({"-h", "--help"}), 0, 0}),
-      ({"features",       NO_ARG,  ({"--features"}), 0, 0}),
-      ({"info",           NO_ARG,  ({"--info"}), 0, 0}),
-      ({"execute",        HAS_ARG, ({"-e", "--execute"}), 0, 0}),
-      ({"debug_without",  HAS_ARG, ({"--debug-without"}), 0, 0}),
-      ({"preprocess",     HAS_ARG, ({"-E", "--preprocess"}), 0, 0}),
-      ({"modpath",        HAS_ARG, ({"-M", "--module-path"}), 0, 0}),
-      ({"ipath",          HAS_ARG, ({"-I", "--include-path"}), 0, 0}),
-      ({"ppath",          HAS_ARG, ({"-P", "--program-path"}), 0, 0}),
-      ({"showpaths",      MAY_HAVE_ARG, ({"--show-paths"}), 0, 0}),
-      ({"warnings",       NO_ARG,  ({"-w", "--warnings"}), 0, 0}),
-      ({"nowarnings",     NO_ARG,  ({"-W", "--woff", "--no-warnings"}), 0, 0}),
-      ({"autoreload",     NO_ARG,  ({"--autoreload"}), 0, 0}),
-      ({"master",         HAS_ARG, ({"-m"}), 0, 0}),
-      ({"compiler_trace", NO_ARG,  ({"--compiler-trace"}), 0, 0}),
-      ({"assembler_debug",MAY_HAVE_ARG, ({"--assembler-debug"}), 0, 0}),
-      ({"optimizer_debug",MAY_HAVE_ARG, ({"--optimizer-debug"}), 0, 0}),
-      ({"debug",          MAY_HAVE_ARG, ({"--debug"}), 0, 1}),
-      ({"trace",          MAY_HAVE_ARG, ({"--trace"}), 0, 1}),
-      ({"ignore",         MAY_HAVE_ARG, ({"-Dqdatplr"}), 0, 1}),
-      ({"ignore",         HAS_ARG, ({"-s"}), 0, 0}),
-      ({"run_tool",       NO_ARG,  ({"-x"}), 0, 0}),
-      ({"show_cpp_warn",  NO_ARG,  ({"--show-all-cpp-warnings","--picky-cpp"}), 0, 0}),
-    }), 1);
-
-    /* Parse -M and -I backwards */
-    for(int i=sizeof(q)-1; i>=0; i--)
-    {
-      switch(q[i][0])
-      {
-    case "compat_version":
-      sscanf(q[i][1],"%d.%d",compat_major,compat_minor);
-      break;
+        /* Parse -M and -I backwards */
+        for(int i=sizeof(q)-1; i>=0; i--) {
+            switch(q[i][0]) {
+                case "compat_version":
+                    sscanf(q[i][1],"%d.%d",compat_major,compat_minor);
+                    break;
 
 #ifdef PIKE_AUTORELOAD
-      case "autoreload":
-    autoreload_on++;
-    break;
+                case "autoreload":
+                    autoreload_on++;
+                    break;
 #endif
 
-      case "debug_without":
-    // FIXME: Disable loading of dumped modules?
-        foreach( q[i][1]/",", string feature )
-        {
-          switch( feature )
-          {
-           case "ttf":
-             no_resolv[ "_Image_TTF" ] = 1;
-             break;
-           case "zlib":
-             no_resolv[ "Gz" ] = 1;
-             break;
-           case "unisys":
-             no_resolv[ "_Image_GIF" ] = 1;
-             no_resolv[ "_Image_TIFF" ] = 1;
-             break;
-           case "threads":
-             // not really 100% correct, but good enough for most things.
-             no_resolv[ "Thread" ] = 1;
-             add_constant( "thread_create" );
-             break;
-           default:
-             no_resolv[ feature ] = 1;
-             break;
-          }
-        }
-        break;
+                case "debug_without":
+                    // FIXME: Disable loading of dumped modules?
+                    foreach( q[i][1]/",", string feature ) {
+                        switch( feature ) {
+                            case "ttf":
+                                no_resolv[ "_Image_TTF" ] = 1;
+                                break;
+                            case "zlib":
+                                no_resolv[ "Gz" ] = 1;
+                                break;
+                            case "unisys":
+                                no_resolv[ "_Image_GIF" ] = 1;
+                                no_resolv[ "_Image_TIFF" ] = 1;
+                                break;
+                            case "threads":
+                                // not really 100% correct, but good enough for most things.
+                                no_resolv[ "Thread" ] = 1;
+                                add_constant( "thread_create" );
+                                break;
+                            default:
+                                no_resolv[ feature ] = 1;
+                                break;
+                        }
+                    }
+                    break;
 
-      case "debug":
-    debug+=(int)q[i][1];
-    break;
+                case "debug":
+                    debug+=(int)q[i][1];
+                    break;
 
 #if constant(_compiler_trace)
-      case "compiler_trace":
-    _compiler_trace(1);
-    break;
+                case "compiler_trace":
+                    _compiler_trace(1);
+                    break;
 #endif /* constant(_compiler_trace) */
 
 #if constant(_assembler_debug)
-      case "assembler_debug":
-    _assembler_debug((int)q[i][1]);
-    break;
+                case "assembler_debug":
+                    _assembler_debug((int)q[i][1]);
+                    break;
 #endif /* constant(_assembler_debug) */
 
 #if constant(_optimizer_debug)
-      case "optimizer_debug":
-    _optimizer_debug((int)q[i][1]);
-    break;
+                case "optimizer_debug":
+                    _optimizer_debug((int)q[i][1]);
+                    break;
 #endif /* constant(_optimizer_debug) */
 
-      case "trace":
-    trace+=(int)q[i][1];
-    break;
+                case "trace":
+                    trace+=(int)q[i][1];
+                    break;
 
-      case "modpath":
-    //add_module_path(q[i][1]);
-    break;
+                case "modpath":
+                    //add_module_path(q[i][1]);
+                    break;
 
-      case "ipath":
-    //add_include_path(q[i][1]);
-    break;
+                case "ipath":
+                    //add_include_path(q[i][1]);
+                    break;
 
-      case "ppath":
-    add_program_path(q[i][1]);
-    break;
+                case "ppath":
+                    add_program_path(q[i][1]);
+                    break;
 
-      case "warnings":
-    want_warnings++;
-    break;
+                case "warnings":
+                    want_warnings++;
+                    break;
 
-      case "nowarnings":
-    want_warnings--;
-    break;
+                case "nowarnings":
+                    want_warnings--;
+                    break;
 
-      case "master":
-    _master_file_name = q[i][1];
-    break;
+                case "master":
+                    _master_file_name = q[i][1];
+                    break;
 
-      case "run_tool":
-    run_tool = 1;
-    break;
+                case "run_tool":
+                    run_tool = 1;
+                    break;
 
-      case "show_cpp_warn":
-    show_if_constant_errors = 1;
-    break;
-      }
-    }
-
-    cur_compat_ver = Version (compat_major, compat_minor);
-    if (compat_major != -1) {
-      object compat_master = get_compat_master (compat_major, compat_minor);
-
-      if (cur_compat_ver <= Version (7, 6)) {
-    mapping(string:array(string)) compat_env = ([]);
-    foreach (Builtin._getenv(); string var; string val) {
-#ifdef __NT__
-      compat_env[lower_case (var)] = ({var, val});
-#else
-      compat_env[var] = ({var, val});
-#endif
-    }
-    compat_master->environment = compat_env;
-      }
-    }
-
-    foreach(q, array opts)
-    {
-      switch(opts[0])
-      {
-      case "dumpversion":
-    write("%d.%d.%d\n", __REAL_MAJOR__, __REAL_MINOR__, __REAL_BUILD__);
-        exit(0);
-
-      case "version":
-    exit(0, version() + " Copyright © 1994-2009 Linköping University\n"
-             "Pike comes with ABSOLUTELY NO WARRANTY; This is free software and you are\n"
-             "welcome to redistribute it under certain conditions; read the files\n"
-             "COPYING and COPYRIGHT in the Pike distribution for more details.\n");
-
-      case "help":
-    exit( 0, main_resolv("Tools.MasterHelp")->do_help(opts[1]) );
-
-      case "features":
-    postparseaction="features";
-    break;
-
-      case "info":
-    postparseaction="info";
-    break;
-
-      case "showpaths":
-        if( stringp(opts[1]) )
-        {
-          switch(opts[1])
-          {
-          case "master":
-            write( (_master_file_name || __FILE__)+"\n" );
-            break;
-
-          case "module":
-            write( (pike_module_path * ":")+"\n" );
-            break;
-
-          case "include":
-            write( (pike_include_path * ":")+"\n" );
-            break;
-
-          case "program":
-            write( (pike_program_path * ":")+"\n" );
-            break;
-
-          default:
-            exit(1, "Unknown path type %s\n", opts[1]);
-          }
-          exit(0);
+                case "show_cpp_warn":
+                    show_if_constant_errors = 1;
+                    break;
+            }
         }
 
-    exit(0, format_paths());
+        cur_compat_ver = Version (compat_major, compat_minor);
+        if (compat_major != -1) {
+            object compat_master = get_compat_master (compat_major, compat_minor);
 
-      case "execute":
+            if (cur_compat_ver <= Version (7, 6)) {
+                mapping(string:array(string)) compat_env = ([]);
+                foreach (Builtin._getenv(); string var; string val) {
+#ifdef __NT__
+                    compat_env[lower_case (var)] = ({var, val});
+#else
+                    compat_env[var] = ({var, val});
+#endif
+                }
+                compat_master->environment = compat_env;
+            }
+        }
+
+        foreach(q, array opts) {
+            switch(opts[0]) {
+                case "dumpversion":
+                    write("%d.%d.%d\n", __REAL_MAJOR__, __REAL_MINOR__, __REAL_BUILD__);
+                    exit(0);
+
+                case "version":
+                    exit(
+                        0,
+                        version() + " Copyright © 1994-2009 Linköping University\n"
+                            "Pike comes with ABSOLUTELY NO WARRANTY; This is free software and you are\n"
+                            "welcome to redistribute it under certain conditions; read the files\n"
+                            "COPYING and COPYRIGHT in the Pike distribution for more details.\n");
+
+                case "help":
+                    exit( 0, main_resolv("Tools.MasterHelp")->do_help(opts[1]) );
+
+                case "features":
+                    postparseaction="features";
+                    break;
+
+                case "info":
+                    postparseaction="info";
+                    break;
+
+                case "showpaths":
+                    if( stringp(opts[1]) ) {
+                        switch(opts[1]) {
+                case "master":
+                    write( (_master_file_name || __FILE__)+"\n" );
+                    break;
+
+                case "module":
+                    write( (pike_module_path * ":")+"\n" );
+                    break;
+
+                case "include":
+                    write( (pike_include_path * ":")+"\n" );
+                    break;
+
+                case "program":
+                    write( (pike_program_path * ":")+"\n" );
+                    break;
+
+                default:
+                    exit(1, "Unknown path type %s\n", opts[1]);
+            }
+            exit(0);
+        }
+
+        exit(0, format_paths());
+
+        case "execute":
 #ifdef __AUTO_BIGNUM__
-    main_resolv( "Gmp.bignum" );
+            main_resolv( "Gmp.bignum" );
 #endif /* __AUTO_BIGNUM__ */
 
-    random_seed((time() ^ (getpid()<<8)));
-    argv = tmp->get_args(argv,1);
+            random_seed((time() ^ (getpid()<<8)));
+            argv = tmp->get_args(argv,1);
 
-    program prog;
+            program prog;
     mixed compile_err = catch {;
       if(cur_compat_ver <= Version(7,4))
         prog = compile_string(
@@ -4456,79 +4492,85 @@ void _main(array(string) orig_argv)
   mixed ret;
   mixed err;
 
-  ret = -1;
-
-  while (ret == -1) {
-   ret = 1;
-  err = catch {
-      // The main reason for this catch is actually to get a new call
-      // to eval_instruction in interpret.c so that the debug and
-      // trace levels set above take effect in the bytecode evaluator.
-
-      if(cur_compat_ver <= Version(7,4)) {
-    kernel=prog();
-      }
-      else {
-    kernel=prog(argv);
-      }
-      kernel_registered = 0;
-
-      if(!kernel->kernel_init)
-         error("Error: %s has no entry point.\n", argv[0]);
-
-      string c;
-      mapping(string:mixed) k_save_constants = copy_value(save_constants);
-      
-        ret=kernel->kernel_init(
-          sizeof(argv),
-          argv,getenv(),
-          k_save_constants,
-          programs,
-          rev_programs,
-          fc,
-          rev_fc,
-          pike_module_path,
-          pike_include_path
-        );
-        
-        // restore constants...
-        foreach(indices(all_constants()), c) {
-        	if (zero_type(save_constants[c])) {
-        		add_constant(c); // delete constant
-        	}
-        }
-        foreach(indices(save_constants),c) {
-        	add_constant(c,save_constants[c]);
-        }
-    };
-    
-   }
-
-  // Disable tracing.
-  trace = predef::trace(trace);
-  if (err) {
-    handle_error (err);
-    exit(10,"\nCatostrophic kernel failure! Sytem halted.\n");
-  } else {
-     if(!intp(ret))
-    exit(10, "Error: Non-integer value %O returned from kernel.\n", ret);
-
-     if(ret >=0) exit([int]ret);
   
-  }
-  _async=1;
+    mixed m_context = save_master_context();
+    
+    ret = -1;
+    
+    while (ret == -1) {
+    	kernel_registered = 0;
+    	restore_master_context(m_context);
+    	
+        ret = 1;
+        err = catch {
+            // The main reason for this catch is actually to get a new call
+            // to eval_instruction in interpret.c so that the debug and
+            // trace levels set above take effect in the bytecode evaluator.
 
-  // Reenable tracing.
-  trace = predef::trace(trace);
-  while(1)
-  {
-    mixed err=catch
-    {
-      while(1)
-    Builtin.__backend(3600.0);
-    };
-    master()->handle_error(err);
-  }
+            if(cur_compat_ver <= Version(7,4)) {
+                kernel=prog();
+            } else {
+                kernel=prog(argv);
+            }
+
+            if(!kernel->kernel_init) {
+                error("Error: %s has no entry point.\n", argv[0]);
+            }
+
+            string c;
+
+            // Init Kernel
+
+            ret=kernel->kernel_init(
+                sizeof(argv),
+                argv,getenv(),
+                save_constants,
+                programs,
+                rev_programs,
+                fc,
+                rev_fc,
+                pike_module_path,
+                pike_include_path
+            );
+
+            // restore constants...
+            foreach(indices(all_constants()), c) {
+                if (zero_type(save_constants[c])) {
+                    add_constant(c); // delete constant
+                }
+            }
+            foreach(indices(save_constants),c) {
+                add_constant(c,save_constants[c]);
+            }
+        };
+
+    }
+
+    // Disable tracing.
+    trace = predef::trace(trace);
+    if (err) {
+        handle_error (err);
+        exit(10,"\nCatostrophic kernel failure! Sytem halted.\n");
+    } else {
+        if(!intp(ret)) {
+           exit(10, "Error: Non-integer value %O returned from kernel.\n", ret);
+        }
+
+        if(ret >=0) exit([int]ret);
+    }
+
+    _async=1;
+
+    // Reenable tracing.
+    trace = predef::trace(trace);
+    while(1) {
+        mixed err=catch {
+            while(1) {
+                Builtin.__backend(3600.0);
+            }
+        };
+        master()->handle_error(err);
+    }
 }
 
 #if constant(thread_local)

@@ -119,61 +119,61 @@ class k_pointer
 
 class call_out_ob 
 {
-	
-	private function cb;
-	private mixed cb_args;
-	private int _active;
-	private mixed co;
-	//private mixed user;
-	//private mixed link;
-	private mixed owner;
-	
-	int s; // seconds
-	
-	private void response() 
-	{
-		if (_active) {
-			_active = 0;
-		    cb(@cb_args);
-		    destruct();
-		}
-	}
-			
-	void create(
-	    mixed user, 
-	    mixed link,
-	    mixed caller,
-	    function callback, 
-	    int seconds, 
-	    mixed ... args
+    
+    private function cb;
+    private mixed cb_args;
+    private int _active;
+    private mixed co;
+    //private mixed user;
+    //private mixed link;
+    private mixed owner;
+    
+    int s; // seconds
+    
+    private void response() 
+    {
+        if (_active) {
+            _active = 0;
+            cb(@cb_args);
+            destruct();
+        }
+    }
+            
+    void create(
+        mixed user, 
+        mixed link,
+        mixed caller,
+        function callback, 
+        int seconds, 
+        mixed ... args
     ) {
-    	owner = caller;
-		cb = callback;
-		cb_args = args;
-		s = seconds;
-		_active = 0;		
-	}
-	
-	void activate() 
-	{
-		if (!_active) {
-		    _active = 1;
-		    co = call_out(response,s);
-		}
-	}
-	
-	protected void destroy() 
-	{
-		if (_active) {
-			remove_call_out(co);			
-		}
-		call_outs[owner] -= ({this_object()});
-		if (!sizeof(call_outs[owner])) {
-			m_delete(call_outs,owner);
-		}	
-		m_delete(call_out_obs,this_object());
-		destruct();
-	}	
+        owner = caller;
+        cb = callback;
+        cb_args = args;
+        s = seconds;
+        _active = 0;        
+    }
+    
+    void activate() 
+    {
+        if (!_active) {
+            _active = 1;
+            co = call_out(response,s);
+        }
+    }
+    
+    protected void destroy() 
+    {
+        if (_active) {
+            remove_call_out(co);            
+        }
+        call_outs[owner] -= ({this_object()});
+        if (!sizeof(call_outs[owner])) {
+            m_delete(call_outs,owner);
+        }    
+        m_delete(call_out_obs,this_object());
+        destruct();
+    }    
 }
 
 /* Needed from Kernel */
@@ -187,31 +187,31 @@ protected mapping(string:mixed) instantiate_static_modules(object|mapping static
         mixed val = static_modules[name];
         
         if (!val->_module_value) {
-	        val = val();
+            val = val();
         }
         
         if (mixed tmp=val->_module_value) {
-        	val=tmp;        	
+            val=tmp;            
         }
         if(!has_value(name, '.')) {
-	        res[name] = val;
+            res[name] = val;
         } else {
-	        mapping(string:mixed) level = joins;
-	        
-	        string pfx;
-	        while(2 == sscanf(name, "%s.%s", pfx, name)) {
-	            level = (level[pfx] || (level[pfx] = ([])));
-	        }
-	        level[name] = val;
+            mapping(string:mixed) level = joins;
+            
+            string pfx;
+            while(2 == sscanf(name, "%s.%s", pfx, name)) {
+                level = (level[pfx] || (level[pfx] = ([])));
+            }
+            level[name] = val;
         }
     }
     //joinnode joinify(mapping m)
     object joinify(mapping m)
     {
         foreach (m; string n; mixed v) {
-	        if (mappingp(v)) {
-	            m[n]=joinify(v);
-	        }
+            if (mappingp(v)) {
+                m[n]=joinify(v);
+            }
         }
         //return joinnode(({m}));
         return master()->joinnode(({m}));
@@ -219,13 +219,13 @@ protected mapping(string:mixed) instantiate_static_modules(object|mapping static
     
     foreach(joins; string n; mixed v) {
         if(mappingp(v)) {
-	        v = joinify(v);
+            v = joinify(v);
         }
         if(res[n]) {
-	        //res[n] = joinnode(({res[n], v}));
-	        res[n] = master()->joinnode(({res[n], v}));
+            //res[n] = joinnode(({res[n], v}));
+            res[n] = master()->joinnode(({res[n], v}));
         } else {
-	        res[n] = v;
+            res[n] = v;
         }
     }
     
@@ -284,43 +284,43 @@ public program _load_module(string module_name)
 
 private object glob2regx(string glob) 
 {
-	
-	return Regexp.PCRE._pcre(
-	    "^"+ replace(
-	        glob,
-	        ({
-	            "[",
-	            "]",
-	            "^",
-	            "$",
-	            "\\",
-	            "(",
-	            ")",
-	            ".",
-	            "*",
-	            "?"  
-	        }),
-	        ({
-	        	"\\[",
-	        	"\\]",
-	        	"\\^",
-	        	"\\$",
-	        	"\\\\",
-	            "\\(",
-	            "\\)",
-	            "\\.",
-	            ".*",
-	            "."	        	  
-	        })
-	    ) + "$"
-	);
+    
+    return Regexp.PCRE._pcre(
+        "^"+ replace(
+            glob,
+            ({
+                "[",
+                "]",
+                "^",
+                "$",
+                "\\",
+                "(",
+                ")",
+                ".",
+                "*",
+                "?"  
+            }),
+            ({
+                "\\[",
+                "\\]",
+                "\\^",
+                "\\$",
+                "\\\\",
+                "\\(",
+                "\\)",
+                "\\.",
+                ".*",
+                "."                  
+            })
+        ) + "$"
+    );
 }
 
 public array(mixed) _get_dir(string|void x, int|void flags) 
 {
-	
-	//write("get_dir: %O %O\n",x,backtrace());
-	
+    
+    //write("get_dir: %O %O\n",x,backtrace());
+    
     array(string) new_paths,paths,parts,ret,tdir;
     string cwd,tpath,tfn;
     int idx,idx_s,idx_sz,idy,idy_sz,valid_read_ctr;
@@ -342,155 +342,155 @@ public array(mixed) _get_dir(string|void x, int|void flags)
         idx_sz = sizeof(parts);
                 
         if (parts[0] == "") {
-        	paths = ({ "/" });
-        	idx_s = 1;
+            paths = ({ "/" });
+            idx_s = 1;
         } else {
-        	
-        	tdir = parts[0] / ":";
-        	if (sizeof(tdir) > 1) {
-        		paths = ({ tdir[0] + "://" });        		        		
-        		if (sizeof(parts) > 1 && parts[1] == "") {
-        			idx_s = 2;
-        		} else {
-        		    idx_s = 1;	
-        		}
-        	} else {
-        	    paths = ({ (string)_getcwd() });
-        	    idx_s = 0;
-        	}
-        	        	
+            
+            tdir = parts[0] / ":";
+            if (sizeof(tdir) > 1) {
+                paths = ({ tdir[0] + "://" });                                
+                if (sizeof(parts) > 1 && parts[1] == "") {
+                    idx_s = 2;
+                } else {
+                    idx_s = 1;    
+                }
+            } else {
+                paths = ({ (string)_getcwd() });
+                idx_s = 0;
+            }
+                        
         } 
         
         for(idx=idx_s;idx<idx_sz;idx++) {
-        	
-        	
-        	last = idx == idx_sz - 1 ? 1 : 0;
-        	
-        	if (last || parts[idx] != "") {
-        	
-    	        new_paths = ({});    	
-    	        if (parts[idx] == replace(parts[idx],({"*","?"}),"")) {
-    	    	    if (last) {
-    	    	        valid_read_ctr = 0;
-    	    	    }
-    	    	
-    	    	    idy_sz = sizeof(paths);
-                    for(idy = 0;idy < idy_sz; idy++) {        	
-        	            tpath = vfs->_combine_path(paths[idy],parts[idx]);        	        
-        	            if (!last) {        	                        	        	
-        	    	        new_paths += ({tpath});        	        	    
-        	            } else {
-        	        	    if (vfs->_is_directory(tpath)) {
-        	        		    // expand directory        	        		        	        		
-        	        		    if (valid("read_dir",caller,tpath)) {
-        	        			    tdir = vfs->_get_dir(tpath);        	        			            	        		
-        	        			    if (arrayp(tdir)) {
-        	        			        valid_read_ctr++;
-        	        			        foreach(tdir,tfn) {
-        	        			    	    if (last || (tfn != "." && tfn != "..")) {
-        	        			    	    	if (tpath == "/") {
-        	        			    	    		new_paths += ({ tpath + tfn });
-        	        			    	    	} else {
-        	        			    	    		new_paths += ({ tpath + "/" + tfn});
-        	        			    	    	}
-        	        			    	        
-        	        			    	    }
-        	        			        }
-        	        			    }
-        	        		    }
-        	        	    } else {        	        		
-        	        		    if (valid("read_dir",caller,paths[idy])) {
-        	        			    if (vfs->_file_stat(tpath)) {
-        	        			        valid_read_ctr++;
-        	        			        new_paths += ({tpath});
-        	        			    }
-        	        		    }        	        		
-        	        	    }        	        	
-        	            }
+            
+            
+            last = idx == idx_sz - 1 ? 1 : 0;
+            
+            if (last || parts[idx] != "") {
+            
+                new_paths = ({});        
+                if (parts[idx] == replace(parts[idx],({"*","?"}),"")) {
+                    if (last) {
+                        valid_read_ctr = 0;
                     }
-    	        } else { 
-    		        // glob
-    		        valid_read_ctr = 0;    		            		            		        
-    		        regx = glob2regx(parts[idx]);
-    		        idy_sz = sizeof(paths);
-    		    
-    		        for(idy = 0;idy < idy_sz; idy++) {
-    		    	    if (valid("read_dir",caller,paths[idy])) {    		    	    	    		    		    		    		
-    		                tdir = vfs->_get_dir(paths[idy]);    		                
-    		                if (arrayp(tdir)) {
-    		            	    valid_read_ctr++;
-    		                    foreach(tdir,tfn) {
-    		            	        if (last || (tfn != "." && tfn != "..")) {
-    		                            if (regx->exec(tfn) != -1) {
-    		                            	
-        	        			    	    if (paths[idy] == "/") {
-        	        			    	    	new_paths += ({ paths[idy] + tfn });
-        	        			    	    } else {
-        	        			    	    	new_paths += ({ paths[idy] + "/" + tfn});
-        	        			    	    }    		                            	
-    		    	                        
-    		                            }
-    		            	        }
-    		                    }    		               
-    		                }
-    		    	    }
-    		        }
-    		    
-    		        if (valid_read_ctr < 1) {
-    		            VFS_RETURN(0);	
-    		        }
-    	        }
-    	    
-    	        paths = new_paths;
-    	
-    	        //write("paths = %O\n",paths);
-        	}
-        	
-        	     
+                
+                    idy_sz = sizeof(paths);
+                    for(idy = 0;idy < idy_sz; idy++) {            
+                        tpath = vfs->_combine_path(paths[idy],parts[idx]);                    
+                        if (!last) {                                                    
+                            new_paths += ({tpath});                            
+                        } else {
+                            if (vfs->_is_directory(tpath)) {
+                                // expand directory                                                        
+                                if (valid("read_dir",caller,tpath)) {
+                                    tdir = vfs->_get_dir(tpath);                                                                
+                                    if (arrayp(tdir)) {
+                                        valid_read_ctr++;
+                                        foreach(tdir,tfn) {
+                                            if (last || (tfn != "." && tfn != "..")) {
+                                                if (tpath == "/") {
+                                                    new_paths += ({ tpath + tfn });
+                                                } else {
+                                                    new_paths += ({ tpath + "/" + tfn});
+                                                }
+                                                
+                                            }
+                                        }
+                                    }
+                                }
+                            } else {                            
+                                if (valid("read_dir",caller,paths[idy])) {
+                                    if (vfs->_file_stat(tpath)) {
+                                        valid_read_ctr++;
+                                        new_paths += ({tpath});
+                                    }
+                                }                            
+                            }                        
+                        }
+                    }
+                } else { 
+                    // glob
+                    valid_read_ctr = 0;                                                            
+                    regx = glob2regx(parts[idx]);
+                    idy_sz = sizeof(paths);
+                
+                    for(idy = 0;idy < idy_sz; idy++) {
+                        if (valid("read_dir",caller,paths[idy])) {                                                                            
+                            tdir = vfs->_get_dir(paths[idy]);                            
+                            if (arrayp(tdir)) {
+                                valid_read_ctr++;
+                                foreach(tdir,tfn) {
+                                    if (last || (tfn != "." && tfn != "..")) {
+                                        if (regx->exec(tfn) != -1) {
+                                            
+                                            if (paths[idy] == "/") {
+                                                new_paths += ({ paths[idy] + tfn });
+                                            } else {
+                                                new_paths += ({ paths[idy] + "/" + tfn});
+                                            }                                            
+                                            
+                                        }
+                                    }
+                                }                           
+                            }
+                        }
+                    }
+                
+                    if (valid_read_ctr < 1) {
+                        VFS_RETURN(0);    
+                    }
+                }
+            
+                paths = new_paths;
+        
+                //write("paths = %O\n",paths);
+            }
+            
+                 
         } // end parts loop
         
         
         if (valid_read_ctr < 1) {
-        	VFS_RETURN(0);
+            VFS_RETURN(0);
         }
             
     } else { // default read
-    	
-    	cwd = (string)_getcwd();
-    	if (!valid("read_dir",caller,cwd)) {
+        
+        cwd = (string)_getcwd();
+        if (!valid("read_dir",caller,cwd)) {
             VFS_RETURN(0);
         }
-    	
+        
         tdir = vfs->_get_dir();
-        if (arrayp(tdir)) {        	
-        	new_paths = ({});
-        	foreach(new_paths,tpath) {
-        		 new_paths += ({vfs->_combine_paths(cwd,tpath)});
-        	}
+        if (arrayp(tdir)) {            
+            new_paths = ({});
+            foreach(new_paths,tpath) {
+                 new_paths += ({vfs->_combine_paths(cwd,tpath)});
+            }
         } else {
-        	VFS_RETURN(0);
+            VFS_RETURN(0);
         }
         
-        paths = new_paths;	
+        paths = new_paths;    
     }
       
       
     if (flags != -1) {
-    	ret = paths;
+        ret = paths;
     } else {
-    	// verbose
-    	    	
-    	ret = ({});    	    	
-    	foreach(paths,tpath) {    		
-    		tstat = vfs->_file_stat(tpath);    		
-    		if (tstat) {
-    			if (tstat->isdir) {
-    			    ret += ({   ({  tpath , -2, tstat->mtime })  });
-    			} else {
-    				ret += ({   ({  tpath , tstat->size, tstat->mtime })  });
-    			}
-    		}    		
-    	}    	    	        	
+        // verbose
+                
+        ret = ({});                
+        foreach(paths,tpath) {            
+            tstat = vfs->_file_stat(tpath);            
+            if (tstat) {
+                if (tstat->isdir) {
+                    ret += ({   ({  tpath , -2, tstat->mtime })  });
+                } else {
+                    ret += ({   ({  tpath , tstat->size, tstat->mtime })  });
+                }
+            }            
+        }                            
     }
 
     VFS_RETURN(ret);
@@ -522,25 +522,25 @@ public int _path_exists(string path)
 
 public int _file_exists(string path) 
 {
-	if (zero_type(path)) {
-		return 0;
-	}
-	
-	mixed s = _file_stat(path);
-	if (!s) {
-	    return 0;	
-	}
-	
-	if (s->isdir) {
-		return 0;
-	}
-	
-	return 1;
+    if (zero_type(path)) {
+        return 0;
+    }
+    
+    mixed s = _file_stat(path);
+    if (!s) {
+        return 0;    
+    }
+    
+    if (s->isdir) {
+        return 0;
+    }
+    
+    return 1;
 }
 
 public int _is_directory(string dir) 
 {
-	
+    
     if (dir == ""){
         return 0;
     }
@@ -567,16 +567,16 @@ private mixed io_write(object fob,object ret, mixed ... args)
 
 void report_compile_error(string file,int line,string err) 
 {
-	k_pointer ret = k_pointer();
-	// was trim_file_name(file) remap??;
-	int fh = 1; // should be 2!
-	_ioctl(fh,1024,"write",ret,
-	    sprintf("%s:%s:%s\n",
-	       file,
-	       line?(string)line:"-",
-	       err)
-	);    
-}	    
+    k_pointer ret = k_pointer();
+    // was trim_file_name(file) remap??;
+    int fh = 1; // should be 2!
+    _ioctl(fh,1024,"write",ret,
+        sprintf("%s:%s:%s\n",
+           file,
+           line?(string)line:"-",
+           err)
+    );    
+}        
 
 public mixed security() 
 {
@@ -634,12 +634,12 @@ public int _socket(int socket_family, int socket_type, int protocol) {
 
 int select(int nfds, object readfds, object writefds,
                   object exceptfds, object timeout) {
-                  	
+                      
  int ret;
 
  NEED_VFS(-1); 
  ret = vfs->_select(nfds, readfds, writefds, exceptfds, timeout);
- VFS_RETURN(ret);                  	
+ VFS_RETURN(ret);                      
 }
 
 public int _ioctl(int d, int request, mixed ... args) {
@@ -850,45 +850,45 @@ private int make_directory(string fn, void|int mode, object|int|void caller)
     }
      
     if (mode) {
-    	return vfs->_mkdir(fn,mode);
+        return vfs->_mkdir(fn,mode);
     }
     return vfs->_mkdir(fn);  
 }
 
 int _mkdir(string dirname, void|int deep) 
 {
-	
-	string d,part;
-	
+    
+    string d,part;
+    
     mixed caller = 0;
     mixed bt = backtrace();
-    if (sizeof(bt) > 1) caller = function_object(bt[-2][2]);	
-	
-	if (!deep) {
-		return make_directory(dirname,0,caller); 
-	}
-	array(string) path = dirname / "/"; 
-	
-	if (sizeof(path) > 0) {
-	    path = path[..<1];
-	    
-	    if (path[0] == "") {
-	    	path = path[1..];
-	    	d = "/";
-	    } else {
-	    	d = "";
-	    }	  	    
-		
-	    foreach(path,part) {
-		    d += part + "/";
-		    if (!_is_directory(d)) {			    
-			    if (!make_directory(d,0,caller)) {
-				    return 0;
-			    }
-		    }
-	    }
-	}
-	return make_directory(dirname,0,caller);	
+    if (sizeof(bt) > 1) caller = function_object(bt[-2][2]);    
+    
+    if (!deep) {
+        return make_directory(dirname,0,caller); 
+    }
+    array(string) path = dirname / "/"; 
+    
+    if (sizeof(path) > 0) {
+        path = path[..<1];
+        
+        if (path[0] == "") {
+            path = path[1..];
+            d = "/";
+        } else {
+            d = "";
+        }              
+        
+        foreach(path,part) {
+            d += part + "/";
+            if (!_is_directory(d)) {                
+                if (!make_directory(d,0,caller)) {
+                    return 0;
+                }
+            }
+        }
+    }
+    return make_directory(dirname,0,caller);    
 }
 
 program ___empty_program(int|void line, string|void file) {
@@ -992,33 +992,33 @@ array(object)|int _children(string|program p)
 
 protected object previous_object() 
 {
-	return function_object(backtrace()[-3][2]);
+    return function_object(backtrace()[-3][2]);
 
 }
 
 public object _previous_object() 
 {
-	array bt = backtrace();
-	int ctr = sizeof(bt)-2;
-	object ret;
-	object ob = function_object(bt[ctr][2]);
-	object cur;
-	
-	for(ctr -= 1; ctr > -1; ctr--) {
-		cur = function_object(bt[ctr][2]);
-		if (cur != ob) {
-			ret = cur;
-			ctr = -1;
-		}
-	}
+    array bt = backtrace();
+    int ctr = sizeof(bt)-2;
+    object ret;
+    object ob = function_object(bt[ctr][2]);
+    object cur;
+    
+    for(ctr -= 1; ctr > -1; ctr--) {
+        cur = function_object(bt[ctr][2]);
+        if (cur != ob) {
+            ret = cur;
+            ctr = -1;
+        }
+    }
     return ret;  
 }
 
 
 
 public object _load_object(string path)
-{	
-	object ob;	
+{    
+    object ob;    
     if (zero_type(object_pool[path]) || intp(object_pool[path])) {
         program p = (program)path;
         
@@ -1028,28 +1028,28 @@ public object _load_object(string path)
         }        
                         
         if (programp(p)) {
-        	if (zero_type(p_objects[p]) || !sizeof(p_objects[p])) {
-        	     object_pool[path] = p();
-        	     m_delete(p_objects,p);
-        	     ob = object_pool[path];
-        	     object_pool_r[ob] = path;	
-        	} else {
-        		foreach(p_objects[p],ob) {
-        			if (path == describe_object(ob)) {
-        				return ob;
-        			}
-        		}        		
-        	    object_pool[path] = p();
-        	    p_objects[p] -= ({ object_pool[path] });        	     
-        	    ob = object_pool[path];
-        	    object_pool_r[ob] = path;        		        		
-        	}
+            if (zero_type(p_objects[p]) || !sizeof(p_objects[p])) {
+                 object_pool[path] = p();
+                 m_delete(p_objects,p);
+                 ob = object_pool[path];
+                 object_pool_r[ob] = path;    
+            } else {
+                foreach(p_objects[p],ob) {
+                    if (path == describe_object(ob)) {
+                        return ob;
+                    }
+                }                
+                object_pool[path] = p();
+                p_objects[p] -= ({ object_pool[path] });                 
+                ob = object_pool[path];
+                object_pool_r[ob] = path;                                
+            }
             
         } else {
-        	error(sprintf("Program %O not found",path));
+            error(sprintf("Program %O not found",path));
         }         
     } else {
-    	ob = object_pool[path];
+        ob = object_pool[path];
     }    
     return ob;
 }
@@ -1064,82 +1064,82 @@ public object daemon(string path)
 
 object|int _environment(object|void ob)
 {
-	if (!ob) {
-		ob = previous_object();
-	}
-	if (zero_type(object_container_map[ob])) {
+    if (!ob) {
+        ob = previous_object();
+    }
+    if (zero_type(object_container_map[ob])) {
         return 0;
-	}
-	return object_container_map[ob];
+    }
+    return object_container_map[ob];
 }
 
 array(object) _deep_inventory( object ob ) 
 {
-	array(object) inventory = ({});
-	object cob;
-	if (!zero_type(object_inventory[ob])) {
-		foreach(object_inventory[ob],cob) {
-			inventory += _deep_inventory(cob);
-		}
-	}
-	return inventory;
+    array(object) inventory = ({});
+    object cob;
+    if (!zero_type(object_inventory[ob])) {
+        foreach(object_inventory[ob],cob) {
+            inventory += _deep_inventory(cob);
+        }
+    }
+    return inventory;
 }
 
 array(object) _all_inventory(object|void ob) 
 {
-	if (!ob) {
-		ob = previous_object();
-	}	
-	if (zero_type(object_inventory[ob])) {
-	    return ({});	
-	}
-	return object_inventory[ob];
-	
+    if (!ob) {
+        ob = previous_object();
+    }    
+    if (zero_type(object_inventory[ob])) {
+        return ({});    
+    }
+    return object_inventory[ob];
+    
 }
 
 void _move_object( mixed dest ) {
-	
-	object ob = previous_object();
-	if (!ob) return; // as if...
-	
-	object|int env = _environment(ob);
-		
-	if (env != 0) {
-		object_inventory[env] -= ({ob});
-		m_delete(object_container_map,ob);
-		if (sizeof(object_inventory[env]) < 1) {
-			m_delete(object_inventory,env);
-		}        
-	}
-	
-	if (stringp(dest)) {
-		// probably should catch errors?
-		dest = _load_object(dest);
-	}
-	
-	if (programp(dest)) {
-		// probably should catch errors?
-		dest = dest(); 
-	}
-			
-	if (objectp(dest)) {
+    
+    object ob = previous_object();
+    if (!ob) return; // as if...
+    
+    object|int env = _environment(ob);
+        
+    if (env != 0) {
+        object_inventory[env] -= ({ob});
+        m_delete(object_container_map,ob);
+        if (sizeof(object_inventory[env]) < 1) {
+            m_delete(object_inventory,env);
+        }        
+    }
+    
+    if (stringp(dest)) {
+        // probably should catch errors?
+        dest = _load_object(dest);
+    }
+    
+    if (programp(dest)) {
+        // probably should catch errors?
+        dest = dest(); 
+    }
+            
+    if (objectp(dest)) {
         if (zero_type(object_inventory[dest])) {        
-            object_inventory[dest] = ({});	
+            object_inventory[dest] = ({});    
         }        
         object_inventory[dest] += ({ob});        
         object_container_map[ob] = dest; 
-	}
+    }
 }
 
 public object|int _first_inventory(object|string|void ob) 
 {
-	
+    
     if (!ob) {
-    	ob = previous_object();
+        ob = previous_object();
     }
     
     if (stringp(ob)) {
-    	ob = _load_object(ob);
+        ob = _load_object(ob);
     }
         
     if (objectp(ob) && !zero_type(object_inventory[ob])) {
@@ -1151,16 +1151,16 @@ public object|int _first_inventory(object|string|void ob)
 
 public object|int _next_inventory(object ob) 
 {
-	object|int env = _environment(ob);
-	int idx;	
-	if (objectp(env)) {	
-	    for(idx=0;idx<(sizeof(object_inventory[env])-1);idx++) {
-		    if (ob == object_inventory[env][idx]) {
-			    return object_inventory[env][idx+1];
-		    }
-	    }
-	}
-	return 0;	
+    object|int env = _environment(ob);
+    int idx;    
+    if (objectp(env)) {    
+        for(idx=0;idx<(sizeof(object_inventory[env])-1);idx++) {
+            if (ob == object_inventory[env][idx]) {
+                return object_inventory[env][idx+1];
+            }
+        }
+    }
+    return 0;    
 }
 
 // move to sims...
@@ -1198,33 +1198,33 @@ object _get_object(string arg)
 }
 
 object|int _present( mixed str, object|void ob ) 
-{	
-	object o;
-	object env;
-	
-	array(object) inv = ({});		
-	object caller = previous_object();
-		
-	if (objectp(ob)) {
-       inv += _all_inventory(ob);		
-	} else {
-		if (objectp(caller)) {
-		    inv += _all_inventory(caller);
-		    env = _environment(caller);
-		    if (objectp(env)) {
-		    	inv += _all_inventory(env);
-		    }
-		}
-	}
-	
-	foreach(inv,o) {
-		if (functionp(o->id)) {
-			if(o->id(str)) {
-				return o;
-			}
-		}
-	}
-	
+{    
+    object o;
+    object env;
+    
+    array(object) inv = ({});        
+    object caller = previous_object();
+        
+    if (objectp(ob)) {
+       inv += _all_inventory(ob);        
+    } else {
+        if (objectp(caller)) {
+            inv += _all_inventory(caller);
+            env = _environment(caller);
+            if (objectp(env)) {
+                inv += _all_inventory(env);
+            }
+        }
+    }
+    
+    foreach(inv,o) {
+        if (functionp(o->id)) {
+            if(o->id(str)) {
+                return o;
+            }
+        }
+    }
+    
     return 0;
 }
 
@@ -1395,8 +1395,8 @@ __dirnode ??
 */
 
 string handle_include(string f,
-			string current_file,
-			int local_include) 
+            string current_file,
+            int local_include) 
 {
 
     string cwd;
@@ -1411,7 +1411,7 @@ string handle_include(string f,
 #ifdef DEBUG_INCLUDE
     kwrite("handle_include (%O %O %O)",f,current_file,local_include);
 #endif
- 		
+         
     if (local_include) {
         if (_is_absolute_path(f)) {
 #ifdef DEBUG_INCLUDE
@@ -1473,7 +1473,7 @@ string handle_include(string f,
         } else {
 #ifdef DEBUG_INCLUDE
     kwrite("handle_include(%O,%O,%O) %O not found",f,current_file,local_include,fn);
-#endif        	
+#endif            
         } 
     }
     ret = vfs->_combine_path(cur_path,f);
@@ -1519,7 +1519,7 @@ void _remove_module_path(string path) {
 
 
 object handle_import(string path, string|void current_file,
-		       object|void current_handler) {
+               object|void current_handler) {
 
  object ret;
  
@@ -1646,37 +1646,37 @@ int _getpid() {
 }
 
 int _remove_call_out(mixed|void id) 
-{		
-	object caller = previous_object();
-	//write("caller = %O\n",caller);
-	int ctr;	
-    if (id) {    	
-    	if (!zero_type(call_outs[caller])) {
-    		call_outs[caller] -= ({ id });
-    		if (!sizeof(call_outs[caller])) {
-    			m_delete(call_outs,caller);
-    		}
-    	}
-    	if (!zero_type(call_out_obs[id])) {
-    	    m_delete(call_out_obs,id);
-    	    destruct(id);
-    	    return 0;        	
-    	}
-    	destruct(id);
-    	return -1;
+{        
+    object caller = previous_object();
+    //write("caller = %O\n",caller);
+    int ctr;    
+    if (id) {        
+        if (!zero_type(call_outs[caller])) {
+            call_outs[caller] -= ({ id });
+            if (!sizeof(call_outs[caller])) {
+                m_delete(call_outs,caller);
+            }
+        }
+        if (!zero_type(call_out_obs[id])) {
+            m_delete(call_out_obs,id);
+            destruct(id);
+            return 0;            
+        }
+        destruct(id);
+        return -1;
     }
         
     ctr = 0;
     
     if(!zero_type(call_outs[caller])) {
-    	//console_write("%O",call_outs[caller]);
-    	foreach(call_outs[caller], id) {    		
-    	    if (!zero_type(call_out_obs[id])) {
-    	        m_delete(call_out_obs,id);
-    	        destruct(id);
-    	        ctr++;        	
-    	    }    		    		
-    	}
+        //console_write("%O",call_outs[caller]);
+        foreach(call_outs[caller], id) {            
+            if (!zero_type(call_out_obs[id])) {
+                m_delete(call_out_obs,id);
+                destruct(id);
+                ctr++;            
+            }                        
+        }
     }
     
     return ctr;     
@@ -1684,9 +1684,9 @@ int _remove_call_out(mixed|void id)
 
 mixed _call_out(function p,float|int delay, mixed ... args) 
 {
-	object caller = previous_object();
+    object caller = previous_object();
     object user = _this_user();
-    object link = _this_link();	
+    object link = _this_link();    
 
         
     object co = call_out_ob(user,link,caller, p,delay,@args);
@@ -1694,15 +1694,15 @@ mixed _call_out(function p,float|int delay, mixed ... args)
     //write("%O %O\r\n",_call_out,({ caller,user,link,co}));
         
     if (zero_type(call_outs[caller])) {
-    	call_outs[caller] = ({ co });
+        call_outs[caller] = ({ co });
     } else {
-    	call_outs[caller] += ({ co });
+        call_outs[caller] += ({ co });
     }
     
     call_out_obs[co] = user;  
     
     co->activate();
-    return co;  	 
+    return co;       
 }
 
 
@@ -1714,7 +1714,7 @@ array(object) _bodies()
 
 int _userp(object ob) 
 {
-	return !zero_type(users[ob]);
+    return !zero_type(users[ob]);
 }
 
 
@@ -1722,23 +1722,23 @@ object|int _this_body()
 {
     object u = _this_user();
     if (u && functionp(u->query_body)) {
-    	return u->query_body();
+        return u->query_body();
     }
     return 0;   
 }
 
 object|int _find_user(string id) 
 {
-	object u;
-	
-	foreach(indices(users),u) {
-	    if (functionp(u["query_userid"])) {
-	    	if (id == u->query_userid()) {
-	    		return u;
-	    	}
-	    }
-	}
-	return 0;
+    object u;
+    
+    foreach(indices(users),u) {
+        if (functionp(u["query_userid"])) {
+            if (id == u->query_userid()) {
+                return u;
+            }
+        }
+    }
+    return 0;
 }
 
 string query_ip_number(object user) {
@@ -1764,7 +1764,7 @@ object|int _find_object(string name)
    
     if (!zero_type(object_pool[name])) {
         if (intp(object_pool[name])) {
-        	m_delete(object_pool,name);
+            m_delete(object_pool,name);
         } else {
             return object_pool[name];
         }
@@ -1792,24 +1792,24 @@ private int restart = 1;
 
 public void shutdown() 
 {
-	if (init_thread) {
-		restart = 0;
-	    init_thread->kill();
-	}
+    if (init_thread) {
+        restart = 0;
+        init_thread->kill();
+    }
 }
 
 public void reboot() 
 {
-	if (init_thread) {
-	    init_thread->kill();
-	}
+    if (init_thread) {
+        init_thread->kill();
+    }
 }
 
 private mixed do_init() 
 {
-	mixed err;
-	mixed argv = init_params["argv"];
-	mixed env = init_params["env"];
+    mixed err;
+    mixed argv = init_params["argv"];
+    mixed env = init_params["env"];
     err = catch { 
         pinit[0]->main(sizeof(argv),argv,env);
     };
@@ -1988,9 +1988,9 @@ string programs_reverse_lookup (program prog) {
   if (sizeof (rev_programs) < sizeof (programs)) {
     foreach (programs; string path; program|NoValue prog)
       if (prog == no_value)
-	m_delete (programs, path);
+    m_delete (programs, path);
       else
-	rev_programs[prog] = path;
+    rev_programs[prog] = path;
   }
   return rev_programs[prog];
 }
@@ -2153,7 +2153,7 @@ string describe_object(object o)
     object ob;
     int newid;
   
-    if(zero_type (o)) return 0;	// Destructed.
+    if(zero_type (o)) return 0;    // Destructed.
     
     if (!zero_type(object_pool_r[o])) {
        return object_pool_r[o];
@@ -2209,7 +2209,7 @@ string _file_name(object|void o)
     program p;
     
     if (zero_type(o)) {
-    	o = previous_object();
+        o = previous_object();
     }
     p = object_program(o);
     if (!p) {
@@ -2414,15 +2414,15 @@ private void reload_program_tables() {
 
 mapping(string:int) now() 
 {
-	object t = System.Time(0);
-	mapping s = localtime(time());
-	
-	return ([ 
-	         "sec" : t->sec, 
-	         "usec" : t->usec, 
-	         "minuteswest" : s["timezone"]/60,
-	         "dsttime" :  s["isdst"], 
-	         ]);	
+    object t = System.Time(0);
+    mapping s = localtime(time());
+    
+    return ([ 
+             "sec" : t->sec, 
+             "usec" : t->usec, 
+             "minuteswest" : s["timezone"]/60,
+             "dsttime" :  s["isdst"], 
+             ]);    
 }
 
 private void kregister_efuns() {
@@ -2471,7 +2471,7 @@ object _this_user() {
       } else if (!zero_type(users_r[ob])) {
           return users_r[ob];
       } else if (!zero_type(call_out_obs[ob])) {
-          return call_out_obs[ob];	
+          return call_out_obs[ob];    
       }  
   }
  }
@@ -2505,7 +2505,7 @@ array(object) _users()
 
 object|int _get_link(object user) 
 {
-	return zero_type(user) ? 0 : users[user]; 
+    return zero_type(user) ? 0 : users[user]; 
 }
 
 object|int _this_link() 
@@ -2516,7 +2516,7 @@ object|int _this_link()
 
 int _interactive(object ob) 
 {
-	return !zero_type(users[ob]);
+    return !zero_type(users[ob]);
 }
 
 
@@ -2711,14 +2711,14 @@ void _enable_commands()
 
 void _add_action(string cmd, function action) 
 {
-	// not implemented
+    // not implemented
 }
 
 
 
 int _living(object ob) 
 {
-	// not implemented	 
+    // not implemented     
 }
 
 #endif
@@ -2726,50 +2726,52 @@ int _living(object ob)
 
 int _say(string str, object|array(object)|void exclude) 
 {
-	
-	object orig = _this_user() ? _this_user() : previous_object();	
-	object env = _environment(orig);		
-	array(object) targets = ({});
-	
-	
-	if (objectp(env)) {
-		targets += ({env});
-	}
-	
-	targets += (_all_inventory(env) - ({ orig }));
-	
-	if (objectp(exclude)) {
-		targets -= ({exclude});
-	} else if (arrayp(exclude)) {
-		targets -= exclude;
-	}
-	
-	
-	foreach(targets,object listener) {
-		// should we check of living?
-		// should we be checking for catch_tell?
-		if (functionp(listener->receive_message)) {
-			listener->receive_message(str);
-		}
-	}  
+    
+    object orig = _this_user() ? _this_user() : previous_object();    
+    object env = _environment(orig);        
+    array(object) targets = ({});
+    
+    
+    if (objectp(env)) {
+        targets += ({env});
+    }
+    
+    targets += (_all_inventory(env) - ({ orig }));
+    
+    if (objectp(exclude)) {
+        targets -= ({exclude});
+    } else if (arrayp(exclude)) {
+        targets -= exclude;
+    }
+    
+    
+    foreach(targets,object listener) {
+        // should we check of living?
+        // should we be checking for catch_tell?
+        if (functionp(listener->receive_message)) {
+            listener->receive_message(str);
+        }
+    }  
 
 }
 
 void precompile(mapping(string:mixed) code) {
-	// no action!	
+    // no action!    
 }
 
 void init_gui() {
-	if (objectp(GTK2)) {
-		if (
+    if (objectp(GTK2)) {
+        if (
                     (!zero_type(GTK2["setup_gtk"])) && 
                     functionp(GTK2["setup_gtk"])
                    ) {
-			GTK2->setup_gtk();
-			kwrite("GTK2 Initialized");
-		}
-	}
-	
+            mixed err = catch {
+                GTK2->setup_gtk();
+                kwrite("GTK2 Initialized");
+            };
+        }
+    }
+    
 }
 
 
@@ -2786,7 +2788,9 @@ int kernel_init(int argc,
                 mixed module_path_stack,
                 mixed include_path_stack) 
 {
-  
+    
+    
+    
     int linen;
     string clean_line;
     string line;
@@ -2800,7 +2804,7 @@ int kernel_init(int argc,
   
     // Run once
     if (init_called) {
-    	return 0;
+        return 0;
     }
     init_called = 1;
     
@@ -2911,10 +2915,17 @@ int kernel_init(int argc,
   kwrite("Loading filesystem.");
   tmp = combine_path(boot_path,"vfs.pike");
   
-  fs = (program)tmp;
+  //kwrite("constants = %O\n",all_constants());
+  err = catch {
+      fs = (program)tmp;
+  };
+  if (err) {
+          kwrite("Error: %O\n",err->backtrace());
+          kwrite("module_path_stack=%O\n",module_path_stack);
+  }
   if (!programp(fs)) {
-   kwrite("Filesystem failed to load.");
-   return 1;
+     kwrite("Filesystem failed to load.");
+     return 1;
   }
   
   m_delete(programs,tmp);
@@ -2976,12 +2987,12 @@ int kernel_init(int argc,
     kwrite("Unable to start init. System Halted!");
     return 1;
   } else {
-  	if (restart) {
+      if (restart) {
         kwrite("Init process ended. System Restart!");
         return -1;
-  	} else {
-  		kwrite("System halted.");
-  	}
+      } else {
+          kwrite("System halted.");
+      }
   }
   
   return 0;
