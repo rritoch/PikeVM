@@ -426,11 +426,11 @@ static apr_status_t ap_pikevm_create_connection(
     url = r->filename;
 
     /* we break the URL into host, port, uri */
-    if (APR_SUCCESS != apr_uri_parse(r->connection->pool, *url, uri)) {
+    if (APR_SUCCESS != apr_uri_parse(r->connection->pool, url, uri)) {
         return ap_pikevm_error(
             r,
             HTTP_BAD_REQUEST,
-            apr_pstrcat(p,"URI cannot be parsed: ", *url,NULL)
+            apr_pstrcat(p,"URI cannot be parsed: ", url,NULL)
         );
     }
 
@@ -443,7 +443,7 @@ static apr_status_t ap_pikevm_create_connection(
     uri->hostname = apr_pstrdup(r->connection->pool,dir_config->host);
 
     ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
-                 "pikevm: HTTP connecting %s to %s:%d", *url, uri->hostname,
+                 "pikevm: HTTP connecting %s to %s:%d", url, uri->hostname,
                  uri->port);
 
     /* do a DNS lookup for the destination host */
