@@ -158,8 +158,8 @@ static request_rec * ap_pikevm_make_fake_req(pikevm_conn_rec *backend, request_r
 static apr_status_t ap_pikevm_pass_body(
 	request_rec *r,
 	request_rec *rp,
-	backend)
-{
+	pikevm_conn_rec * backend
+) {
 	int is_proxy = 1;
 	apr_status_t status = OK;
 
@@ -223,7 +223,7 @@ static apr_status_t ap_pikevm_set_connection_alias(
     //PUT * HTTP/1.1
     buf = apr_pstrcat(p, "PUT *.pike HTTP/1.1",
                       CRLF,
-                      NULL);
+                      (void *)NULL);
     ap_xlate_proto_to_ascii(buf, strlen(buf));
     e = apr_bucket_pool_create(buf, strlen(buf), p, r->connection->bucket_alloc);
     APR_BRIGADE_INSERT_TAIL(bb, e);
@@ -232,7 +232,7 @@ static apr_status_t ap_pikevm_set_connection_alias(
     buf = apr_pstrcat(p, "Content-Length: ",
                       "0",
                       CRLF,
-                      NULL);
+                      (void *)NULL);
     ap_xlate_proto_to_ascii(buf, strlen(buf));
     e = apr_bucket_pool_create(buf, strlen(buf), p, r->connection->bucket_alloc);
     APR_BRIGADE_INSERT_TAIL(bb, e);
@@ -241,7 +241,7 @@ static apr_status_t ap_pikevm_set_connection_alias(
     buf = apr_pstrcat(p, "Expect: ",
                       "100-continue",
                       CRLF,
-                      NULL);
+                      (void *)NULL);
     ap_xlate_proto_to_ascii(buf, strlen(buf));
     e = apr_bucket_pool_create(buf, strlen(buf), p, r->connection->bucket_alloc);
     APR_BRIGADE_INSERT_TAIL(bb, e);
@@ -250,7 +250,7 @@ static apr_status_t ap_pikevm_set_connection_alias(
     buf = apr_pstrcat(p, "Content-Type: ",
                       "application/pike",
                       CRLF,
-                      NULL);
+                      (void *)NULL);
     ap_xlate_proto_to_ascii(buf, strlen(buf));
     e = apr_bucket_pool_create(buf, strlen(buf), p, r->connection->bucket_alloc);
     APR_BRIGADE_INSERT_TAIL(bb, e);
@@ -259,7 +259,7 @@ static apr_status_t ap_pikevm_set_connection_alias(
     buf = apr_pstrcat(p, "Connection: ",
                       "keep-alive",
                       CRLF,
-                      NULL);
+                      (void *)NULL);
     ap_xlate_proto_to_ascii(buf, strlen(buf));
     e = apr_bucket_pool_create(buf, strlen(buf), p, r->connection->bucket_alloc);
     APR_BRIGADE_INSERT_TAIL(bb, e);
@@ -268,7 +268,7 @@ static apr_status_t ap_pikevm_set_connection_alias(
     buf = apr_pstrcat(p, "X-PikeVM-Action: ",
                       "set-connection-alias",
                       CRLF,
-                      NULL);
+                      (void *)NULL);
     ap_xlate_proto_to_ascii(buf, strlen(buf));
     e = apr_bucket_pool_create(buf, strlen(buf), p, r->connection->bucket_alloc);
     APR_BRIGADE_INSERT_TAIL(bb, e);
