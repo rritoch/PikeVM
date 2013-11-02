@@ -579,12 +579,12 @@ static apr_status_t ap_pikevm_create_connection(
     return OK;
 }
 
-static apr_status_t ap_pikevm_send_request(request_rec *r,pikevm_http_conn_t *p_conn, pikevm_dir_cfg *dir_config)
+static apr_status_t ap_pikevm_send_request(request_rec *r,pikevm_http_conn_t *p_conn, pikevm_dir_cfg *dir_config,apr_bucket_brigade *bb)
 {
     return OK;
 }
 
-static apr_status_t ap_pikevm_process_response(request_rec *r,pikevm_http_conn_t *p_conn, pikevm_dir_cfg *dir_config)
+static apr_status_t ap_pikevm_process_response(request_rec *r,pikevm_http_conn_t *p_conn, pikevm_dir_cfg *dir_config,apr_bucket_brigade *bb)
 {
     // set content type
     ap_set_content_type(r, "text/html");
@@ -610,7 +610,7 @@ static pikevm_conn_rec * ap_pikevm_get_backend(request_rec *r)
         );
     }
     if (!backend) {
-        backend = apr_pcalloc(c->pool, sizeof(pikevm_conn_rec));
+        backend = apr_pcalloc(r->connection->pool, sizeof(pikevm_conn_rec));
         backend->connection = NULL;
         backend->hostname = NULL;
         backend->port = 0;
@@ -633,7 +633,7 @@ static int ap_pikevm_handler(request_rec *r)
     pikevm_conn_rec *backend;
 
     // Is this right? Shouldn't this brigade be created from the backend connection?
-    apr_bucket_brigade *bb = apr_brigade_create(p, r->connection->bucket_alloc);
+    apr_bucket_brigade *bb = apr_brigade_create(r->connection->pool, r->connection->bucket_alloc);
 
     apr_uri_t *uri;
     int status;
