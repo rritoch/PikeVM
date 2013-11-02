@@ -365,7 +365,7 @@ static apr_status_t ap_pikevm_set_connection_alias(
     }
 
     status = HTTP_BAD_GATEWAY;
-    if (ctr + 3 < && *ptr != 0) {
+    if (ctr + 3 < HUGE_STRING_LEN && *ptr != 0) {
         *ptr++ = 0;
         eptr = ptr;
         ctr = 0;
