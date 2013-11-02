@@ -417,12 +417,13 @@ static apr_status_t ap_pikevm_create_connection(
     apr_sockaddr_t *uri_addr;
 
     int create_socket = 1;
+    char * url;
 
     /*
      * Break up the URL to determine the host to connect to
      */
 
-    uri = r->filename;
+    url = r->filename;
 
     /* we break the URL into host, port, uri */
     if (APR_SUCCESS != apr_uri_parse(r->connection->pool, *url, uri)) {
