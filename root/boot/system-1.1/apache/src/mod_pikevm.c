@@ -553,8 +553,8 @@ static apr_status_t ap_pikevm_create_connection(
                 apr_socket_close(p_conn->sock);
                 loglevel = backend_addr->next ? APLOG_DEBUG : APLOG_ERR;
                 ap_log_error(APLOG_MARK, loglevel, rv, r->server,
-                         "proxy: %s: attempt to connect to %pI (%s) failed",
-                         proxy_function,
+                         "pikevm: %s: attempt to connect to %pI (%s) failed",
+                         "ap_pikevm_create_connection",
                          backend_addr,
                          p_conn->name);
                 backend_addr = backend_addr->next;
