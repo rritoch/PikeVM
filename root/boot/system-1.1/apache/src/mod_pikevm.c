@@ -413,6 +413,8 @@ static apr_status_t ap_pikevm_create_connection(
     apr_bucket_brigade *bb
 ) {
 
+	apr_socket_t *client_socket = NULL;
+
     apr_status_t err;
     apr_sockaddr_t *uri_addr;
 
@@ -449,7 +451,7 @@ static apr_status_t ap_pikevm_create_connection(
     /* do a DNS lookup for the destination host */
     /* see memory note above */
     err = apr_sockaddr_info_get(&uri_addr, apr_pstrdup(r->connection->pool, uri->hostname),
-                                APR_UNSPEC, uri->port, 0, c->pool);
+                                APR_UNSPEC, uri->port, 0, r->connection->pool);
 
     p_conn->name = apr_pstrdup(c->pool, uri->hostname);
     p_conn->port = uri->port;
@@ -502,7 +504,7 @@ static apr_status_t ap_pikevm_create_connection(
             if ((rv = apr_socket_create(&p_conn->sock, backend_addr->family,
                                     SOCK_STREAM, r->connection->pool)) != APR_SUCCESS) {
                 loglevel = backend_addr->next ? APLOG_DEBUG : APLOG_ERR;
-                ap_log_error(APLOG_MARK, loglevel, rv, s,
+                ap_log_error(APLOG_MARK, loglevel, rv, r->server,
                          "proxy: %s: error creating fam %d socket for target %s",
                          proxy_function,
                          backend_addr->family,
@@ -519,7 +521,7 @@ static apr_status_t ap_pikevm_create_connection(
             if (conf->recv_buffer_size > 0 &&
                 (rv = apr_socket_opt_set(*newsock, APR_SO_RCVBUF,
                                      conf->recv_buffer_size))) {
-                ap_log_error(APLOG_MARK, APLOG_ERR, rv, s,
+                ap_log_error(APLOG_MARK, APLOG_ERR, rv, r->server,
                          "apr_socket_opt_set(SO_RCVBUF): Failed to set "
                          "ProxyReceiveBufferSize, using default");
             }
@@ -529,10 +531,10 @@ static apr_status_t ap_pikevm_create_connection(
             if (conf->timeout_set == 1) {
                 apr_socket_timeout_set(*newsock, conf->timeout);
             } else {
-                apr_socket_timeout_set(*newsock, s->timeout);
+                apr_socket_timeout_set(*newsock, r->server->timeout);
             }
 
-            ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, s,
+            ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
                      "pikevm:  fam %d socket created to connect to %s",
                       backend_addr->family, backend_name);
 
@@ -543,7 +545,7 @@ static apr_status_t ap_pikevm_create_connection(
             if (rv != APR_SUCCESS) {
                 apr_socket_close(*newsock);
                 loglevel = backend_addr->next ? APLOG_DEBUG : APLOG_ERR;
-                ap_log_error(APLOG_MARK, loglevel, rv, s,
+                ap_log_error(APLOG_MARK, loglevel, rv, r->server,
                          "proxy: %s: attempt to connect to %pI (%s) failed",
                          proxy_function,
                          backend_addr,
