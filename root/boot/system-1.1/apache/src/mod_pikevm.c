@@ -126,7 +126,7 @@ static apr_status_t ap_pikevm_pass_brigade(
 
 static request_rec * ap_pikevm_make_fake_req(pikevm_conn_rec *backend, request_rec *r)
 {
-	conn_rec *c = backend->connection;
+    conn_rec *c = backend->connection;
 
     request_rec *rp = apr_pcalloc(c->pool, sizeof(*r));
 
@@ -156,25 +156,25 @@ static request_rec * ap_pikevm_make_fake_req(pikevm_conn_rec *backend, request_r
 }
 
 static apr_status_t ap_pikevm_pass_body(
-	request_rec *r,
-	request_rec *rp,
-	pikevm_conn_rec * backend
+    request_rec *r,
+    request_rec *rp,
+    pikevm_conn_rec * backend
 ) {
-	int is_proxy = 1;
-	apr_status_t status = OK;
+    int is_proxy = 1;
+    apr_status_t status = OK;
 
-	if (r == NULL) {
-		is_proxy = 0;
-	}
+    if (r == NULL) {
+        is_proxy = 0;
+    }
 
 
     // TODO: Define me
-	// Note: Need to handle transfer encoding
-	// while data to read from rp
-	// read data ..
-	// if (is_proxy) {
-	//   pass data
-	// }
+    // Note: Need to handle transfer encoding
+    // while data to read from rp
+    // read data ..
+    // if (is_proxy) {
+    //   pass data
+    // }
 
     return status;
 }
@@ -182,8 +182,8 @@ static apr_status_t ap_pikevm_pass_body(
 
 void pikevm_add_signature(request_rec *r, apr_bucket_brigade *bb)
 {
-	char *buf;
-	apr_bucket *e;
+    char *buf;
+    apr_bucket *e;
     //TODO: X-PikeVM-Auth-Token: [RandomValue]
     //TODO: X-PikeVM-Auth-Signature: [Signature of Token]
     //TODO: X-PikeVM-Auth-Signature-Method: [Signature Algorithm]
@@ -294,11 +294,11 @@ static apr_status_t ap_pikevm_set_connection_alias(
 
     //X-PikeVm-Set-Client-Port: x
     apr_snprintf(
-    	sport,
-    	sizeof(sport),
-    	"%d",
+        sport,
+        sizeof(sport),
+        "%d",
 #ifdef USE_REMOTE_ADDR
-    	r->connection->remote_addr->port
+        r->connection->remote_addr->port
 #else
         r->connection->client_addr->port
 #endif
@@ -413,10 +413,12 @@ static apr_status_t ap_pikevm_create_connection(
     apr_bucket_brigade *bb
 ) {
 
-	apr_socket_t *client_socket = NULL;
+    apr_socket_t *client_socket = NULL;
 
     apr_status_t err;
     apr_sockaddr_t *uri_addr;
+    apr_sockaddr_t *backend_addr;
+    int recv_buffer_size = 4096;
 
     int create_socket = 1;
     char * url;
@@ -501,14 +503,22 @@ static apr_status_t ap_pikevm_create_connection(
         backend_addr = p_conn->addr;
 
         while (backend_addr && !connected) {
-            if ((rv = apr_socket_create(&p_conn->sock, backend_addr->family,
-                                    SOCK_STREAM, r->connection->pool)) != APR_SUCCESS) {
+            if (
+                (
+                    rv = apr_socket_create(
+                        &p_conn->sock,
+                        backend_addr->family,
+                        SOCK_STREAM,
+                        APR_PROTO_TCP,
+                        r->connection->pool
+                    )
+                ) != APR_SUCCESS) {
                 loglevel = backend_addr->next ? APLOG_DEBUG : APLOG_ERR;
                 ap_log_error(APLOG_MARK, loglevel, rv, r->server,
                          "proxy: %s: error creating fam %d socket for target %s",
                          proxy_function,
                          backend_addr->family,
-                         backend_name);
+                         p_conn->name);
                 /* this could be an IPv6 address from the DNS but the
                  * local machine won't give us an IPv6 socket; hopefully the
                  * DNS returned an additional address to try
@@ -518,9 +528,9 @@ static apr_status_t ap_pikevm_create_connection(
             }
 
 #if !defined(TPF) && !defined(BEOS)
-            if (conf->recv_buffer_size > 0 &&
-                (rv = apr_socket_opt_set(*newsock, APR_SO_RCVBUF,
-                                     conf->recv_buffer_size))) {
+            if (recv_buffer_size > 0 &&
+                (rv = apr_socket_opt_set(p_conn->sock, APR_SO_RCVBUF,
+                                     recv_buffer_size))) {
                 ap_log_error(APLOG_MARK, APLOG_ERR, rv, r->server,
                          "apr_socket_opt_set(SO_RCVBUF): Failed to set "
                          "ProxyReceiveBufferSize, using default");
@@ -528,28 +538,25 @@ static apr_status_t ap_pikevm_create_connection(
 #endif
 
             /* Set a timeout on the socket */
-            if (conf->timeout_set == 1) {
-                apr_socket_timeout_set(*newsock, conf->timeout);
-            } else {
-                apr_socket_timeout_set(*newsock, r->server->timeout);
-            }
+            apr_socket_timeout_set(p_conn->sock, r->server->timeout);
+
 
             ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
                      "pikevm:  fam %d socket created to connect to %s",
-                      backend_addr->family, backend_name);
+                      backend_addr->family, p_conn->name);
 
             /* make the connection out of the socket */
-            rv = apr_connect(*newsock, backend_addr);
+            rv = apr_connect(p_conn->sock, backend_addr);
 
             /* if an error occurred, loop round and try again */
             if (rv != APR_SUCCESS) {
-                apr_socket_close(*newsock);
+                apr_socket_close(p_conn->sock);
                 loglevel = backend_addr->next ? APLOG_DEBUG : APLOG_ERR;
                 ap_log_error(APLOG_MARK, loglevel, rv, r->server,
                          "proxy: %s: attempt to connect to %pI (%s) failed",
                          proxy_function,
                          backend_addr,
-                         backend_name);
+                         p_conn->name);
                 backend_addr = backend_addr->next;
                 continue;
             }
