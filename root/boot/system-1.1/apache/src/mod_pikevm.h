@@ -1,7 +1,7 @@
 #ifndef __MOD_PIKEVM_H
 #define __MOD_PIKEVM_H
 
-#define USE_APACHE_2_2
+#define USE_REMOTE_IP
 
 typedef struct {
     int reserved; // Reserved for future use
