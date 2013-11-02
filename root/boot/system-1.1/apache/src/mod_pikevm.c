@@ -430,7 +430,7 @@ static apr_status_t ap_pikevm_create_connection(
         return ap_pikevm_error(
             r,
             HTTP_BAD_REQUEST,
-            apr_pstrcat(p,"URI cannot be parsed: ", url,NULL)
+            apr_pstrcat(r->pool,"URI cannot be parsed: ", url,NULL)
         );
     }
 
@@ -454,7 +454,7 @@ static apr_status_t ap_pikevm_create_connection(
     p_conn->name = apr_pstrdup(c->pool, uri->hostname);
     p_conn->port = uri->port;
     p_conn->addr = uri_addr;
-    *url = apr_pstrcat(p, uri->path, uri->query ? "?" : "",
+    url = apr_pstrcat(r->pool, uri->path, uri->query ? "?" : "",
                            uri->query ? uri->query : "",
                            uri->fragment ? "#" : "",
                            uri->fragment ? uri->fragment : "", NULL);
@@ -462,7 +462,7 @@ static apr_status_t ap_pikevm_create_connection(
 
     if (err != APR_SUCCESS) {
         return ap_pikevm_error(r, HTTP_BAD_GATEWAY,
-                             apr_pstrcat(p, "DNS lookup failure for: ",
+                             apr_pstrcat(r->pool, "DNS lookup failure for: ",
                                          p_conn->name, NULL));
     }
 
