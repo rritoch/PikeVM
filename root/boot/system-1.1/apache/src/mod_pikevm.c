@@ -21,14 +21,6 @@ static void* ap_merge_pikevm_dir_config(apr_pool_t* pool, void* BASE, void* ADD)
 
 void pikevm_init(apr_pool_t *pool);
 
-typedef struct {
-    const char     *name;
-    apr_port_t      port;
-    apr_sockaddr_t *addr;
-    apr_socket_t   *sock;
-    int             close;
-} pikevm_http_conn_t;
-
 /* Define Commands */
 
 static const command_rec ap_pikevm_cmds[] = {

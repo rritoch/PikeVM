@@ -6,7 +6,11 @@ typedef struct {
 } pikevm_svr_cfg;
 
 typedef struct {
-    int reserved; // Reserved for future use
+    const char     *name;
+    apr_port_t      port;
+    apr_sockaddr_t *addr;
+    apr_socket_t   *sock;
+    int             close;
 } pikevm_http_conn_t;
 
 
