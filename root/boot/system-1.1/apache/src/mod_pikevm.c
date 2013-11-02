@@ -126,6 +126,8 @@ static apr_status_t ap_pikevm_pass_brigade(
 
 static request_rec * ap_pikevm_make_fake_req(pikevm_conn_rec *backend, request_rec *r)
 {
+	conn_rec *c = backend->connection;
+
     request_rec *rp = apr_pcalloc(c->pool, sizeof(*r));
 
     rp->pool            = c->pool;
