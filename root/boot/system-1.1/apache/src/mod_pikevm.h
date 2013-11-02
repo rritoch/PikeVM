@@ -2,6 +2,7 @@
 #define __MOD_PIKEVM_H
 
 #define USE_REMOTE_IP
+#define USE_REMOTE_ADDR
 
 typedef struct {
     int reserved; // Reserved for future use

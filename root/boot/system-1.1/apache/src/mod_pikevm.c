@@ -293,7 +293,17 @@ static apr_status_t ap_pikevm_set_connection_alias(
     APR_BRIGADE_INSERT_TAIL(bb, e);
 
     //X-PikeVm-Set-Client-Port: x
-    apr_snprintf(sport, sizeof(sport), "%d", r->connection->client_addr->port);
+    apr_snprintf(
+    	sport,
+    	sizeof(sport),
+    	"%d",
+#ifdef USE_REMOTE_ADDR
+    	r->connection->remote_addr->port
+#else
+        r->connection->client_addr->port
+#endif
+
+    );
     buf = apr_pstrcat(p, "X-PikeVM-Set-Client-Port: ",
                       sport,
                       CRLF,
