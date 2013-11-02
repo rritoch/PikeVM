@@ -276,7 +276,11 @@ static apr_status_t ap_pikevm_set_connection_alias(
     //X-PikeVM-Set-Client-IP: x.x.x.x
     buf = apr_pstrcat(
         p, "X-PikeVM-Set-Client-IP: ",
+#ifdef USE_APACHE_2_2
+        r->connection->client_ip,
+#else
         r->useragent_ip,
+#endif
         CRLF,
         NULL
     );

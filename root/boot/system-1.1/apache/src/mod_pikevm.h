@@ -1,6 +1,8 @@
 #ifndef __MOD_PIKEVM_H
 #define __MOD_PIKEVM_H
 
+#define USE_APACHE_2_2
+
 typedef struct {
     int reserved; // Reserved for future use
 } pikevm_svr_cfg;
