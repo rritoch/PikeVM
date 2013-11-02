@@ -455,7 +455,7 @@ static apr_status_t ap_pikevm_create_connection(
     err = apr_sockaddr_info_get(&uri_addr, apr_pstrdup(r->connection->pool, uri->hostname),
                                 APR_UNSPEC, uri->port, 0, r->connection->pool);
 
-    p_conn->name = apr_pstrdup(c->pool, uri->hostname);
+    p_conn->name = apr_pstrdup(r->connection->pool, uri->hostname);
     p_conn->port = uri->port;
     p_conn->addr = uri_addr;
     url = apr_pstrcat(r->pool, uri->path, uri->query ? "?" : "",
@@ -473,7 +473,7 @@ static apr_status_t ap_pikevm_create_connection(
     if (backend->connection) {
         // Validate existing connection
 
-        client_socket = ap_get_module_config(backend->connection->conn_config, &core_module);
+        client_socket = ap_get_module_config(backend->connection->conn_config, &pikevm_module);
         if ((backend->connection->id == r->connection->id) &&
             (backend->port == p_conn->port) &&
             (backend->hostname) &&
@@ -515,8 +515,8 @@ static apr_status_t ap_pikevm_create_connection(
                 ) != APR_SUCCESS) {
                 loglevel = backend_addr->next ? APLOG_DEBUG : APLOG_ERR;
                 ap_log_error(APLOG_MARK, loglevel, rv, r->server,
-                         "proxy: %s: error creating fam %d socket for target %s",
-                         proxy_function,
+                         "pikevm: %s: error creating fam %d socket for target %s",
+                         "ap_pikevm_create_connection",
                          backend_addr->family,
                          p_conn->name);
                 /* this could be an IPv6 address from the DNS but the
