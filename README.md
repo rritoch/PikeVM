@@ -64,12 +64,12 @@ Ex.
 
 ### Features:
 
-System V style init scripts
-POSIX virtualization
-Console shell
-Web Server
-FTP Server
-Telnet Server
+* System V style init scripts
+* POSIX virtualization
+* Console shell
+* Web Server
+* FTP Server
+* Telnet Server
 
 Contributions:
 
