@@ -53,7 +53,7 @@ pike -m &#60;path_to_master&#62; &#60;path_to_system&#62; [-I &#60;pike_includes
 Example: If Sources are installed in /opt/PikeVM
 
 ```
-pike -m /opt/PikeVM/root/boot/master-1.0.pike /opt/PikeVM/root/boot/system-1.0 -I "C:\Program Files\Pike\lib\include" -M C:\Program Files\Pike\lib\modules
+pike -m /opt/PikeVM/root/boot/master-1.1.pike /opt/PikeVM/root/boot/system-1.1 -I "C:\Program Files\Pike\lib\include" -M C:\Program Files\Pike\lib\modules
 ```
 
 Note: At the login prompt enter any username and follow the prompts for a user account to be created. Raw pike 
@@ -61,6 +61,15 @@ commands can be entered at the command line using the at "@" prefix.
 
 Ex.
   @ write("Hello World!")
+
+### Features:
+
+System V style init scripts
+POSIX virtualization
+Console shell
+Web Server
+FTP Server
+Telnet Server
 
 Contributions:
 
