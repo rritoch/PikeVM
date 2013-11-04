@@ -45,6 +45,10 @@ AC_SUBST(APXS)
 
 # Checks for typedefs, structures, and compiler characteristics.
 
+AC_CHECK_MEMBER(struct con_rec.remote_ip, define 'USE_CON_REC_REMOTE_IP',,[#include "httpd.h"]);
+AC_CHECK_MEMBER(struct con_rec.client_ip, define 'USE_CON_REC_CLIENT_IP',,[#include "httpd.h"]);
+AC_CHECK_MEMBER(struct con_rec.remote_addr, define 'USE_CON_REC_REMOTE_ADDR',,[#include "httpd.h"]);
+
 # Checks for library functions.
 AC_OUTPUT(Makefile src/Makefile)
 

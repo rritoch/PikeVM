@@ -48,7 +48,7 @@ module AP_MODULE_DECLARE_DATA   pikevm_module =
 };
 
 
-// Globals
+// Configuration functions
 
 /* ap_create_pikevm_svr_config: Create Server Configuration */
 static void* ap_create_pikevm_svr_config(apr_pool_t *pool, server_rec *sr)
@@ -90,42 +90,72 @@ static void* ap_merge_pikevm_dir_config(apr_pool_t* pool, void* BASE, void* ADD)
 
     return conf ;
 }
-
-/* ap_pikevm_register_hooks: Adds a hook to the httpd process */
-static void ap_pikevm_register_hooks(apr_pool_t *pool)
+/* pikevm_init: PikeVM Apache Module Initialization */
+void pikevm_init(apr_pool_t *pool)
 {
-    pikevm_init(pool);
-    /* Hook the request handler */
-    ap_hook_handler(ap_pikevm_handler, NULL, NULL, APR_HOOK_LAST);
+    // Reserved for future use
 }
+
+static apr_status_t ap_pikevm_error(request_rec *r, int statuscode, const char *message)
+{
+    apr_table_setn(r->notes, "error-notes",
+	apr_pstrcat(r->pool,
+		"The PikeVM server could not handle the request "
+		"<em><a href=\"", ap_escape_uri(r->pool, r->uri),
+		"\">", ap_escape_html(r->pool, r->method),
+		"&nbsp;",
+		ap_escape_html(r->pool, r->uri), "</a></em>.<p>\n"
+		"Reason: <strong>",
+		ap_escape_html(r->pool, message),
+		"</strong></p>", NULL));
+
+    /* Allow "error-notes" string to be printed by ap_send_error_response() */
+    apr_table_setn(r->notes, "verbose-error-to", apr_pstrdup(r->pool, "*"));
+
+    r->status_line = apr_psprintf(r->pool, "%3.3u PikeVM Error", statuscode);
+    ap_log_rerror(APLOG_MARK, APLOG_ERR, 0, r,
+			 "pikevm: %s returned by %s", message, r->uri);
+    return statuscode;
+}
+
+// Data Functions
+
+/* ap_pikevm_pass_brigade: Send brigade */
 
 static apr_status_t ap_pikevm_pass_brigade(
     apr_bucket_alloc_t *bucket_alloc,
     request_rec *r,
     pikevm_http_conn_t *p_conn,
-    conn_rec *origin,
+    conn_rec *dest,
     apr_bucket_brigade *bb,
     int flush
 ) {
     apr_status_t status;
+    apr_bucket *e;
 
     if (flush) {
-        apr_bucket *e = apr_bucket_flush_create(bucket_alloc);
+        e = apr_bucket_flush_create(bucket_alloc);
         APR_BRIGADE_INSERT_TAIL(bb, e);
     }
-    status = ap_pass_brigade(origin->output_filters, bb);
+
+    status = ap_pass_brigade(dest->output_filters, bb);
+
     if (status != APR_SUCCESS) {
         ap_log_error(APLOG_MARK, APLOG_ERR, status, r->server,
-                     "pikevm: pass request body failed to %pI (%s)",
+                     "pikevm: ap_pass_brigade failed to %pI (%s)",
                      p_conn->addr, p_conn->name);
         return status;
     }
+
     apr_brigade_cleanup(bb);
+
     return APR_SUCCESS;
 }
 
-static request_rec * ap_pikevm_make_fake_req(pikevm_conn_rec *backend, request_rec *r)
-{
+static request_rec * ap_pikevm_make_fake_req(
+	pikevm_conn_rec *backend,
+	request_rec *r
+) {
     conn_rec *c = backend->connection;
 
     request_rec *rp = apr_pcalloc(c->pool, sizeof(*r));
@@ -167,7 +197,9 @@ static apr_status_t ap_pikevm_pass_body(
         is_proxy = 0;
     }
 
-
+    if (1) {
+    	return ap_pikevm_error(r,HTTP_BAD_GATEWAY,"pikevm: ap_pikevm_pass_body not defined");
+    }
     // TODO: Define me
     // Note: Need to handle transfer encoding
     // while data to read from rp
@@ -179,11 +211,21 @@ static apr_status_t ap_pikevm_pass_body(
     return status;
 }
 
+// Protocol functions
 
 void pikevm_add_signature(request_rec *r, apr_bucket_brigade *bb)
 {
     char *buf;
     apr_bucket *e;
+
+    ap_log_rerror(
+    	APLOG_MARK,
+    	APLOG_ERR,
+    	0,
+    	r,
+        "pikevm: Warning:  pikevm_add_signature is not defined"
+    );
+
     //TODO: X-PikeVM-Auth-Token: [RandomValue]
     //TODO: X-PikeVM-Auth-Signature: [Signature of Token]
     //TODO: X-PikeVM-Auth-Signature-Method: [Signature Algorithm]
@@ -276,10 +318,10 @@ static apr_status_t ap_pikevm_set_connection_alias(
     //X-PikeVM-Set-Client-IP: x.x.x.x
     buf = apr_pstrcat(
         p, "X-PikeVM-Set-Client-IP: ",
-#ifdef USE_REMOTE_IP
+#ifdef USE_CON_REC_REMOTE_IP
         r->connection->remote_ip,
 #else
-#ifdef USE_CLIENT_IP
+#ifdef USE_CON_REC_CLIENT_IP
         r->connection->client_ip,
 #else
         r->useragent_ip,
@@ -297,7 +339,7 @@ static apr_status_t ap_pikevm_set_connection_alias(
         sport,
         sizeof(sport),
         "%d",
-#ifdef USE_REMOTE_ADDR
+#ifdef USE_CON_REC_REMOTE_ADDR
         r->connection->remote_addr->port
 #else
         r->connection->client_addr->port
@@ -403,6 +445,8 @@ static apr_status_t ap_pikevm_set_connection_alias(
     );
     return HTTP_CONTINUE;
 }
+
+// Connection functions
 
 static apr_status_t ap_pikevm_create_connection(
     request_rec *r,
@@ -586,6 +630,8 @@ static apr_status_t ap_pikevm_create_connection(
     return OK;
 }
 
+// Process functions
+
 static apr_status_t ap_pikevm_send_request(request_rec *r,pikevm_http_conn_t *p_conn, pikevm_dir_cfg *dir_config,apr_bucket_brigade *bb)
 {
     return OK;
@@ -681,11 +727,14 @@ static int ap_pikevm_handler(request_rec *r)
     return OK;
 }
 
-// Local
 
-/* pikevm_init: PikeVM Apache Module Initialization */
-void pikevm_init(apr_pool_t *pool)
+/* ap_pikevm_register_hooks: Adds a hook to the httpd process */
+static void ap_pikevm_register_hooks(apr_pool_t *pool)
 {
-    // Reserved for future use
+    pikevm_init(pool);
+    /* Hook the request handler */
+    ap_hook_handler(ap_pikevm_handler, NULL, NULL, APR_HOOK_LAST);
 }
+
+
 
