@@ -26,18 +26,13 @@ int test_flag(mixed);
 private void resync();
  string get_attributes(object ob);
 
-protected final void name_create() 
+protected void create()
 {
     LANGUAGE_D->parse_init();
     ids = ({});
     plurals = ({});
     adjs = ({});
     resync();	
-}
-
-protected void create()
-{
-    name_create();
 }
 
 final void set_proper_name(string str)

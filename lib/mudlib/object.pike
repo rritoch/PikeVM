@@ -4,7 +4,7 @@
 #include "/includes/mudlib/flags.h"
 #include "/includes/clean_up.h"
 
-inherit BASE_OBJ;
+inherit BASE_OBJ : base_obj;
 
 inherit __DIR__ "/object/m_light.pike";
 inherit __DIR__ "/object/m_properties.pike";
@@ -35,8 +35,9 @@ void mudlib_setup(mixed ... args)
 
 }
 
-final void object_create(mixed ... args) {
-  base_obj_create();
+protected void create(mixed ... args)
+{
+  base_obj::create();
   configure_set(STD_FLAGS, 0, resync_visibility);
 
   if ( clonep(this_object()) )
@@ -49,11 +50,6 @@ final void object_create(mixed ... args) {
 
     setup(@args);
   }	
-}
-
-void create(mixed ... args)
-{
-    object_create(@args);
 }
 
 

@@ -11,7 +11,7 @@
 /*
 * INHERIT
 */
-inherit OBJ;
+inherit OBJ : m_obj;
 
 //inherit "/std/container/vsupport";
 
@@ -514,7 +514,7 @@ mixed ob_state() {
     /* if we have an inventory, and it can be seen, we should be unique */
     if (first_inventory(this_object()) && inventory_visible()) return -1;
     //### hack
-    if (this_object()->query_closed()) return "#closed#";
+    //if (this_object()->query_closed()) return "#closed#";
     return ::ob_state();
 }
 
@@ -543,7 +543,8 @@ return 0;
     if ( test_flag(TRANSPARENT) )
 return 1;
 
-    return !this_object()->query_closed();
+    //return !this_object()->query_closed();
+    return 1;
 }
 
 private array(mixed) match_cannonical_form(string file,array(object) check) {
@@ -942,4 +943,9 @@ void reset()
 {
     make_objects_if_needed();
     make_unique_objects_if_needed();
+}
+
+protected void create() 
+{
+	m_obj::create();
 }

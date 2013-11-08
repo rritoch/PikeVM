@@ -4,7 +4,7 @@
 #include "/includes/mudlib/hooks.h"
 #include "/includes/mudlib/lpscript.h"
 
-inherit CONTAINER;
+inherit CONTAINER : container;
 inherit M_ITEMS;
 inherit M_GETTABLE;
 inherit M_EXIT;
@@ -45,9 +45,9 @@ int can_hold_water()
 
 void create(mixed ... args)
 {
-   name_create();
+
    //#"object/m_name.pike"::create();
-   
+   container::create();
    
 #if 0
 if( !clonep() )

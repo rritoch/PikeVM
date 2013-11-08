@@ -5,22 +5,18 @@
 #include "/includes/mudlib.h" 
 
 inherit M_GRAMMAR;
-inherit __DIR__ "/object/m_name.pike";
+inherit __DIR__ "/object/m_name.pike" : m_name;
 inherit __DIR__ "/object/m_description.pike";
-inherit __DIR__ "/object/m_flags.pike";
+inherit __DIR__ "/object/m_flags.pike" : m_flags;
 inherit __DIR__ "/object/m_behavior.pike";
 inherit __DIR__ "/object/m_verbs.pike";
 inherit __DIR__ "/object/m_attributes.pike";
 
-protected void base_obj_create() 
-{
-    name_create();
-    flags_create();
-}
 
-void create()
+protected void create()
 {
-    base_obj_create();
+    m_name::create();
+    m_flags::create();
 }
 
 string stat_me()
