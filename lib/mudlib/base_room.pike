@@ -47,7 +47,8 @@ void create(mixed ... args)
 {
 
    //#"object/m_name.pike"::create();
-   container::create();
+   //container::create();
+   container::m_obj::base_obj::m_name::create();
    
 #if 0
 if( !clonep() )
