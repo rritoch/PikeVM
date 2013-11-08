@@ -45,8 +45,8 @@ int can_hold_water()
 
 void create(mixed ... args)
 {
-   //name_create();
-   #"object/m_name.pike"::create();
+   name_create();
+   //#"object/m_name.pike"::create();
    
    
 #if 0
