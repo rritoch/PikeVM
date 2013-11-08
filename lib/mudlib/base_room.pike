@@ -46,7 +46,9 @@ int can_hold_water()
 void create(mixed ... args)
 {
 
-   name_create();
+   //name_create();
+   #"object/m_name"::create();
+   
    
 #if 0
 if( !clonep() )
