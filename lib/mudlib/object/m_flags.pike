@@ -105,11 +105,8 @@ final void assign_flag(int which, int state)
     set_flags(which, state);
 }
 
-protected final void flags_create() {
-	init_vars();
-}
 
-void create()
+protected void create()
 {
-    flags_create();
+    init_vars();
 }

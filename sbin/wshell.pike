@@ -2,9 +2,9 @@
 #include "/includes/mudlib.h"
 #include "/includes/mudlib/commands.h"
 
-inherit SHELL;
+inherit SHELL : shell;
 inherit M_SHELLVARS;
-inherit M_PROMPT;
+inherit M_PROMPT : m_prompt;
 //inherit M_COMPLETE;
 inherit M_GETOPT;
 //inherit M_REGEX;
@@ -129,9 +129,8 @@ void create()
 {
     if ( !clonep() )
 return;
-     shell_create();
-     ::create();
-    //prompt::create();
+     shell::create();
+     m_prompt::create();
 
     //set_privilege(1);
 

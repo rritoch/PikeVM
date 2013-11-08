@@ -209,14 +209,11 @@ return;
 }
 
 
-void create() {
-    shell_create();
-}
+protected void create() {
 
-protected void shell_create()
-{
-    if ( !clonep() )
-return;
+    if ( !clonep() ) {
+        return;
+    }
 
     //owner = previous_object();
     
