@@ -35,7 +35,7 @@ protected final void name_create()
     resync();	
 }
 
-void create()
+protected void create()
 {
     name_create();
 }
