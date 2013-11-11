@@ -142,6 +142,10 @@ protected class PikeVM_1_1_core
     // end class PikeVM_1_1_core
 }
 
+/**
+ * Master Log Message
+ */
+
 protected void mlog(int level, mixed ... args)
 {
     if (kernel_registered && functionp(kernel->klog)) {
@@ -6638,19 +6642,19 @@ CompatResolver get_compilation_handler(int major, int minor)
       }
     }
 
-  // Note: May duplicate the assignment above.
-  compat_handler_cache[v] = ret;
+    // Note: May duplicate the assignment above.
+    compat_handler_cache[v] = ret;
 
-  return ret;
+    return ret;
 }
 
 string _sprintf(int t)
 {
-  // NOTE: The ||'O' is for Pike 7.2 compat only.
-  switch(t||'O') {
-  case 't': return "master";
-  case 'O': return "master()";
-  }
+    // NOTE: The ||'O' is for Pike 7.2 compat only.
+    switch(t||'O') {
+        case 't': return "master";
+        case 'O': return "master()";
+    }
 }
 
 //! Return a master object compatible with the specified version of Pike.
