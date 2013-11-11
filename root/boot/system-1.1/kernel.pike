@@ -21,7 +21,6 @@
 //#define DEBUG_IMPORT
 //#define DEBUG_GET_ROOT_MODULE
 
-
 #define NO_ADD_ACTION
 #define IOC_STRING 1024
 
@@ -295,10 +294,15 @@ public program _load_module(string module_name)
     VFS_RETURN(vfs->_load_module(module_name));
 }
 
+public mixed make_regexp(string rx)
+{
+    //return  Regexp.SimpleRegexp(rx);
+    return Regexp.PCRE._pcre(rx);
+}
+
 private object glob2regx(string glob) 
 {
-    
-    return Regexp.PCRE._pcre(
+    return make_regexp(
         "^"+ replace(
             glob,
             ({
@@ -338,7 +342,9 @@ public array(mixed) _get_dir(string|void x, int|void flags)
     string cwd,tpath,tfn;
     int idx,idx_s,idx_sz,idy,idy_sz,valid_read_ctr;
     int last;
-    object regx, tstat;
+    object tstat;    
+    object regx;
+
     
     NEED_VFS(0);
  
@@ -421,10 +427,11 @@ public array(mixed) _get_dir(string|void x, int|void flags)
                             }                        
                         }
                     }
+                    
                 } else { 
                     // glob
-                    valid_read_ctr = 0;                                                            
-                    regx = glob2regx(parts[idx]);
+                    valid_read_ctr = 0;                                                                                
+                    regx = glob2regx(parts[idx]);                    
                     idy_sz = sizeof(paths);
                 
                     for(idy = 0;idy < idy_sz; idy++) {
@@ -434,24 +441,22 @@ public array(mixed) _get_dir(string|void x, int|void flags)
                                 valid_read_ctr++;
                                 foreach(tdir,tfn) {
                                     if (last || (tfn != "." && tfn != "..")) {
-                                        if (regx->exec(tfn) != -1) {
-                                            
+                                        if ((!regx) || regx->exec(tfn) != -1) {                                            
                                             if (paths[idy] == "/") {
                                                 new_paths += ({ paths[idy] + tfn });
                                             } else {
                                                 new_paths += ({ paths[idy] + "/" + tfn});
-                                            }                                            
-                                            
-                                        }
+                                            }                                                                                        
+                                        }                                        
                                     }
                                 }                           
                             }
                         }
                     }
-                
+                                                        
                     if (valid_read_ctr < 1) {
                         VFS_RETURN(0);    
-                    }
+                    }              
                 }
             
                 paths = new_paths;
@@ -2926,11 +2931,12 @@ int kernel_init(int argc,
         }
     } else {
         klog(LOG_LEVEL_ERROR,"Configuration file not found!");
+        exit(1);
     }
-  
+    
     array(string) inc_paths;
   
-    inc_paths = config_vars["include_path"] / ";";
+    inc_paths = zero_type(config_vars["include_path"]) || sizeof(config_vars["include_path"]) < 1 ? ({}) : config_vars["include_path"] / ";";
     foreach(inc_paths, tmp) {
         //kwrite("add_include_path %O",tmp);
         master()->add_include_path(tmp);

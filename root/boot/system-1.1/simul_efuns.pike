@@ -574,7 +574,7 @@ string trim(string str, string|void chars)
 array(string) split(string data, string re)
 {
 
-    object rx = Regexp.PCRE._pcre(re);
+    object rx = kernel()->make_regexp(re);
     int o = -1;
     mixed result;
     array(string) ret = ({});
@@ -599,7 +599,7 @@ array(string) split(string data, string re)
 int|array(mixed) regexp( string|array(string) lines, string pattern, int|void flag)
 {
 
-    object rx = Regexp.PCRE._pcre(pattern);
+    object rx = kernel()->make_regexp(pattern);
     string line;
     array(mixed) ret = ({});
     int i;
@@ -666,7 +666,7 @@ array reg_assoc(string str, array(string)pat_arr, array tok_arr, mixed|void def)
     //if (sz < 1) return ({  ({ str }), ({ def }) });
 
     for(i = 0; i<sz; i++) {
-        rxlist += ({  Regexp.PCRE._pcre(pat_arr[i]/*,Regexp.PCRE.OPTION.UNGREEDY*/) });
+        rxlist += ({  kernel()->make_regexp(pat_arr[i]) });
     }
 
    while(!done) {
