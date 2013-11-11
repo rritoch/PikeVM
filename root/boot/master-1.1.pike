@@ -116,6 +116,110 @@ object o;
 // Master: 0.5
 ////////////////////////////////////////////////////////////////////////////////
 
+public int kernel_is_registered();
+
+/**
+ * PikeVM Core
+ *
+ * For PikeVM version 1.1+
+ *
+ * @access public
+ */
+
+protected class PikeVM_1_1_core
+{
+    protected int master_log_level = 0;
+    protected int kernel_registered = 0;
+    protected object kernel;
+
+    // Declare methods
+
+    protected void mlog(int level, mixed ... args);
+    public int kernel_is_registered();
+    public object get_kernel();
+    public string combine_uri(string ... uris);
+
+    // end class PikeVM_1_1_core
+}
+
+protected void mlog(int level, mixed ... args)
+{
+    if (kernel_registered && functionp(kernel->klog)) {
+        kernel->klog(level,@args);
+    } else {
+        if (master_log_level > 0 && level <= master_log_level) {
+            write(DEFAULT_LOG_FORMAT,object_program(this),sprintf(@args));
+        }
+    }
+}
+
+/**
+ * Kernel is registered
+ */
+
+public int kernel_is_registered()
+{
+    return kernel_registered;
+}
+
+/**
+ * Get Kernel
+ */
+
+public object get_kernel()
+{
+    return kernel;
+}
+
+/**
+ * Combine URIs
+ */
+
+public string combine_uri(string ... uris)
+{
+    int has_scheme = 0;
+    int i;
+    string scheme = "";
+    string authority = "";
+    string path = "";
+    array tmpa;
+    string s;
+    string uri;
+    string r;
+
+    //write(sprintf("combine_uri (%O)\n",uris));
+
+    for(i=0;i<sizeof(uris);i++) {
+       s = uris[i];
+       tmpa = s/":";
+       if (sizeof(tmpa) > 1) {
+           scheme = tmpa[0];
+           has_scheme = 1;
+           tmpa = s/"://";
+           if (tmpa[0] == scheme && sizeof(tmpa) > 1) {
+               r = s[(sizeof(scheme)+3)..];
+               tmpa = r/"/";
+               authority = "//"+tmpa[0];
+               path = s[(sizeof(scheme)+sizeof(authority)+1)..];
+           } else {
+              authority = s[(sizeof(scheme)+1)..];
+              path = "";
+           }
+       } else {
+          path = combine_path(path,s);
+       }
+    }
+
+    if (has_scheme) {
+        uri = scheme+":"+authority+path;
+    } else {
+        uri = path;
+    }
+
+    //write(sprintf("combine returns: %s\n",uri));
+    return uri;
+}
+
 /**
  * Master
  *
@@ -126,6 +230,8 @@ object o;
 
 protected class Pike_0_5_master
 {
+    inherit PikeVM_1_1_core;
+
     // Declared properties
 
     string describe_backtrace(array(mixed) trace);
@@ -186,9 +292,6 @@ protected class Pike_0_5_master
 
     class dirnode {};
 
-    protected int kernel_registered = 0;
-    protected object kernel;
-
     // Defined methods
 
     /**
@@ -237,10 +340,10 @@ protected class Pike_0_5_master
     {
         compat_environment = new_env;
         if (!new_env) {
-          compat_environment_copy = 0;
+            compat_environment_copy = 0;
         } else if (!compat_environment_copy) {
             compat_environment_copy = ([]);
-         }
+        }
     }
 
 #pragma deprecation_warnings
@@ -326,19 +429,7 @@ protected class Pike_0_5_master
         return get_compat_master(major, minor);
     }
 
-    protected int master_log_level = 0;
-    
-    protected void mlog(int level, mixed ... args) 
-    {
-	    if (kernel_registered && functionp(kernel->klog)) {
-		    kernel->klog(level,@args);
-	    } else {
-	    	if (master_log_level > 0 && level <= master_log_level) {
-	            write(DEFAULT_LOG_FORMAT,object_program(this),sprintf(@args));
-	    	}
-	    }
-    }
-    
+
     /* Missing symbols:
      *
      * __INIT
@@ -634,14 +725,15 @@ class Pike_7_0_master
                 }
                 return typ;
 
-           default:
-               if (objectp(m)) {
+            default:
+                if (objectp(m)) {
                     tmp = describe_object(m);
-                      if(tmp) {
+                    if(tmp) {
                         return tmp;
-                      }
-                 }
-              return typ;
+                    }
+                }
+                return typ;
+            // end switch
         }
     }
 
@@ -670,28 +762,25 @@ class Pike_7_0_master
 
         //  int loopcount=0;
 
-        while(1)
-        {
+        while(1) {
             // if (loopcount>10000) werror("len=%d\n",len);
             array(string) z=allocate(clip);
             array(int) isclipped=allocate(clip);
             array(int) clippable=allocate(clip);
-            for(int e=0;e<clip;e++)
-            {
-                  clipped=0;
-                  canclip=0;
-                  z[e]=stupid_describe(x[e],len);
-                  isclipped[e]=clipped;
-                  clippable[e]=canclip;
+            for(int e=0;e<clip;e++) {
+                clipped=0;
+                canclip=0;
+                z[e]=stupid_describe(x[e],len);
+                isclipped[e]=clipped;
+                clippable[e]=canclip;
             }
 
-            while(1)
-            {
+            while(1) {
                 // if (loopcount>10000) {
                 //     werror("clip=%d maxlen=%d\n",clip,maxlen);
                 //}
 
-                  string ret = z[..clip-1]*",";
+                string ret = z[..clip-1]*",";
                 // if(loopcount>10000)  {
                 //     werror(
                 //         "sizeof(ret)=%d z=%O isclipped=%O done=%d\n",
@@ -699,64 +788,66 @@ class Pike_7_0_master
                 //     );
                 // }
 
-                if(done || sizeof(ret)<=maxlen+1)
-                  {
-                      int tmp=sizeof(x)-clip-1;
+                if(done || sizeof(ret)<=maxlen+1) {
+                    int tmp=sizeof(x)-clip-1;
                     // if(loopcount>10000) werror("CLIPPED::::: %O\n",isclipped);
-                      clipped=`+(0,@isclipped);
-                      if(tmp>=0) {
-                          clipped++;
-                          ret+=",,,"+tmp;
-                      }
-                      canclip++;
-                      return ret;
-                  }
+                    clipped=`+(0,@isclipped);
+                    if(tmp>=0) {
+                        clipped++;
+                        ret+=",,,"+tmp;
+                    }
+                    canclip++;
+                    return ret;
+                }
 
-                  int last_newlen=len;
-                  int newlen;
-                  int clipsuggest;
-                  while(1) {
+                int last_newlen=len;
+                int newlen;
+                int clipsuggest;
+                while(1) {
                     // if(loopcount++ > 20000) return "";
                     // if(!(loopcount & 0xfff)) werror("GNORK\n");
-                      int smallsize=0;
-                      int num_large=0;
-                      clipsuggest=0;
+                    int smallsize=0;
+                    int num_large=0;
+                    clipsuggest=0;
 
-                      for(int e=0;e<clip;e++)
-                      {
+                    for(int e=0;e<clip;e++) {
                         //          if(loopcount>10000) werror("sizeof(z[%d])=%d  len=%d\n",e,sizeof(z[e]),len);
 
-                          if((sizeof(z[e])>=last_newlen || isclipped[e]) && clippable[e]) {
-                              num_large++;
-                          } else {
+                        if((sizeof(z[e])>=last_newlen || isclipped[e]) && clippable[e]) {
+                            num_large++;
+                        } else {
                             smallsize+=sizeof(z[e]);
                         }
 
-                          if(num_large * 15 + smallsize < maxlen) {
+                        if(num_large * 15 + smallsize < maxlen) {
                             clipsuggest=e+1;
                         }
-                      }
+                    }
 
                     //        if(loopcount>10000) werror("num_large=%d  maxlen=%d  smallsize=%d clippsuggest=%d\n",num_large,maxlen,smallsize,clipsuggest);
-                      newlen=num_large ? (maxlen-smallsize)/num_large : 0;
+                    newlen=num_large ? (maxlen-smallsize)/num_large : 0;
 
                     //        if(loopcount>10000) werror("newlen=%d\n",newlen);
 
-                      if (newlen<8 || newlen >= last_newlen) break;
+                    if (newlen<8 || newlen >= last_newlen) {
+                        break;
+                    }
 
-                      last_newlen=newlen;
+                    last_newlen=newlen;
                     //        if(loopcount>10000) werror("len decreased, retrying.\n");
                 }
 
-                  if(newlen < 8 && clip) {
-                      clip-= (clip/4) || 1;
-                     if(clip > clipsuggest) clip=clipsuggest;
+                if (newlen < 8 && clip) {
+                    clip-= (clip/4) || 1;
+                    if (clip > clipsuggest) {
+                        clip=clipsuggest;
+                    }
                    //        if(loopcount>10000) werror("clip decreased, retrying.\n");
-                  } else {
-                      len=newlen;
-                      done++;
-                      break;
-                  }
+                } else {
+                    len=newlen;
+                    done++;
+                    break;
+                }
             }
         }
 
@@ -784,7 +875,7 @@ class Pike_7_0_master
         return get_compat_master(major, minor);
     }
 
-    /* No missing symbols. */
+    // end class Pike_7_0_master
 }
 
 
@@ -882,12 +973,12 @@ protected class Pike_7_2_master
         }
         // 7.1 & 7.2
         if ((major == 7) && (minor < 3)) {
-          return this_program::this;
+            return this_program::this;
         }
         return get_compat_master(major, minor);
     }
 
-    /* No missing symbols. */
+    // end class Pike_7_2_master
 }
 
 /////////////////////
@@ -895,7 +986,7 @@ protected class Pike_7_2_master
 ////////////////////////////////////////////////////////////////////////////////
 
 /**
- * Master 7.2
+ * Master 7.4
  *
  * For Pike versions 7.3 and 7.4
  *
@@ -945,10 +1036,12 @@ protected class Pike_7_4_master
     void resolv_debug (sprintf_format fmt, sprintf_args... args);
 #endif
 
-    program low_cast_to_program(string pname,
-                  string current_file,
-                  object|void handler,
-                  void|int mkobj);
+    program low_cast_to_program(
+        string pname,
+        string current_file,
+        object|void handler,
+        void|int mkobj
+    );
 
     void add_predefine (string name, string value);
     void remove_predefine (string name);
@@ -958,20 +1051,19 @@ protected class Pike_7_4_master
 #endif
     function(string:string) set_trim_file_name_callback(function(string:string) s);
     int compile_exception (array|object trace);
-    string program_path_to_name ( string path,
-                void|string module_prefix,
-                void|string module_suffix,
-                void|string object_suffix );
+    string program_path_to_name (
+        string path,
+        void|string module_prefix,
+        void|string module_suffix,
+        void|string object_suffix
+    );
     string describe_module(object|program mod, array(object)|void ret_obj);
     string describe_program(program|function p);
 
-
     Codec get_codec(string|void fname, int|void mkobj);
-
 
     string|array nameof (mixed what, void|array(object) module_object);
     mixed encode_object(object x);
-
 
     object __register_new_program(program p);
     object objectof (string|array what);
@@ -980,7 +1072,6 @@ protected class Pike_7_4_master
     void decode_object(object o, mixed data);
 
     string _sprintf(int t);
-
 
     // Defined methods
 
@@ -1022,7 +1113,7 @@ protected class Pike_7_4_master
         return get_compat_master(major, minor);
     }
 
-    /* No missing symbols. */
+    // end class Pike_7_4_master
 }
 
 /////////////////////
@@ -1078,6 +1169,8 @@ protected class Pike_7_6_master
         }
         return get_compat_master(major, minor);
     }
+
+    // end class Pike_7_6_master
 }
 
 /////////////////////
@@ -1195,8 +1288,8 @@ string relocate_module(string s)
         foreach(pike_module_path, string path) {
             string s2 = fakeroot(sizeof(tmp)? combine_path(path, tmp) : path);
             if(master_file_stat(s2)) {
-                  return s2;
-              }
+                return s2;
+            }
         }
     }
     return fakeroot(s);
@@ -1367,8 +1460,8 @@ string basename(string x)
     return ((x/":")[-1]/"/")[-1];
 #define BASENAME(X) ((((X)/":")[-1]/"/")[-1])
 #else
-  array(string) tmp=EXPLODE_PATH(x);
-  return tmp[-1];
+    array(string) tmp=EXPLODE_PATH(x);
+    return tmp[-1];
 #endif
 }
 
@@ -1414,13 +1507,15 @@ mapping(string:int) load_time=([]);
  * Compile string
  */
 
-program compile_string(string source, void|string filename,
-               object|void handler,
-               void|program p,
-               void|object o,
-               void|int _show_if_constant_errors,
-               void|string content_type)
-{
+program compile_string(
+    string source,
+    void|string filename,
+    object|void handler,
+    void|program p,
+    void|object o,
+    void|int _show_if_constant_errors,
+    void|string content_type
+) {
     mapping (string:mixed) code = ([]);
 
     code["source"] = source;
@@ -1466,9 +1561,12 @@ program _load_module(string module_name) {
 }
 */
 
-program master_load_module(string module_name) {
- if (kernel_registered) return kernel->_load_module(module_name);
- return load_module(module_name);
+program master_load_module(string module_name)
+{
+    if (kernel_registered) {
+        return kernel->_load_module(module_name);
+    }
+    return load_module(module_name);
 }
 
 string master_read_file(string file)
@@ -1482,31 +1580,17 @@ string master_read_file(string file)
     return 0;
 }
 
-/**
- * Kernel is registered
- */
-
-int kernel_is_registered()
-{
-    return kernel_registered;
-}
-
-object get_kernel()
-{
-    return kernel;
-}
-
 #ifdef GETCWD_CACHE
 protected string current_path;
 int cd(string s)
 {
-  current_path=0;
-  return predef::cd(s);
+    current_path=0;
+    return predef::cd(s);
 }
 
 string getcwd()
 {
-  return current_path || (current_path=predef::getcwd());
+    return current_path || (current_path=predef::getcwd());
 }
 #endif // GETCWD_CACHE
 
@@ -1517,53 +1601,10 @@ string getcwd()
 string combine_path_with_cwd(string ... paths)
 {
     //if (kernel_registered) return combine_uri(IS_ABSOLUTE_PATH(paths[0])?"":getcwd(),@paths);
-    if (kernel_registered) return kernel->_combine_path(kernel->_getcwd(),@paths);
+    if (kernel_registered) {
+        return kernel->_combine_path(kernel->_getcwd(),@paths);
+    }
     return combine_path(IS_ABSOLUTE_PATH(paths[0])?"":getcwd(),@paths);
-}
-
-
-string combine_uri(string ... uris) {
-    int has_scheme = 0;
-    int i;
-    string scheme = "";
-    string authority = "";
-    string path = "";
-    array tmpa;
-    string s;
-    string uri;
-    string r;
-
-    //write(sprintf("combine_uri (%O)\n",uris));
-
-    for(i=0;i<sizeof(uris);i++) {
-       s = uris[i];
-       tmpa = s/":";
-       if (sizeof(tmpa) > 1) {
-           scheme = tmpa[0];
-           has_scheme = 1;
-           tmpa = s/"://";
-           if (tmpa[0] == scheme && sizeof(tmpa) > 1) {
-               r = s[(sizeof(scheme)+3)..];
-               tmpa = r/"/";
-               authority = "//"+tmpa[0];
-               path = s[(sizeof(scheme)+sizeof(authority)+1)..];
-           } else {
-              authority = s[(sizeof(scheme)+1)..];
-              path = "";
-           }
-       } else {
-          path = combine_path(path,s);
-       }
-    }
-
-    if (has_scheme) {
-        uri = scheme+":"+authority+path;
-    } else {
-        uri = path;
-    }
-
-    //write(sprintf("combine returns: %s\n",uri));
-    return uri;
 }
 
 #ifdef FILE_STAT_CACHE
@@ -1657,22 +1698,25 @@ array(string) master_get_dir(string|void x)
      return predef::get_dir();
 }
 
-Stat master_file_stat(string x) {
- if (kernel_registered) return kernel->_file_stat(x);
- return predef::file_stat(x);
+Stat master_file_stat(string x)
+{
+    if (kernel_registered) {
+        return kernel->_file_stat(x);
+    }
+    return predef::file_stat(x);
 }
 
 #endif // FILE_STAT_CACHE
-
 
 protected mapping(string:string) environment;
 
 #ifdef __NT__
 protected void set_lc_env (mapping(string:string) env)
 {
-  environment = ([]);
-  foreach (env; string var; string val)
-    environment[lower_case (var)] = val;
+    environment = ([]);
+    foreach (env; string var; string val) {
+        environment[lower_case (var)] = val;
+    }
 }
 #endif
 
@@ -1703,77 +1747,84 @@ protected void set_lc_env (mapping(string:string) env)
 string|mapping(string:string) getenv (void|int|string varname,
                       void|int force_update)
 {
-  // Variants doesn't seem to work well yet.
-  if (stringp (varname)) {
-    if (!environment || force_update) {
+    // Variants doesn't seem to work well yet.
+    if (stringp (varname)) {
+        if (!environment || force_update) {
 #ifdef __NT__
-      set_lc_env (Builtin._getenv());
+            set_lc_env (Builtin._getenv());
 #else
-      environment = Builtin._getenv();
+            environment = Builtin._getenv();
 #endif
-      // Kill the compat environment if forced.
-      compat_environment = compat_environment_copy = 0;
-    }
+            // Kill the compat environment if forced.
+            compat_environment = compat_environment_copy = 0;
+        }
 
 #ifdef __NT__
-    varname = lower_case(varname);
+        varname = lower_case(varname);
 #endif
 
-    if (compat_environment) {
-      array(string) res;
-      if (!equal(res = compat_environment[varname],
-         compat_environment_copy[varname])) {
-    // Something has messed with the compat environment mapping.
-    putenv(varname, res && res[1]);
-      }
-    }
+        if (compat_environment) {
+            array(string) res;
+            if (
+                !equal(
+                    res = compat_environment[varname],
+                    compat_environment_copy[varname]
+                )
+             ) {
+                // Something has messed with the compat environment mapping.
+                putenv(varname, res && res[1]);
+            }
+        }
 
-    return environment[varname];
-  }
+        return environment[varname];
+    } else {
+        force_update = varname;
 
-  else {
-    force_update = varname;
+        mapping(string:string) res;
 
-    mapping(string:string) res;
-
-    if (force_update) {
-      res = Builtin._getenv();
+        if (force_update) {
+            res = Builtin._getenv();
 #ifdef __NT__
-      set_lc_env (res);
+            set_lc_env (res);
 #else
-      environment = res + ([]);
+            environment = res + ([]);
 #endif
-      // Kill the compat environment if forced.
-      compat_environment = compat_environment_copy = 0;
-    }
+            // Kill the compat environment if forced.
+            compat_environment = compat_environment_copy = 0;
+        } else {
+            if (
+                compat_environment &&
+                !equal(compat_environment, compat_environment_copy)
+            ) {
+                foreach(compat_environment; varname; array(string) pair) {
+                    if (!equal(pair, compat_environment_copy[varname])) {
+                        putenv(pair[0], pair[1]);
+                    }
+                }
 
-    else {
-      if (compat_environment &&
-      !equal(compat_environment, compat_environment_copy)) {
-    foreach(compat_environment; varname; array(string) pair) {
-      if (!equal(pair, compat_environment_copy[varname])) {
-        putenv(pair[0], pair[1]);
-      }
-    }
-    foreach(compat_environment_copy; varname; array(string) pair) {
-      if (!compat_environment[varname]) {
-        putenv(pair[0]);
-      }
-    }
-      }
+                foreach(compat_environment_copy; varname; array(string) pair) {
+                    if (!compat_environment[varname]) {
+                        putenv(pair[0]);
+                    }
+                }
+            }
 #ifdef __NT__
-      // Can't use the cached environment since variable names have been
-      // lowercased there.
-      res = Builtin._getenv();
-      if (!environment) set_lc_env (res);
+            // Can't use the cached environment since variable names have been
+            // lowercased there.
+            res = Builtin._getenv();
+            if (!environment) {
+                set_lc_env (res);
+            }
 #else
-      if (!environment) environment = Builtin._getenv();
-      res = environment + ([]);
+            if (!environment) {
+                environment = Builtin._getenv();
+            }
+            res = environment + ([]);
 #endif
-    }
+        }
 
-    return res;
-  }
+        return res;
+    }
 }
 
 //! Sets the environment variable @[varname] to @[value].
@@ -1875,9 +1926,9 @@ program compile_file(string filename,
 string normalize_path( string path )
 {
 #ifndef __NT__
-  return path;
+    return path;
 #else
-  return replace(path,"\\","/");
+    return replace(path,"\\","/");
 #endif
 }
 
@@ -1898,8 +1949,8 @@ mapping(program:object) documentation = ([]);
 mapping(program:string) source_cache;
 
 mapping (program:object|NoValue) objects=([
-  this_program : this,
-  object_program(_static_modules): _static_modules,
+    this_program : this,
+    object_program(_static_modules): _static_modules,
 ]);
 
 protected mapping(string:object|NoValue) fc=([]);
@@ -2512,7 +2563,7 @@ void handle_error(array|object trace)
   // NB: Use predef::trace() to modify trace level here.
   // predef::trace(2);
   //werror(sprintf("%O",trace));
-  
+
   if(mixed x=catch {
     werror(describe_backtrace(trace));
   }) {
@@ -3131,11 +3182,11 @@ class joinnode
         return as=='O' && sprintf("master()->joinnode(%O)",joined_modules);
     }
 
-    public object createClone() 
+    public object createClone()
     {
         return joinnode(joined_modules,compilation_handler,fallback_module);
     }
-    
+
     protected void create(array(object|mapping) _joined_modules,
             object|void _compilation_handler,
             joinnode|void _fallback_module)
@@ -3827,7 +3878,7 @@ mixed resolv(string identifier, string|void current_file,
         ret = resolv_base(tmp[0], current_file, current_handler);
         tmp = tmp[1..];
     }
-    
+
     foreach(tmp,string index) {
       resolv_debug("indexing %O with %O...\n",
            ret, index);
@@ -4004,19 +4055,19 @@ int stat_pike_module_reloc() {
 }
 
 
-private mapping(string:mixed) save_master_context() 
+private mapping(string:mixed) save_master_context()
 {
 
-    
+
     //root_module??
     mapping (object:int) threads = ([]);
     mapping (object:int) objects = ([]);
     object obj;
-    
+
     foreach(all_threads(), object thread) {
         threads[thread] = 1;
     }
-    
+
     mapping(string:mixed) context = ([
         "save_constants":copy_value(save_constants),
         "pike_module_path":copy_value(pike_module_path),
@@ -4028,7 +4079,7 @@ private mapping(string:mixed) save_master_context()
         "root_module": root_module->createClone(),
         "threads": threads,
     ]);
-    
+
     obj = next_object();
     objects[obj] = 1;
     while(obj = next_object(obj)) {
@@ -4047,7 +4098,7 @@ private void restore_master_context(mapping(string:mixed) context)
     int kills = 1;
     object obj;
     array(object) kill_list = ({});
-    
+
     save_constants = copy_value(context["save_constants"]);
     pike_module_path = copy_value(context["pike_module_path"]);
     pike_include_path = copy_value(context["pike_include_path"]);
@@ -4055,46 +4106,46 @@ private void restore_master_context(mapping(string:mixed) context)
     rev_programs = copy_value(context["rev_programs"]);
     fc = copy_value(context["fc"]);
     rev_fc = copy_value(context["rev_fc"]);
-        
+
     foreach(all_threads(), object thread) {
         if (zero_type(context["threads"][thread])) {
-        	mlog(LOG_LEVEL_INFO,"Killing thread %O",thread);
+            mlog(LOG_LEVEL_INFO,"Killing thread %O",thread);
             thread->kill();
         }
     }
-    
+
     while(kills > 0 && ctr < 100) {
         ctr++;
         obj = next_object();
         if (zero_type(context["objects"][obj])) {
             kill_list = ({ obj }) + kill_list;
         }
-        
+
         while(obj = next_object(obj)) {
             if (zero_type(context["objects"][obj])) {
                 kill_list = ({ obj }) + kill_list;
             }
         }
-        
+
         kill_list -= all_threads();
-        
+
         kills = sizeof(kill_list);
         if (kills > 0) {
             foreach(kill_list, obj) {
                 if (obj) {
-                	mixed err = catch {
-                		mlog(LOG_LEVEL_INFO,"Killing %O",obj);
+                    mixed err = catch {
+                        mlog(LOG_LEVEL_INFO,"Killing %O",obj);
                         destruct(obj);
-                	};
-                	if (err) {
-                		mlog(LOG_LEVEL_ERROR,"%O",err);
-                	}
+                    };
+                    if (err) {
+                        mlog(LOG_LEVEL_ERROR,"%O",err);
+                    }
                 }
             }
         }
         kill_list = ({});
     }
-    
+
     root_module = context["root_module"]->createClone();
     mlog(LOG_LEVEL_INFO,"System restore complete");
 }
@@ -4108,7 +4159,7 @@ public void _main(array(string) orig_argv)
     save_constants = copy_value(all_constants());
 
     int debug,trace,run_tool;
-    
+
     object tmp;
     string postparseaction=0;
     predefines = initial_predefines =
@@ -4118,7 +4169,7 @@ public void _main(array(string) orig_argv)
     _backend_thread = this_thread();
 #endif
     int set_log_level = DEFAULT_LOG_LEVEL;
-    
+
     array parts = (getenv("PIKE_INCLUDE_PATH")||"")/PATH_SEPARATOR-({""});
     int i = sizeof(parts);
     while(i) add_include_path(parts[--i]);
@@ -4130,7 +4181,7 @@ public void _main(array(string) orig_argv)
     parts = (getenv("PIKE_MODULE_PATH")||"")/PATH_SEPARATOR-({""});
     i = sizeof(parts);
     while(i) add_module_path(parts[--i]);
-    
+
     string last_arg;
 
     foreach(argv,string cur_arg) {
@@ -4152,11 +4203,11 @@ public void _main(array(string) orig_argv)
         }
         last_arg = cur_arg;
     }
-    
+
     master_log_level = set_log_level;
-    
+
     welcome();
-        
+
     // Some configure scripts depends on this format.
     string format_paths() {
         return  ("master.pike...: " + (_master_file_name || __FILE__) + "\n"
@@ -4589,15 +4640,15 @@ public void _main(array(string) orig_argv)
   mixed ret;
   mixed err;
 
-  
+
     mixed m_context = save_master_context();
-    
+
     ret = -1;
-    
+
     while (ret == -1) {
         kernel_registered = 0;
         restore_master_context(m_context);
-        
+
         ret = 1;
         err = catch {
             // The main reason for this catch is actually to get a new call
@@ -5381,15 +5432,15 @@ string describe_backtrace(mixed trace, void|int linewidth)
         if (mixed err = catch {
 
             if (functionp (err_obj->message)) {
-            	ret = err_obj->message();
+                ret = err_obj->message();
             } else if (zero_type (ret = err_obj->error_message)) {
                 // For compatibility with error objects trying to behave
                 // like arrays.
                 ret = err_obj[0];
             }
-            
+
             if (!ret) {
-            	ret = "";
+                ret = "";
             } else if (!stringp (ret)) {
                 ret = sprintf ("<Message in %O is %t, expected string>\n",
                     err_obj, ret);
@@ -5402,7 +5453,7 @@ string describe_backtrace(mixed trace, void|int linewidth)
                 // like arrays.
                 trace = err_obj[1];
             }
-            
+
             if (!trace) {
                 return ret + "<No backtrace>\n";
             } else if (!arrayp (trace)) {
@@ -6611,8 +6662,10 @@ string _sprintf(int t)
 //!   @[get_compilation_handler()], @[master()]
 object get_compat_master(int major, int minor)
 {
-  if ((major < 7) || ((major == 7) && (minor < 7)))
-    return Pike_7_6_master::get_compat_master(major, minor);
-  // 7.7 and later.
-  return this;
+    if ((major < 7) || ((major == 7) && (minor < 7))) {
+        return Pike_7_6_master::get_compat_master(major, minor);
+    }
+    // 7.7 and later.
+    return this;
 }
+
