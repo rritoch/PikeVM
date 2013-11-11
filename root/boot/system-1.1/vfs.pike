@@ -956,7 +956,8 @@ private string xlatepath(string pth)
     return newpath;
 }
 
-private void kwrite(mixed msg) {
+protected void kwrite(mixed msg) 
+{
    write(sprintf("[%O] %s\n",object_program(this),msg));
 }
 
@@ -1388,12 +1389,12 @@ public int _socket(int socket_family, int socket_type, int protocol)
 int kernel_registered = 0;
 
 void register_kernel() {
- int idx;
- string path;
+    int idx;
+    string path;
  
- if (kernel_registered) return;
- kwrite("Flushing kernel stacks.");
- //kernel_module_path_stack = copy_value(module_path_stack);
+    if (kernel_registered) return;
+    kernel()->klog(kernel()->LOG_LEVEL_INFO,"Flushing kernel stacks.");
+    //kernel_module_path_stack = copy_value(module_path_stack);
  for (idx = 0; idx < sizeof(kernel_module_path_stack); idx++) {    
   master()->remove_module_path(kernel_module_path_stack[idx]);   
  }
@@ -1403,9 +1404,9 @@ void register_kernel() {
  }
 
  
- kwrite("Registering Kernel.");
+ kernel()->klog(kernel()->LOG_LEVEL_INFO,"Registering Kernel.");
  master()->register_kernel();
- kwrite("Loading new module paths.");
+ kernel()->klog(kernel()->LOG_LEVEL_INFO,"Loading new module paths.");
  for(idx = 0; idx < sizeof(kernel_module_path_stack);idx++) {
   path = sprintf("proc://kernel/master/modules/%O",idx);
   //kwrite(sprintf("master()->add_module_path(%O)",path));  
@@ -1570,7 +1571,7 @@ static void create(mixed orig_mod_paths, mixed orig_inc_paths,mapping(string:str
  fdlist[1] = localstdio(1);
  fdlist[2] = localstdio(2);
  
- kwrite("VFS Loaded");
+ kernel()->klog(kernel()->LOG_LEVEL_INFO,"VFS Loaded");
  
  fsroot = kvars["init_root_path"];
  //kwrite(sprintf("fsroot = %O",fsroot));

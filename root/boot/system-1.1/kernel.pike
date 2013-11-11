@@ -25,6 +25,8 @@
 #define NO_ADD_ACTION
 #define IOC_STRING 1024
 
+#define KLOG_FORMAT "[%O] %s\n"
+
 // Kernel Helpers
 /////////////////////////////////
 
@@ -46,6 +48,13 @@
 
 constant no_value = (<>);
 constant NoValue = typeof (no_value);
+
+constant LOG_LEVEL_DEBUG = 5;
+constant LOG_LEVEL_INFO =  4;
+constant LOG_LEVEL_WARN =  3;
+constant LOG_LEVEL_ERROR = 2;
+constant LOG_LEVEL_FATAL = 1;
+constant LOG_LEVEL_NONE =  0;
 
 #if __REAL_VERSION__ < 7.9
 private constant Files = _static_modules.files;
@@ -90,6 +99,7 @@ mapping(object:object) call_out_obs = ([]);
 private mapping(int:mixed) fdlist = ([ ]);
 
 private int kernel_registered;
+private int log_level = 3;
 
 private object root_modules;
 private object securityd;
@@ -1817,7 +1827,7 @@ private mixed do_init()
         pinit[0]->main(sizeof(argv),argv,env);
     };
     if (err) {
-        kwrite(sprintf("kexec runtime error: %O",err));
+    	klog(LOG_LEVEL_ERROR,"kexec runtime error: %O",err);
     }
     return err;
 }
@@ -1828,7 +1838,7 @@ private mixed start_init(mixed argv, mixed env)
     string fn;
     mixed err = 0;
     
-    kwrite("Starting init.");
+    klog(LOG_LEVEL_INFO,"Starting init.");
  
     err = 0;
     fn = argv[0];
@@ -1836,8 +1846,8 @@ private mixed start_init(mixed argv, mixed env)
     p = (program)fn;
  
     if (!programp(p)) {
-        kwrite(sprintf("kexec error: Failed to load program %O.",fn));
-       return 1;
+        klog(LOG_LEVEL_ERROR, "kexec error: Failed to load program %O.",fn);
+        return 1;
     }
   
     err = catch {
@@ -1845,7 +1855,7 @@ private mixed start_init(mixed argv, mixed env)
     };
 
     if (err) {
-        kwrite(sprintf("kexec error:2: %O",err));
+        klog(LOG_LEVEL_ERROR, "kexec error:2: %O",err);
         return err;
     }  
    
@@ -1888,18 +1898,18 @@ int shell_exec(string cmd, mixed argv, mixed env) {
   };
 
   if (err) {
-   kwrite(sprintf("shell_exec error: Unable to load object. %O",err));
-   return 1;
+      klog(LOG_LEVEL_ERROR, "shell_exec error: Unable to load object. %O",err);
+      return 1;
   }  
 
   if (zero_type(ob)) {
-   kwrite("shell_exec error: Object Self-Destructed!");
+   klog(LOG_LEVEL_ERROR, "shell_exec error: Object Self-Destructed!");
    return 1;
   }
 
   if (!ob->main) {
    destruct(ob);
-   kwrite("shell_exec error: Program %O has no entry point!",fn);
+   klog(LOG_LEVEL_ERROR, "shell_exec error: Program %O has no entry point!",fn);
    return 1;
   }
    
@@ -1909,9 +1919,9 @@ int shell_exec(string cmd, mixed argv, mixed env) {
   
   if (err) {
    if (objectp(err)) {
-       kwrite("shell_exec runtime error: %O backtrace %O",err, err->backtrace());
+       klog(LOG_LEVEL_ERROR, "shell_exec runtime error: %O backtrace %O",err, err->backtrace());
    } else {
-       kwrite("shell_exec runtime error: %O",err);
+       klog(LOG_LEVEL_ERROR, "shell_exec runtime error: %O",err);
    }
    
    return 1;
@@ -1934,11 +1944,11 @@ mixed spawn(mixed argv, mixed env) {
   };
   
   if (err) {
-   kwrite("spawn error: %O",err);
+   klog(LOG_LEVEL_ERROR, "spawn error: %O",err);
    return err;
   }
   if (!p) {
-   kwrite("spawn error: Program not found!");
+   klog(LOG_LEVEL_ERROR, "spawn error: Program not found!");
    return -1;
   }
   
@@ -1947,7 +1957,7 @@ mixed spawn(mixed argv, mixed env) {
   };
 
   if (err) {
-   kwrite("spawn error: %O",err);
+   klog(LOG_LEVEL_ERROR, "spawn error: %O",err);
    return err;
   }
   
@@ -1958,7 +1968,7 @@ mixed spawn(mixed argv, mixed env) {
  return err;
 }
 
-private void kwrite(mixed ... msg) 
+protected void kwrite(mixed ... msg) 
 { 
     write(sprintf("[%s] %s\n",describe_program(object_program(this)),sprintf(@msg)));
 }
@@ -1977,8 +1987,9 @@ private string ktrim(string s) {
  return ret;
 }
 
-private void welcome() {
-    kwrite(sprintf("Starting PikeVM Kernel v%s",VERSION));
+private void welcome() 
+{
+    klog(LOG_LEVEL_INFO, sprintf("Starting PikeVM Kernel v%s",VERSION));
 }
 
 public object kernel() {
@@ -2545,7 +2556,7 @@ int|object make_user(string my_stdin, string my_stdout, string my_stderr, void|i
     };
 
     if (err) {
-        kwrite("make_user failed: unable to compile login object!");
+        klog(LOG_LEVEL_ERROR,"make_user failed: unable to compile login object!");
         return 0;
     }
   
@@ -2557,16 +2568,16 @@ int|object make_user(string my_stdin, string my_stdout, string my_stderr, void|i
  
      if (err) {
          if (objectp(err)) {
-             kwrite("make_user failed: unable to create login object! %O %O",err,err->backtrace());
+             klog(LOG_LEVEL_ERROR,"make_user failed: unable to create login object! %O %O",err,err->backtrace());
          } else {
-             kwrite("make_user failed: unable to create login object! %O",err);
+             klog(LOG_LEVEL_ERROR,"make_user failed: unable to create login object! %O",err);
          }
          return 0;
      } 
  
  
      if (zero_type(u)) {
-         kwrite("make_user failed: login object self-destructed!");
+         klog(LOG_LEVEL_ERROR,"make_user failed: login object self-destructed!");
          return 0;
      }
  
@@ -2579,9 +2590,9 @@ int|object make_user(string my_stdin, string my_stdout, string my_stderr, void|i
  
      if (err) {
          if (objectp(err)) {
-             kwrite("make_user: User login crashed! %O %O",err,err->backtrace());
+             klog(LOG_LEVEL_ERROR,"make_user: User login crashed! %O %O",err,err->backtrace());
          } else {
-             kwrite("make_user: User login crashed! %O",err);
+             klog(LOG_LEVEL_ERROR,"make_user: User login crashed! %O",err);
          }
          return 0;
      }
@@ -2771,13 +2782,19 @@ void init_gui() {
                    ) {
             mixed err = catch {
                 GTK2->setup_gtk();
-                kwrite("GTK2 Initialized");
+                klog(LOG_LEVEL_INFO,"GTK2 Initialized");
             };
         }
     }
     
 }
 
+void klog(int level,mixed ... args) 
+{
+	if (log_level > 0 && level <= log_level) {
+		write(KLOG_FORMAT,previous_object(),sprintf(@args));
+	}
+}
 
 /* Entry Point */
 
@@ -2827,9 +2844,8 @@ int kernel_init(int argc,
     programs["proc://kernel"] = m_delete(programs,sprintf("%O",object_program(this)));
     rev_programs[programs["proc://kernel"]] = "proc://kernel";
   
-  
     // Init Program Tables  
-    kwrite("Loading program tables.");
+    klog(LOG_LEVEL_INFO,"Loading program tables.");
 
     // Rename master
     programs["proc://kernel/master"] = m_delete(programs,sprintf("%O",object_program(master())));
@@ -2882,7 +2898,7 @@ int kernel_init(int argc,
   
     //kwrite(sprintf("boot_path = %O",boot_path));
   
-    kwrite("Loading configuration variables.");
+    klog(LOG_LEVEL_INFO,"Loading configuration variables.");
     config_vars = ([]);
   
     tmp=Files()->Fd();
@@ -2904,12 +2920,12 @@ int kernel_init(int argc,
                     kwrite(sprintf("config_vars[%O] = %O",vname,tmp));
 #endif                  
                 } else {
-                    kwrite(sprintf("Error in configuration file on line %O.",linen));
+                    klog(LOG_LEVEL_ERROR,("Error in configuration file on line %O.",linen));
                 }
             }
         }
     } else {
-        kwrite("Configuration file not found!");
+        klog(LOG_LEVEL_ERROR,"Configuration file not found!");
     }
   
     array(string) inc_paths;
@@ -2919,7 +2935,7 @@ int kernel_init(int argc,
         //kwrite("add_include_path %O",tmp);
         master()->add_include_path(tmp);
     }
-    kwrite("Loading filesystem.");
+    klog(LOG_LEVEL_INFO,"Loading filesystem.");
     tmp = combine_path(boot_path,"vfs.pike");
   
     //kwrite("constants = %O\n",all_constants());
@@ -2928,11 +2944,10 @@ int kernel_init(int argc,
     };
     
     if (err) {
-        kwrite("Error: %O\n",err->backtrace());
-        kwrite("module_path_stack=%O\n",module_path_stack);
+        klog(LOG_LEVEL_ERROR,"Error: %O\n module_path_stack=%O",err->backtrace(),module_path_stack);
     }
     if (!programp(fs)) {
-        kwrite("Filesystem failed to load.");
+        klog(LOG_LEVEL_ERROR,"Filesystem failed to load.");
         return 1;
     }
   
@@ -2944,8 +2959,7 @@ int kernel_init(int argc,
     };
   
     if (err) {   
-        kwrite("Error loading filesystem");
-        kwrite(sprintf("%O",err));
+        klog(LOG_LEVEL_ERROR,"Error loading filesystem: %O",err);
         return 1;
     }
     
@@ -2980,14 +2994,14 @@ int kernel_init(int argc,
   init_argv = ({"/sbin/init"});      
   err = start_init(init_argv,env);
   if (err) {
-    kwrite("Unable to start init. System Halted!");
+    klog(LOG_LEVEL_FATAL,"Unable to start init. System Halted!");
     return 1;
   } else {
       if (restart) {
-        kwrite("Init process ended. System Restart!");
-        return -1;
+          klog(LOG_LEVEL_INFO,"Init process ended. System Restart!");
+          return -1;
       } else {
-          kwrite("System halted.");
+          klog(LOG_LEVEL_INFO,"System halted.");
       }
   }
   

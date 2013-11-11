@@ -202,15 +202,15 @@ object get_device(string name) {
  return devices[name];
 }
 
-private void kwrite(mixed ... msg) { 
+protected void kwrite(mixed ... msg) { 
  write(sprintf("[%s] %s\n",kernel()->describe_program(object_program(this)),sprintf(@msg)));
 }
 
 void create() {
-    kwrite("Loading devices...");
+    kernel()->klog(kernel()->LOG_LEVEL_INFO,"Loading devices...");
     add_constant("input_to",this->input_to);
     add_constant("get_char",this->get_char); 
     program console = (program)"/dev/console.pike";
     devices["console"] = console();
-    kwrite("Loading devices complete.");
+    kernel()->klog(kernel()->LOG_LEVEL_INFO,"Loading devices complete.");
 }
