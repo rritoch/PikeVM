@@ -294,26 +294,6 @@ public program _load_module(string module_name)
     VFS_RETURN(vfs->_load_module(module_name));
 }
 
-class RegularExpression 
-{
-    object rx;
-    
-    int match(string str) 
-    {
-        return rx->match(str);
-    }
-    
-    protected void create(string re) 
-    {
-        rx = Regexp.SimpleRegexp(re);
-    }
-}
-
-public mixed make_regexp(string rx)
-{
-    return RegularExpression(rx);
-}
-
 private object glob2regx(string glob) 
 {
     return Regexp.SimpleRegexp(
