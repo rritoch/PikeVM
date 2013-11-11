@@ -72,6 +72,15 @@
 // Global constants and variables
 ////////////////////////////////////////////////////////////////////////////////
 
+#define LOG_LEVEL_DEBUG   4
+#define LOG_LEVEL_INFO    3
+#define LOG_LEVEL_WARN    2
+#define LOG_LEVEL_ERROR   1
+#define LOG_LEVEL_NONE    0
+
+#define DEFAULT_LOG_FORMAT "*** [%O] %s\n"
+#define DEFAULT_LOG_LEVEL 3
+
 constant bt_max_string_len = BT_MAX_STRING_LEN;
 constant out_of_date_warning = OUT_OF_DATE_WARNING;
 constant pike_cycle_depth = 0;
@@ -90,8 +99,6 @@ int compat_minor=-1;
 int show_if_constant_errors = 0;
 
 private int block_resolv = 0;
-private int kernel_registered = 0;
-private object kernel;
 private mapping (string:mixed) save_constants;
 
 #ifdef PIKE_FAKEROOT
@@ -178,6 +185,9 @@ protected class Pike_0_5_master
 
     class dirnode {};
 
+    protected int kernel_registered = 0;
+    protected object kernel;
+
     // Defined methods
 
     /**
@@ -188,7 +198,7 @@ protected class Pike_0_5_master
 
     local array(mixed) master_file_stat(string x)
     {
-        write(sprintf("[%O] Unsupported master calling master_file_stat\n",this));
+        mlog(LOG_LEVEL_ERROR,"Unsupported master calling master_file_stat");
         return 0;
         //Stat st = global::master_file_stat(x);
         //return st && (array)st;
@@ -315,6 +325,19 @@ protected class Pike_0_5_master
         return get_compat_master(major, minor);
     }
 
+    protected int master_log_level = 0;
+    
+    protected void mlog(int level, mixed ... args) 
+    {
+	    if (kernel_registered && functionp(kernel->klog)) {
+		    kernel->klog(level,@args);
+	    } else {
+	    	if (master_log_level > 0 && level <= master_log_level) {
+	            write(DEFAULT_LOG_FORMAT,object_program(this),sprintf(@args));
+	    	}
+	    }
+    }
+    
     /* Missing symbols:
      *
      * __INIT
@@ -1552,7 +1575,7 @@ mapping(string:multiset(string)) dir_cache = ([]);
 
 array(string) master_get_dir(string|void x)
 {
-    write(sprintf("[%O] Unsupported system calling master_get_dir(%O)\n",this,x));
+    mlog(LOG_LEVEL_ERROR,"Unsupported system calling master_get_dir(%O)\n",x);
     return 0;
 
     mixed dir = get_dir(x);
@@ -1571,40 +1594,37 @@ array(string) master_get_dir(string|void x)
 
 Stat master_file_stat(string x)
 {
-  write(sprintf("[%O] Unsupported system calling master_file_stat(%O)\n",this,x));
-  return 0;
+    mlog("Unsupported system calling master_file_stat(%O)\n",x);
+    return 0;
 
-  string dir = combine_path_with_cwd(x);
-  string file = BASENAME(dir);
-  dir = dirname(dir);
+    string dir = combine_path_with_cwd(x);
+    string file = BASENAME(dir);
+    dir = dirname(dir);
 
-  if(time() > invalidate_time)
-  {
-    dir_cache = ([]);
-    invalidate_time = time()+FILE_STAT_CACHE_TIME;
-  }
-
-  multiset(string) d = dir_cache[dir];
-  if( zero_type(d) )
-  {
-    array(string) tmp = master_get_dir(dir);
-    if(tmp)
-    {
-#ifdef __NT__
-      tmp = map(tmp, lower_case);
-#endif
-      d = dir_cache[dir] = (multiset)tmp;
+    if(time() > invalidate_time) {
+       dir_cache = ([]);
+       invalidate_time = time()+FILE_STAT_CACHE_TIME;
     }
-    else
-      dir_cache[dir]=0;
-  }
+
+    multiset(string) d = dir_cache[dir];
+    if( zero_type(d) ) {
+        array(string) tmp = master_get_dir(dir);
+        if(tmp) {
+#ifdef __NT__
+            tmp = map(tmp, lower_case);
+#endif
+            d = dir_cache[dir] = (multiset)tmp;
+        } else {
+            dir_cache[dir]=0;
+        }
+    }
 
 #ifdef __NT__
-  file = lower_case(file);
+    file = lower_case(file);
 #endif
-  if(d && !d[file]) return 0;
+    if(d && !d[file]) return 0;
 
-  return predef::file_stat(x);
+    return predef::file_stat(x);
 }
 #else
 
@@ -3463,97 +3483,97 @@ multiset no_resolv = (<>);
 //! Resolver of symbols not located in the program being compiled.
 class CompatResolver
 {
-  //! Join node of the root modules for this resolver.
-  joinnode root_module = joinnode(({instantiate_static_modules(predef::_static_modules)}));
+    //! Join node of the root modules for this resolver.
+    joinnode root_module = joinnode(({instantiate_static_modules(predef::_static_modules)}));
 
-  //! Lookup from handler module to corresponding root_module.
-  mapping(object:joinnode) handler_root_modules = ([]);
+    //! Lookup from handler module to corresponding root_module.
+    mapping(object:joinnode) handler_root_modules = ([]);
 
-  //! The pike system module path, not including any set by the user.
-  array(string) system_module_path=({});
+    //! The pike system module path, not including any set by the user.
+    array(string) system_module_path=({});
 
-  //! The complete module search path
-  array(string) pike_module_path=({});
+    //! The complete module search path
+    array(string) pike_module_path=({});
 
-  //! The complete include search path
-  array(string) pike_include_path=({});
+    //! The complete include search path
+    array(string) pike_include_path=({});
 
-  //! The complete program search path
-  array(string) pike_program_path=({});
+    //! The complete program search path
+    array(string) pike_program_path=({});
 
-  mapping(string:string) predefines = master()->initial_predefines;
-  string ver;
+    mapping(string:string) predefines = master()->initial_predefines;
+    string ver;
 
-  //! If we fail to resolv, try the fallback.
-  //!
-  //! Typical configuration:
-  //! @pre{0.6->7.0->7.2-> ... ->master@}
-  CompatResolver fallback_resolver;
+    //! If we fail to resolv, try the fallback.
+    //!
+    //! Typical configuration:
+    //! @pre{0.6->7.0->7.2-> ... ->master@}
+    CompatResolver fallback_resolver;
 
-  //! The CompatResolver is initialized with a value that can be
-  //! casted into a "%d.%d" string, e.g. a version object.
-  //!
-  //! It can also optionally be initialized with a fallback resolver.
-  protected void create(mixed version, CompatResolver|void fallback_resolver)
-  {
-    resolv_debug("CompatResolver(%O, %O)\n", version, fallback_resolver);
-    ver=(string)version;
-#if 0
-    if (version) {
-      root_module->symbol = ver + "::";
-    }
-#endif
-    if (CompatResolver::fallback_resolver = fallback_resolver) {
-      root_module->fallback_module = fallback_resolver->root_module;
-    }
-    predefines = initial_predefines;
-  }
-
-  //! Add a directory to search for include files.
-  //!
-  //! This is the same as the command line option @tt{-I@}.
-  //!
-  //! @note
-  //! Note that the added directory will only be searched when using
-  //! < > to quote the included file.
-  //!
-  //! @seealso
-  //! @[remove_include_path()]
-  //!
-  void add_include_path(string tmp)
+    //! The CompatResolver is initialized with a value that can be
+    //! casted into a "%d.%d" string, e.g. a version object.
+    //!
+    //! It can also optionally be initialized with a fallback resolver.
+    protected void create(mixed version, CompatResolver|void fallback_resolver)
     {
-      tmp=normalize_path(combine_path_with_cwd(tmp));
-      pike_include_path=({tmp})+pike_include_path;
-      write(sprintf("[%O] Added include path: %s\n",object_program(this),tmp));
+        resolv_debug("CompatResolver(%O, %O)\n", version, fallback_resolver);
+        ver=(string)version;
+#if 0
+        if (version) {
+            root_module->symbol = ver + "::";
+        }
+#endif
+        if (CompatResolver::fallback_resolver = fallback_resolver) {
+            root_module->fallback_module = fallback_resolver->root_module;
+        }
+        predefines = initial_predefines;
     }
 
-  //! Remove a directory to search for include files.
-  //!
-  //! This function performs the reverse operation of @[add_include_path()].
-  //!
-  //! @seealso
-  //! @[add_include_path()]
-  //!
-  void remove_include_path(string tmp)
-  {
-      tmp=normalize_path(combine_path_with_cwd(tmp));
-      pike_include_path-=({tmp});
-      write(sprintf("[%O] Removed include path: %s\n",object_program(this),tmp));
-  }
+    //! Add a directory to search for include files.
+    //!
+    //! This is the same as the command line option @tt{-I@}.
+    //!
+    //! @note
+    //! Note that the added directory will only be searched when using
+    //! < > to quote the included file.
+    //!
+    //! @seealso
+    //! @[remove_include_path()]
+    //!
+    void add_include_path(string tmp)
+    {
+        tmp=normalize_path(combine_path_with_cwd(tmp));
+        pike_include_path=({tmp})+pike_include_path;
+        mlog(LOG_LEVEL_INFO,"Added include path: %s",tmp);
+    }
 
-  //! Add a directory to search for modules.
-  //!
-  //! This is the same as the command line option @tt{-M@}.
-  //!
-  //! @seealso
-  //! @[remove_module_path()]
-  //!
-  void add_module_path(string tmp) {
-      tmp=normalize_path(combine_path_with_cwd(tmp));
-      root_module->add_path(tmp);
-      pike_module_path = ({ tmp }) + (pike_module_path - ({ tmp }));
-      write(sprintf("[%O] Added module path: %s\n",object_program(this),tmp));
-   }
+    //! Remove a directory to search for include files.
+    //!
+    //! This function performs the reverse operation of @[add_include_path()].
+    //!
+    //! @seealso
+    //! @[add_include_path()]
+    //!
+    void remove_include_path(string tmp)
+    {
+        tmp=normalize_path(combine_path_with_cwd(tmp));
+        pike_include_path-=({tmp});
+        mlog(LOG_LEVEL_INFO,"Removed include path: %s",tmp);
+    }
+
+    //! Add a directory to search for modules.
+    //!
+    //! This is the same as the command line option @tt{-M@}.
+    //!
+    //! @seealso
+    //! @[remove_module_path()]
+    //!
+    void add_module_path(string tmp) {
+        tmp=normalize_path(combine_path_with_cwd(tmp));
+        root_module->add_path(tmp);
+        pike_module_path = ({ tmp }) + (pike_module_path - ({ tmp }));
+        mlog(LOG_LEVEL_INFO,"Added module path: %s",tmp);
+     }
 
   //! Remove a directory to search for modules.
   //!
@@ -3939,12 +3959,14 @@ protected mixed main_resolv(string sym, CompatResolver|void resolver) {
   return v;
 };
 
+
+
 private void welcome()
 {
-    write(sprintf("[%O] Loading Kernel...\n",object_program(this)));
+    mlog(LOG_LEVEL_INFO,"Loading Kernel...");
 
 #ifdef __NT__
-    write(sprintf("[%O] __NT__ Is defined\n",object_program(this)));
+    mlog(LOG_LEVEL_INFO,"__NT__ Is defined");
 #endif
 }
 
@@ -3955,7 +3977,7 @@ void register_kernel()
     }
 
     system_module_path = pike_module_path;
-    write(sprintf("[%O] Kernel (%O) Registered\n",object_program(this),kernel));
+    mlog(LOG_LEVEL_INFO,"Kernel (%O) Registered\n",kernel);
     kernel_registered = 1;
 }
 
@@ -4035,7 +4057,7 @@ private void restore_master_context(mapping(string:mixed) context)
         
     foreach(all_threads(), object thread) {
         if (zero_type(context["threads"][thread])) {
-        	write("master: Killing thread %O\n",thread);
+        	mlog(LOG_LEVEL_INFO,"Killing thread %O",thread);
             thread->kill();
         }
     }
@@ -4059,12 +4081,12 @@ private void restore_master_context(mapping(string:mixed) context)
         if (kills > 0) {
             foreach(kill_list, obj) {
                 if (obj) {
-                	mixed x = catch {
-                		write(sprintf("master: Killing %O\n",obj));
+                	mixed err = catch {
+                		mlog(LOG_LEVEL_INFO,"Killing %O",obj);
                         destruct(obj);
                 	};
-                	if (x) {
-                		write(sprintf("%O",x));
+                	if (err) {
+                		mlog(LOG_LEVEL_ERROR,"%O",err);
                 	}
                 }
             }
@@ -4073,30 +4095,29 @@ private void restore_master_context(mapping(string:mixed) context)
     }
     
     root_module = context["root_module"]->createClone();
-    write("master: System restore complete");
+    mlog(LOG_LEVEL_INFO,"System restore complete");
 }
 
 //! This function is called when all the driver is done with all setup
 //! of modules, efuns, tables etc. etc. and is ready to start executing
 //! _real_ programs. It receives the arguments not meant for the driver.
-void _main(array(string) orig_argv)
+public void _main(array(string) orig_argv)
 {
     array(string) argv=copy_value(orig_argv);
     save_constants = copy_value(all_constants());
-    welcome();
-    //write(sprintf("argv = %O\n",argv));
+
     int debug,trace,run_tool;
+    
     object tmp;
     string postparseaction=0;
     predefines = initial_predefines =
     Builtin._take_over_initial_predefines();
     _pike_file_name = orig_argv[0];
 #if constant(thread_create)
-  _backend_thread = this_thread();
+    _backend_thread = this_thread();
 #endif
-
-//#ifndef NOT_INSTALLED
-//  {
+    int set_log_level = DEFAULT_LOG_LEVEL;
+    
     array parts = (getenv("PIKE_INCLUDE_PATH")||"")/PATH_SEPARATOR-({""});
     int i = sizeof(parts);
     while(i) add_include_path(parts[--i]);
@@ -4108,9 +4129,7 @@ void _main(array(string) orig_argv)
     parts = (getenv("PIKE_MODULE_PATH")||"")/PATH_SEPARATOR-({""});
     i = sizeof(parts);
     while(i) add_module_path(parts[--i]);
-//  }
-//#endif
-
+    
     string last_arg;
 
     foreach(argv,string cur_arg) {
@@ -4125,10 +4144,18 @@ void _main(array(string) orig_argv)
                 case "--module-path":
                     add_module_path(cur_arg);
                     break;
+                case "--log-level":
+                    set_log_level = (int)cur_arg;
+                    break;
             }
         }
         last_arg = cur_arg;
     }
+    
+    master_log_level = set_log_level;
+    
+    welcome();
+        
     // Some configure scripts depends on this format.
     string format_paths() {
         return  ("master.pike...: " + (_master_file_name || __FILE__) + "\n"
@@ -4179,6 +4206,7 @@ void _main(array(string) orig_argv)
                 ({"ignore",         HAS_ARG, ({"-s"}), 0, 0}),
                 ({"run_tool",       NO_ARG,  ({"-x"}), 0, 0}),
                 ({"show_cpp_warn",  NO_ARG,  ({"--show-all-cpp-warnings","--picky-cpp"}), 0, 0}),
+
             }),
             1
         );
@@ -5397,7 +5425,7 @@ string describe_backtrace(mixed trace, void|int linewidth)
         } else {
             ret = "";
         }
-        return ret + sprintf(" trace = %O\n",trace); // Simple trace
+        //return ret + sprintf(" trace = %O\n",trace); // Simple trace
     } else {
 #if constant(_gdb_breakpoint)
         _gdb_breakpoint();

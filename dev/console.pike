@@ -83,7 +83,6 @@ public int handle_ioctl(int dev, int cmd, mixed ... args) {
 }
 protected void create() 
 {
-    write("console.pike->create()\n");
     Thread.Thread thread;
     if (!running) {
         thread = Thread.Thread(backend);

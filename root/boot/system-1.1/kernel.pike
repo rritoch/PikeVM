@@ -167,10 +167,13 @@ class call_out_ob
         if (_active) {
             remove_call_out(co);            
         }
-        call_outs[owner] -= ({this_object()});
-        if (!sizeof(call_outs[owner])) {
-            m_delete(call_outs,owner);
-        }    
+        if ((!zero_type(call_outs[owner])) && arrayp(call_outs[owner])) {
+            call_outs[owner] -= ({this_object()});
+            if (!sizeof(call_outs[owner])) {
+                m_delete(call_outs,owner);
+            }
+        }
+            
         m_delete(call_out_obs,this_object());
         destruct();
     }    
@@ -1823,11 +1826,11 @@ private mixed start_init(mixed argv, mixed env)
 {
     program p;
     string fn;
-    mixed err;
-    Thread.Thread thread;
+    mixed err = 0;
+    
+    kwrite("Starting init.");
  
     err = 0;
- 
     fn = argv[0];
         
     p = (program)fn;
@@ -1955,8 +1958,9 @@ mixed spawn(mixed argv, mixed env) {
  return err;
 }
 
-private void kwrite(mixed ... msg) { 
- write(sprintf("[%s] %s\n",describe_program(object_program(this)),sprintf(@msg)));
+private void kwrite(mixed ... msg) 
+{ 
+    write(sprintf("[%s] %s\n",describe_program(object_program(this)),sprintf(@msg)));
 }
 
 private string ktrim(string s) {
@@ -1974,7 +1978,7 @@ private string ktrim(string s) {
 }
 
 private void welcome() {
- kwrite(sprintf("Kernel v%s",VERSION));
+    kwrite(sprintf("Starting PikeVM Kernel v%s",VERSION));
 }
 
 public object kernel() {
@@ -2845,102 +2849,107 @@ int kernel_init(int argc,
     
     kregister_efuns();
         
-   //  boot_path = dirname(argv[0]);
+    //  boot_path = dirname(argv[0]);
 
-  if(argv[0]=="") {
-   boot_path = "";
-  } else {
+    if(argv[0]=="") {
+        boot_path = "";
+    } else {
 #ifdef __amigaos__
-   tmp=argv[0]/":";
-   array(string) tmp2=tmp[-1]/"/";
-   tmp[-1]=tmp2[..<1]*"/";
-   if(sizeof(tmp2) >= 2 && tmp2[-2]=="") tmp[-1]+="/";
-   boot_path = tmp*":";
-#else  
-#ifdef __NT__
-   tmp = (replace((argv[0]),"\\","/")/"/");
+        tmp=argv[0]/":";
+        array(string) tmp2=tmp[-1]/"/";
+        tmp[-1]=tmp2[..<1]*"/";
+        if(sizeof(tmp2) >= 2 && tmp2[-2]=="") {
+        	tmp[-1]+="/";
+        }
+        boot_path = tmp*":";
 #else
-   tmp = ((argv[0])/"/");
+#ifdef __NT__
+        tmp = (replace((argv[0]),"\\","/")/"/");
+#else
+        tmp = ((argv[0])/"/");
 #endif
-   if(tmp[0] == "" && sizeof(argv[0])) tmp[0] = "/";  
-   if (argv[0][0]=='/' && sizeof(tmp)<3) {
-    boot_path = "/";
-   } else {
-    boot_path = tmp[..<1]*"/";
-   }
+        if(tmp[0] == "" && sizeof(argv[0])) {
+        	tmp[0] = "/";
+        }  
+        if (argv[0][0]=='/' && sizeof(tmp)<3) {
+            boot_path = "/";
+        } else {
+            boot_path = tmp[..<1]*"/";
+        }
 #endif
-  }
+    }
     
   
-  //kwrite(sprintf("boot_path = %O",boot_path));
+    //kwrite(sprintf("boot_path = %O",boot_path));
   
-  kwrite("Loading configuration variables.");
-  config_vars = ([]);
+    kwrite("Loading configuration variables.");
+    config_vars = ([]);
   
-  tmp=Files()->Fd();
+    tmp=Files()->Fd();
   
-  if ( ([function(string, string : int)]tmp->open)(combine_path(boot_path,"kernel.conf"),"r") ) {
-    cfg = ([function(void : string)]tmp->read)();
-    lines = cfg / "\n";
-    linen = 0;
-    foreach(lines,line) {
-     linen = linen + 1;
-     clean_line = ktrim(line);
-     if ((sizeof(clean_line) > 0) && (clean_line[0..0] != "#")) {
-      tmp = clean_line / "=";
-      if (sizeof(tmp) > 1) {
-       vname = ktrim(tmp[0]);
-       tmp = ktrim(tmp[1..] * "=");
-       config_vars[vname] = tmp;
+    if ( ([function(string, string : int)]tmp->open)(combine_path(boot_path,"kernel.conf"),"r") ) {
+        cfg = ([function(void : string)]tmp->read)();
+        lines = cfg / "\n";
+        linen = 0;
+        foreach(lines,line) {
+            linen = linen + 1;
+            clean_line = ktrim(line);
+            if ((sizeof(clean_line) > 0) && (clean_line[0..0] != "#")) {
+                tmp = clean_line / "=";
+                if (sizeof(tmp) > 1) {
+                    vname = ktrim(tmp[0]);
+                    tmp = ktrim(tmp[1..] * "=");
+                    config_vars[vname] = tmp;
 #ifdef DEBUG_CONFIG
-       kwrite(sprintf("config_vars[%O] = %O",vname,tmp));
+                    kwrite(sprintf("config_vars[%O] = %O",vname,tmp));
 #endif                  
-      } else {
-       kwrite(sprintf("Error in configuration file on line %O.",linen));
-      }
-     }
+                } else {
+                    kwrite(sprintf("Error in configuration file on line %O.",linen));
+                }
+            }
+        }
+    } else {
+        kwrite("Configuration file not found!");
     }
-  } else {
-   kwrite("Configuration file not found!");
-  }
   
-  array(string) inc_paths;
+    array(string) inc_paths;
   
-  inc_paths = config_vars["include_path"] / ";";
-  foreach(inc_paths, tmp) {
-   //kwrite("add_include_path %O",tmp);
-   master()->add_include_path(tmp);
-  }
+    inc_paths = config_vars["include_path"] / ";";
+    foreach(inc_paths, tmp) {
+        //kwrite("add_include_path %O",tmp);
+        master()->add_include_path(tmp);
+    }
+    kwrite("Loading filesystem.");
+    tmp = combine_path(boot_path,"vfs.pike");
   
-  kwrite("Loading filesystem.");
-  tmp = combine_path(boot_path,"vfs.pike");
+    //kwrite("constants = %O\n",all_constants());
+    err = catch {
+        fs = (program)tmp;
+    };
+    
+    if (err) {
+        kwrite("Error: %O\n",err->backtrace());
+        kwrite("module_path_stack=%O\n",module_path_stack);
+    }
+    if (!programp(fs)) {
+        kwrite("Filesystem failed to load.");
+        return 1;
+    }
   
-  //kwrite("constants = %O\n",all_constants());
-  err = catch {
-      fs = (program)tmp;
-  };
-  if (err) {
-          kwrite("Error: %O\n",err->backtrace());
-          kwrite("module_path_stack=%O\n",module_path_stack);
-  }
-  if (!programp(fs)) {
-     kwrite("Filesystem failed to load.");
-     return 1;
-  }
+    m_delete(programs,tmp);
+    programs["proc://kernel/boot/vfs"] = fs;
   
-  m_delete(programs,tmp);
-  programs["proc://kernel/boot/vfs"] = fs;
+    err = catch {   
+      vfs = fs(module_path_stack,include_path_stack,config_vars,orig_constants);
+    };
   
-  err = catch {   
-   vfs = fs(module_path_stack,include_path_stack,config_vars,orig_constants);
-  };
-  
-  if (err) {   
-   kwrite("Error loading filesystem");
-   kwrite(sprintf("%O",err));
-   return 1;
-  }
-  //reload_program_tables();
+    if (err) {   
+        kwrite("Error loading filesystem");
+        kwrite(sprintf("%O",err));
+        return 1;
+    }
+    
+    //reload_program_tables();
     
   register_efuns();
   reresolve_all_programs(module_path_stack);
@@ -2966,21 +2975,8 @@ int kernel_init(int argc,
   //kwrite("rev_programs = %O",rev_programs);  
     init_gui();
        
-  kwrite("Starting init.");
   
-  
-  /*
-  mixed fh;
-  string data;
-  fh = vfs->fopen("/sbin/init","r");
-  data = vfs->fread(fh,5);
-  kwrite(data);
-  data = vfs->fread(fh);
-  kwrite(data);
-  
-  vfs->fclose(fh);
-  */
-   
+
   init_argv = ({"/sbin/init"});      
   err = start_init(init_argv,env);
   if (err) {
