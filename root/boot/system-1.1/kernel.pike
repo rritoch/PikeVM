@@ -98,7 +98,7 @@ mapping(object:object) call_out_obs = ([]);
 private mapping(int:mixed) fdlist = ([ ]);
 
 private int kernel_registered;
-private int log_level = 3;
+private int log_level = 6;
 
 private object root_modules;
 private object securityd;
@@ -294,15 +294,29 @@ public program _load_module(string module_name)
     VFS_RETURN(vfs->_load_module(module_name));
 }
 
+class RegularExpression 
+{
+    object rx;
+    
+    int match(string str) 
+    {
+        return rx->match(str);
+    }
+    
+    protected void create(string re) 
+    {
+        rx = Regexp.SimpleRegexp(re);
+    }
+}
+
 public mixed make_regexp(string rx)
 {
-    //return  Regexp.SimpleRegexp(rx);
-    return Regexp.PCRE._pcre(rx);
+    return RegularExpression(rx);
 }
 
 private object glob2regx(string glob) 
 {
-    return make_regexp(
+    return Regexp.SimpleRegexp(
         "^"+ replace(
             glob,
             ({
@@ -441,7 +455,7 @@ public array(mixed) _get_dir(string|void x, int|void flags)
                                 valid_read_ctr++;
                                 foreach(tdir,tfn) {
                                     if (last || (tfn != "." && tfn != "..")) {
-                                        if ((!regx) || regx->exec(tfn) != -1) {                                            
+                                        if (regx->match(tfn)) {                                            
                                             if (paths[idy] == "/") {
                                                 new_paths += ({ paths[idy] + tfn });
                                             } else {
@@ -2983,17 +2997,31 @@ int kernel_init(int argc,
 
              
   mapping(string:program) systemp = ([]);
-  systemp["io"]= (program)"proc://kernel/boot/io.pike";
+  
+  err = catch {
+      systemp["io"]= (program)"proc://kernel/boot/io.pike";
+  };
+  if (err) {
+      kwrite("Subsystem \"io\" compile failed failed with %O",err);
+  }
          
   foreach(indices(systemp), tmp) {
-   systems[(string)tmp] = systemp[(string)tmp]();
+      klog(LOG_LEVEL_INFO,"Loading subsystem %s",tmp);
+      err = catch {
+         systems[(string)tmp] = systemp[(string)tmp]();
+      };
+      if (err) {
+          kwrite("Subsystem %O load failed with %O",tmp,err);
+      }
   }
   
   //master()->register_kernel();
       
   //kwrite("programs = %O",programs);
   //kwrite("rev_programs = %O",rev_programs);  
-    init_gui();
+    kwrite("b4 init");
+    //init_gui();
+    kwrite("after init");
        
   
 

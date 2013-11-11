@@ -574,7 +574,7 @@ string trim(string str, string|void chars)
 array(string) split(string data, string re)
 {
 
-    object rx = kernel()->make_regexp(re);
+    object rx = Regexp.PCRE._pcre(re);
     int o = -1;
     mixed result;
     array(string) ret = ({});
@@ -599,13 +599,13 @@ array(string) split(string data, string re)
 int|array(mixed) regexp( string|array(string) lines, string pattern, int|void flag)
 {
 
-    object rx = kernel()->make_regexp(pattern);
+    object rx = Regexp.SimpleRegexp(pattern);
     string line;
     array(mixed) ret = ({});
     int i;
 
     if (!arrayp(lines)) {
-        return !(rx->exec(lines) == -1);
+        return rx->match(lines);
     }
 
     if (flag & 1) { // verbose
@@ -613,13 +613,13 @@ int|array(mixed) regexp( string|array(string) lines, string pattern, int|void fl
         if (flag & 2) { // reverse
             for(i=0;i<sizeof(lines);i++) {
                line = lines[i];
-               if (rx->exec(lines) == -1) {
+               if (!rx->match(lines)) {
                    ret += ({ i+1, line });
                }
             }
         } else {
             foreach(lines, line) {
-               if (!(rx->exec(lines) == -1)) {
+               if (rx->match(lines)) {
                    ret += ({ i+1, line });
                }
             }
@@ -628,13 +628,13 @@ int|array(mixed) regexp( string|array(string) lines, string pattern, int|void fl
     } else {
         if (flag & 2) { // reverse
             foreach(lines, line) {
-               if (rx->exec(line) == -1) {
+               if (!rx->match(lines)) {
                   ret += ({ line });
                }
             }
         } else {
             foreach(lines, line) {
-               if (!(rx->exec(line) == -1)) {
+               if (rx->match(lines)) {
                   ret += ({ line });
                }
             }
@@ -647,7 +647,7 @@ int|array(mixed) regexp( string|array(string) lines, string pattern, int|void fl
 
 array reg_assoc(string str, array(string)pat_arr, array tok_arr, mixed|void def)
 {
-
+    
     mixed cur;
     mixed min_next;
     int min_next_i;
@@ -666,15 +666,15 @@ array reg_assoc(string str, array(string)pat_arr, array tok_arr, mixed|void def)
     //if (sz < 1) return ({  ({ str }), ({ def }) });
 
     for(i = 0; i<sz; i++) {
-        rxlist += ({  kernel()->make_regexp(pat_arr[i]) });
+        rxlist += ({  Regexp.PCRE._pcre(pat_arr[i],Regexp.PCRE.OPTION.UNGREEDY) });
     }
 
    while(!done) {
        done = 1;
 
        for(i = 0; i<sz; i++) {
-           cur = rxlist[i]->exec(str, last_match[1]);
-           if (cur != -1) {
+           cur = last_match[1] < 0 ? rxlist[i]->exec(str) : rxlist[i]->exec(str, last_match[1]);
+           if (arrayp(cur)) {
                if (done) {
                   min_next = cur;
                   min_next_i = i;
