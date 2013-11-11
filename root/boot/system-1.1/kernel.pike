@@ -3019,9 +3019,8 @@ int kernel_init(int argc,
       
   //kwrite("programs = %O",programs);
   //kwrite("rev_programs = %O",rev_programs);  
-    kwrite("b4 init");
-    //init_gui();
-    kwrite("after init");
+
+  //init_gui();
        
   
 
