@@ -46,7 +46,6 @@
 
 #undef PIKE_MODULE_RELOC
 
-
 #if !defined(BT_MAX_STRING_LEN) || (BT_MAX_STRING_LEN <= 0)
 #undef BT_MAX_STRING_LEN
 #define BT_MAX_STRING_LEN    200
@@ -67,7 +66,6 @@
 #else
 #define UPDIR "../"
 #endif
-
 
 // Global constants and variables
 ////////////////////////////////////////////////////////////////////////////////
@@ -433,7 +431,6 @@ protected class Pike_0_5_master
         return get_compat_master(major, minor);
     }
 
-
     /* Missing symbols:
      *
      * __INIT
@@ -441,11 +438,9 @@ protected class Pike_0_5_master
      */
 }
 
-
 /////////////////////
 // Master: 0.6
 ////////////////////////////////////////////////////////////////////////////////
-
 
 /**
  * Master 0.6
@@ -458,7 +453,6 @@ protected class Pike_0_5_master
 protected class Pike_0_6_master
 {
     inherit Pike_0_5_master;
-
 
     // Constants
 
@@ -526,7 +520,6 @@ protected class Pike_0_6_master
 
         return Pike_0_6_compat_handler->resolv(identifier, current_file);
     }
-
 
     /**
      * Get Compatible Master Object
@@ -641,8 +634,6 @@ class Pike_7_0_master
         return Pike_7_0_compat_handler->resolv(identifier, current_file);
     }
 
-
-
 #pragma no_deprecation_warnings
 
     /**
@@ -715,13 +706,11 @@ class Pike_7_0_master
                       return (describe_object(o)||"")+"->"+function_name(m);
                   }
 
-
                   if (catch (tmp = function_name(m))) {
                       return "function";
                   }
 
                   return tmp || "function";
-
 
             case "program":
                 if(string tmp=describe_program(m)) {
@@ -882,7 +871,6 @@ class Pike_7_0_master
     // end class Pike_7_0_master
 }
 
-
 /////////////////////
 // Master: 7.2
 ////////////////////////////////////////////////////////////////////////////////
@@ -898,7 +886,6 @@ class Pike_7_0_master
 protected class Pike_7_2_master
 {
     inherit Pike_7_0_master;
-
 
     // Declared properties
     extern int compat_major;
@@ -922,7 +909,6 @@ protected class Pike_7_2_master
     class Version {};
 
     // Declared methods
-
 
     object get_compilation_handler(int major, int minor);
     string describe_function(function f);
@@ -1161,7 +1147,6 @@ protected class Pike_7_6_master
         return Pike_7_6_compat_handler->resolv(identifier, current_file);
     }
 
-
     object get_compat_master(int major, int minor)
     {
         if ((major < 7) || ((major == 7) && (minor < 5))) {
@@ -1187,7 +1172,6 @@ protected inherit Pike_7_6_master;
 ////////////////////////////////////////////////////////////////////////////////
 
 private object(_static_modules.Builtin) Builtin = _static_modules.Builtin();
-
 
 private function write = Files()->_stdout->write;
 private function werror = Files()->_stderr->write;
@@ -1278,7 +1262,6 @@ string fakeroot(string s)
 
 #ifdef PIKE_MODULE_RELOC
 
-
 /**
  * Relocate Module
  *
@@ -1317,8 +1300,8 @@ string unrelocate_module(string s)
         } else {
             path = combine_path(path, "");
             if(has_prefix (s, path)) {
-                  return "/${PIKE_MODULE_PATH}/"+s[sizeof(path)..];
-              }
+                return "/${PIKE_MODULE_PATH}/"+s[sizeof(path)..];
+            }
         }
     }
 
@@ -1326,7 +1309,7 @@ string unrelocate_module(string s)
     foreach(pike_module_path, string path) {
         path = combine_path(path, UPDIR, "");
         if(has_prefix (s, path)) {
-      return "/${PIKE_MODULE_PATH}/"+UPDIR+s[sizeof(path)..];
+            return "/${PIKE_MODULE_PATH}/"+UPDIR+s[sizeof(path)..];
         }
     }
 
@@ -1339,7 +1322,6 @@ string unrelocate_module(string s)
 
 #define fakeroot relocate_module
 #endif // PIKE_MODULE_RELOC
-
 
 /**
  * Is aboslute path
@@ -1367,7 +1349,6 @@ int is_absolute_path(string p)
 }
 
 #define IS_ABSOLUTE_PATH is_absolute_path
-
 
 #ifdef __NT__
 #define EXPLODE_PATH(X) (replace((X),"\\","/")/"/")
@@ -1418,7 +1399,6 @@ array(string) explode_path(string p)
 
 #define EXPLODE_PATH(X) explode_path(X);
 
-
 /**
  * Directory name
  *
@@ -1439,11 +1419,15 @@ string dirname(string x)
     array(string) tmp=x/":";
     array(string) tmp2=tmp[-1]/"/";
     tmp[-1]=tmp2[..<1]*"/";
-    if(sizeof(tmp2) >= 2 && tmp2[-2]=="") tmp[-1]+="/";
+    if(sizeof(tmp2) >= 2 && tmp2[-2]=="") {
+        tmp[-1]+="/";
+    }
     return tmp*":";
 #else
     array(string) tmp=EXPLODE_PATH(x);
-    if(x[0]=='/' && sizeof(tmp)<3) return "/";
+    if(x[0]=='/' && sizeof(tmp)<3) {
+        return "/";
+    }
     return tmp[..<1]*"/";
 #endif
 }
@@ -1496,7 +1480,6 @@ int newest;
   }                                    \
   load_time[FILE] = newest;                        \
   if(___newest > newest) newest=___newest;
-
 
 mapping(string:int) load_time=([]);
 #else
@@ -1575,7 +1558,9 @@ program master_load_module(string module_name)
 
 string master_read_file(string file)
 {
-    if (kernel_registered) return kernel->_read_file(file);
+    if (kernel_registered) {
+        return kernel->_read_file(file);
+    }
 
     object o=Files()->Fd();
     if( ([function(string, string : int)]o->open)(fakeroot(file),"r") ) {
@@ -1618,7 +1603,6 @@ string combine_path_with_cwd(string ... paths)
 int invalidate_time;
 mapping(string:multiset(string)) dir_cache = ([]);
 
-
 array(string) master_get_dir(string|void x)
 {
     mlog(LOG_LEVEL_ERROR,"Unsupported system calling master_get_dir(%O)\n",x);
@@ -1636,7 +1620,6 @@ array(string) master_get_dir(string|void x)
     }
     return dir;
 }
-
 
 Stat master_file_stat(string x)
 {
@@ -1674,7 +1657,6 @@ Stat master_file_stat(string x)
 }
 #else
 
-
 array(string) master_get_dir(string|void x)
 {
     if (kernel_registered) {
@@ -1698,7 +1680,10 @@ array(string) master_get_dir(string|void x)
         return dir;
      }
 
-     if (stringp(x)) return predef::get_dir(x);
+     if (stringp(x)) {
+         return predef::get_dir(x);
+     }
+
      return predef::get_dir();
 }
 
@@ -1849,29 +1834,31 @@ string|mapping(string:string) getenv (void|int|string varname,
 
 void putenv (string varname, void|string value)
 {
-  Builtin._putenv (varname, value);
-  if (compat_environment) {
-    string lvarname = varname;
+    Builtin._putenv (varname, value);
+    if (compat_environment) {
+        string lvarname = varname;
 #ifdef __NT__
-    lvarname = lower_case(varname);
+        lvarname = lower_case(varname);
 #endif
-    if (value) {
-      compat_environment[lvarname] =
-    (compat_environment_copy[lvarname] = ({ varname, value })) + ({});
-    } else {
-      m_delete(compat_environment, lvarname);
-      m_delete(compat_environment_copy, lvarname);
+        if (value) {
+            compat_environment[lvarname] =
+                (compat_environment_copy[lvarname] = ({ varname, value })) + ({});
+        } else {
+            m_delete(compat_environment, lvarname);
+            m_delete(compat_environment_copy, lvarname);
+        }
     }
-  }
-  if (environment) {
+    if (environment) {
 #ifdef __NT__
-    varname = lower_case (varname);
+        varname = lower_case (varname);
 #endif
-    if (value) environment[varname] = value;
-    else m_delete (environment, varname);
-  }
+        if (value) {
+            environment[varname] = value;
+        } else {
+            m_delete (environment, varname);
+        }
+    }
 }
-
 
 //! @appears compile_file
 //! Compile the Pike code contained in the file @[filename] into a program.
@@ -1883,20 +1870,20 @@ void putenv (string varname, void|string value)
 //! @seealso
 //! @[compile()], @[compile_string()], @[cpp()]
 //!
-program compile_file(string filename,
-             object|void handler,
-             void|program p,
-             void|object o,
-             void|string content_type)
-{
-  AUTORELOAD_CHECK_FILE(filename);
+program compile_file(
+    string filename,
+    object|void handler,
+    void|program p,
+    void|object o,
+    void|string content_type
+) {
+    AUTORELOAD_CHECK_FILE(filename);
 
-      mapping (string:mixed) code = ([]);
+    mapping (string:mixed) code = ([]);
 
     code["source"] = master_read_file(filename);
 
     code["filename"] = filename;
-
 
     if (!zero_type(content_type)) {
         code["content_type"] = content_type;
@@ -1922,7 +1909,6 @@ program compile_file(string filename,
          o
     );
 }
-
 
 //! @appears normalize_path
 //! Replaces "\" with "/" if runing on MS Windows. It is
@@ -1970,73 +1956,80 @@ protected mapping(mixed:string) rev_fc = ([]);
 protected mapping(program:string) rev_programs = ([]);
 protected mapping(object:program) rev_objects = ([]);
 
-
 string programs_reverse_lookup (program prog)
 //! Returns the path for @[prog] in @[programs], if it got any.
 {
-  // When running with trace, this function can get called
-  // before __INIT has completed.
-  if (!rev_programs) return UNDEFINED;
+    // When running with trace, this function can get called
+    // before __INIT has completed.
+    if (!rev_programs) return UNDEFINED;
 
-  if (sizeof (rev_programs) < sizeof (programs)) {
-    foreach (programs; string path; program|NoValue prog)
-      if (prog == no_value)
-    m_delete (programs, path);
-      else
-    rev_programs[prog] = path;
-  }
-  return rev_programs[prog];
+    if (sizeof (rev_programs) < sizeof (programs)) {
+        foreach (programs; string path; program|NoValue prog) {
+            if (prog == no_value) {
+                m_delete (programs, path);
+            } else {
+                rev_programs[prog] = path;
+            }
+        }
+    }
+    return rev_programs[prog];
 }
 
 program objects_reverse_lookup (object obj)
 //! Returns the program for @[obj], if known to the master.
 {
-  if (sizeof (rev_objects) < sizeof (objects)) {
-    foreach (objects; program prog; object|NoValue obj)
-      if (obj == no_value)
-    m_delete (rev_objects, obj);
-      else
-    rev_objects[obj] = prog;
-  }
-  return rev_objects[obj];
+    if (sizeof (rev_objects) < sizeof (objects)) {
+        foreach (objects; program prog; object|NoValue obj) {
+            if (obj == no_value) {
+                m_delete (rev_objects, obj);
+            } else {
+                rev_objects[obj] = prog;
+            }
+        }
+    }
+    return rev_objects[obj];
 }
 
 string fc_reverse_lookup (object obj)
 //! Returns the path for @[obj] in @[fc], if it got any.
 {
-  if (sizeof (rev_fc) < sizeof (fc)) {
-    foreach (fc; string path; mixed obj)
-      if (obj == no_value)
-    m_delete (fc, obj);
-      else
-    rev_fc[obj] = path;
-  }
-  return rev_fc[obj];
+    if (sizeof (rev_fc) < sizeof (fc)) {
+        foreach (fc; string path; mixed obj) {
+            if (obj == no_value) {
+                m_delete (fc, obj);
+            } else {
+                rev_fc[obj] = path;
+            }
+        }
+    }
+    return rev_fc[obj];
 }
 
 array(string) query_precompiled_names(string fname)
 {
-  // Filenames of potential precompiled files in priority order.
+    // Filenames of potential precompiled files in priority order.
 #ifdef PRECOMPILED_SEARCH_MORE
-  // Search for precompiled files in all module directories, not just
-  // in the one where the source file is. This is useful when running
-  // pike directly from the build directory.
-  fname = fakeroot (fname);
-  // FIXME: Not sure if this works correctly with the fakeroot and
-  // module relocation stuff.
-  foreach (pike_module_path, string path)
-    if (has_prefix (fname, path))
-      return map (pike_module_path, `+, "/", fname[sizeof (path)..], ".o");
+    // Search for precompiled files in all module directories, not just
+    // in the one where the source file is. This is useful when running
+    // pike directly from the build directory.
+    fname = fakeroot (fname);
+    // FIXME: Not sure if this works correctly with the fakeroot and
+    // module relocation stuff.
+    foreach (pike_module_path, string path) {
+        if (has_prefix (fname, path)) {
+            return map (pike_module_path, `+, "/", fname[sizeof (path)..], ".o");
+        }
+    }
 #endif
-  return ({ fname + ".o" });
+    return ({ fname + ".o" });
 }
 
 protected class CompileCallbackError
 {
-  inherit _static_modules.Builtin.GenericError;
-  constant is_generic_error = 1;
-  constant is_compile_callback_error = 1;
-  constant is_cpp_or_compilation_error = 1;
+    inherit _static_modules.Builtin.GenericError;
+    constant is_generic_error = 1;
+    constant is_compile_callback_error = 1;
+    constant is_cpp_or_compilation_error = 1;
 }
 
 protected void compile_cb_error (string msg, mixed ... args)
@@ -2044,8 +2037,10 @@ protected void compile_cb_error (string msg, mixed ... args)
 // error messages, without backtraces being reported by
 // compile_exception.
 {
-  if (sizeof (args)) msg = sprintf (msg, @args);
-  throw (CompileCallbackError (msg, backtrace()[..<1]));
+    if (sizeof (args)) {
+        msg = sprintf (msg, @args);
+    }
+    throw (CompileCallbackError (msg, backtrace()[..<1]));
 }
 
 protected void compile_cb_rethrow (object|array err)
@@ -2053,21 +2048,28 @@ protected void compile_cb_rethrow (object|array err)
 // compile error messages, without backtraces being reported by
 // compile_exception.
 {
-  array bt;
-  if (array|object e = catch (bt = get_backtrace (err)))
-    handle_error (e);
-  throw (CompileCallbackError (describe_error (err), bt));
+    array bt;
+    if (array|object e = catch (bt = get_backtrace (err))) {
+        handle_error (e);
+    }
+    throw (CompileCallbackError (describe_error (err), bt));
 }
 
-protected void call_compile_warning (object handler, string file,
-                     string msg, mixed ... args)
-{
-  if (sizeof (args)) msg = sprintf (msg, @args);
-  msg = trim_all_whites (msg);
-  if (handler && handler->compile_warning)
-    handler->compile_warning (file, 0, msg);
-  else
-    compile_warning (file, 0, msg);
+protected void call_compile_warning (
+    object handler,
+    string file,
+    string msg,
+    mixed ... args
+) {
+    if (sizeof (args)) {
+        msg = sprintf (msg, @args);
+    }
+    msg = trim_all_whites (msg);
+    if (handler && handler->compile_warning) {
+        handler->compile_warning (file, 0, msg);
+    } else {
+        compile_warning (file, 0, msg);
+    }
 }
 
 #if constant(_static_modules.Builtin.mutex)
@@ -2083,27 +2085,37 @@ _static_modules.Builtin.mutex compilation_mutex = Builtin.mutex();
 
 protected string base_from_filename(string fname)
 {
-  string low_name = FIX_CASE(fname);
-  if (has_prefix(low_name, ".#")) return 0;
-  if (has_suffix(low_name, ".pike") ||
-      has_suffix(low_name, ".pmod")) {
-    return fname[..<5];
-  }
-  if (has_suffix(low_name, ".so")) {
-    return fname[..<3];
-  }
-  return 0;
+    string low_name = FIX_CASE(fname);
+    if (has_prefix(low_name, ".#")) {
+        return 0;
+    }
+    if (
+        has_suffix(low_name, ".pike") ||
+        has_suffix(low_name, ".pmod")
+    ) {
+        return fname[..<5];
+    }
+    if (has_suffix(low_name, ".so")) {
+        return fname[..<3];
+    }
+    return 0;
 }
 
 protected int prio_from_filename(string fname)
 {
-  fname = FIX_CASE(fname);
-  if (has_suffix(fname, ".pmod")) return 3;
-  if (has_suffix(fname, ".so")) return 2;
-  if (has_suffix(fname, ".pike")) return 1;
+    fname = FIX_CASE(fname);
+    if (has_suffix(fname, ".pmod")) {
+        return 3;
+    }
+    if (has_suffix(fname, ".so")) {
+       return 2;
+    }
+    if (has_suffix(fname, ".pike")) {
+        return 1;
+    }
 
-  // FIXME: Warn here?
-  return 0;
+    // FIXME: Warn here?
+    return 0;
 }
 
 //! Find the files in which @[mod] is defined, as they may be hidden away in
@@ -2117,31 +2129,34 @@ protected int prio_from_filename(string fname)
 //!   (one for each file in a joinnode, or just one otherwise)
 array(string) module_defined(object|program mod)
 {
-  array files = ({});
-  if (programp(mod))
-    return ({ Builtin.program_defined([program]mod) });
+    array files = ({});
+    if (programp(mod)) {
+        return ({ Builtin.program_defined([program]mod) });
+    }
 
-  array mods;
-  if (mod->is_resolv_joinnode)
-    mods = mod->joined_modules;
-  else
-    mods = ({ mod });
+    array mods;
+    if (mod->is_resolv_joinnode) {
+        mods = mod->joined_modules;
+    } else {
+        mods = ({ mod });
+    }
 
-  foreach (mods;; object mod)
-  {
-    if (mod->is_resolv_dirnode)
-      files += ({ Builtin.program_defined(object_program(mod->module)) });
-    else
-      files += ({ Builtin.program_defined(object_program(mod)) });
-  }
-  return files;
+    foreach (mods;; object mod) {
+        if (mod->is_resolv_dirnode) {
+            files += ({ Builtin.program_defined(object_program(mod->module)) });
+        } else {
+            files += ({ Builtin.program_defined(object_program(mod)) });
+        }
+    }
+    return files;
 }
 
 //! Enable caching of sources from compile_string()
 void enable_source_cache()
 {
-  if (!source_cache)
-    source_cache = ([]);
+    if (!source_cache) {
+        source_cache = ([]);
+    }
 }
 
 //! Show documentation for the item @[obj]
@@ -2153,255 +2168,295 @@ void enable_source_cache()
 //!   an AutoDoc object
 object show_doc(program|object|function obj)
 {
-  object doc_extractor = main_resolv("Tools.AutoDoc.PikeExtractor.extractClass");
-  string child;
-  program prog;
+    object doc_extractor = main_resolv("Tools.AutoDoc.PikeExtractor.extractClass");
+    string child;
+    program prog;
 
-  if (programp(obj))
-    prog = obj;
-  if (functionp(obj))
-  {
-    prog = function_program(obj);
-    child = ((describe_function(obj)||"")/"->")[-1];
-  }
-  if (objectp(obj))
-  {
-    if (obj->is_resolv_joinnode)
-      obj = obj->joined_modules[0]; // FIXME: check for multiples
-    if (obj->is_resolv_dirnode)
-      prog = object_program(obj->module);
-    else
-      prog = object_program(obj);
-  }
-
-
-  if (prog && !documentation[prog] && doc_extractor)
-  {
-    string source;
-    if (source_cache && source_cache[prog])
-      source = source_cache[prog];
-    else
-    {
-      array sourceref = array_sscanf(Builtin.program_defined(prog),
-                                     "%s%[:]%[0-9]");
-      source = master_read_file(sourceref[0]);
-      if (sizeof(sourceref[1]) && sizeof(sourceref[2]))
-      {
-        if (programp(prog))
-          child = ((describe_program(prog)||"")/".")[-1];
-      }
+    if (programp(obj)) {
+        prog = obj;
     }
 
-    if (source)
-    {
-      catch
-      {
-        documentation[prog] = doc_extractor(source, sprintf("%O", prog));
-      };
-      //FIXME: handle this error somehow
+    if (functionp(obj)) {
+        prog = function_program(obj);
+        child = ((describe_function(obj)||"")/"->")[-1];
     }
-  }
+    if (objectp(obj)) {
+        if (obj->is_resolv_joinnode) {
+            obj = obj->joined_modules[0]; // FIXME: check for multiples
+        }
+        
+        if (obj->is_resolv_dirnode) {
+            prog = object_program(obj->module);
+        } else {
+            prog = object_program(obj);
+        }
+    }
 
-  if (documentation[prog])
-  {
-    if (child)
-      return documentation[prog]->findObject(child)||documentation[prog]->findChild(child);
-    else
-      return documentation[prog];
-  }
+    if (prog && !documentation[prog] && doc_extractor) {
+        string source;
+        if (source_cache && source_cache[prog]) {
+            source = source_cache[prog];
+        } else {
+            array sourceref = array_sscanf(
+                Builtin.program_defined(prog),
+                "%s%[:]%[0-9]"
+            );
+            source = master_read_file(sourceref[0]);
+            if (sizeof(sourceref[1]) && sizeof(sourceref[2])) {
+                if (programp(prog)) {
+                    child = ((describe_program(prog)||"")/".")[-1];
+                }
+            }
+        }
+
+        if (source) {
+            catch {
+                documentation[prog] = doc_extractor(source, sprintf("%O", prog));
+            };
+            //FIXME: handle this error somehow
+        }
+    }
+
+    if (documentation[prog]) {
+        if (child) {
+            return documentation[prog]->findObject(child)||documentation[prog]->findChild(child);
+        } else {
+            return documentation[prog];
+        }
+    }
 }
-
 
 protected program low_findprog(string pname,
                    string ext,
                    object|void handler,
                    void|int mkobj)
 {
-  program ret;
-  Stat s;
-  string fname=pname+ext;
 
-  resolv_debug("low_findprog(%O, %O, %O, %O)\n",
-           pname, ext, handler, mkobj);
+    program ret;
+    Stat s;
+    string fname=pname+ext;
+
+    resolv_debug(
+        "low_findprog(%O, %O, %O, %O)\n",
+        pname, 
+        ext, 
+        handler, 
+        mkobj
+    );
 
 #ifdef THREADED
-  object key;
-  // FIXME: The catch is needed, since we might be called in
-  // a context when threads are disabled.
-  // (compile() disables threads).
-  mixed err = catch {
-    key=compilation_mutex->lock(2);
-  };
-  if (err) {
-    werror( "low_findprog: Caught spurious error:\n"
-        "%s\n", describe_backtrace(err) );
-  }
+    object key;
+    // FIXME: The catch is needed, since we might be called in
+    // a context when threads are disabled.
+    // (compile() disables threads).
+    mixed err = catch {
+        key=compilation_mutex->lock(2);
+    };
+    if (err) {
+        werror(
+            "low_findprog: Caught spurious error:\n"
+            "%s\n", describe_backtrace(err) 
+        );
+    }
 #endif
 
 #ifdef PIKE_MODULE_RELOC
-  fname = unrelocate_module(fname);
+    fname = unrelocate_module(fname);
 #endif
 
 #ifdef __NT__
-  // Ugly kluge to work better with cygwin32 "/X:/" paths.
-  if(getenv("OSTYPE")=="cygwin32")
-  {
-    string tmp=fname[..1];
-    if((tmp=="//" || tmp=="\\\\") && (fname[3]=='/' || fname[3]=='\\'))
-    {
-      if(!master_file_stat(fname))
-      {
-    fname=fname[2..2]+":"+fname[3..];
-      }
-    }
-  }
-#endif
-
-  if( (s=master_file_stat(fakeroot(fname))) && s->isreg )
-  {
-#ifdef PIKE_AUTORELOAD
-    if(!autoreload_on || load_time[fname] >= s->mtime)
-#endif
-    {
-      if(!zero_type (ret=programs[fname]) && ret != no_value) {
-    resolv_debug ("low_findprog %s: returning cached (no autoreload)\n", fname);
-    return ret;
-      }
-    }
-
-    AUTORELOAD_BEGIN();
-
-#ifdef PIKE_AUTORELOAD
-    if (load_time[fname] >= s->mtime)
-      if (!zero_type (ret=programs[fname]) && ret != no_value) {
-    resolv_debug ("low_findprog %s: returning cached (autoreload)\n", fname);
-    return ret;
-      }
-#endif
-
-    switch(ext)
-    {
-    case "":
-    case ".pike":
-      foreach(query_precompiled_names(fname), string oname) {
-    if(Stat s2=master_file_stat(fakeroot(oname)))
-    {
-      if(s2->isreg && s2->mtime >= s->mtime)
-      {
-        mixed err=catch {
-          object|program decoded;
-          AUTORELOAD_CHECK_FILE(oname);
-          resolv_debug ("low_findprog %s: decoding dumped\n", fname);
-          INC_RESOLV_MSG_DEPTH();
-          decoded = decode_value(master_read_file(oname),
-                     (handler && handler->get_codec ||
-                      get_codec)(fname, mkobj, handler));
-          DEC_RESOLV_MSG_DEPTH();
-          resolv_debug ("low_findprog %s: dump decode ok\n", fname);
-          if (decoded && decoded->this_program_does_not_exist) {
-        resolv_debug ("low_findprog %s: program claims not to exist\n",
-                  fname);
-        return programs[fname] = 0;
-          }
-          else {
-        if (objectp(decoded)) {
-          resolv_debug("low_findprog %s: decoded object %O\n",
-                   fname, decoded);
-          objects[ret = object_program(decoded)] = decoded;
-        } else {
-          ret = decoded;
+    // Ugly kluge to work better with cygwin32 "/X:/" paths.
+    if (getenv("OSTYPE")=="cygwin32") {
+        string tmp=fname[..1];
+        if ((tmp=="//" || tmp=="\\\\") && (fname[3]=='/' || fname[3]=='\\')) {
+            if (!master_file_stat(fname)) {
+                fname=fname[2..2]+":"+fname[3..];
+            }
         }
-        resolv_debug("low_findprog %s: returning %O\n", fname, ret);
-        return programs[fname]=ret;
-          }
-        };
-        DEC_RESOLV_MSG_DEPTH();
-        resolv_debug ("low_findprog %s: dump decode failed\n", fname);
-        programs[fname] = no_value;
-        call_compile_warning (handler, oname,
-                  "Decode failed: " + describe_error(err));
-        // handle_error(err);
-      } else if (out_of_date_warning) {
-        call_compile_warning (handler, oname,
-                  "Compiled file is out of date");
-      }
     }
-      }
+#endif
 
-      resolv_debug ("low_findprog %s: compiling, mkobj: %O\n", fname, mkobj);
-      INC_RESOLV_MSG_DEPTH();
-      programs[fname]=ret=master_empty_program(0, fname);
-      AUTORELOAD_CHECK_FILE (fname);
-      string src;
-      if (array|object err = catch (src = master_read_file (fname))) {
-    DEC_RESOLV_MSG_DEPTH();
-    resolv_debug ("low_findprog %s: failed to read file\n", fname);
-    objects[ret] = no_value;
-    ret=programs[fname]=0;    // Negative cache.
-    compile_cb_rethrow (err);
-      }
-      if ( mixed e=catch {
-      ret=compile_string(src, fname, handler,
-                 ret,
-                 mkobj? (objects[ret]=__null_program()) : 0);
-    } )
-      {
-    DEC_RESOLV_MSG_DEPTH();
-    resolv_debug ("low_findprog %s: compilation failed\n", fname);
-    objects[ret] = no_value;
-    ret=programs[fname]=0;    // Negative cache.
-        throw(e);
-      }
-      DEC_RESOLV_MSG_DEPTH();
-      resolv_debug ("low_findprog %s: compilation ok\n", fname);
-      break;
+    if( (s=master_file_stat(fakeroot(fname))) && s->isreg ) {
+        if (
+#ifdef PIKE_AUTORELOAD
+            (!autoreload_on || load_time[fname] >= s->mtime) &&
+#endif
+            !zero_type (ret=programs[fname]) && 
+            ret != no_value
+        ) {
+            resolv_debug ("low_findprog %s: returning cached (no autoreload)\n", fname);
+            return ret;
+        }
+    
+
+        AUTORELOAD_BEGIN();
+
+#ifdef PIKE_AUTORELOAD
+        if (
+            load_time[fname] >= s->mtime &&
+            !zero_type (ret=programs[fname]) && 
+            ret != no_value
+        ) {
+            resolv_debug ("low_findprog %s: returning cached (autoreload)\n", fname);
+            return ret;
+    
+        }
+#endif
+    
+        switch(ext) {
+            case "":
+            case ".pike":
+                foreach(query_precompiled_names(fname), string oname) {
+                    if (Stat s2=master_file_stat(fakeroot(oname))) {
+                        if (s2->isreg && s2->mtime >= s->mtime) {
+                            mixed err=catch {
+                                object|program decoded;
+                                AUTORELOAD_CHECK_FILE(oname);
+                                resolv_debug ("low_findprog %s: decoding dumped\n", fname);
+                                INC_RESOLV_MSG_DEPTH();
+                                decoded = decode_value(
+                                    master_read_file(oname),
+                                    handler  && handler->get_codec ? 
+                                        handler->get_codec(fname, mkobj, handler) : 
+                                        get_codec(fname, mkobj, handler)
+                                );
+                                DEC_RESOLV_MSG_DEPTH();
+                                resolv_debug ("low_findprog %s: dump decode ok\n", fname);
+                                if (decoded && decoded->this_program_does_not_exist) {
+                                    resolv_debug (
+                                        "low_findprog %s: program claims not to exist\n",
+                                        fname
+                                    );
+                                    return programs[fname] = 0;
+                                } else {
+                                    if (objectp(decoded)) {
+                                        resolv_debug(
+                                            "low_findprog %s: decoded object %O\n",
+                                            fname, 
+                                            decoded
+                                        );
+                                        objects[ret = object_program(decoded)] = decoded;
+                                    } else {
+                                        ret = decoded;
+                                    }
+                                    resolv_debug("low_findprog %s: returning %O\n", fname, ret);
+                                    return programs[fname]=ret;
+                                }
+                            };
+                    
+                            DEC_RESOLV_MSG_DEPTH();
+                            resolv_debug ("low_findprog %s: dump decode failed\n", fname);
+                            programs[fname] = no_value;
+                            call_compile_warning (
+                                handler, 
+                                oname,
+                                "Decode failed: " + describe_error(err)
+                            );
+                            // handle_error(err);
+                        } else if (out_of_date_warning) {
+                            call_compile_warning (
+                                handler, 
+                                oname,
+                                "Compiled file is out of date"
+                            );
+                        }
+                    }
+                }
+
+                resolv_debug ("low_findprog %s: compiling, mkobj: %O\n", fname, mkobj);
+                INC_RESOLV_MSG_DEPTH();
+                programs[fname]=ret=master_empty_program(0, fname);
+                AUTORELOAD_CHECK_FILE (fname);
+                string src;
+                if (
+                    array|object err = catch (src = master_read_file (fname))
+                ) {
+                    DEC_RESOLV_MSG_DEPTH();
+                    resolv_debug ("low_findprog %s: failed to read file\n", fname);
+                    objects[ret] = no_value;
+                    ret=programs[fname]=0;    // Negative cache.
+                    compile_cb_rethrow (err);
+                }
+                if ( 
+                    mixed e=catch {
+                        ret=compile_string(
+                            src, 
+                            fname, 
+                            handler,
+                            ret,
+                            mkobj ? (objects[ret]=__null_program()) : 0);
+                    } 
+                ) {
+                    DEC_RESOLV_MSG_DEPTH();
+                    resolv_debug ("low_findprog %s: compilation failed\n", fname);
+                    objects[ret] = no_value;
+                    ret=programs[fname]=0;    // Negative cache.
+                    throw(e);
+                }
+                DEC_RESOLV_MSG_DEPTH();
+                resolv_debug ("low_findprog %s: compilation ok\n", fname);
+                break;
 
 #if constant(load_module)
-    case ".so":
-      if (fname == "") {
-    werror( "low_findprog(%O, %O) => load_module(\"\")\n"
-        "%s\n", pname, ext, describe_backtrace(backtrace()) );
-      }
+            case ".so":
+                if (fname == "") {
+                    werror( 
+                        "low_findprog(%O, %O) => load_module(\"\")\n"
+                            "%s\n", 
+                        pname, 
+                        ext, 
+                        describe_backtrace(backtrace()) 
+                    );
+                }
+    
+                if (
+                    array|object err = catch (ret = master_load_module(fakeroot(fname)))
+                ) {
+                    DEC_RESOLV_MSG_DEPTH();
+                    resolv_debug ("low_findprog %s: failed to load binary\n", fname);
+                    objects[ret] = no_value;
+                    ret=programs[fname]=0;    // Negative cache.
+                    if (objectp (err) && err->is_module_load_error) {
+                        // Do not treat errors from dlopen(3) as exceptions since in
+                        // a dist we can have .so files that are dynamically linked
+                        // against libraries that don't exist on the system, and in
+                        // that case we should just treat the module as nonexisting.
+                        //
+                        // What we really want is to do this only for errors that
+                        // are due to nonexisting files, but the error reporting
+                        // from dlerror(3) doesn't allow us to tell those from other
+                        // errors.
+                        call_compile_warning (
+                            handler, 
+                            fname,
+                            "Failed to load library: %s\n", 
+                            err->reason
+                        );
+                    } else {
+                        compile_cb_rethrow (err);
+                    }
+               } else {
+                   resolv_debug ("low_findprog %s: loaded binary\n", fname);
+               }
+               break;
+       
+#endif
+            // end select
+        }
 
-      if (array|object err = catch (ret = master_load_module(fakeroot(fname)))) {
-    DEC_RESOLV_MSG_DEPTH();
-    resolv_debug ("low_findprog %s: failed to load binary\n", fname);
-    objects[ret] = no_value;
-    ret=programs[fname]=0;    // Negative cache.
-    if (objectp (err) && err->is_module_load_error)
-      // Do not treat errors from dlopen(3) as exceptions since in
-      // a dist we can have .so files that are dynamically linked
-      // against libraries that don't exist on the system, and in
-      // that case we should just treat the module as nonexisting.
-      //
-      // What we really want is to do this only for errors that
-      // are due to nonexisting files, but the error reporting
-      // from dlerror(3) doesn't allow us to tell those from other
-      // errors.
-      call_compile_warning (handler, fname,
-                "Failed to load library: %s\n", err->reason);
-    else
-      compile_cb_rethrow (err);
-      }
-      else
-    resolv_debug ("low_findprog %s: loaded binary\n", fname);
-#endif /* load_module */
+        AUTORELOAD_FINISH(ret,programs,fname);
+
+        if (ret && ret->this_program_does_not_exist) {
+            resolv_debug ("low_findprog %s: program says it doesn't exist\n", fname);
+            return programs[fname] = 0;
+        } else {
+            resolv_debug("low_findprog %s: returning %O\n", fname, ret);
+            return programs[fname]=ret;
+        }
     }
-
-    AUTORELOAD_FINISH(ret,programs,fname);
-
-    if (ret && ret->this_program_does_not_exist) {
-      resolv_debug ("low_findprog %s: program says it doesn't exist\n", fname);
-      return programs[fname] = 0;
-    }
-    else {
-      resolv_debug("low_findprog %s: returning %O\n", fname, ret);
-      return programs[fname]=ret;
-    }
-  }
-
-  resolv_debug ("low_findprog %s: file not found\n", fname);
-  return 0;
+    resolv_debug ("low_findprog %s: file not found\n", fname);
+    
+    return 0;
 }
 
 //
@@ -2411,34 +2466,41 @@ protected program low_findprog(string pname,
 //
 void unregister(program p)
 {
-  // werror("Unregistering %O...\n", p);
-  if(string fname=rev_programs[p] || search(programs,p)) {
-    resolv_debug("unregister %s\n", fname);
-    if (m_delete (rev_programs, p))
-      m_delete (programs, fname);
-    else
-      programs[fname] = no_value;
-
+    // werror("Unregistering %O...\n", p);
+    if(string fname=rev_programs[p] || search(programs,p)) {
+        resolv_debug("unregister %s\n", fname);
+        if (m_delete (rev_programs, p)) {
+            m_delete (programs, fname);
+        } else {
+            programs[fname] = no_value;
+        }
+    }
     fname = dirname (fname);
     object n;
-    if ( fname!="" && objectp (n = fc[fname]) )
-      if (n->is_resolv_dirnode || n->is_resolv_joinnode)
-    n->delete_value (p);
-  }
+    if ( 
+        fname!="" && 
+        objectp (n = fc[fname]) &&
+        (n->is_resolv_dirnode || n->is_resolv_joinnode)
+    ) {
+        n->delete_value (p);
+    }
 
-  object o = m_delete(objects, p);
-  if (objectp (o)) {
-    m_delete(rev_objects, o);
-  }
+    object o = m_delete(objects, p);
+    if (objectp (o)) {
+        m_delete(rev_objects, o);
+    }
 
-  foreach (fc; string name; mixed mod)
-    if (objectp(mod) && object_program(mod) == p)
-      if (m_delete (rev_fc, mod))
-    m_delete (fc, name);
-      else
-    fc[name] = no_value;
+    foreach (fc; string name; mixed mod) {
+        if (objectp(mod) && object_program(mod) == p) {
+            if (m_delete (rev_fc, mod)) {
+                m_delete (fc, name);
+            } else {
+                fc[name] = no_value;
+            }
+        }
+    }
 
-  // FIXME: Delete from caches in dirnodes and joinnodes.
+    // FIXME: Delete from caches in dirnodes and joinnodes.
 }
 
 protected program findprog(string pname,
@@ -2534,7 +2596,6 @@ program low_cast_to_program(string pname,
     }
 }
 
-
 //! This function is called when the driver wants to cast a string
 //! to a program, this might be because of an explicit cast, an inherit
 //! or a implict cast. In the future it might receive more arguments,
@@ -2558,7 +2619,6 @@ program cast_to_program(string pname,
     */
     return ret;
 }
-
 
 //! This function is called when an error occurs that is not caught
 //! with catch().
@@ -2702,7 +2762,6 @@ protected void create()
   system_module_path=pike_module_path;
 }
 
-
 //! This function is called whenever a inherit is called for.
 //! It is supposed to return the program to inherit.
 //! The first argument is the argument given to inherit, and the second
@@ -2779,7 +2838,6 @@ class dirnode
     mixed module;
     mapping(string:mixed) cache=([]);
     mapping(string:array(string)) file_paths = ([]);
-
 
     private void _set_file_paths(string index, array(string) paths) {
         //werror(sprintf("dirnode->_set_file_paths(%O,%O)\n",index,paths));
@@ -3533,7 +3591,6 @@ mixed handle_import(string what, string|void current_file, object|void handler)
 }
 #endif /* 0 */
 
-
 multiset no_resolv = (<>);
 
 //! Resolver of symbols not located in the program being compiled.
@@ -3904,7 +3961,6 @@ mixed resolv(string identifier, string|void current_file,
     return ret;
 }
 
-
   //! This function is called whenever an #include directive is
   //! encountered. It receives the argument for #include and should
   //! return the file name of the file to include
@@ -4004,7 +4060,6 @@ object backend_thread()
 }
 #endif
 
-
 mapping(string:string) initial_predefines = ([]);
 
 protected mixed main_resolv(string sym, CompatResolver|void resolver) {
@@ -4014,8 +4069,6 @@ protected mixed main_resolv(string sym, CompatResolver|void resolver) {
       "(Perhaps the installed pike tree has been moved.)\n", sym);
   return v;
 };
-
-
 
 private void welcome()
 {
@@ -4058,10 +4111,8 @@ int stat_pike_module_reloc() {
  #endif
 }
 
-
 private mapping(string:mixed) save_master_context()
 {
-
 
     //root_module??
     mapping (object:int) threads = ([]);
@@ -4093,10 +4144,8 @@ private mapping(string:mixed) save_master_context()
     return context;
 }
 
-
 private void restore_master_context(mapping(string:mixed) context)
 {
-
 
     int ctr = 0;
     int kills = 1;
@@ -4644,7 +4693,6 @@ public void _main(array(string) orig_argv)
   mixed ret;
   mixed err;
 
-
     mixed m_context = save_master_context();
 
     ret = -1;
@@ -4783,7 +4831,6 @@ function(string:string) set_trim_file_name_callback(function(string:string) s)
    return f;
 }
 
-
 //! This function is called whenever a compile error occurs. @[line]
 //! is zero for errors that aren't associated with any specific line.
 //! @[err] is not newline terminated.
@@ -4801,8 +4848,6 @@ void compile_error(string file,int line,string err)
         line?(string)line:"-",err );
       }
 
-
-
   else if(objectp(val) ||
       programp(val) ||
       functionp(val))
@@ -4814,7 +4859,6 @@ void compile_error(string file,int line,string err)
     }
   }
 }
-
 
 //! This function is called whenever a compile warning occurs. @[line]
 //! is zero for warnings that aren't associated with any specific
@@ -4834,7 +4878,6 @@ void compile_warning(string file,int line,string err)
      ->compile_warning)(file, line, err);
   }
 }
-
 
 //! This function is called when an exception is catched during
 //! compilation. Its message is also reported to @[compile_error] if
@@ -4857,7 +4900,6 @@ int compile_exception (array|object trace)
   }
   return 0;
 }
-
 
 //! Called for every runtime warning. The first argument identifies
 //! where the warning comes from, the second identifies the specific
@@ -4884,7 +4926,6 @@ void runtime_warning (string where, string what, mixed... args)
     }
 }
 
-
 protected object Charset;
 
 //! This function is called by cpp() when it wants to do
@@ -4906,7 +4947,6 @@ string decode_charset(string data, string charset)
     })
     compile_cb_rethrow (err);
 }
-
 
 class Describer
 {
@@ -5119,7 +5159,6 @@ class Describer
   }
 }
 
-
 string program_path_to_name ( string path,
                   void|string module_prefix,
                   void|string module_suffix,
@@ -5193,7 +5232,6 @@ string program_path_to_name ( string path,
   }
   return path + (object_suffix || "");
 }
-
 
 //! Describe the path to the module @[mod].
 //!
@@ -5738,7 +5776,6 @@ array get_backtrace (object|array err)
 
   return bt;
 }
-
 
 #ifdef ENCODE_DEBUG
 #  define ENC_MSG(X...) do werror (X); while (0)
@@ -6468,7 +6505,6 @@ class Codec
 
 // The master acts as the default codec.
 inherit Codec;
-
 
 //! Contains version information about a Pike version.
 class Version
