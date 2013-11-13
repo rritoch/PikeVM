@@ -11,6 +11,7 @@
 #include "http_request.h"
 #include "util_ebcdic.h"
 #include "mod_pikevm.h"
+#include "apr_lib.h"
 
 /* Define prototypes of our functions in this module */
 static void ap_pikevm_register_hooks(apr_pool_t *pool);
@@ -236,7 +237,7 @@ static apr_table_t * ap_pikevm_read_headers(
     request_rec *r,
     request_rec *rp,
     char *buffer,
-    int buff_sz,
+    int size,
     pikevm_conn_rec *backend
 ) {
     apr_table_t *headers_out;
