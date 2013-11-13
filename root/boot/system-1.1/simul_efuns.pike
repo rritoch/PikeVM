@@ -599,13 +599,13 @@ array(string) split(string data, string re)
 int|array(mixed) regexp( string|array(string) lines, string pattern, int|void flag)
 {
 
-    object rx = Regexp.SimpleRegexp(pattern);
+    object rx = Regexp.PCRE._pcre(pattern);
     string line;
     array(mixed) ret = ({});
     int i;
 
     if (!arrayp(lines)) {
-        return rx->match(lines);
+        return (arrayp(rx->exec(lines)));
     }
 
     if (flag & 1) { // verbose
@@ -613,13 +613,13 @@ int|array(mixed) regexp( string|array(string) lines, string pattern, int|void fl
         if (flag & 2) { // reverse
             for(i=0;i<sizeof(lines);i++) {
                line = lines[i];
-               if (!rx->match(lines)) {
+               if (!arrayp(rx->exec(line))) {
                    ret += ({ i+1, line });
                }
             }
         } else {
             foreach(lines, line) {
-               if (rx->match(lines)) {
+               if (arrayp(rx->exec(line))) {
                    ret += ({ i+1, line });
                }
             }
@@ -628,13 +628,13 @@ int|array(mixed) regexp( string|array(string) lines, string pattern, int|void fl
     } else {
         if (flag & 2) { // reverse
             foreach(lines, line) {
-               if (!rx->match(lines)) {
+               if (!arrayp(rx->exec(line))) {
                   ret += ({ line });
                }
             }
         } else {
             foreach(lines, line) {
-               if (rx->match(lines)) {
+               if (arrayp(rx->exec(line))) {
                   ret += ({ line });
                }
             }
