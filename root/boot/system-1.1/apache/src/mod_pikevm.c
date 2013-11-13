@@ -1,7 +1,7 @@
 /* mod_pikevm.c:  */
 #include <stdio.h>
 #include "apr_hash.h"
-#include "ap_config.h"
+//#include "ap_config.h"
 #include "ap_provider.h"
 #include "httpd.h"
 #include "http_core.h"
@@ -318,10 +318,10 @@ static apr_status_t ap_pikevm_set_connection_alias(
     //X-PikeVM-Set-Client-IP: x.x.x.x
     buf = apr_pstrcat(
         p, "X-PikeVM-Set-Client-IP: ",
-#ifdef USE_CON_REC_REMOTE_IP
+#ifdef USE_CONN_REC_REMOTE_IP
         r->connection->remote_ip,
 #else
-#ifdef USE_CON_REC_CLIENT_IP
+#ifdef USE_CONN_REC_CLIENT_IP
         r->connection->client_ip,
 #else
         r->useragent_ip,
@@ -339,7 +339,7 @@ static apr_status_t ap_pikevm_set_connection_alias(
         sport,
         sizeof(sport),
         "%d",
-#ifdef USE_CON_REC_REMOTE_ADDR
+#ifdef USE_CONN_REC_REMOTE_ADDR
         r->connection->remote_addr->port
 #else
         r->connection->client_addr->port
@@ -401,6 +401,7 @@ static apr_status_t ap_pikevm_set_connection_alias(
     }
     //Process status line for code
     ptr = &buffer;
+    ctr = 0;
     while(*ptr != 0 && *ptr != 32 && ctr < (HUGE_STRING_LEN - 3)) {
         ptr++;
         ctr++;

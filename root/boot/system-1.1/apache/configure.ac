@@ -5,39 +5,18 @@ AC_PREREQ(2.59)
 AC_INIT(FULL-PACKAGE-NAME, VERSION, BUG-REPORT-ADDRESS)
 AC_CONFIG_AUX_DIR(config)
 AC_CONFIG_SRCDIR([src/mod_pikevm.c])
+AC_CONFIG_MACRO_DIR([m4.inc])
+m4_include([m4/m4-ax_with_apxs.m4])
 
 AM_INIT_AUTOMAKE
 
+AC_CONFIG_HEADER(config.h)
+
 # Checks for programs.
-AC_PROG_CC
+//AC_PROG_CC
+AX_WITH_APXS()
 
 dnl Note: AC_DEFUN goes here plus other stuff
-
-AC_MSG_CHECKING(for apache APXS)
-AC_ARG_WITH(apxs,
-            [AS_HELP_STRING([[--with-apxs[=FILE]]],
-                            [path to the apxs, defaults to "apxs".])],
-[
-    if test "$withval" = "yes"; then
-      APXS=apxs
-    else
-      APXS="$withval"
-    fi
-])
-
-if test -z "$APXS"; then
-  for i in /usr/sbin /usr/local/apache/bin /usr/bin ; do
-    if test -f "$i/apxs2"; then
-      APXS="$i/apxs2"
-      break
-    fi
-    if test -f "$i/apxs"; then
-      APXS="$i/apxs"
-      break
-    fi
-  done
-fi
-AC_SUBST(APXS)
 
 # Checks for libraries.
 
@@ -45,9 +24,18 @@ AC_SUBST(APXS)
 
 # Checks for typedefs, structures, and compiler characteristics.
 
-AC_CHECK_MEMBER(struct con_rec.remote_ip, define 'USE_CON_REC_REMOTE_IP',,[#include "httpd.h"]);
-AC_CHECK_MEMBER(struct con_rec.client_ip, define 'USE_CON_REC_CLIENT_IP',,[#include "httpd.h"]);
-AC_CHECK_MEMBER(struct con_rec.remote_addr, define 'USE_CON_REC_REMOTE_ADDR',,[#include "httpd.h"]);
+tmp_CC=$CC
+tmp_ac_compile=$ac_compile
+CC=$APXS
+ac_compile='$CC -c conftest.$ac_ext'
+
+AC_CHECK_MEMBER([conn_rec.remote_ip], AC_DEFINE(USE_CONN_REC_REMOTE_IP,1,[Do we have conn_rec.remote_ip]) ,,[#include "httpd.h"])
+AC_CHECK_MEMBER(conn_rec.client_ip, AC_DEFINE(USE_CONN_REC_CLIENT_IP,1,[Do we have conn_rec.client_ip]),,[#include "httpd.h"])
+AC_CHECK_MEMBER(conn_rec.remote_addr, AC_DEFINE(USE_CONN_REC_REMOTE_ADDR,1,[Do we have conn_rec.remote_addr]),,[#include "httpd.h"])
+
+
+ac_compile=$tmp_ac_compile
+CC=$tmp_CC
 
 # Checks for library functions.
 AC_OUTPUT(Makefile src/Makefile)

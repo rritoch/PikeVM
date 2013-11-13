@@ -18,5 +18,14 @@
 /* Define to the version of this package. */
 #undef PACKAGE_VERSION
 
+/* Do we have conn_rec.client_ip */
+#undef USE_CONN_REC_CLIENT_IP
+
+/* Do we have conn_rec.remote_addr */
+#undef USE_CONN_REC_REMOTE_ADDR
+
+/* Do we have conn_rec.remote_ip */
+#undef USE_CONN_REC_REMOTE_IP
+
 /* Version number of package */
 #undef VERSION
