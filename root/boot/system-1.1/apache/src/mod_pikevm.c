@@ -685,7 +685,8 @@ static apr_status_t ap_pikevm_create_connection(
                       backend_addr->family, p_conn->name);
 
             /* make the connection out of the socket */
-            rv = apr_connect(p_conn->sock, backend_addr);
+            //rv = apr_connect(p_conn->sock, backend_addr);
+            rv = apr_socket_connect(p_conn->sock, backend_addr);
 
             /* if an error occurred, loop round and try again */
             if (rv != APR_SUCCESS) {
