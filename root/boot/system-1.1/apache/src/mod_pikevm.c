@@ -9,6 +9,7 @@
 #include "http_log.h"
 #include "http_protocol.h"
 #include "http_request.h"
+#include "util_ebcdic.h"
 #include "mod_pikevm.h"
 
 /* Define prototypes of our functions in this module */
@@ -180,8 +181,8 @@ static request_rec * ap_pikevm_make_fake_req(
 
     rp->request_config  = ap_create_request_config(c->pool);
     //proxy_run_create_req(r, rp); ???
-    core_create_req(rp);
-
+    //core_create_req(rp);
+    ap_run_create_request(rp);
     return rp;
 }
 
