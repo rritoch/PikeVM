@@ -578,14 +578,32 @@ static apr_status_t ap_pikevm_create_connection(
             apr_pstrcat(r->pool,"URI cannot be parsed: ", url,NULL)
         );
     }
-
+    ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
+                         "pikevm: %s: URI Parsed.",
+                         "ap_pikevm_create_connection");
+                         
     uri->scheme = apr_pstrdup(r->connection->pool, "http");
-
+    
+    // ????Next line segfaults????
+    ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
+                         "pikevm: %s: Scheme set %s",
+                         "ap_pikevm_create_connection",
+                         uri->scheme);
+                         
     uri->port = dir_config->port;
     if (!uri->port) {
         uri->port = apr_uri_port_of_scheme(uri->scheme);
     }
+    
+    ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
+                         "pikevm: %s: Port set.",
+                         "ap_pikevm_create_connection");
+                         
     uri->hostname = apr_pstrdup(r->connection->pool,dir_config->host);
+
+    ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
+                         "pikevm: %s: Hostname set %s.",
+                         "ap_pikevm_create_connection",uri->hostname);
 
     ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
                  "pikevm: HTTP connecting %s to %s:%d", url, uri->hostname,
@@ -785,6 +803,7 @@ static int ap_pikevm_handler(request_rec *r)
     apr_bucket_brigade *bb;
     apr_uri_t *uri;
     int status;
+    //apr_pool_t *p = r->connection->pool;
 
     /* First off, we need to check if this is a call for the "pikevm" handler.
      * If it is, we accept it and do our things, it not, we simply return DECLINED,
@@ -811,25 +830,30 @@ static int ap_pikevm_handler(request_rec *r)
                          dir_config->host,
                          dir_config->port);
    
+    // Allocate Resources
+    
     // Is this right? Shouldn't this brigade be created from the backend connection?
     bb = apr_brigade_create(r->connection->pool, r->connection->bucket_alloc);
-
-    // Allocate Resources
 
     p_conn = apr_pcalloc(r->connection->pool, sizeof(*p_conn));
     uri = apr_palloc(r->connection->pool, sizeof(*uri));
 
-
-
-
     backend = ap_pikevm_get_backend(r);
 
+    ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
+                         "pikevm: %s: Resources allocated.",
+                         "ap_pikevm_handler");
+                         
     // Create Connection
     status = ap_pikevm_create_connection(r, uri, p_conn, backend, dir_config,bb);
     if ( status != OK ) {
         return status;
     }
 
+    ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
+                         "pikevm: %s: Sending request.",
+                         "ap_pikevm_handler");
+                         
     status = ap_pikevm_send_request(r, p_conn, dir_config,bb);
     if ( status != OK ) {
         return status;
