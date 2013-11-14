@@ -232,6 +232,98 @@ void pikevm_add_signature(request_rec *r, apr_bucket_brigade *bb)
     //TODO: X-PikeVM-Auth-Signature-Method: [Signature Algorithm]
 }
 
+static apr_table_t * ap_pikevm_read_headers(
+    request_rec *r,
+    request_rec *rp,
+    char *buffer,
+    int buff_sz,
+    pikevm_conn_rec *backend
+) {
+    apr_table_t *headers_out;
+    int len;
+    char *value, *end;
+    char field[MAX_STRING_LEN];
+    int saw_headers = 0;
+
+    headers_out = apr_table_make(r->pool, 20);
+
+    /*
+     * Read header lines until we get the empty separator line, a read error,
+     * the connection closes (EOF), or we timeout.
+     */
+    while ((len = ap_getline(buffer, size, rp, 1)) > 0) {
+
+	if (!(value = strchr(buffer, ':'))) {     /* Find the colon separator */
+
+	    /* We may encounter invalid headers, usually from buggy
+	     * MS IIS servers, so we need to determine just how to handle
+	     * them. We can either ignore them, assume that they mark the
+	     * start-of-body (eg: a missing CRLF) or (the default) mark
+	     * the headers as totally bogus and return a 500. The sole
+	     * exception is an extra "HTTP/1.0 200, OK" line sprinkled
+	     * in between the usual MIME headers, which is a favorite
+	     * IIS bug.
+	     */
+	     /* XXX: The mask check is buggy if we ever see an HTTP/1.10 */
+
+	    if (!apr_date_checkmask(buffer, "HTTP/#.# ###*")) {
+		    /* if we've already started loading headers_out, then
+		     * return what we've accumulated so far, in the hopes
+		     * that they are useful. Otherwise, we completely bail.
+		     */
+		    /* FIXME: We've already scarfed the supposed 1st line of
+		     * the body, so the actual content may end up being bogus
+		     * as well. If the content is HTML, we may be lucky.
+		     */
+		    if (saw_headers) {
+			ap_log_error(APLOG_MARK, APLOG_WARNING, 0, r->server,
+			 "proxy: Starting body due to bogus non-header in headers "
+			 "returned by %s (%s)", r->uri, r->method);
+			return headers_out;
+		    } else {
+			 ap_log_error(APLOG_MARK, APLOG_WARNING, 0, r->server,
+			 "proxy: No HTTP headers "
+			 "returned by %s (%s)", r->uri, r->method);
+			return NULL;
+		    }
+
+	    }
+	    /* this is the psc->badopt == bad_ignore case */
+	    ap_log_error(APLOG_MARK, APLOG_WARNING, 0, r->server,
+			 "proxy: Ignoring bogus HTTP header "
+			 "returned by %s (%s)", r->uri, r->method);
+	    continue;
+	}
+
+        *value = '\0';
+        ++value;
+	/* XXX: RFC2068 defines only SP and HT as whitespace, this test is
+	 * wrong... and so are many others probably.
+	 */
+        while (apr_isspace(*value))
+            ++value;            /* Skip to start of value   */
+
+	/* should strip trailing whitespace as well */
+	for (end = &value[strlen(value)-1]; end > value && apr_isspace(*end); --end)
+	    *end = '\0';
+
+        /* make sure we add so as not to destroy duplicated headers */
+        apr_table_add(headers_out, buffer, value);
+        saw_headers = 1;
+
+	/* the header was too long; at the least we should skip extra data */
+	if (len >= size - 1) {
+	    while ((len = ap_getline(field, MAX_STRING_LEN, rp, 1))
+		    >= MAX_STRING_LEN - 1) {
+		/* soak up the extra data */
+	    }
+	    if (len == 0) /* time to exit the larger loop as well */
+		break;
+	}
+    }
+    return headers_out;
+}
+
 static apr_status_t ap_pikevm_set_connection_alias(
     request_rec *r,
     pikevm_http_conn_t *p_conn,
