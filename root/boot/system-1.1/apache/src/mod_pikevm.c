@@ -67,6 +67,8 @@ static void* ap_create_pikevm_dir_config(apr_pool_t* pool, char* x)
     /* Set up the default values for fields of dir */
     dir->host = NULL;
     dir->port = -1;
+    dir->signature_method = NULL;
+    dir->secret = NULL;
     return dir ;
 }
 
@@ -780,10 +782,7 @@ static int ap_pikevm_handler(request_rec *r)
     pikevm_dir_cfg *dir_config;
     pikevm_http_conn_t *p_conn;
     pikevm_conn_rec *backend;
-
-    // Is this right? Shouldn't this brigade be created from the backend connection?
-    apr_bucket_brigade *bb = apr_brigade_create(r->connection->pool, r->connection->bucket_alloc);
-
+    apr_bucket_brigade *bb;
     apr_uri_t *uri;
     int status;
 
@@ -793,13 +792,34 @@ static int ap_pikevm_handler(request_rec *r)
      */
     if (!r->handler || strcmp(r->handler, "pikevm-handler")) return (DECLINED);
 
+    // grab configuration
+    dir_config = (pikevm_dir_cfg*) ap_get_module_config(r->per_dir_config, &pikevm_module);
+    
+    // test configuration
+    if (dir_config->host == NULL || dir_config->port == -1) {
+            ap_log_error(APLOG_MARK, APLOG_ERR, 0, r->server,
+                         "pikevm: %s: incomplete configuration (host=%s port=%i). Add PikeVMHost and PikeVMPort to your configuration.",
+                         "ap_pikevm_handler",
+                         dir_config->host,
+                         dir_config->port);
+            return HTTP_BAD_GATEWAY;
+    }
+    
+    ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
+                         "pikevm: %s: configuration OK (host=%s port=%i).",
+                         "ap_pikevm_handler",
+                         dir_config->host,
+                         dir_config->port);
+   
+    // Is this right? Shouldn't this brigade be created from the backend connection?
+    bb = apr_brigade_create(r->connection->pool, r->connection->bucket_alloc);
+
     // Allocate Resources
 
     p_conn = apr_pcalloc(r->connection->pool, sizeof(*p_conn));
     uri = apr_palloc(r->connection->pool, sizeof(*uri));
 
-    // grab configuration
-    dir_config = (pikevm_dir_cfg*) ap_get_module_config(r->per_dir_config, &pikevm_module);
+
 
 
     backend = ap_pikevm_get_backend(r);
