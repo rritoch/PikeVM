@@ -12,6 +12,7 @@
 #include "util_ebcdic.h"
 #include "mod_pikevm.h"
 #include "apr_lib.h"
+#include "apr_strings.h"
 
 /* Define prototypes of our functions in this module */
 static void ap_pikevm_register_hooks(apr_pool_t *pool);
@@ -358,6 +359,9 @@ static apr_status_t ap_pikevm_set_connection_alias(
 
     // lets build our headers...
 
+    ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
+                         "pikevm: %s: Setting headers.",
+                         "ap_pikevm_set_connection_alias");
     //PUT * HTTP/1.1
     buf = apr_pstrcat(p, "PUT *.pike HTTP/1.1",
                       CRLF,
@@ -366,6 +370,10 @@ static apr_status_t ap_pikevm_set_connection_alias(
     e = apr_bucket_pool_create(buf, strlen(buf), p, r->connection->bucket_alloc);
     APR_BRIGADE_INSERT_TAIL(bb, e);
 
+    ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
+                         "pikevm: %s: Status line set.",
+                         "ap_pikevm_set_connection_alias");
+                         
     //Content-Length: 0
     buf = apr_pstrcat(p, "Content-Length: ",
                       "0",
@@ -402,6 +410,7 @@ static apr_status_t ap_pikevm_set_connection_alias(
     e = apr_bucket_pool_create(buf, strlen(buf), p, r->connection->bucket_alloc);
     APR_BRIGADE_INSERT_TAIL(bb, e);
 
+    
     //X-PikeVM-Action: set-connection-alias
     buf = apr_pstrcat(p, "X-PikeVM-Action: ",
                       "set-connection-alias",
@@ -410,7 +419,7 @@ static apr_status_t ap_pikevm_set_connection_alias(
     ap_xlate_proto_to_ascii(buf, strlen(buf));
     e = apr_bucket_pool_create(buf, strlen(buf), p, r->connection->bucket_alloc);
     APR_BRIGADE_INSERT_TAIL(bb, e);
-
+                         
     //X-PikeVM-Set-Client-IP: x.x.x.x
     buf = apr_pstrcat(
         p, "X-PikeVM-Set-Client-IP: ",
@@ -426,6 +435,7 @@ static apr_status_t ap_pikevm_set_connection_alias(
         CRLF,
         NULL
     );
+                         
     ap_xlate_proto_to_ascii(buf, strlen(buf));
     e = apr_bucket_pool_create(buf, strlen(buf), p, r->connection->bucket_alloc);
     APR_BRIGADE_INSERT_TAIL(bb, e);
@@ -463,6 +473,10 @@ static apr_status_t ap_pikevm_set_connection_alias(
     e = apr_bucket_pool_create(buf, strlen(buf), p, r->connection->bucket_alloc);
     APR_BRIGADE_INSERT_TAIL(bb, e);
 
+    ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
+                         "pikevm: %s: Headers completed.",
+                         "ap_pikevm_set_connection_alias");
+
     status = ap_pikevm_pass_brigade(
         r->connection->bucket_alloc,
         r,
@@ -473,13 +487,27 @@ static apr_status_t ap_pikevm_set_connection_alias(
     );
 
     if (status != OK) {
+        ap_log_error(APLOG_MARK, APLOG_ERR, 0, r->server,
+                         "pikevm: %s: Pass brigade failed.",
+                         "ap_pikevm_set_connection_alias");
         return status;
     }
+    
+    ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
+                         "pikevm: %s: Brigade sent.",
+                         "ap_pikevm_set_connection_alias");
 
     // Headers sent! Now lets get our response!
 
+        ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
+                         "pikevm: %s: Preparing fake request.",
+                         "ap_pikevm_set_connection_alias");
     rp = ap_pikevm_make_fake_req(backend, r);
 
+    ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
+                         "pikevm: %s: Fake request prepared.",
+                         "ap_pikevm_set_connection_alias");
+                         
     len = ap_getline(buffer, sizeof(buffer), rp, 0);
     if (len == 0) {
         /* handle one potential stray CRLF */
@@ -495,6 +523,11 @@ static apr_status_t ap_pikevm_set_connection_alias(
         return ap_pikevm_error(r, HTTP_BAD_GATEWAY,
                              "Error reading from remote server");
     }
+    
+    ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
+                         "pikevm: %s: Have status line.",
+                         "ap_pikevm_set_connection_alias");
+                         
     //Process status line for code
     ptr = &buffer;
     ctr = 0;
@@ -531,6 +564,10 @@ static apr_status_t ap_pikevm_set_connection_alias(
         return status;
     }
 
+    ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
+                         "pikevm: %s: Horray!!!",
+                         "ap_pikevm_set_connection_alias");
+                         
     /* Log this for security purposes, if request is not in this log we have someone bypassing this module */
     ap_log_error(
         APLOG_MARK,
@@ -723,8 +760,14 @@ static apr_status_t ap_pikevm_create_connection(
             connected = 1;
         }
         if (!connected) {
+            ap_log_error(APLOG_MARK, APLOG_ERR, 0, r->server,
+                         "pikevm: %s: Connection failed.",
+                         "ap_pikevm_create_connection");
             return HTTP_BAD_GATEWAY;
         }
+        ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
+                         "pikevm: %s: Connected.",
+                         "ap_pikevm_create_connection");
         //TODO: Special handling if this is a relay request
         err = ap_pikevm_set_connection_alias(
             r,
@@ -733,6 +776,10 @@ static apr_status_t ap_pikevm_create_connection(
             dir_config,
             bb
         );
+        ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
+              "pikevm: %s: Connection alias set.",
+              "ap_pikevm_create_connection");
+        
         // receive response
 
         if (err == OK) {
