@@ -1,18 +1,7 @@
 /* mod_pikevm.c:  */
-#include <stdio.h>
-#include "apr_hash.h"
-#include "ap_config.h"
-#include "ap_provider.h"
-#include "httpd.h"
-#include "http_core.h"
-#include "http_config.h"
-#include "http_log.h"
-#include "http_protocol.h"
-#include "http_request.h"
-#include "util_ebcdic.h"
+
 #include "mod_pikevm.h"
-#include "apr_lib.h"
-#include "apr_strings.h"
+
 
 /* Define prototypes of our functions in this module */
 static void ap_pikevm_register_hooks(apr_pool_t *pool);
@@ -139,11 +128,21 @@ static apr_status_t ap_pikevm_pass_brigade(
     apr_bucket *e;
 
     if (flush) {
+        ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
+                         "pikevm: %s: Flush!",
+                         "ap_pikevm_pass_brigade");
         e = apr_bucket_flush_create(bucket_alloc);
         APR_BRIGADE_INSERT_TAIL(bb, e);
     }
-
+    ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
+                         "pikevm: %s: Passing output_filters!",
+                         "ap_pikevm_pass_brigade");
+                         
     status = ap_pass_brigade(dest->output_filters, bb);
+
+    ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
+                         "pikevm: %s: Pass complet!",
+                         "ap_pikevm_pass_brigade");
 
     if (status != APR_SUCCESS) {
         ap_log_error(APLOG_MARK, APLOG_ERR, status, r->server,
@@ -152,6 +151,9 @@ static apr_status_t ap_pikevm_pass_brigade(
         return status;
     }
 
+    ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
+                         "pikevm: %s: Cleanup!",
+                         "ap_pikevm_pass_brigade");
     apr_brigade_cleanup(bb);
 
     return APR_SUCCESS;
@@ -591,6 +593,8 @@ static apr_status_t ap_pikevm_create_connection(
     apr_bucket_brigade *bb
 ) {
 
+    conn_rec *origin;
+    
     apr_socket_t *client_socket = NULL;
 
     apr_status_t err;
@@ -765,6 +769,25 @@ static apr_status_t ap_pikevm_create_connection(
                          "ap_pikevm_create_connection");
             return HTTP_BAD_GATEWAY;
         }
+        
+        // Register backend...
+        
+        origin = ap_run_create_connection(r->connection->pool, r->server, p_conn->sock,
+                                           r->connection->id,
+                                           r->connection->sbh, r->connection->bucket_alloc);
+        if (!origin) {
+        /* the peer reset the connection already; ap_run_create_connection() 
+         * closed the socket
+         */
+            ap_log_error(APLOG_MARK, APLOG_DEBUG, 0,
+                         r->server, "pikevm: an error occurred creating a "
+                         "new connection to %pI (%s)", p_conn->addr,
+                         p_conn->name);
+            apr_socket_close(p_conn->sock);
+            return HTTP_INTERNAL_SERVER_ERROR;
+        }
+        backend->connection = origin;
+        
         ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
                          "pikevm: %s: Connected.",
                          "ap_pikevm_create_connection");
