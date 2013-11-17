@@ -92,23 +92,57 @@ void pikevm_init(apr_pool_t *pool)
 
 static apr_status_t ap_pikevm_error(request_rec *r, int statuscode, const char *message)
 {
-    apr_table_setn(r->notes, "error-notes",
-	apr_pstrcat(r->pool,
-		"The PikeVM server could not handle the request "
-		"<em><a href=\"", ap_escape_uri(r->pool, r->uri),
-		"\">", ap_escape_html(r->pool, r->method),
-		"&nbsp;",
-		ap_escape_html(r->pool, r->uri), "</a></em>.<p>\n"
-		"Reason: <strong>",
-		ap_escape_html(r->pool, message),
-		"</strong></p>", NULL));
+    ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
+                         "pikevm: %s: called!",
+                         "ap_pikevm_error");
+    apr_table_setn(
+        r->notes, 
+        "error-notes",
+	      apr_pstrcat(
+            r->pool,
+		            "The PikeVM server could not handle the request "
+		                "<em><a href=\"", ap_escape_uri(r->pool, r->uri),
+		        "\">", ap_escape_html(r->pool, r->method),
+		        "&nbsp;",
+		        ap_escape_html(r->pool, r->uri), 
+            "</a></em>.<p>\n"
+		            "Reason: <strong>",
+		        ap_escape_html(r->pool, message),
+		        "</strong></p>", 
+            NULL
+        )
+    );
 
+    ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
+                         "pikevm: %s: error-notes set!",
+                         "ap_pikevm_error");
+                         
     /* Allow "error-notes" string to be printed by ap_send_error_response() */
-    apr_table_setn(r->notes, "verbose-error-to", apr_pstrdup(r->pool, "*"));
+    apr_table_setn(
+        r->notes, 
+        "verbose-error-to", 
+        apr_pstrdup(r->pool, "*")
+    );
+
+    ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
+                         "pikevm: %s: verbose-error-to set!",
+                         "ap_pikevm_error");
 
     r->status_line = apr_psprintf(r->pool, "%3.3u PikeVM Error", statuscode);
-    ap_log_rerror(APLOG_MARK, APLOG_ERR, 0, r,
-			 "pikevm: %s returned by %s", message, r->uri);
+    
+    ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
+                         "pikevm: %s: status_line set!",
+                         "ap_pikevm_error");
+                         
+    ap_log_rerror(
+        APLOG_MARK, 
+        APLOG_ERR, 
+        0, 
+        r,
+			 "pikevm: %s returned by %s", 
+       message, 
+       r->uri
+    );
     return statuscode;
 }
 
@@ -190,13 +224,18 @@ static request_rec * ap_pikevm_make_fake_req(
 
 static apr_status_t ap_pikevm_pass_body(
     request_rec *r,
+    request_rec *rd,
     request_rec *rp,
     pikevm_conn_rec * backend
 ) {
     int is_proxy = 1;
     apr_status_t status = OK;
 
-    if (r == NULL) {
+    ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
+                         "pikevm: %s: Called!",
+                         "ap_pikevm_pass_body");
+                         
+    if (rd == NULL) {
         is_proxy = 0;
     }
 
@@ -335,6 +374,7 @@ static apr_status_t ap_pikevm_set_connection_alias(
 ) {
     char *ts;
     int status = OK;
+    int rc;
     char *buf;
     char *ptr,*eptr;
     char sport[7];
@@ -343,6 +383,7 @@ static apr_status_t ap_pikevm_set_connection_alias(
     char buffer[HUGE_STRING_LEN];
 
     request_rec *rp;
+    request_rec *dev_null = NULL;
     apr_bucket *e;
     apr_pool_t *p = r->connection->pool;
 
@@ -527,13 +568,16 @@ static apr_status_t ap_pikevm_set_connection_alias(
                          "ap_pikevm_set_connection_alias");
                          
     //Process status line for code
-    ptr = buffer;
+    ptr = &buffer[0];
     ctr = 0;
+    
+    // skip version
     while(*ptr != 0 && *ptr != 32 && ctr < (HUGE_STRING_LEN - 3)) {
         ptr++;
         ctr++;
     }
 
+    // grab status
     status = HTTP_BAD_GATEWAY;
     if (ctr + 3 < HUGE_STRING_LEN && *ptr != 0) {
         *ptr++ = 0;
@@ -550,11 +594,21 @@ static apr_status_t ap_pikevm_set_connection_alias(
         }
     }
 
+    ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
+                         "pikevm: %s: Status = %i.",
+                         "ap_pikevm_set_connection_alias",
+                         status);
+
     // Read headers
     rp->headers_in = ap_pikevm_read_headers(r, rp, buffer,sizeof(buffer), backend);
 
+    ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
+                         "pikevm: %s: Have PikeVM Response Headers.",
+                         "ap_pikevm_set_connection_alias");
+                         
     // Send body to dev/null
-    if (OK != ap_pikevm_pass_body(NULL,rp,backend)) {
+    rc = ap_pikevm_pass_body(r,dev_null,rp,backend);
+    if (OK != rc) {
         return status;
     }
 
@@ -621,7 +675,6 @@ static apr_status_t ap_pikevm_create_connection(
                          
     uri->scheme = apr_pstrdup(r->connection->pool, "http");
     
-    // ????Next line segfaults????
     ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
                          "pikevm: %s: Scheme set %s",
                          "ap_pikevm_create_connection",
@@ -919,10 +972,12 @@ static int ap_pikevm_handler(request_rec *r)
     }
     
     ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
-                         "pikevm: %s: configuration OK (host=%s port=%i).",
+                         "pikevm: %s: configuration OK (host=%s port=%i, has_main=%i).",
                          "ap_pikevm_handler",
                          dir_config->host,
-                         dir_config->port);
+                         dir_config->port,
+                         r->main ? 1 : 0
+                         );
    
     // Allocate Resources
     
