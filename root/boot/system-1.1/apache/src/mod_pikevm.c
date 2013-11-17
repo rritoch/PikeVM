@@ -140,10 +140,6 @@ static apr_status_t ap_pikevm_pass_brigade(
                          
     status = ap_pass_brigade(dest->output_filters, bb);
 
-    ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
-                         "pikevm: %s: Pass complet!",
-                         "ap_pikevm_pass_brigade");
-
     if (status != APR_SUCCESS) {
         ap_log_error(APLOG_MARK, APLOG_ERR, status, r->server,
                      "pikevm: ap_pass_brigade failed to %pI (%s)",
@@ -531,7 +527,7 @@ static apr_status_t ap_pikevm_set_connection_alias(
                          "ap_pikevm_set_connection_alias");
                          
     //Process status line for code
-    ptr = &buffer;
+    ptr = buffer;
     ctr = 0;
     while(*ptr != 0 && *ptr != 32 && ctr < (HUGE_STRING_LEN - 3)) {
         ptr++;
@@ -592,7 +588,7 @@ static apr_status_t ap_pikevm_create_connection(
     pikevm_dir_cfg *dir_config,
     apr_bucket_brigade *bb
 ) {
-
+    int rc;
     conn_rec *origin;
     
     apr_socket_t *client_socket = NULL;
@@ -697,6 +693,7 @@ static apr_status_t ap_pikevm_create_connection(
 
 
     if (create_socket) {
+
         apr_status_t rv;
         int connected = 0;
         int loglevel;
@@ -787,10 +784,37 @@ static apr_status_t ap_pikevm_create_connection(
             return HTTP_INTERNAL_SERVER_ERROR;
         }
         backend->connection = origin;
+        backend->hostname = apr_pstrdup(r->connection->pool, p_conn->name);
+        backend->port = p_conn->port;
+        
+        /*                                                                        
+        if (backend->is_ssl) {
+            if (!ap_proxy_ssl_enable(backend->connection)) {
+                ap_log_error(APLOG_MARK, APLOG_ERR, 0,
+                             r->server, "pikevm: failed to enable ssl support "
+                             "for %pI (%s)", p_conn->addr, p_conn->name);
+                return HTTP_INTERNAL_SERVER_ERROR;
+            }
+        }
+        else {
+            ap_proxy_ssl_disable(backend->connection);
+        }
+        */
         
         ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
-                         "pikevm: %s: Connected.",
-                         "ap_pikevm_create_connection");
+                     "pikevm: connection complete to %pI (%s)",
+                     p_conn->addr, p_conn->name);
+        
+        /* set up the connection filters */
+        rc = ap_run_pre_connection(origin, p_conn->sock);
+        if (rc != OK && rc != DONE) {
+            origin->aborted = 1;
+            ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
+                         "pikevm: HTTP: pre_connection setup failed (%d)",
+                         rc);
+            return rc;
+        }
+                                              
         //TODO: Special handling if this is a relay request
         err = ap_pikevm_set_connection_alias(
             r,
