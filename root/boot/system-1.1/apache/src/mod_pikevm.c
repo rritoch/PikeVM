@@ -92,9 +92,6 @@ void pikevm_init(apr_pool_t *pool)
 
 static apr_status_t ap_pikevm_error(request_rec *r, int statuscode, const char *message)
 {
-    ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
-                         "pikevm: %s: called!",
-                         "ap_pikevm_error");
     apr_table_setn(
         r->notes, 
         "error-notes",
@@ -112,10 +109,6 @@ static apr_status_t ap_pikevm_error(request_rec *r, int statuscode, const char *
             NULL
         )
     );
-
-    ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
-                         "pikevm: %s: error-notes set!",
-                         "ap_pikevm_error");
                          
     /* Allow "error-notes" string to be printed by ap_send_error_response() */
     apr_table_setn(
@@ -124,15 +117,7 @@ static apr_status_t ap_pikevm_error(request_rec *r, int statuscode, const char *
         apr_pstrdup(r->pool, "*")
     );
 
-    ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
-                         "pikevm: %s: verbose-error-to set!",
-                         "ap_pikevm_error");
-
     r->status_line = apr_psprintf(r->pool, "%3.3u PikeVM Error", statuscode);
-    
-    ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
-                         "pikevm: %s: status_line set!",
-                         "ap_pikevm_error");
                          
     ap_log_rerror(
         APLOG_MARK, 
@@ -222,34 +207,241 @@ static request_rec * ap_pikevm_make_fake_req(
     return rp;
 }
 
+static apr_status_t ap_pikevm_stream_reqbody_chunked(
+    request_rec *r,
+    request_rec *rd,
+    request_rec *rp,
+    pikevm_conn_rec * backend,
+    apr_bucket_brigade *bb
+) {
+    apr_status_t status = OK;
+    if (1) {
+        return ap_pikevm_error(r,HTTP_BAD_GATEWAY,"pikevm: ap_pikevm_stream_reqbody_chunked not defined");
+    }
+    
+    return status;
+}
+
+static apr_status_t ap_pikevm_stream_reqbody_cl(
+    request_rec *r,
+    request_rec *rd,
+    request_rec *rp,
+    pikevm_conn_rec * backend,
+    apr_bucket_brigade *bb,
+    const char *cl_val
+) {
+    apr_status_t status = OK;
+    if (1) {
+        return ap_pikevm_error(r,HTTP_BAD_GATEWAY,"pikevm: ap_pikevm_stream_reqbody_cl not defined");
+    }
+    
+    return status;
+}
+
+static apr_status_t ap_pikevm_spool_reqbody_cl(
+    request_rec *r,
+    request_rec *rd,
+    request_rec *rp,
+    pikevm_conn_rec * backend,
+    apr_bucket_brigade *bb,
+    int force_cl
+) {
+    apr_status_t status = OK;
+    if (1) {
+        return ap_pikevm_error(r,HTTP_BAD_GATEWAY,"pikevm: ap_pikevm_spool_reqbody_cl not defined");
+    }
+    
+    return status;
+}
+
 static apr_status_t ap_pikevm_pass_body(
     request_rec *r,
     request_rec *rd,
     request_rec *rp,
-    pikevm_conn_rec * backend
+    pikevm_conn_rec * backend,
+    pikevm_http_conn_t *p_conn,
+    apr_bucket_brigade *bb
 ) {
     int is_proxy = 1;
     apr_status_t status = OK;
-
-    ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
-                         "pikevm: %s: Called!",
-                         "ap_pikevm_pass_body");
+    const apr_array_header_t *headers_in_array;
+    const apr_table_entry_t *headers_in;
+    enum rb_methods {RB_UNKNOWN, RB_STREAM_CL, RB_STREAM_CHUNKED, RB_SPOOL_CL};
+    enum rb_methods rb_method = RB_UNKNOWN;
+    const char *cl_val = NULL;
+    const char *te_val = NULL;
+    int counter;
                          
     if (rd == NULL) {
         is_proxy = 0;
     }
-
-    if (1) {
-    	return ap_pikevm_error(r,HTTP_BAD_GATEWAY,"pikevm: ap_pikevm_pass_body not defined");
+    ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
+                         "pikevm: %s: is_proxy=%i",
+                         "ap_pikevm_pass_body",is_proxy);
+                         
+    headers_in_array = apr_table_elts(rp->headers_in);
+    headers_in = (const apr_table_entry_t *) headers_in_array->elts;
+    for (counter = 0; counter < headers_in_array->nelts; counter++) {
+        if (
+            headers_in[counter].key == NULL || 
+            headers_in[counter].val == NULL
+        ) {
+            continue;
+        }
+        
+        if (!strcasecmp(headers_in[counter].key, "Transfer-Encoding")) {
+            te_val = headers_in[counter].val;
+            continue;
+        }
+        
+        if (!strcasecmp(headers_in[counter].key, "Content-Length")) {
+            cl_val = headers_in[counter].val;
+            continue;
+        }
     }
-    // TODO: Define me
-    // Note: Need to handle transfer encoding
-    // while data to read from rp
-    // read data ..
-    // if (is_proxy) {
-    //   pass data
-    // }
+    
+    ap_log_error(
+        APLOG_MARK, 
+        APLOG_DEBUG, 
+        0, 
+        r->server,
+        "pikevm: %s: Headers parsed",
+        "ap_pikevm_pass_body"
+    );
+                         
+    if (te_val && strcmp(te_val, "chunked") != 0) {
+        ap_log_error(APLOG_MARK, APLOG_ERR, 0, r->server,
+                     "pikevm: %s Transfer-Encoding is not supported",
+                     te_val);
+        return APR_EINVAL;
+    }
+    
+    if (te_val) {
+        if (cl_val) {
+            ap_log_error(
+                APLOG_MARK, 
+                APLOG_DEBUG, 
+                APR_ENOTIMPL, 
+                r->server,
+                "pikevm: client %s:%i requested Transfer-Encoding body"
+                    " with Content-Length (C-L ignored)",
+#ifdef USE_CONN_REC_CLIENT_IP
+                rp->connection->client_ip,
+#else
+#ifdef USE_CONN_REC_REMOTE_IP                     
+                rp->connection->remote_ip,
+#else
+                rp->useragent_ip,
+#endif
+#endif
 
+#ifdef USE_CONN_REC_REMOTE_ADDR
+                rp->connection->remote_addr->port
+#else
+                rp->connection->client_addr->port
+#endif                   
+            );
+        }
+        rb_method = RB_STREAM_CHUNKED;
+    } else {
+        if (cl_val) {
+            rb_method = RB_STREAM_CL;
+        } else {
+            rb_method = RB_SPOOL_CL;
+        }
+    }
+    
+    /* send the request body, if any. */
+    switch(rb_method) {
+        case RB_STREAM_CHUNKED:
+        status = ap_pikevm_stream_reqbody_chunked(
+            r, 
+            rd, 
+            rp, 
+            backend, 
+            bb
+        );
+        break;
+    case RB_STREAM_CL:
+        status = ap_pikevm_stream_reqbody_cl(
+            r, 
+            rd, 
+            rp, 
+            backend, 
+            bb, 
+            cl_val
+        );
+        break;
+    case RB_SPOOL_CL:
+        status = ap_pikevm_spool_reqbody_cl(
+            r, 
+            rd, 
+            rp, 
+            backend, 
+            bb, 
+            (cl_val != NULL) || 
+                (te_val != NULL)
+        );
+        break;
+    default:
+        ap_assert(1 != 1);
+        break;
+    }
+    
+    if (status != APR_SUCCESS) {
+        if (is_proxy) {
+            ap_log_error(
+                APLOG_MARK, 
+                APLOG_ERR, 
+                status, 
+                r->server,
+                "pikevm: pass request body failed to %pI (%s)"
+                     " from %s:%i",
+                     p_conn->addr, 
+                     p_conn->name ? p_conn->name: "",
+#ifdef USE_CONN_REC_CLIENT_IP
+                rp->connection->client_ip,
+#else
+#ifdef USE_CONN_REC_REMOTE_IP                     
+                rp->connection->remote_ip,
+#else
+                rp->useragent_ip,
+#endif
+#endif
+
+#ifdef USE_CONN_REC_REMOTE_ADDR
+                rp->connection->remote_addr->port
+#else
+                rp->connection->client_addr->port
+#endif
+            );
+        } else {
+            ap_log_error(
+                APLOG_MARK, 
+                APLOG_ERR, 
+                status, 
+                r->server,
+                "pikevm: pass request body failed to /dev/null"
+                    " from %s:%i ",
+#ifdef USE_CONN_REC_CLIENT_IP
+                rp->connection->client_ip,
+#else
+#ifdef USE_CONN_REC_REMOTE_IP                     
+                rp->connection->remote_ip,
+#else
+                rp->useragent_ip,
+#endif
+#endif
+
+#ifdef USE_CONN_REC_REMOTE_ADDR
+                rp->connection->remote_addr->port
+#else
+                rp->connection->client_addr->port
+#endif   
+            );
+        }
+        return status;
+    }
     return status;
 }
 
@@ -607,7 +799,7 @@ static apr_status_t ap_pikevm_set_connection_alias(
                          "ap_pikevm_set_connection_alias");
                          
     // Send body to dev/null
-    rc = ap_pikevm_pass_body(r,dev_null,rp,backend);
+    rc = ap_pikevm_pass_body(r,dev_null,rp,backend,p_conn,bb);
     if (OK != rc) {
         return status;
     }
@@ -876,18 +1068,24 @@ static apr_status_t ap_pikevm_create_connection(
             dir_config,
             bb
         );
-        ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
-              "pikevm: %s: Connection alias set.",
-              "ap_pikevm_create_connection");
+
         
         // receive response
 
         if (err == OK) {
+            ap_log_error(APLOG_MARK, APLOG_ERR, 0, r->server,
+              "pikevm: %s: Not a pike server.",
+              "ap_pikevm_create_connection");
             return HTTP_BAD_GATEWAY; // Where is pike?
         }
-        if (err != HTTP_CONTINUE) {
+        
+        if (err != HTTP_CONTINUE) {       
             return err;
         }
+        
+        ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
+              "pikevm: %s: Connection alias set.",
+              "ap_pikevm_create_connection");
     }
 
     return OK;
