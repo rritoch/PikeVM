@@ -2,6 +2,7 @@
 
 #include "mod_pikevm.h"
 
+#define MAX_MEM_SPOOL 16384
 
 /* Define prototypes of our functions in this module */
 static void ap_pikevm_register_hooks(apr_pool_t *pool);
@@ -240,15 +241,152 @@ static apr_status_t ap_pikevm_stream_reqbody_cl(
 
 static apr_status_t ap_pikevm_spool_reqbody_cl(
     request_rec *r,
-    request_rec *rd,
-    request_rec *rp,
+    request_rec *rd, // destination
+    request_rec *rp, // source
     pikevm_conn_rec * backend,
     apr_bucket_brigade *bb,
+    pikevm_http_conn_t *p_conn, // destination used for logging purposes
     int force_cl
 ) {
     apr_status_t status = OK;
-    if (1) {
-        return ap_pikevm_error(r,HTTP_BAD_GATEWAY,"pikevm: ap_pikevm_spool_reqbody_cl not defined");
+
+    int seen_eos = 0;
+    apr_bucket_alloc_t *bucket_alloc = r->connection->bucket_alloc;
+    apr_bucket_brigade *body_brigade;
+    apr_bucket *e;
+    apr_off_t bytes, bytes_spooled = 0, fsize = 0;
+    apr_file_t *tmpfile = NULL;
+
+    body_brigade = apr_brigade_create(r->pool, bucket_alloc);
+
+    while (!APR_BUCKET_IS_EOS(APR_BRIGADE_FIRST(bb)))
+    {
+        /* If this brigade contains EOS, either stop or remove it. */
+        if (APR_BUCKET_IS_EOS(APR_BRIGADE_LAST(bb))) {
+            seen_eos = 1;
+
+            /* We can't pass this EOS to the output_filters. */
+            e = APR_BRIGADE_LAST(bb);
+            apr_bucket_delete(e);
+        }
+
+        apr_brigade_length(bb, 1, &bytes);
+
+        if (bytes_spooled + bytes > MAX_MEM_SPOOL) {
+            /* can't spool any more in memory; write latest brigade to disk */
+            if (tmpfile == NULL) {
+                const char *temp_dir;
+                char *template;
+
+                status = apr_temp_dir_get(&temp_dir, r->pool);
+                if (status != APR_SUCCESS) {
+                    ap_log_error(APLOG_MARK, APLOG_ERR, status, r->server,
+                                 "pikevm: search for temporary directory failed");
+                    return status;
+                }
+                apr_filepath_merge(&template, temp_dir,
+                                   "modpikevm.tmp.XXXXXX",
+                                   APR_FILEPATH_NATIVE, r->pool);
+                status = apr_file_mktemp(&tmpfile, template, 0, r->pool);
+                if (status != APR_SUCCESS) {
+                    ap_log_error(APLOG_MARK, APLOG_ERR, status, r->server,
+                                 "pikevm: creation of temporary file in directory %s failed",
+                                 temp_dir);
+                    return status;
+                }
+            }
+            for (e = APR_BRIGADE_FIRST(bb);
+                 e != APR_BRIGADE_SENTINEL(bb);
+                 e = APR_BUCKET_NEXT(e)) {
+                const char *data;
+                apr_size_t bytes_read, bytes_written;
+
+                apr_bucket_read(e, &data, &bytes_read, APR_BLOCK_READ);
+                status = apr_file_write_full(tmpfile, data, bytes_read, &bytes_written);
+                if (status != APR_SUCCESS) {
+                    const char *tmpfile_name;
+
+                    if (apr_file_name_get(&tmpfile_name, tmpfile) != APR_SUCCESS) {
+                        tmpfile_name = "(unknown)";
+                    }
+                    ap_log_error(APLOG_MARK, APLOG_ERR, status, r->server,
+                                 "proxy: write to temporary file %s failed",
+                                 tmpfile_name);
+                    return status;
+                }
+                AP_DEBUG_ASSERT(bytes_read == bytes_written);
+                fsize += bytes_written;
+            }
+            apr_brigade_cleanup(bb);
+        }
+        else {
+
+            /*
+             * Save input_brigade in body_brigade. (At least) in the SSL case
+             * input_brigade contains transient buckets whose data would get
+             * overwritten during the next call of ap_get_brigade in the loop.
+             * ap_save_brigade ensures these buckets to be set aside.
+             * Calling ap_save_brigade with NULL as filter is OK, because
+             * body_brigade already has been created and does not need to get
+             * created by ap_save_brigade.
+             */
+            status = ap_save_brigade(NULL, &body_brigade, &bb, r->pool);
+            if (status != APR_SUCCESS) {
+                return status;
+            }
+
+        }
+        
+        bytes_spooled += bytes;
+
+        if (seen_eos) {
+            break;
+        }
+
+        status = ap_get_brigade(r->input_filters, bb,
+                                AP_MODE_READBYTES, APR_BLOCK_READ,
+                                HUGE_STRING_LEN);
+
+        if (status != APR_SUCCESS) {
+            return status;
+        }
+    }
+
+    /* Don't need this, already passed headers, right? */
+    //if (bytes_spooled || force_cl) {
+    //    add_cl(r->pool, bucket_alloc, header_brigade, apr_off_t_toa(p, bytes_spooled));
+    //}
+    //terminate_headers(bucket_alloc, header_brigade);
+    
+    APR_BRIGADE_CONCAT(bb, body_brigade);
+    if (tmpfile) {
+        /* For platforms where the size of the file may be larger than
+         * that which can be stored in a single bucket (where the
+         * length field is an apr_size_t), split it into several
+         * buckets: */
+        if (sizeof(apr_off_t) > sizeof(apr_size_t)
+            && fsize > AP_MAX_SENDFILE) {
+            e = apr_bucket_file_create(tmpfile, 0, AP_MAX_SENDFILE, r->pool,
+                                       bucket_alloc);
+            while (fsize > AP_MAX_SENDFILE) {
+                apr_bucket *ce;
+                apr_bucket_copy(e, &ce);
+                APR_BRIGADE_INSERT_TAIL(bb, ce);
+                e->start += AP_MAX_SENDFILE;
+                fsize -= AP_MAX_SENDFILE;
+            }
+            e->length = (apr_size_t)fsize; /* Resize just the last bucket */
+        }
+        else {
+            e = apr_bucket_file_create(tmpfile, 0, (apr_size_t)fsize, r->pool,
+                                       bucket_alloc);
+        }
+        APR_BRIGADE_INSERT_TAIL(bb, e);
+    }
+    /* This is all a single brigade, pass with flush flagged */
+    
+    if (rd != NULL) {
+        status = ap_pikevm_pass_brigade(bucket_alloc, r, p_conn, rd->connection, bb, 1);
     }
     
     return status;
@@ -378,7 +516,8 @@ static apr_status_t ap_pikevm_pass_body(
             rd, 
             rp, 
             backend, 
-            bb, 
+            bb,
+            p_conn, 
             (cl_val != NULL) || 
                 (te_val != NULL)
         );
@@ -800,12 +939,16 @@ static apr_status_t ap_pikevm_set_connection_alias(
                          
     // Send body to dev/null
     rc = ap_pikevm_pass_body(r,dev_null,rp,backend,p_conn,bb);
-    if (OK != rc) {
+    if (OK != rc) {        
         return status;
     }
 
     if (status != HTTP_CONTINUE) {
-        return status;
+        return ap_pikevm_error(
+            r,
+            HTTP_BAD_GATEWAY,
+            apr_psprintf(r->pool, "pikevm: ap_pikevm_set_connection_alias Gateway returned invalid response. Status = %i",status)
+        );
     }
 
     ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
@@ -1194,6 +1337,11 @@ static int ap_pikevm_handler(request_rec *r)
     // Create Connection
     status = ap_pikevm_create_connection(r, uri, p_conn, backend, dir_config,bb);
     if ( status != OK ) {
+        ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
+                         "pikevm: %s: after_pikevm_create_connection: clean exit [status=%i].",
+                         "ap_pikevm_handler",
+                         status
+        );    
         return status;
     }
 
