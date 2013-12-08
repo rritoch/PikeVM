@@ -214,9 +214,14 @@ void login_success() {
  }
 }
 
-void do_login() 
+void do_continue() 
 {	
     input_to(have_request,INPUT_IGNORE_BANG,"");  
+}
+
+void do_login() 
+{	
+    do_continue();  
 }
 
 /*

@@ -1,6 +1,6 @@
 
 /**
- * HTTPD CGI Module
+ * HTTPD Apache Module
  *
  * @author Ralph Ritoch <rritoch@gmail.com>
  */
@@ -13,12 +13,12 @@
  */
  
 protected object httpd;
-protected program cgihandler;
+protected program apachehandler;
 
 
 string moduleId()
 {
-	return "mod_cgi";
+	return "mod_apache";
 }
 
 /**
@@ -26,10 +26,10 @@ string moduleId()
  */
  
 private void select_handler(mapping params, object caller) 
-{	
-	if (file_exists(params["PATH_TRANSLATED"]) && params["PATH_TRANSLATED"][<4..] == ".pike") {
-		params["handler"] = cgihandler;
-	}
+{
+    if (params["REQUEST_URI"] == "*.pike") {
+		    params["handler"] = apachehandler;
+	  }
 }
 
 /**
@@ -38,9 +38,9 @@ private void select_handler(mapping params, object caller)
  
 private void setup() 
 {
-	cgihandler = (program)"/lib/httpd/modules/mod_cgi/cgihandler.pike";
+	  apachehandler = (program)"/lib/httpd/modules/mod_apache/apachehandler.pike";
     httpd->add_hook("select_handler",select_handler);  
-    kernel()->console_write("[mod_cgi] Loaded!\n"); 
+    kernel()->console_write("[mod_apache] Loaded!\n"); 
 }
 
 /**

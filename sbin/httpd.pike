@@ -119,7 +119,7 @@ class default_404_handler
 	
 	string version = "1.0";
 	string proto = "HTTP";
-	int code = 400;
+	int code = 404;
 	string message = "Page not found";
 	string content_type = "text/html";
 	
@@ -242,9 +242,10 @@ mapping resolve_request_uri(string uri)
 	
 	string document_root = cfg_vars["document_root"];
 	
-	string filename = document_root+uri;
+	string filename = sizeof(uri) > 0 && uri[0] == '/' ? document_root+uri : document_root+"/"+uri;
 	mapping ret = ([]);
-			
+	ret["REQUEST_URI"] = uri;
+  		
 	if (is_directory(filename)) {
 		indexes = cfg_vars["indexes"];		
 		foreach(indexes,string index) {
@@ -261,6 +262,7 @@ mapping resolve_request_uri(string uri)
 	} else {
 		ret["PATH_TRANSLATED"] = filename;
 		ret["handler"] = default_404_handler;
+    selectHandler(ret);
 	}
 	
 	return ret;		

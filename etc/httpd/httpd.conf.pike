@@ -12,6 +12,7 @@ void configure()
     cfg_vars["document_root"] = "/var/www/html";
     cfg_vars["indexes"] = ({ "index.pike", "index.html", "index.htm" }); 
     httpd->loadModule("/lib/httpd/modules/mod_cgi.pike");
+    httpd->loadModule("/lib/httpd/modules/mod_apache.pike");
     
 }
    
