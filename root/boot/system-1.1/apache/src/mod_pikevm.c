@@ -1236,23 +1236,202 @@ static apr_status_t ap_pikevm_create_connection(
 
 // Process functions
 
-static apr_status_t ap_pikevm_send_request(request_rec *r,pikevm_http_conn_t *p_conn, pikevm_dir_cfg *dir_config,apr_bucket_brigade *bb)
+static apr_status_t ap_pikevm_send_request(
+    request_rec *r,
+    pikevm_http_conn_t *p_conn,
+    pikevm_conn_rec *backend, 
+    pikevm_dir_cfg *dir_config,
+    apr_bucket_brigade *bb)
 {
+
+    const char *old_cl_val = NULL;
+    const char *old_te_val = NULL;
+    
+    apr_bucket *e;
+    char *buf;
+    const apr_array_header_t *headers_in_array;
+    const apr_table_entry_t *headers_in;
+    int counter;
+    
+    // Add request line
+    buf = apr_pstrcat(r->pool, r->method, " ", r->uri, " HTTP/1.1" CRLF, NULL);
+    ap_xlate_proto_to_ascii(buf, strlen(buf));
+    e = apr_bucket_pool_create(buf, strlen(buf), r->pool, r->connection->bucket_alloc);
+    APR_BRIGADE_INSERT_TAIL(bb, e);
+    
+    // add headers
+    headers_in_array = apr_table_elts(r->headers_in);
+    headers_in = (const apr_table_entry_t *) headers_in_array->elts;
+    for (counter = 0; counter < headers_in_array->nelts; counter++) {
+        if (headers_in[counter].key == NULL 
+             || headers_in[counter].val == NULL) {
+            continue;
+        }
+
+        /* Skip Transfer-Encoding and Content-Length for now.  C*/
+         
+        if (!strcasecmp(headers_in[counter].key, "Transfer-Encoding")) {
+            old_te_val = headers_in[counter].val;
+            //continue;
+        }
+        if (!strcasecmp(headers_in[counter].key, "Content-Length")) {
+            old_cl_val = headers_in[counter].val;
+            //continue;
+        }
+    
+
+        buf = apr_pstrcat(r->pool, headers_in[counter].key, ": ",
+                          headers_in[counter].val, CRLF,
+                          NULL);
+        ap_xlate_proto_to_ascii(buf, strlen(buf));
+        e = apr_bucket_pool_create(buf, strlen(buf), r->pool, r->connection->bucket_alloc);
+        APR_BRIGADE_INSERT_TAIL(bb, e);
+    }
+    // End Headers
+    buf = apr_pstrcat(r->pool,
+                      CRLF,
+                      CRLF,
+                      NULL);
+    ap_xlate_proto_to_ascii(buf, strlen(buf));
+    e = apr_bucket_pool_create(buf, strlen(buf), r->pool, r->connection->bucket_alloc);
+    APR_BRIGADE_INSERT_TAIL(bb, e);                      
+    
+    // Pass request body...
+    
+    if (old_te_val != NULL || old_cl_val != NULL) {
+    /*TODO:
+      ap_pikevm_pass_body(r,
+    request_rec *rd,
+    request_rec *rp,
+    pikevm_conn_rec * backend,
+    pikevm_http_conn_t *p_conn,
+    apr_bucket_brigade *bb
+);
+   */
+   
+    }
+    
+    ap_pikevm_pass_brigade(
+        r->connection->bucket_alloc,
+        r,
+        p_conn,
+        backend->connection,
+        bb,
+        1
+    );
+    
     return OK;
 }
 
-static apr_status_t ap_pikevm_process_response(request_rec *r,pikevm_http_conn_t *p_conn, pikevm_dir_cfg *dir_config,apr_bucket_brigade *bb)
-{
+static apr_status_t ap_pikevm_process_response(
+    request_rec *r,
+    pikevm_http_conn_t *p_conn, 
+    pikevm_conn_rec *backend,
+    pikevm_dir_cfg *dir_config,
+    apr_bucket_brigade *bb
+) {
+
+    
+    int status = OK;
+    int rc;
+    char *buf;
+    char *ptr,*eptr;
+    char sport[7];
+    int len;
+    int ctr;
+    char buffer[HUGE_STRING_LEN];
+
+    request_rec *rp;
+    apr_bucket *e;
+    apr_pool_t *p = r->connection->pool;
+    
     // set content type
-    ap_set_content_type(r, "text/html");
+    //ap_set_content_type(r, "text/html");
 
 
     // The first thing we will do is write a simple "Hello, world!" back to the client.
     //ap_rputs("Hello, world!<br/>", r);
-    ap_rprintf(r, "Hello, world!<br />");
-    ap_rprintf(r, "Port: %i<br />",dir_config->port);
-    ap_rprintf(r, "Host: %s<br />", dir_config->host == NULL ? "<b class=\"null_value\">NULL</b>" :dir_config->host);
+    //ap_rprintf(r, "Hello, world!<br />");
+    //ap_rprintf(r, "Port: %i<br />",dir_config->port);
+    //ap_rprintf(r, "Host: %s<br />", dir_config->host == NULL ? "<b class=\"null_value\">NULL</b>" :dir_config->host);
 
+    ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
+                         "pikevm: %s: Preparing fake request.",
+                         "ap_pikevm_process_response");
+    rp = ap_pikevm_make_fake_req(backend, r);
+
+    ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
+                         "pikevm: %s: Fake request prepared.",
+                         "ap_pikevm_process_response");
+                         
+    len = ap_getline(buffer, sizeof(buffer), rp, 0);
+    if (len == 0) {
+        /* handle one potential stray CRLF */
+        len = ap_getline(buffer, sizeof(buffer), rp, 0);
+    }
+
+    if (len <= 0) {
+        apr_socket_close(p_conn->sock);
+        backend->connection = NULL;
+        ap_log_rerror(APLOG_MARK, APLOG_ERR, 0, r,
+                      "pikevm: error reading status line from remote "
+                      "server %s", p_conn->name);
+        return ap_pikevm_error(r, HTTP_BAD_GATEWAY,
+                             "Error reading from remote server");
+    }
+    
+    ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
+                         "pikevm: %s: Have status line.",
+                         "ap_pikevm_process_response");
+                         
+    //Process status line for code
+    ptr = &buffer[0];
+    ctr = 0;
+    
+    // skip version
+    while(*ptr != 0 && *ptr != 32 && ctr < (HUGE_STRING_LEN - 3)) {
+        ptr++;
+        ctr++;
+    }
+
+    // grab status
+    status = HTTP_BAD_GATEWAY;
+    if (ctr + 3 < HUGE_STRING_LEN && *ptr != 0) {
+        *ptr++ = 0;
+        eptr = ptr;
+        ctr = 0;
+        while(ctr < 3 && *eptr != 0) {
+            ctr++;
+            eptr++;
+        }
+
+        if (ctr == 3) {
+            *eptr = 0;
+            status = atoi(ptr);
+        }
+    }
+
+    ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
+                         "pikevm: %s: Status = %i.",
+                         "ap_pikevm_process_response",
+                         status);
+
+    // Read headers
+    rp->headers_in = ap_pikevm_read_headers(r, rp, buffer,sizeof(buffer), backend);
+
+    ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
+                         "pikevm: %s: Have PikeVM Response Headers.",
+                         "ap_pikevm_process_response");
+                         
+    // Send body to browser
+    rc = ap_pikevm_pass_body(r,r,rp,backend,p_conn,bb);
+    if (OK != rc) {        
+        return status;
+    }
+
+    ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
+                         "pikevm: %s: Horray!!!",
+                         "ap_pikevm_process_response");                             
     return OK;
 }
 
@@ -1349,12 +1528,12 @@ static int ap_pikevm_handler(request_rec *r)
                          "pikevm: %s: Sending request.",
                          "ap_pikevm_handler");
                          
-    status = ap_pikevm_send_request(r, p_conn, dir_config,bb);
+    status = ap_pikevm_send_request(r, p_conn, backend, dir_config,bb);
     if ( status != OK ) {
         return status;
     }
 
-    status = ap_pikevm_process_response(r,p_conn, dir_config,bb);
+    status = ap_pikevm_process_response(r,p_conn, backend, dir_config,bb);
     if (status != OK) {
         return status;
     }
