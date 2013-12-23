@@ -1,3 +1,19 @@
+## Warning
+
+This application is NOT secure.  
+
+This project has been canceled and will no longer be maintained.  Sources will remain  
+on GIT hub for future Pike users to reference.  
+
+This project is headed in the same direction as as the python project named pysandbox.  
+The developer(s) of pysandbox were able to determine that it is virtually impossible to 
+create a sandbox environment within a programming language that has a large number of 
+features and independent developers.  Some of the same techniques used to compromise
+pysandbox can also be used to compromise PikeVM.
+
+
+## Original Project
+
 * Title: Pike Virtual Machine
 * Version: 1.1 (Alpha)
 * Author: Ralph Ritoch <rritoch@gmail.com>
